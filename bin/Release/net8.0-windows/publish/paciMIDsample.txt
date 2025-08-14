@@ -1,0 +1,19 @@
+[
+    {
+        "fullNameEn": "BURHANUDDIN ",
+        "fullNameAr": "بر رامبورا",
+        "address": "MIDAuthSignContract.Entities.Address",
+        "birthDate": "12/22/1992 12:00:00 AM",
+        "bloodGroup": "",
+        "cardExpiryDate": "7/5/2026 12:00:00 AM",
+        "civilID": "29333303332",
+        "emailAddress": "",
+        "gender": "M",
+        "govData": "MIDAuthSignContract.Entities.GovIdData",
+        "mobileNumber": "",
+        "nationalityAr": "هندى",
+        "nationalityEn": "IND",
+        "nationalityFlag": "",
+        "passportNumber": ""
+    }
+]

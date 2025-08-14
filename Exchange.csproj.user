@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_LastSelectedProfileId>C:\Users\Surya\Downloads\Exchange\Exchange\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
+  </PropertyGroup>
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Pages\Accounts.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Landing.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\LoadingScreen.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Login.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Login2.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Page1.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\Page2.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\UpdateProfile.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\waddbeneficiary.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\wBeneficiary.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\wChooseLang.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\wComponents.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\wContact.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\WelcomePage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\wExchangecalculator.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\wFaq.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\wHistorytransaction.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\wLogin.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\wMainPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\wPaymentmethod.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\wRegister.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\wResetPassword.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\wSelectbeneficary.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\wSelectcountry.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\wSelectProduct.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\wSendMoney.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\wThankyou.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\wtobankorcash.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\wTransferpay.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\wViewBenficiaryDetails.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\wWelcomepage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Accounts.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Landing.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\LoadingScreen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Login.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Login2.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Page1.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Page2.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\UpdateProfile.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\waddbeneficiary.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\wBeneficiary.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\wChooseLang.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\wComponents.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\wContact.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\WelcomePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\wExchangecalculator.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\wFaq.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\wHistorytransaction.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\wLogin.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\wMainPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\wPaymentmethod.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\wRegister.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\wResetPassword.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\wSelectbeneficary.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\wSelectcountry.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\wSelectProduct.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\wSendMoney.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\wThankyou.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\wtobankorcash.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\wTransferpay.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\wViewBenficiaryDetails.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\wWelcomepage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

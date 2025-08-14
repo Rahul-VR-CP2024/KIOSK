@@ -1,0 +1,182 @@
+﻿<Page x:Class="Exchange.Pages.wBeneficiary"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Exchange.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1920" d:DesignWidth="1080"
+      Loaded="Page_Loaded"
+      Title="wBeneficiary">
+
+
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="267*"/>
+            <ColumnDefinition Width="463*"/>
+            <ColumnDefinition Width="270*"/>
+        </Grid.ColumnDefinitions>
+
+
+
+
+        <!--<Border CornerRadius="10" Grid.ColumnSpan="3">
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#7be9f6" Offset="0.0"/>
+                    <GradientStop Color="#f083da" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>-->
+
+
+
+        <StackPanel Grid.ColumnSpan="3" VerticalAlignment="Center" Height="1650">
+
+
+
+            <TextBlock Text="Beneficiary"
+    FontWeight="Light"
+    FontFamily="helvetica"
+    FontSize="50"
+    Foreground="White"
+            x:Name="benetitle"
+    Margin="0,40,0,0"
+    HorizontalAlignment="Center"/>
+            <StackPanel Margin="0,50,0,0" HorizontalAlignment="Right">
+                <Button Content="Add New" Width="150" Height="45" BorderThickness="0" Margin="0,0,25,0"  Foreground="#10358e" FontSize="25" Click="addnewben" x:Name="addnewbtn">
+                    <Button.Background>
+                        <LinearGradientBrush  StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="white " Offset="0"/>
+                            <GradientStop Color="White" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                    <Button.Resources>
+
+
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"></Setter>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+
+            <StackPanel Margin="0,50,0,0">
+
+                <Grid Width="800" Height="1350" >
+                    <ListView Name="countryListView" ScrollViewer.CanContentScroll="True" SelectionChanged="countryListView_SelectionChanged" Background="{x:Null}" BorderBrush="{x:Null}" Margin="-75,0,-68,0" Foreground="White">
+                        <ListView.View>
+                            <GridView>
+
+                                <!--<GridViewColumn Header="Country" Width="65">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Image Source="{Binding FlagImage}" Width="30" Height="20" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                    
+                                </GridViewColumn>-->
+                                <GridViewColumn Header="SL_NO رقم" Width="50" DisplayMemberBinding="{Binding Date}" />
+                                <GridViewColumn Header="Beneficiary Name اسم المستفيد" Width="400" DisplayMemberBinding="{Binding Bene}"  />
+                                <GridViewColumn Header="Bank بنك" Width="150" DisplayMemberBinding="{Binding BANK}" />
+                                <GridViewColumn Header="Account No رقم الحساب" Width="150" >
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding TID}" TextAlignment="Right" Foreground="White"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+
+                                </GridViewColumn>
+                                <GridViewColumn Header="Edit يحرر" Width="100" >
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="Edit" Height="25" BorderThickness="0" Foreground="#10358e" 
+                                                    Tag="{Binding Date}" Click="RESEND_Click"
+                                                    >
+
+
+
+
+
+                                                <Button.Background>
+                                                    <LinearGradientBrush  StartPoint="0,0" EndPoint="1,1">
+                                                        <GradientStop Color="white " Offset="0"/>
+                                                        <GradientStop Color="white" Offset="1"/>
+                                                    </LinearGradientBrush>
+                                                </Button.Background>
+                                                <Button.Resources>
+
+
+                                                    <Style TargetType="Border">
+                                                        <Setter Property="CornerRadius" Value="10"></Setter>
+                                                    </Style>
+                                                </Button.Resources>
+
+
+                                            </Button>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+
+                                </GridViewColumn>
+
+
+                            </GridView>
+                        </ListView.View>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                <Setter Property="Height" Value="50"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="Navy"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                </Grid>
+
+
+
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Column="2">
+            <StackPanel HorizontalAlignment="Right" Margin="0,0,0,100">
+                <Button Content="Back" Width="200" Height="70" BorderThickness="0" Margin="0,50,50,0"  Foreground="#10358e" FontSize="30" Click="LoginButton_Click" x:Name="backbtn">
+                    <Button.Background>
+                        <LinearGradientBrush  StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="white " Offset="0"/>
+                            <GradientStop Color="white" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                    <Button.Resources>
+
+
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"></Setter>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+
+
+
+
+
+
+
+
+
+
+
+
+    </Grid>
+</Page>

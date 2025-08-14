@@ -1,0 +1,221 @@
+﻿<Page x:Class="Exchange.Pages.wThankyou"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Exchange.Pages"
+      mc:Ignorable="d" 
+      Loaded="Page_load"
+      d:DesignHeight="1920" d:DesignWidth="1080"
+      Title="wThankyou">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+
+        </Grid.RowDefinitions>
+
+
+
+
+
+        <!--<Border CornerRadius="10" Grid.ColumnSpan="3">
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#7be9f6" Offset="0.0"/>
+                    <GradientStop Color="#f083da" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>-->
+
+        <StackPanel HorizontalAlignment="Right" Margin="0,0,0,935">
+            <Button Content="Back" Width="200" Height="70" BorderThickness="0" Margin="0,50,50,0"  Foreground="#10358e" FontSize="30" Click="LoginButton_Click" >
+                <Button.Background>
+                    <LinearGradientBrush  StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#FFFF " Offset="0"/>
+                        <GradientStop Color="#FFFF" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+                <Button.Resources>
+
+
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"></Setter>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
+
+        <StackPanel VerticalAlignment="Center" Height="1300">
+
+
+
+
+            <TextBlock Text="Transaction Processed Sucessfully "
+FontWeight="Light"
+FontFamily="helvetica"
+FontSize="50"
+Foreground="White"
+Margin="0,10,0,0"
+                       x:Name="tpslbl"
+HorizontalAlignment="Center"/>
+
+
+
+            <Grid Margin="250,30,250,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0">
+                    <Label Content="Date / Time" FontSize="20" Foreground="#FF7B7B7B" x:Name="DATETIME"></Label>
+                    <Label Content="Transaction ID" FontSize="20" Foreground="#FF7B7B7B" x:Name="tidlbl"></Label>
+                    <Label Content="TT Number" FontSize="20" Foreground="#FF7B7B7B" x:Name="ttno"></Label>
+                    <Label Content="Mobile" FontSize="20" Foreground="#FF7B7B7B" x:Name="moblbl"></Label>
+                    <Label Content="Sender Name" FontSize="20" Foreground="#FF7B7B7B" x:Name="senderlbl"></Label>
+                    <Label Content="Receiver Name" FontSize="20" Foreground="#FF7B7B7B" x:Name="recnlbl"></Label>
+                    <Label Content="Transfer Amount" FontSize="20" Foreground="#FF7B7B7B" x:Name="tramtlbl"></Label>
+                    
+                    <Label Content="Transfer fee" FontSize="20" Foreground="#FF7B7B7B" x:Name="trfeelbl"></Label>
+                    <Label Content="Other Charges" FontSize="20" Foreground="#FF7B7B7B" x:Name="ochlbl"></Label>
+                    <Label Content="Promo discount" FontSize="20" Foreground="#FF7B7B7B" x:Name="promdislbl"></Label>
+                    <Label Content="Total" FontSize="20" Foreground="#FF7B7B7B" x:Name="totlbl"></Label>
+                    <!--<Label Content="Money will be available" FontSize="20" Foreground="#FF7B7B7B" x:Name="monwillbl"></Label>-->
+                    <Label Content="Receive Amount" FontSize="20" Foreground="#FF7B7B7B" x:Name="recamtlbl"></Label>
+                    <Label Content="------------------------------------------------------" FontSize="20" Foreground="#FF7B7B7B"></Label>
+                    <Label Content="KNET Details" FontSize="20" Foreground="white" x:Name="knetlabel"></Label>
+                    <Label Content="Date / Time " FontSize="20" Foreground="#FF7B7B7B" x:Name="knetdatetime"></Label>
+                    <Label Content="Transaction Id" FontSize="20" Foreground="#FF7B7B7B" x:Name="knettid"></Label>
+                    <Label Content="Terminal Id" FontSize="20" Foreground="#FF7B7B7B" x:Name="knetterminal"></Label>
+                    <Label Content="Action Code" FontSize="20" Foreground="#FF7B7B7B" x:Name="knetaction"></Label>
+                    <Label Content="Authorisation Number" FontSize="20" Foreground="#FF7B7B7B" x:Name="knetauthnum"></Label>
+                    <Label Content="Card Type" FontSize="20" Foreground="#FF7B7B7B" x:Name="knetcardtyp"></Label>
+                    <Label Content="Merchant Id" FontSize="20" Foreground="#FF7B7B7B" x:Name="knetmerchant"></Label>
+
+                    <Label Content="Type" FontSize="20" Foreground="#FF7B7B7B" x:Name="knettype"></Label>
+                    <Label Content="Retrieval Ref Number" FontSize="20" Foreground="#FF7B7B7B" x:Name="knetretrefno"></Label>
+                    <Label Content="Card Number" FontSize="20" Foreground="#FF7B7B7B" x:Name="knetcardno"></Label>
+                    <Label Content="Pan Entry Mode" FontSize="20" Foreground="#FF7B7B7B" x:Name="knetpanentrymode"></Label>
+                    <Label Content="Emv Amount" FontSize="20" Foreground="#FF7B7B7B" x:Name="knetemvamt"></Label>
+                    <Label Content="Response Code" FontSize="20" Foreground="#FF7B7B7B" x:Name="knetresponsecode"></Label>
+                    <Label Content="Card Product Name" FontSize="20" Foreground="#FF7B7B7B" x:Name="knetproductname"></Label>
+                    <!--<Label Content="Signature Required" FontSize="20" Foreground="#FF7B7B7B"></Label>-->
+                    <Label Content="Emv Application Label" FontSize="20" Foreground="#FF7B7B7B" x:Name="knetemvapplicationlbl"></Label>
+                    <Label Content="Emv Application Identifier" FontSize="20" Foreground="#FF7B7B7B" x:Name="knetemvappliidenti"></Label>
+
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <Label Name="wdatetimevalue" Content="." FontSize="20" FontWeight="Bold" Foreground="#FFFF"></Label>
+                    <Label Name="wthanktid" Content="." FontSize="20" FontWeight="Bold" Foreground="#FFFF"></Label>
+                    <Label Name="wttid" Content="." FontSize="20" FontWeight="Bold" Foreground="#FFFF"></Label>
+                    <Label Name="wthankpaymentid"  Content="." FontSize="20" FontWeight="Bold" Foreground="#FFFF"></Label>
+                    <Label  Name="wthanksendername"  Content="." FontSize="20" FontWeight="Bold" Foreground="#FFFF"></Label>
+                    <Label  Name="wthankreceivername"  Content="." FontSize="20" FontWeight="Bold" Foreground="#FFFF"></Label>
+                    <Label  Name="wthanktransferamount"  Content="0 KWD" FontSize="20" FontWeight="Bold" Foreground="#FFFF"></Label>
+                  
+                    <Label  Name="wthanktransferfee"  Content="0 KWD" FontSize="20" FontWeight="Bold" Foreground="#FFFF"></Label>
+                    <Label  Name="wothercharges"  Content="0 KWD" FontSize="20" FontWeight="Bold" Foreground="#FFFF"></Label>
+                    <Label  Name="wthankdiscount"  Content="0 KWD" FontSize="20" FontWeight="Bold" Foreground="#FFFF"></Label>
+                    <Label  Name="wthanktotal"  Content="0 KWD" FontSize="20" FontWeight="Bold" Foreground="#FFFF"></Label>
+                    <!--<Label  Name="wthanktidm"  Content="In minutes" FontSize="20" FontWeight="Bold" Foreground="#FFFF"></Label>-->
+                    <Label  Name="wthankreceiveamount"  Content="0" FontSize="20" FontWeight="Bold" Foreground="#FFFF"></Label>
+                    <Label Content="------------------------------------------------------" FontSize="20" Foreground="#FF7B7B7B"></Label>
+                    <Label Content="" FontSize="20" Foreground="#FF7B7B7B" ></Label>
+                    <Label Content="." FontSize="20" Foreground="#FF7B7B7B"  x:Name="ket12"></Label>
+                    <Label Content="." FontSize="20" Foreground="#FF7B7B7B" x:Name="ktidlbl"></Label>
+                    <Label Content="." FontSize="20" Foreground="#FF7B7B7B" x:Name="ktiddlbl"></Label>
+                    <Label Content="." FontSize="20" Foreground="#FF7B7B7B" x:Name="kactlbl"></Label>
+                    <Label Content="." FontSize="20" Foreground="#FF7B7B7B" x:Name="kauthnumlbl"></Label>
+                    <Label Content="." FontSize="20" Foreground="#FF7B7B7B" x:Name="kctylbl"></Label>
+                    <Label Content="." FontSize="20" Foreground="#FF7B7B7B" x:Name="kmerchid"></Label>
+                    <Label Content="." FontSize="20" Foreground="#FF7B7B7B" x:Name="ket1"></Label>
+                    <Label Content="." FontSize="20" Foreground="#FF7B7B7B" x:Name="ket2"></Label>
+                    <Label Content="." FontSize="20" Foreground="#FF7B7B7B" x:Name="ket3"></Label>
+                    <Label Content="." FontSize="20" Foreground="#FF7B7B7B" x:Name="ket4"></Label>
+                    <Label Content="." FontSize="20" Foreground="#FF7B7B7B" x:Name="ket5"></Label>
+                    <Label Content="." FontSize="20" Foreground="#FF7B7B7B" x:Name="ket6"></Label>
+                    <Label Content="." FontSize="20" Foreground="#FF7B7B7B" x:Name="ket7"></Label>
+                    <!--<Label Content="." FontSize="20" Foreground="#FF7B7B7B" x:Name="ket8"></Label>-->
+                    <Label Content="." FontSize="20" Foreground="#FF7B7B7B" x:Name="ket9"></Label>
+                    <Label Content="." FontSize="20" Foreground="#FF7B7B7B" x:Name="ket10"></Label>
+
+
+
+                </StackPanel>
+
+                <!--<Label Name="wthanktid" Content="123456789" FontSize="20" FontWeight="Bold" Foreground="#FFFF"></Label>
+<Label Name="wthankpaymentid"  Content="0786" FontSize="20" FontWeight="Bold" Foreground="#FFFF"></Label>
+<Label  Name="wthankreceivername"  Content="John Doe Adams" FontSize="20" FontWeight="Bold" Foreground="#FFFF"></Label>
+<Label  Name="wthanktransferamount"  Content="30.000 KWD" FontSize="20" FontWeight="Bold" Foreground="#FFFF"></Label>
+<Label  Name="wthanktransferfee"  Content="2.500 KWD" FontSize="20" FontWeight="Bold" Foreground="#FFFF"></Label>
+<Label  Name="wthankdiscount"  Content="0.000 KWD" FontSize="20" FontWeight="Bold" Foreground="#FFFF"></Label>
+<Label  Name="wthanktotal"  Content="32.500 KWD" FontSize="20" FontWeight="Bold" Foreground="#FFFF"></Label>
+<Label  Name="wthanktidm"  Content="In minutes" FontSize="20" FontWeight="Bold" Foreground="#FFFF"></Label>
+<Label  Name="wthankreceiveamount"  Content="8069 INR" FontSize="20" FontWeight="Bold" Foreground="#FFFF"></Label>
+<Label Content"" FontSize="20" Foreground="#FF7B7B7B"></Label>
+<Label Content="" FontSize="20" Foreground="#FF7B7B7B" ></Label>
+<Label Content="." FontSize="20" Foreground="#FF7B7B7B" x:Name="ktidlbl"></Label>
+<Label Content="." FontSize="20" Foreground="#FF7B7B7B" x:Name="ktiddlbl"></Label>
+<Label Content="." FontSize="20" Foreground="#FF7B7B7B" x:Name="kactlbl"></Label>
+<Label Content="." FontSize="20" Foreground="#FF7B7B7B" x:Name="kauthnumlbl"></Label>
+<Label Content="." FontSize="20" Foreground="#FF7B7B7B" x:Name="kctylbl"></Label>
+<Label Content="." FontSize="20" Foreground="#FF7B7B7B" x:Name="kmerchid"></Label>-->
+            </Grid>
+
+            <Grid Margin="250,30,250,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Grid.ColumnSpan="1">
+                    <Button Content="Email Receipt" Height="45" BorderThickness="0" Margin="10"  Foreground="#10358e" FontSize="30" Click="LoginButton_Click" x:Name="emailreceiptbtn">
+                        <Button.Background>
+                            <LinearGradientBrush  StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#FFFF " Offset="0"/>
+                                <GradientStop Color="#FFFF" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                        <Button.Resources>
+
+
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"></Setter>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <Button Content="Print" Height="45" BorderThickness="0" Margin="10"  Foreground="#10358e" FontSize="30" Click="PrintButton_Click" >
+                        <Button.Background>
+                            <LinearGradientBrush  StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#FFFF " Offset="0"/>
+                                <GradientStop Color="#FFFF" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                        <Button.Resources>
+
+
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"></Setter>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+
+            </Grid>
+
+
+        </StackPanel>
+
+    </Grid>
+</Page>

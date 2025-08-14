@@ -1,0 +1,165 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <Configurations>Debug;Release</Configurations>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Images\Accounts.png" />
+    <None Remove="Images\ae.png" />
+    <None Remove="Images\applepay.png" />
+    <None Remove="Images\AUSTRAILA.png" />
+    <None Remove="Images\BENE.png" />
+    <None Remove="Images\Billing.png" />
+    <None Remove="Images\CANADA.png" />
+    <None Remove="Images\cash.png" />
+    <None Remove="Images\check.png" />
+    <None Remove="Images\CHINA.png" />
+    <None Remove="Images\contactus.png" />
+    <None Remove="Images\cross.png" />
+    <None Remove="Images\Employees.png" />
+    <None Remove="Images\FAQ.png" />
+    <None Remove="Images\Files.png" />
+    <None Remove="Images\history.png" />
+    <None Remove="Images\INR.png" />
+    <None Remove="Images\knet.png" />
+    <None Remove="Images\KWTFlag.png" />
+    <None Remove="Images\Main.jpeg" />
+    <None Remove="Images\Main.png" />
+    <None Remove="Images\master.png" />
+    <None Remove="Images\mobileid.png" />
+    <None Remove="Images\MOROCCO.png" />
+    <None Remove="Images\Notes.png" />
+    <None Remove="Images\PHILIPINES.png" />
+    <None Remove="Images\RATE.png" />
+    <None Remove="Images\Report.png" />
+    <None Remove="Images\SEND.png" />
+    <None Remove="Images\Settings.png" />
+    <None Remove="Images\UK.png" />
+    <None Remove="Images\UPDOWN.png" />
+    <None Remove="Images\USA.png" />
+    <None Remove="Images\user.png" />
+    <None Remove="Images\visa.png" />
+    <None Remove="Images\wall.png" />
+    <None Remove="Images\wall2.png" />
+    <None Remove="Images\wallstreetwhite.jpeg" />
+    <None Remove="Images\welcome page final.jpg" />
+    <None Remove="Images\welcomeedited.jpg" />
+    <None Remove="Images\welcomepagev3.jpeg" />
+    <None Remove="Images\WST1200.png" />
+    <None Remove="Images\WST1202.png" />
+    <None Remove="Pages\CIVILID.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Themes\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <PackageReference Include="DocumentFormat.OpenXml" Version="3.1.0" />
+    <PackageReference Include="DotNetProjects.WpfToolkit.DataVisualization" Version="6.1.94" />
+    <PackageReference Include="ExcelDataReader" Version="3.7.0" />
+    <PackageReference Include="ExcelDataReader.DataSet" Version="3.7.0" />
+    <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
+    <PackageReference Include="Microsoft.VisualStudio.Utilities" Version="17.10.40170" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2792.45" />
+    <PackageReference Include="Microsoft.Windows.Compatibility" Version="8.0.10" />
+    <PackageReference Include="System.ServiceModel.Http" Version="8.0.0" />
+    <PackageReference Include="System.ServiceModel.NetTcp" Version="8.0.0" />
+    <PackageReference Include="System.ServiceModel.Primitives" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="MIDAuthServiceClient">
+      <HintPath>bin\Debug\net8.0-windows\qrpaci\MIDAuthServiceClient.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MIDAuthServiceClientContract">
+      <HintPath>bin\Debug\net8.0-windows\qrpaci\MIDAuthServiceClientContract.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PACICardLibrary">
+      <HintPath>SDK Files\PACICardLibrary.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Accounts.png" />
+    <Resource Include="Images\ae.png" />
+    <Resource Include="Images\applepay.png" />
+    <Resource Include="Images\AUSTRAILA.png" />
+    <Resource Include="Images\BENE.png" />
+    <Resource Include="Images\Billing.png" />
+    <Resource Include="Images\CANADA.png" />
+    <Resource Include="Images\cash.png" />
+    <Resource Include="Images\check.png" />
+    <Resource Include="Images\CHINA.png" />
+    <Resource Include="Images\contactus.png" />
+    <Resource Include="Images\cross.png" />
+    <Resource Include="Images\Employees.png" />
+    <Resource Include="Images\FAQ.png" />
+    <Resource Include="Images\Files.png" />
+    <Resource Include="Images\history.png" />
+    <Resource Include="Images\INR.png" />
+    <Resource Include="Images\knet.png" />
+    <Resource Include="Images\KWTFlag.png" />
+    <Resource Include="Images\Main.jpeg" />
+    <Resource Include="Images\Main.png" />
+    <Resource Include="Images\master.png" />
+    <Resource Include="Images\mobileid.png" />
+    <Resource Include="Images\MOROCCO.png" />
+    <Resource Include="Images\Notes.png" />
+    <Resource Include="Images\PHILIPINES.png" />
+    <Resource Include="Images\RATE.png" />
+    <Resource Include="Images\Report.png" />
+    <Resource Include="Images\SEND.png" />
+    <Resource Include="Images\Settings.png" />
+    <Resource Include="Images\UK.png" />
+    <Resource Include="Images\UPDOWN.png" />
+    <Resource Include="Images\USA.png" />
+    <Resource Include="Images\user.png" />
+    <Resource Include="Images\visa.png" />
+    <Resource Include="Images\wall.png" />
+    <Resource Include="Images\wall2.png" />
+    <Resource Include="Images\wallstreetwhite.jpeg" />
+    <Resource Include="Images\welcome page final.jpg" />
+    <Resource Include="Images\welcomeedited.jpg" />
+    <Resource Include="Images\welcomepagev3.jpeg" />
+    <Resource Include="Images\WST1200.png" />
+    <Resource Include="Images\WST1202.png" />
+    <Resource Include="Images\CIVILID.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="country.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Hi.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="image.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="paciMIDsample.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="SCHASH.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="SCHASHBKP.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="signature.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

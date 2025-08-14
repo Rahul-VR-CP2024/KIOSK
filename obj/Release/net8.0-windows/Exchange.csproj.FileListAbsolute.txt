@@ -1,0 +1,1890 @@
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\runtimes\win-x86\native\WebView2Loader.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\runtimes\win-x64\native\WebView2Loader.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\runtimes\win-arm64\native\WebView2Loader.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\country.xlsx
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\Hi.txt
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\image.png
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\paciMIDsample.txt
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\SCHASH.txt
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\SCHASHBKP.txt
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\signature.png
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\Exchange.exe
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\Exchange.deps.json
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\Exchange.runtimeconfig.json
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\Exchange.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\Exchange.pdb
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\CommunityToolkit.Mvvm.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\DocumentFormat.OpenXml.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\DocumentFormat.OpenXml.Framework.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\DotNetProjects.DataVisualization.Toolkit.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ExcelDataReader.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ExcelDataReader.DataSet.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\LiveCharts.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\LiveCharts.Wpf.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\MessagePack.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\MessagePack.Annotations.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\Microsoft.Extensions.ObjectPool.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\Microsoft.NET.StringTools.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\Microsoft.ServiceHub.Framework.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\Microsoft.ServiceHub.Resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\Microsoft.VisualStudio.Composition.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\Microsoft.VisualStudio.RemoteControl.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\Microsoft.VisualStudio.RpcContracts.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\Microsoft.VisualStudio.Telemetry.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\Microsoft.VisualStudio.Threading.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\Microsoft.VisualStudio.Utilities.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\Microsoft.VisualStudio.Utilities.Internal.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\Microsoft.VisualStudio.Validation.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\Nerdbank.Streams.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\Newtonsoft.Json.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\StreamJsonRpc.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\System.ComponentModel.Composition.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\System.ComponentModel.Composition.Registration.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\System.Composition.AttributedModel.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\System.Composition.Convention.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\System.Composition.Hosting.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\System.Composition.Runtime.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\System.Composition.TypedParts.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\System.Configuration.ConfigurationManager.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\System.Data.Odbc.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\System.Data.OleDb.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\System.Data.SqlClient.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\System.Diagnostics.EventLog.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\System.Diagnostics.PerformanceCounter.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\System.DirectoryServices.AccountManagement.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\System.DirectoryServices.Protocols.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\System.Drawing.Common.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\System.IO.Packaging.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\System.IO.Pipelines.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\System.IO.Ports.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\System.Management.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\System.Private.ServiceModel.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\System.Reflection.Context.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\System.Runtime.Caching.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\System.Security.Cryptography.Pkcs.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\System.Security.Cryptography.Xml.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\System.ServiceModel.Duplex.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\System.ServiceModel.Http.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\System.ServiceModel.NetFramingBase.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\System.ServiceModel.NetTcp.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\System.ServiceModel.Primitives.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\System.ServiceModel.Security.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\System.ServiceModel.Syndication.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\System.ServiceProcess.ServiceController.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\System.Speech.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\System.Web.Services.Description.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\cs\Microsoft.ServiceHub.Framework.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\de\Microsoft.ServiceHub.Framework.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\es\Microsoft.ServiceHub.Framework.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\fr\Microsoft.ServiceHub.Framework.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\it\Microsoft.ServiceHub.Framework.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ja\Microsoft.ServiceHub.Framework.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ko\Microsoft.ServiceHub.Framework.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\pl\Microsoft.ServiceHub.Framework.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\pt-BR\Microsoft.ServiceHub.Framework.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ru\Microsoft.ServiceHub.Framework.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\tr\Microsoft.ServiceHub.Framework.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\zh-Hans\Microsoft.ServiceHub.Framework.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\zh-Hant\Microsoft.ServiceHub.Framework.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\cs\Microsoft.ServiceHub.Resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\de\Microsoft.ServiceHub.Resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\es\Microsoft.ServiceHub.Resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\fr\Microsoft.ServiceHub.Resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\it\Microsoft.ServiceHub.Resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ja\Microsoft.ServiceHub.Resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ko\Microsoft.ServiceHub.Resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\pl\Microsoft.ServiceHub.Resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\pt-BR\Microsoft.ServiceHub.Resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ru\Microsoft.ServiceHub.Resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\tr\Microsoft.ServiceHub.Resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\zh-Hans\Microsoft.ServiceHub.Resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\zh-Hant\Microsoft.ServiceHub.Resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\cs\Microsoft.VisualStudio.Composition.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\de\Microsoft.VisualStudio.Composition.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\es\Microsoft.VisualStudio.Composition.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\fr\Microsoft.VisualStudio.Composition.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\it\Microsoft.VisualStudio.Composition.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ja\Microsoft.VisualStudio.Composition.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ko\Microsoft.VisualStudio.Composition.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\pl\Microsoft.VisualStudio.Composition.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\pt-BR\Microsoft.VisualStudio.Composition.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ru\Microsoft.VisualStudio.Composition.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\tr\Microsoft.VisualStudio.Composition.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\zh-Hans\Microsoft.VisualStudio.Composition.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\zh-Hant\Microsoft.VisualStudio.Composition.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\cs\Microsoft.VisualStudio.Threading.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\de\Microsoft.VisualStudio.Threading.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\es\Microsoft.VisualStudio.Threading.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\fr\Microsoft.VisualStudio.Threading.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\it\Microsoft.VisualStudio.Threading.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ja\Microsoft.VisualStudio.Threading.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ko\Microsoft.VisualStudio.Threading.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\pl\Microsoft.VisualStudio.Threading.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\pt-BR\Microsoft.VisualStudio.Threading.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ru\Microsoft.VisualStudio.Threading.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\tr\Microsoft.VisualStudio.Threading.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\zh-Hans\Microsoft.VisualStudio.Threading.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\zh-Hant\Microsoft.VisualStudio.Threading.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\cs\Microsoft.VisualStudio.Utilities.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\de\Microsoft.VisualStudio.Utilities.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\en\Microsoft.VisualStudio.Utilities.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\es\Microsoft.VisualStudio.Utilities.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\fr\Microsoft.VisualStudio.Utilities.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\it\Microsoft.VisualStudio.Utilities.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ja\Microsoft.VisualStudio.Utilities.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ko\Microsoft.VisualStudio.Utilities.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\pl\Microsoft.VisualStudio.Utilities.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\pt-BR\Microsoft.VisualStudio.Utilities.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ru\Microsoft.VisualStudio.Utilities.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\tr\Microsoft.VisualStudio.Utilities.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\zh-Hans\Microsoft.VisualStudio.Utilities.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\zh-Hant\Microsoft.VisualStudio.Utilities.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\cs\Microsoft.VisualStudio.Validation.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\de\Microsoft.VisualStudio.Validation.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\es\Microsoft.VisualStudio.Validation.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\fr\Microsoft.VisualStudio.Validation.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\it\Microsoft.VisualStudio.Validation.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ja\Microsoft.VisualStudio.Validation.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ko\Microsoft.VisualStudio.Validation.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\pl\Microsoft.VisualStudio.Validation.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\pt-BR\Microsoft.VisualStudio.Validation.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ru\Microsoft.VisualStudio.Validation.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\tr\Microsoft.VisualStudio.Validation.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\zh-Hans\Microsoft.VisualStudio.Validation.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\zh-Hant\Microsoft.VisualStudio.Validation.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\cs\StreamJsonRpc.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\de\StreamJsonRpc.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\es\StreamJsonRpc.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\fr\StreamJsonRpc.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\it\StreamJsonRpc.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ja\StreamJsonRpc.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ko\StreamJsonRpc.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\pl\StreamJsonRpc.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\pt-BR\StreamJsonRpc.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ru\StreamJsonRpc.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\tr\StreamJsonRpc.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\zh-Hans\StreamJsonRpc.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\zh-Hant\StreamJsonRpc.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\cs\System.Private.ServiceModel.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\de\System.Private.ServiceModel.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\es\System.Private.ServiceModel.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\fr\System.Private.ServiceModel.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\it\System.Private.ServiceModel.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ja\System.Private.ServiceModel.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ko\System.Private.ServiceModel.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\pl\System.Private.ServiceModel.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\pt-BR\System.Private.ServiceModel.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ru\System.Private.ServiceModel.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\tr\System.Private.ServiceModel.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\zh-Hans\System.Private.ServiceModel.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\zh-Hant\System.Private.ServiceModel.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\cs\System.ServiceModel.Http.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\de\System.ServiceModel.Http.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\es\System.ServiceModel.Http.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\fr\System.ServiceModel.Http.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\it\System.ServiceModel.Http.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ja\System.ServiceModel.Http.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ko\System.ServiceModel.Http.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\pl\System.ServiceModel.Http.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\pt-BR\System.ServiceModel.Http.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ru\System.ServiceModel.Http.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\tr\System.ServiceModel.Http.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\zh-Hans\System.ServiceModel.Http.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\zh-Hant\System.ServiceModel.Http.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\cs\System.ServiceModel.NetFramingBase.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\de\System.ServiceModel.NetFramingBase.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\es\System.ServiceModel.NetFramingBase.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\fr\System.ServiceModel.NetFramingBase.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\it\System.ServiceModel.NetFramingBase.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ja\System.ServiceModel.NetFramingBase.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ko\System.ServiceModel.NetFramingBase.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\pl\System.ServiceModel.NetFramingBase.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\pt-BR\System.ServiceModel.NetFramingBase.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ru\System.ServiceModel.NetFramingBase.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\tr\System.ServiceModel.NetFramingBase.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\zh-Hans\System.ServiceModel.NetFramingBase.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\zh-Hant\System.ServiceModel.NetFramingBase.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\cs\System.ServiceModel.NetTcp.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\de\System.ServiceModel.NetTcp.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\es\System.ServiceModel.NetTcp.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\fr\System.ServiceModel.NetTcp.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\it\System.ServiceModel.NetTcp.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ja\System.ServiceModel.NetTcp.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ko\System.ServiceModel.NetTcp.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\pl\System.ServiceModel.NetTcp.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\pt-BR\System.ServiceModel.NetTcp.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ru\System.ServiceModel.NetTcp.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\tr\System.ServiceModel.NetTcp.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\zh-Hans\System.ServiceModel.NetTcp.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\zh-Hant\System.ServiceModel.NetTcp.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\cs\System.ServiceModel.Primitives.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\de\System.ServiceModel.Primitives.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\es\System.ServiceModel.Primitives.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\fr\System.ServiceModel.Primitives.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\it\System.ServiceModel.Primitives.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ja\System.ServiceModel.Primitives.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ko\System.ServiceModel.Primitives.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\pl\System.ServiceModel.Primitives.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\pt-BR\System.ServiceModel.Primitives.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ru\System.ServiceModel.Primitives.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\tr\System.ServiceModel.Primitives.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\zh-Hans\System.ServiceModel.Primitives.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\zh-Hant\System.ServiceModel.Primitives.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\cs\System.Web.Services.Description.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\de\System.Web.Services.Description.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\es\System.Web.Services.Description.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\fr\System.Web.Services.Description.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\it\System.Web.Services.Description.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ja\System.Web.Services.Description.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ko\System.Web.Services.Description.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\pl\System.Web.Services.Description.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\pt-BR\System.Web.Services.Description.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\ru\System.Web.Services.Description.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\tr\System.Web.Services.Description.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\zh-Hans\System.Web.Services.Description.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\zh-Hant\System.Web.Services.Description.resources.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\runtimes\linux-arm\native\libSystem.IO.Ports.Native.so
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\runtimes\linux-arm64\native\libSystem.IO.Ports.Native.so
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\runtimes\linux-x64\native\libSystem.IO.Ports.Native.so
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\runtimes\osx-arm64\native\libSystem.IO.Ports.Native.dylib
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\runtimes\osx-x64\native\libSystem.IO.Ports.Native.dylib
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\runtimes\win-arm64\native\sni.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\runtimes\win-x64\native\sni.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\runtimes\win-x86\native\sni.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\runtimes\freebsd\lib\net8.0\System.Data.Odbc.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\runtimes\illumos\lib\net8.0\System.Data.Odbc.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\runtimes\ios\lib\net8.0\System.Data.Odbc.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\runtimes\linux\lib\net8.0\System.Data.Odbc.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\runtimes\osx\lib\net8.0\System.Data.Odbc.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\runtimes\solaris\lib\net8.0\System.Data.Odbc.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\runtimes\tvos\lib\net8.0\System.Data.Odbc.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\runtimes\win\lib\net8.0\System.Data.Odbc.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\runtimes\win\lib\net8.0\System.Data.OleDb.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\runtimes\win\lib\net8.0\System.Diagnostics.PerformanceCounter.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\runtimes\win\lib\net8.0\System.DirectoryServices.AccountManagement.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\runtimes\linux\lib\net8.0\System.DirectoryServices.Protocols.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\runtimes\osx\lib\net8.0\System.DirectoryServices.Protocols.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\runtimes\win\lib\net8.0\System.DirectoryServices.Protocols.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\runtimes\unix\lib\net8.0\System.IO.Ports.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\runtimes\win\lib\net8.0\System.IO.Ports.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\runtimes\win\lib\net8.0\System.Management.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\runtimes\win\lib\net8.0\System.Runtime.Caching.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\runtimes\win\lib\net8.0\System.ServiceProcess.ServiceController.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\runtimes\win\lib\net8.0\System.Speech.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\Microsoft.Web.WebView2.Core.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\Microsoft.Web.WebView2.WinForms.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\Microsoft.Web.WebView2.Wpf.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\MIDAuthServiceClient.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\MIDAuthServiceClientContract.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\PACICardLibrary.dll
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\Microsoft.Web.WebView2.Core.xml
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\Microsoft.Web.WebView2.Wpf.xml
+F:\Kiosk Code\Exchange\bin\Release\net8.0-windows\Microsoft.Web.WebView2.WinForms.xml
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Exchange.csproj.AssemblyReference.cache
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wTransferpay.baml
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\MainWindow.g.cs
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\Accounts.g.cs
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\Landing.g.cs
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\LoadingScreen.g.cs
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\Login.g.cs
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\Login2.g.cs
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\Page1.g.cs
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\Page2.g.cs
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\UpdateProfile.g.cs
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\waddbeneficiary.g.cs
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wBeneficiary.g.cs
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wChooseLang.g.cs
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wComponents.g.cs
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wContact.g.cs
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\WelcomePage.g.cs
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wExchangecalculator.g.cs
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wFaq.g.cs
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wHistorytransaction.g.cs
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wLogin.g.cs
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wMainPage.g.cs
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wPaymentmethod.g.cs
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wRegister.g.cs
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wResetPassword.g.cs
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wSelectbeneficary.g.cs
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wSelectcountry.g.cs
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wSelectProduct.g.cs
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wSendMoney.g.cs
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wThankyou.g.cs
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wtobankorcash.g.cs
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wTransferpay.g.cs
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wViewBenficiaryDetails.g.cs
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wWelcomepage.g.cs
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\App.g.cs
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Exchange_Content.g.cs
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Exchange_MarkupCompile.cache
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Exchange_MarkupCompile.lref
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\MainWindow.baml
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\Accounts.baml
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\Landing.baml
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\LoadingScreen.baml
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\Login.baml
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\Login2.baml
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\Page1.baml
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\Page2.baml
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\UpdateProfile.baml
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\waddbeneficiary.baml
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wBeneficiary.baml
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wChooseLang.baml
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wComponents.baml
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wContact.baml
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\WelcomePage.baml
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wExchangecalculator.baml
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wFaq.baml
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wHistorytransaction.baml
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wLogin.baml
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wMainPage.baml
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wPaymentmethod.baml
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wRegister.baml
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wResetPassword.baml
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wSelectbeneficary.baml
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wSelectcountry.baml
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wSelectProduct.baml
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wSendMoney.baml
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wThankyou.baml
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wtobankorcash.baml
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wViewBenficiaryDetails.baml
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Pages\wWelcomepage.baml
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Exchange.g.resources
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Exchange.GeneratedMSBuildEditorConfig.editorconfig
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Exchange.AssemblyInfoInputs.cache
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Exchange.AssemblyInfo.cs
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Exchange.csproj.CoreCompileInputs.cache
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Exchange.sourcelink.json
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Exchange.csproj.Up2Date
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Exchange.dll
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\refint\Exchange.dll
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Exchange.pdb
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\Exchange.genruntimeconfig.cache
+F:\Kiosk Code\Exchange\obj\Release\net8.0-windows\ref\Exchange.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410942\runtimes\win-x86\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410942\runtimes\win-x64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410942\runtimes\win-arm64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410942\country.xlsx
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410942\Hi.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410942\image.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410942\paciMIDsample.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410942\SCHASH.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410942\SCHASHBKP.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410942\signature.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410942\Exchange.exe
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410942\Exchange.deps.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410942\Exchange.runtimeconfig.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410942\Exchange.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410942\Exchange.pdb
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410943\runtimes\win-x86\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410943\runtimes\win-x64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410943\runtimes\win-arm64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410943\country.xlsx
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410943\Hi.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410943\image.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410943\paciMIDsample.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410943\SCHASH.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410943\SCHASHBKP.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410943\signature.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410943\Exchange.exe
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410943\Exchange.deps.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410943\Exchange.runtimeconfig.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410943\Exchange.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410943\Exchange.pdb
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410944\runtimes\win-x86\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410944\runtimes\win-x64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410944\runtimes\win-arm64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410944\country.xlsx
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410944\Hi.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410944\image.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410944\paciMIDsample.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410944\SCHASH.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410944\SCHASHBKP.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410944\signature.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410944\Exchange.exe
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410944\Exchange.deps.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410944\Exchange.runtimeconfig.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410944\Exchange.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410944\Exchange.pdb
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410945\runtimes\win-x86\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410945\runtimes\win-x64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410945\runtimes\win-arm64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410945\country.xlsx
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410945\Hi.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410945\image.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410945\paciMIDsample.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410945\SCHASH.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410945\SCHASHBKP.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410945\signature.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410945\Exchange.exe
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410945\Exchange.deps.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410945\Exchange.runtimeconfig.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410945\Exchange.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410945\Exchange.pdb
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410946\runtimes\win-x86\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410946\runtimes\win-x64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410946\runtimes\win-arm64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410946\country.xlsx
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410946\Hi.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410946\image.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410946\paciMIDsample.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410946\SCHASH.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410946\SCHASHBKP.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410946\signature.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410946\Exchange.exe
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410946\Exchange.deps.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410946\Exchange.runtimeconfig.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410946\Exchange.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410946\Exchange.pdb
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410947\runtimes\win-x86\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410947\runtimes\win-x64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410947\runtimes\win-arm64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410947\country.xlsx
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410947\Hi.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410947\image.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410947\paciMIDsample.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410947\SCHASH.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410947\SCHASHBKP.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410947\signature.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410947\Exchange.exe
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410947\Exchange.deps.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410947\Exchange.runtimeconfig.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410947\Exchange.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410947\Exchange.pdb
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410948\runtimes\win-x86\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410948\runtimes\win-x64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410948\runtimes\win-arm64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410948\country.xlsx
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410948\Hi.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410948\image.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410948\paciMIDsample.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410948\SCHASH.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410948\SCHASHBKP.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410948\signature.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410948\Exchange.exe
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410948\Exchange.deps.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410948\Exchange.runtimeconfig.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410948\Exchange.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410948\Exchange.pdb
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410949\runtimes\win-x86\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410949\runtimes\win-x64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410949\runtimes\win-arm64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410949\country.xlsx
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410949\Hi.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410949\image.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410949\paciMIDsample.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410949\SCHASH.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410949\SCHASHBKP.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410949\signature.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410949\Exchange.exe
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410949\Exchange.deps.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410949\Exchange.runtimeconfig.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410949\Exchange.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410949\Exchange.pdb
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410950\runtimes\win-x86\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410950\runtimes\win-x64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410950\runtimes\win-arm64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410950\country.xlsx
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410950\Hi.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410950\image.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410950\paciMIDsample.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410950\SCHASH.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410950\SCHASHBKP.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410950\signature.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410950\Exchange.exe
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410950\Exchange.deps.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410950\Exchange.runtimeconfig.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410950\Exchange.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410950\Exchange.pdb
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410951\runtimes\win-x86\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410951\runtimes\win-x64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410951\runtimes\win-arm64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410951\country.xlsx
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410951\Hi.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410951\image.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410951\paciMIDsample.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410951\SCHASH.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410951\SCHASHBKP.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410951\signature.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410951\Exchange.exe
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410951\Exchange.deps.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410951\Exchange.runtimeconfig.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410951\Exchange.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410951\Exchange.pdb
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410952\runtimes\win-x86\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410952\runtimes\win-x64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410952\runtimes\win-arm64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410952\country.xlsx
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410952\Hi.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410952\image.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410952\paciMIDsample.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410952\SCHASH.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410952\SCHASHBKP.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410952\signature.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410952\Exchange.exe
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410952\Exchange.deps.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410952\Exchange.runtimeconfig.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410952\Exchange.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410952\Exchange.pdb
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410967\runtimes\win-x86\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410967\runtimes\win-x64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410967\runtimes\win-arm64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410967\country.xlsx
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410967\Hi.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410967\image.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410967\paciMIDsample.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410967\SCHASH.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410967\SCHASHBKP.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410967\signature.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410967\Exchange.exe
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410967\Exchange.deps.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410967\Exchange.runtimeconfig.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410967\Exchange.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410967\Exchange.pdb
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410970\runtimes\win-x86\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410970\runtimes\win-x64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410970\runtimes\win-arm64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410970\country.xlsx
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410970\Hi.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410970\image.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410970\paciMIDsample.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410970\SCHASH.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410970\SCHASHBKP.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410970\signature.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410970\Exchange.exe
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410970\Exchange.deps.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410970\Exchange.runtimeconfig.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410970\Exchange.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410970\Exchange.pdb
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410971\runtimes\win-x86\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410971\runtimes\win-x64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410971\runtimes\win-arm64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410971\country.xlsx
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410971\Hi.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410971\image.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410971\paciMIDsample.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410971\SCHASH.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410971\SCHASHBKP.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410971\signature.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410971\Exchange.exe
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410971\Exchange.deps.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410971\Exchange.runtimeconfig.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410971\Exchange.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410971\Exchange.pdb
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410972\runtimes\win-x86\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410972\runtimes\win-x64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410972\runtimes\win-arm64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410972\country.xlsx
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410972\Hi.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410972\image.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410972\paciMIDsample.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410972\SCHASH.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410972\SCHASHBKP.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410972\signature.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410972\Exchange.exe
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410972\Exchange.deps.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410972\Exchange.runtimeconfig.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410972\Exchange.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410972\Exchange.pdb
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410973\runtimes\win-x86\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410973\runtimes\win-x64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410973\runtimes\win-arm64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410973\country.xlsx
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410973\Hi.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410973\image.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410973\paciMIDsample.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410973\SCHASH.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410973\SCHASHBKP.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410973\signature.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410973\Exchange.exe
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410973\Exchange.deps.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410973\Exchange.runtimeconfig.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410973\Exchange.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410973\Exchange.pdb
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410974\runtimes\win-x86\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410974\runtimes\win-x64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410974\runtimes\win-arm64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410974\country.xlsx
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410974\Hi.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410974\image.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410974\paciMIDsample.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410974\SCHASH.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410974\SCHASHBKP.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410974\signature.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410974\Exchange.exe
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410974\Exchange.deps.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410974\Exchange.runtimeconfig.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410974\Exchange.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410974\Exchange.pdb
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410975\runtimes\win-x86\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410975\runtimes\win-x64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410975\runtimes\win-arm64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410975\country.xlsx
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410975\Hi.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410975\image.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410975\paciMIDsample.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410975\SCHASH.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410975\SCHASHBKP.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410975\signature.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410975\Exchange.exe
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410975\Exchange.deps.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410975\Exchange.runtimeconfig.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410975\Exchange.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410975\Exchange.pdb
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410976\runtimes\win-x86\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410976\runtimes\win-x64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410976\runtimes\win-arm64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410976\country.xlsx
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410976\Hi.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410976\image.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410976\paciMIDsample.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410976\SCHASH.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410976\SCHASHBKP.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410976\signature.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410976\Exchange.exe
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410976\Exchange.deps.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410976\Exchange.runtimeconfig.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410976\Exchange.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410976\Exchange.pdb
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410977\runtimes\win-x86\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410977\runtimes\win-x64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410977\runtimes\win-arm64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410977\country.xlsx
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410977\Hi.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410977\image.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410977\paciMIDsample.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410977\SCHASH.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410977\SCHASHBKP.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410977\signature.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410977\Exchange.exe
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410977\Exchange.deps.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410977\Exchange.runtimeconfig.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410977\Exchange.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410977\Exchange.pdb
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410978\runtimes\win-x86\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410978\runtimes\win-x64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410978\runtimes\win-arm64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410978\country.xlsx
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410978\Hi.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410978\image.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410978\paciMIDsample.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410978\SCHASH.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410978\SCHASHBKP.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410978\signature.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410978\Exchange.exe
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410978\Exchange.deps.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410978\Exchange.runtimeconfig.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410978\Exchange.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410978\Exchange.pdb
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410979\runtimes\win-x86\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410979\runtimes\win-x64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410979\runtimes\win-arm64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410979\country.xlsx
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410979\Hi.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410979\image.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410979\paciMIDsample.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410979\SCHASH.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410979\SCHASHBKP.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410979\signature.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410979\Exchange.exe
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410979\Exchange.deps.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410979\Exchange.runtimeconfig.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410979\Exchange.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410979\Exchange.pdb
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410980\runtimes\win-x86\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410980\runtimes\win-x64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410980\runtimes\win-arm64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410980\country.xlsx
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410980\Hi.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410980\image.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410980\paciMIDsample.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410980\SCHASH.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410980\SCHASHBKP.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410980\signature.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410980\Exchange.exe
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410980\Exchange.deps.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410980\Exchange.runtimeconfig.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410980\Exchange.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410980\Exchange.pdb
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410981\runtimes\win-x86\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410981\runtimes\win-x64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410981\runtimes\win-arm64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410981\country.xlsx
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410981\Hi.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410981\image.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410981\paciMIDsample.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410981\SCHASH.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410981\SCHASHBKP.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410981\signature.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410981\Exchange.exe
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410981\Exchange.deps.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410981\Exchange.runtimeconfig.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410981\Exchange.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410981\Exchange.pdb
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410982\runtimes\win-x86\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410982\runtimes\win-x64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410982\runtimes\win-arm64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410982\country.xlsx
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410982\Hi.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410982\image.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410982\paciMIDsample.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410982\SCHASH.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410982\SCHASHBKP.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410982\signature.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410982\Exchange.exe
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410982\Exchange.deps.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410982\Exchange.runtimeconfig.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410982\Exchange.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410982\Exchange.pdb
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410983\runtimes\win-x86\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410983\runtimes\win-x64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410983\runtimes\win-arm64\native\WebView2Loader.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410983\country.xlsx
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410983\Hi.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410983\image.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410983\paciMIDsample.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410983\SCHASH.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410983\SCHASHBKP.txt
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410983\signature.png
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410983\Exchange.exe
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410983\Exchange.deps.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410983\Exchange.runtimeconfig.json
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410983\Exchange.dll
+D:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410983\Exchange.pdb
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410942\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410942\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410942\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410942\country.xlsx
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410942\Hi.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410942\image.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410942\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410942\SCHASH.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410942\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410942\signature.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410942\Exchange.exe
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410942\Exchange.deps.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410942\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410942\Exchange.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410942\Exchange.pdb
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410943\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410943\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410943\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410943\country.xlsx
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410943\Hi.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410943\image.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410943\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410943\SCHASH.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410943\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410943\signature.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410943\Exchange.exe
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410943\Exchange.deps.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410943\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410943\Exchange.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410943\Exchange.pdb
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410944\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410944\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410944\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410944\country.xlsx
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410944\Hi.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410944\image.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410944\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410944\SCHASH.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410944\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410944\signature.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410944\Exchange.exe
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410944\Exchange.deps.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410944\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410944\Exchange.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410944\Exchange.pdb
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410945\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410945\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410945\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410945\country.xlsx
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410945\Hi.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410945\image.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410945\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410945\SCHASH.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410945\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410945\signature.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410945\Exchange.exe
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410945\Exchange.deps.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410945\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410945\Exchange.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410945\Exchange.pdb
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410946\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410946\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410946\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410946\country.xlsx
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410946\Hi.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410946\image.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410946\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410946\SCHASH.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410946\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410946\signature.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410946\Exchange.exe
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410946\Exchange.deps.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410946\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410946\Exchange.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410946\Exchange.pdb
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410947\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410947\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410947\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410947\country.xlsx
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410947\Hi.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410947\image.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410947\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410947\SCHASH.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410947\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410947\signature.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410947\Exchange.exe
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410947\Exchange.deps.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410947\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410947\Exchange.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410947\Exchange.pdb
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410948\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410948\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410948\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410948\country.xlsx
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410948\Hi.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410948\image.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410948\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410948\SCHASH.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410948\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410948\signature.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410948\Exchange.exe
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410948\Exchange.deps.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410948\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410948\Exchange.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410948\Exchange.pdb
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410949\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410949\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410949\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410949\country.xlsx
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410949\Hi.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410949\image.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410949\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410949\SCHASH.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410949\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410949\signature.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410949\Exchange.exe
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410949\Exchange.deps.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410949\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410949\Exchange.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410949\Exchange.pdb
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410950\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410950\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410950\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410950\country.xlsx
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410950\Hi.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410950\image.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410950\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410950\SCHASH.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410950\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410950\signature.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410950\Exchange.exe
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410950\Exchange.deps.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410950\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410950\Exchange.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410950\Exchange.pdb
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410951\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410951\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410951\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410951\country.xlsx
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410951\Hi.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410951\image.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410951\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410951\SCHASH.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410951\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410951\signature.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410951\Exchange.exe
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410951\Exchange.deps.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410951\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410951\Exchange.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410951\Exchange.pdb
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410952\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410952\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410952\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410952\country.xlsx
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410952\Hi.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410952\image.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410952\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410952\SCHASH.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410952\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410952\signature.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410952\Exchange.exe
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410952\Exchange.deps.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410952\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410952\Exchange.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410952\Exchange.pdb
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410967\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410967\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410967\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410967\country.xlsx
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410967\Hi.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410967\image.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410967\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410967\SCHASH.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410967\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410967\signature.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410967\Exchange.exe
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410967\Exchange.deps.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410967\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410967\Exchange.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410967\Exchange.pdb
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410970\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410970\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410970\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410970\country.xlsx
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410970\Hi.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410970\image.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410970\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410970\SCHASH.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410970\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410970\signature.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410970\Exchange.exe
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410970\Exchange.deps.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410970\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410970\Exchange.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410970\Exchange.pdb
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410971\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410971\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410971\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410971\country.xlsx
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410971\Hi.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410971\image.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410971\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410971\SCHASH.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410971\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410971\signature.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410971\Exchange.exe
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410971\Exchange.deps.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410971\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410971\Exchange.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410971\Exchange.pdb
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410972\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410972\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410972\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410972\country.xlsx
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410972\Hi.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410972\image.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410972\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410972\SCHASH.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410972\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410972\signature.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410972\Exchange.exe
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410972\Exchange.deps.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410972\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410972\Exchange.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410972\Exchange.pdb
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410973\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410973\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410973\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410973\country.xlsx
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410973\Hi.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410973\image.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410973\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410973\SCHASH.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410973\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410973\signature.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410973\Exchange.exe
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410973\Exchange.deps.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410973\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410973\Exchange.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410973\Exchange.pdb
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410974\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410974\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410974\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410974\country.xlsx
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410974\Hi.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410974\image.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410974\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410974\SCHASH.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410974\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410974\signature.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410974\Exchange.exe
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410974\Exchange.deps.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410974\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410974\Exchange.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410974\Exchange.pdb
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410975\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410975\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410975\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410975\country.xlsx
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410975\Hi.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410975\image.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410975\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410975\SCHASH.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410975\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410975\signature.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410975\Exchange.exe
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410975\Exchange.deps.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410975\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410975\Exchange.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410975\Exchange.pdb
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410976\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410976\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410976\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410976\country.xlsx
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410976\Hi.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410976\image.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410976\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410976\SCHASH.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410976\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410976\signature.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410976\Exchange.exe
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410976\Exchange.deps.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410976\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410976\Exchange.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410976\Exchange.pdb
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410977\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410977\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410977\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410977\country.xlsx
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410977\Hi.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410977\image.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410977\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410977\SCHASH.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410977\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410977\signature.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410977\Exchange.exe
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410977\Exchange.deps.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410977\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410977\Exchange.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410977\Exchange.pdb
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410978\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410978\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410978\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410978\country.xlsx
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410978\Hi.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410978\image.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410978\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410978\SCHASH.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410978\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410978\signature.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410978\Exchange.exe
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410978\Exchange.deps.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410978\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410978\Exchange.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410978\Exchange.pdb
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410979\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410979\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410979\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410979\country.xlsx
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410979\Hi.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410979\image.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410979\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410979\SCHASH.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410979\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410979\signature.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410979\Exchange.exe
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410979\Exchange.deps.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410979\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410979\Exchange.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410979\Exchange.pdb
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410980\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410980\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410980\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410980\country.xlsx
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410980\Hi.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410980\image.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410980\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410980\SCHASH.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410980\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410980\signature.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410980\Exchange.exe
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410980\Exchange.deps.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410980\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410980\Exchange.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410980\Exchange.pdb
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410981\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410981\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410981\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410981\country.xlsx
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410981\Hi.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410981\image.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410981\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410981\SCHASH.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410981\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410981\signature.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410981\Exchange.exe
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410981\Exchange.deps.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410981\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410981\Exchange.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410981\Exchange.pdb
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410982\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410982\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410982\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410982\country.xlsx
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410982\Hi.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410982\image.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410982\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410982\SCHASH.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410982\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410982\signature.png
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410982\Exchange.exe
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410982\Exchange.deps.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410982\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410982\Exchange.dll
+F:\workspace\exchange-builds\builds_07-05-2025\KIOSK_14410982\Exchange.pdb
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410942\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410942\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410942\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410942\country.xlsx
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410942\Hi.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410942\image.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410942\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410942\SCHASH.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410942\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410942\signature.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410942\Exchange.exe
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410942\Exchange.deps.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410942\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410942\Exchange.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410942\Exchange.pdb
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410943\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410943\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410943\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410943\country.xlsx
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410943\Hi.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410943\image.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410943\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410943\SCHASH.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410943\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410943\signature.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410943\Exchange.exe
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410943\Exchange.deps.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410943\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410943\Exchange.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410943\Exchange.pdb
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410944\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410944\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410944\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410944\country.xlsx
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410944\Hi.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410944\image.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410944\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410944\SCHASH.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410944\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410944\signature.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410944\Exchange.exe
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410944\Exchange.deps.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410944\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410944\Exchange.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410944\Exchange.pdb
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410945\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410945\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410945\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410945\country.xlsx
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410945\Hi.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410945\image.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410945\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410945\SCHASH.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410945\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410945\signature.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410945\Exchange.exe
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410945\Exchange.deps.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410945\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410945\Exchange.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410945\Exchange.pdb
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410946\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410946\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410946\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410946\country.xlsx
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410946\Hi.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410946\image.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410946\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410946\SCHASH.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410946\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410946\signature.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410946\Exchange.exe
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410946\Exchange.deps.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410946\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410946\Exchange.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410946\Exchange.pdb
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410947\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410947\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410947\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410947\country.xlsx
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410947\Hi.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410947\image.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410947\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410947\SCHASH.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410947\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410947\signature.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410947\Exchange.exe
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410947\Exchange.deps.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410947\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410947\Exchange.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410947\Exchange.pdb
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410948\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410948\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410948\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410948\country.xlsx
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410948\Hi.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410948\image.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410948\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410948\SCHASH.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410948\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410948\signature.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410948\Exchange.exe
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410948\Exchange.deps.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410948\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410948\Exchange.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410948\Exchange.pdb
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410949\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410949\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410949\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410949\country.xlsx
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410949\Hi.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410949\image.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410949\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410949\SCHASH.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410949\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410949\signature.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410949\Exchange.exe
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410949\Exchange.deps.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410949\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410949\Exchange.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410949\Exchange.pdb
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410950\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410950\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410950\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410950\country.xlsx
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410950\Hi.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410950\image.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410950\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410950\SCHASH.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410950\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410950\signature.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410950\Exchange.exe
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410950\Exchange.deps.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410950\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410950\Exchange.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410950\Exchange.pdb
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410951\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410951\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410951\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410951\country.xlsx
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410951\Hi.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410951\image.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410951\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410951\SCHASH.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410951\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410951\signature.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410951\Exchange.exe
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410951\Exchange.deps.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410951\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410951\Exchange.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410951\Exchange.pdb
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410952\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410952\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410952\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410952\country.xlsx
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410952\Hi.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410952\image.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410952\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410952\SCHASH.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410952\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410952\signature.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410952\Exchange.exe
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410952\Exchange.deps.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410952\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410952\Exchange.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410952\Exchange.pdb
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410967\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410967\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410967\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410967\country.xlsx
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410967\Hi.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410967\image.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410967\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410967\SCHASH.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410967\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410967\signature.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410967\Exchange.exe
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410967\Exchange.deps.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410967\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410967\Exchange.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410967\Exchange.pdb
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410968\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410968\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410968\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410968\country.xlsx
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410968\Hi.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410968\image.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410968\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410968\SCHASH.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410968\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410968\signature.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410968\Exchange.exe
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410968\Exchange.deps.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410968\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410968\Exchange.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410968\Exchange.pdb
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410970\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410970\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410970\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410970\country.xlsx
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410970\Hi.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410970\image.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410970\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410970\SCHASH.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410970\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410970\signature.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410970\Exchange.exe
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410970\Exchange.deps.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410970\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410970\Exchange.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410970\Exchange.pdb
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410971\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410971\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410971\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410971\country.xlsx
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410971\Hi.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410971\image.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410971\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410971\SCHASH.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410971\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410971\signature.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410971\Exchange.exe
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410971\Exchange.deps.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410971\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410971\Exchange.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410971\Exchange.pdb
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410972\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410972\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410972\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410972\country.xlsx
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410972\Hi.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410972\image.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410972\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410972\SCHASH.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410972\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410972\signature.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410972\Exchange.exe
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410972\Exchange.deps.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410972\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410972\Exchange.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410972\Exchange.pdb
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410973\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410973\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410973\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410973\country.xlsx
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410973\Hi.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410973\image.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410973\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410973\SCHASH.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410973\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410973\signature.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410973\Exchange.exe
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410973\Exchange.deps.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410973\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410973\Exchange.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410973\Exchange.pdb
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410974\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410974\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410974\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410974\country.xlsx
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410974\Hi.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410974\image.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410974\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410974\SCHASH.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410974\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410974\signature.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410974\Exchange.exe
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410974\Exchange.deps.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410974\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410974\Exchange.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410974\Exchange.pdb
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410975\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410975\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410975\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410975\country.xlsx
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410975\Hi.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410975\image.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410975\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410975\SCHASH.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410975\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410975\signature.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410975\Exchange.exe
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410975\Exchange.deps.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410975\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410975\Exchange.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410975\Exchange.pdb
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410976\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410976\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410976\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410976\country.xlsx
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410976\Hi.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410976\image.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410976\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410976\SCHASH.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410976\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410976\signature.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410976\Exchange.exe
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410976\Exchange.deps.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410976\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410976\Exchange.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410976\Exchange.pdb
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410977\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410977\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410977\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410977\country.xlsx
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410977\Hi.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410977\image.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410977\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410977\SCHASH.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410977\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410977\signature.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410977\Exchange.exe
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410977\Exchange.deps.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410977\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410977\Exchange.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410977\Exchange.pdb
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410978\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410978\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410978\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410978\country.xlsx
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410978\Hi.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410978\image.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410978\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410978\SCHASH.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410978\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410978\signature.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410978\Exchange.exe
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410978\Exchange.deps.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410978\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410978\Exchange.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410978\Exchange.pdb
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410979\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410979\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410979\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410979\country.xlsx
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410979\Hi.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410979\image.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410979\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410979\SCHASH.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410979\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410979\signature.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410979\Exchange.exe
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410979\Exchange.deps.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410979\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410979\Exchange.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410979\Exchange.pdb
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410980\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410980\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410980\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410980\country.xlsx
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410980\Hi.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410980\image.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410980\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410980\SCHASH.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410980\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410980\signature.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410980\Exchange.exe
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410980\Exchange.deps.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410980\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410980\Exchange.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410980\Exchange.pdb
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410981\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410981\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410981\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410981\country.xlsx
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410981\Hi.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410981\image.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410981\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410981\SCHASH.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410981\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410981\signature.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410981\Exchange.exe
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410981\Exchange.deps.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410981\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410981\Exchange.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410981\Exchange.pdb
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410982\runtimes\win-x86\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410982\runtimes\win-x64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410982\runtimes\win-arm64\native\WebView2Loader.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410982\country.xlsx
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410982\Hi.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410982\image.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410982\paciMIDsample.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410982\SCHASH.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410982\SCHASHBKP.txt
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410982\signature.png
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410982\Exchange.exe
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410982\Exchange.deps.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410982\Exchange.runtimeconfig.json
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410982\Exchange.dll
+F:\workspace\exchange-builds\builds_11-05-2025\KIOSK_14410982\Exchange.pdb
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\runtimes\win-x86\native\WebView2Loader.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\runtimes\win-x64\native\WebView2Loader.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\runtimes\win-arm64\native\WebView2Loader.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\country.xlsx
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\Hi.txt
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\image.png
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\paciMIDsample.txt
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\SCHASH.txt
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\SCHASHBKP.txt
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\signature.png
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\Exchange.exe
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\Exchange.deps.json
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\Exchange.runtimeconfig.json
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\Exchange.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\Exchange.pdb
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\CommunityToolkit.Mvvm.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\DocumentFormat.OpenXml.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\DocumentFormat.OpenXml.Framework.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\DotNetProjects.DataVisualization.Toolkit.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ExcelDataReader.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ExcelDataReader.DataSet.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\LiveCharts.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\LiveCharts.Wpf.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\MessagePack.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\MessagePack.Annotations.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\Microsoft.Extensions.ObjectPool.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\Microsoft.NET.StringTools.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\Microsoft.ServiceHub.Framework.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\Microsoft.ServiceHub.Resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\Microsoft.VisualStudio.Composition.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\Microsoft.VisualStudio.RemoteControl.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\Microsoft.VisualStudio.RpcContracts.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\Microsoft.VisualStudio.Telemetry.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\Microsoft.VisualStudio.Threading.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\Microsoft.VisualStudio.Utilities.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\Microsoft.VisualStudio.Utilities.Internal.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\Microsoft.VisualStudio.Validation.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\Nerdbank.Streams.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\Newtonsoft.Json.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\StreamJsonRpc.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\System.ComponentModel.Composition.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\System.ComponentModel.Composition.Registration.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\System.Composition.AttributedModel.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\System.Composition.Convention.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\System.Composition.Hosting.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\System.Composition.Runtime.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\System.Composition.TypedParts.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\System.Configuration.ConfigurationManager.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\System.Data.Odbc.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\System.Data.OleDb.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\System.Data.SqlClient.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\System.Diagnostics.EventLog.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\System.Diagnostics.PerformanceCounter.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\System.DirectoryServices.AccountManagement.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\System.DirectoryServices.Protocols.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\System.Drawing.Common.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\System.IO.Packaging.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\System.IO.Pipelines.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\System.IO.Ports.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\System.Management.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\System.Private.ServiceModel.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\System.Reflection.Context.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\System.Runtime.Caching.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\System.Security.Cryptography.Pkcs.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\System.Security.Cryptography.Xml.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\System.ServiceModel.Duplex.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\System.ServiceModel.Http.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\System.ServiceModel.NetFramingBase.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\System.ServiceModel.NetTcp.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\System.ServiceModel.Primitives.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\System.ServiceModel.Security.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\System.ServiceModel.Syndication.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\System.ServiceProcess.ServiceController.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\System.Speech.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\System.Web.Services.Description.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\cs\Microsoft.ServiceHub.Framework.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\de\Microsoft.ServiceHub.Framework.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\es\Microsoft.ServiceHub.Framework.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\fr\Microsoft.ServiceHub.Framework.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\it\Microsoft.ServiceHub.Framework.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ja\Microsoft.ServiceHub.Framework.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ko\Microsoft.ServiceHub.Framework.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\pl\Microsoft.ServiceHub.Framework.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\pt-BR\Microsoft.ServiceHub.Framework.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ru\Microsoft.ServiceHub.Framework.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\tr\Microsoft.ServiceHub.Framework.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\zh-Hans\Microsoft.ServiceHub.Framework.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\zh-Hant\Microsoft.ServiceHub.Framework.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\cs\Microsoft.ServiceHub.Resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\de\Microsoft.ServiceHub.Resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\es\Microsoft.ServiceHub.Resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\fr\Microsoft.ServiceHub.Resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\it\Microsoft.ServiceHub.Resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ja\Microsoft.ServiceHub.Resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ko\Microsoft.ServiceHub.Resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\pl\Microsoft.ServiceHub.Resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\pt-BR\Microsoft.ServiceHub.Resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ru\Microsoft.ServiceHub.Resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\tr\Microsoft.ServiceHub.Resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\zh-Hans\Microsoft.ServiceHub.Resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\zh-Hant\Microsoft.ServiceHub.Resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\cs\Microsoft.VisualStudio.Composition.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\de\Microsoft.VisualStudio.Composition.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\es\Microsoft.VisualStudio.Composition.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\fr\Microsoft.VisualStudio.Composition.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\it\Microsoft.VisualStudio.Composition.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ja\Microsoft.VisualStudio.Composition.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ko\Microsoft.VisualStudio.Composition.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\pl\Microsoft.VisualStudio.Composition.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\pt-BR\Microsoft.VisualStudio.Composition.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ru\Microsoft.VisualStudio.Composition.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\tr\Microsoft.VisualStudio.Composition.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\zh-Hans\Microsoft.VisualStudio.Composition.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\zh-Hant\Microsoft.VisualStudio.Composition.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\cs\Microsoft.VisualStudio.Threading.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\de\Microsoft.VisualStudio.Threading.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\es\Microsoft.VisualStudio.Threading.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\fr\Microsoft.VisualStudio.Threading.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\it\Microsoft.VisualStudio.Threading.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ja\Microsoft.VisualStudio.Threading.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ko\Microsoft.VisualStudio.Threading.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\pl\Microsoft.VisualStudio.Threading.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\pt-BR\Microsoft.VisualStudio.Threading.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ru\Microsoft.VisualStudio.Threading.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\tr\Microsoft.VisualStudio.Threading.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\zh-Hans\Microsoft.VisualStudio.Threading.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\zh-Hant\Microsoft.VisualStudio.Threading.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\cs\Microsoft.VisualStudio.Utilities.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\de\Microsoft.VisualStudio.Utilities.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\en\Microsoft.VisualStudio.Utilities.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\es\Microsoft.VisualStudio.Utilities.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\fr\Microsoft.VisualStudio.Utilities.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\it\Microsoft.VisualStudio.Utilities.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ja\Microsoft.VisualStudio.Utilities.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ko\Microsoft.VisualStudio.Utilities.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\pl\Microsoft.VisualStudio.Utilities.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\pt-BR\Microsoft.VisualStudio.Utilities.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ru\Microsoft.VisualStudio.Utilities.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\tr\Microsoft.VisualStudio.Utilities.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\zh-Hans\Microsoft.VisualStudio.Utilities.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\zh-Hant\Microsoft.VisualStudio.Utilities.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\cs\Microsoft.VisualStudio.Validation.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\de\Microsoft.VisualStudio.Validation.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\es\Microsoft.VisualStudio.Validation.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\fr\Microsoft.VisualStudio.Validation.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\it\Microsoft.VisualStudio.Validation.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ja\Microsoft.VisualStudio.Validation.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ko\Microsoft.VisualStudio.Validation.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\pl\Microsoft.VisualStudio.Validation.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\pt-BR\Microsoft.VisualStudio.Validation.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ru\Microsoft.VisualStudio.Validation.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\tr\Microsoft.VisualStudio.Validation.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\zh-Hans\Microsoft.VisualStudio.Validation.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\zh-Hant\Microsoft.VisualStudio.Validation.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\cs\StreamJsonRpc.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\de\StreamJsonRpc.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\es\StreamJsonRpc.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\fr\StreamJsonRpc.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\it\StreamJsonRpc.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ja\StreamJsonRpc.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ko\StreamJsonRpc.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\pl\StreamJsonRpc.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\pt-BR\StreamJsonRpc.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ru\StreamJsonRpc.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\tr\StreamJsonRpc.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\zh-Hans\StreamJsonRpc.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\zh-Hant\StreamJsonRpc.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\cs\System.Private.ServiceModel.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\de\System.Private.ServiceModel.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\es\System.Private.ServiceModel.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\fr\System.Private.ServiceModel.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\it\System.Private.ServiceModel.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ja\System.Private.ServiceModel.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ko\System.Private.ServiceModel.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\pl\System.Private.ServiceModel.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\pt-BR\System.Private.ServiceModel.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ru\System.Private.ServiceModel.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\tr\System.Private.ServiceModel.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\zh-Hans\System.Private.ServiceModel.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\zh-Hant\System.Private.ServiceModel.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\cs\System.ServiceModel.Http.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\de\System.ServiceModel.Http.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\es\System.ServiceModel.Http.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\fr\System.ServiceModel.Http.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\it\System.ServiceModel.Http.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ja\System.ServiceModel.Http.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ko\System.ServiceModel.Http.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\pl\System.ServiceModel.Http.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\pt-BR\System.ServiceModel.Http.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ru\System.ServiceModel.Http.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\tr\System.ServiceModel.Http.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\zh-Hans\System.ServiceModel.Http.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\zh-Hant\System.ServiceModel.Http.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\cs\System.ServiceModel.NetFramingBase.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\de\System.ServiceModel.NetFramingBase.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\es\System.ServiceModel.NetFramingBase.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\fr\System.ServiceModel.NetFramingBase.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\it\System.ServiceModel.NetFramingBase.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ja\System.ServiceModel.NetFramingBase.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ko\System.ServiceModel.NetFramingBase.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\pl\System.ServiceModel.NetFramingBase.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\pt-BR\System.ServiceModel.NetFramingBase.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ru\System.ServiceModel.NetFramingBase.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\tr\System.ServiceModel.NetFramingBase.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\zh-Hans\System.ServiceModel.NetFramingBase.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\zh-Hant\System.ServiceModel.NetFramingBase.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\cs\System.ServiceModel.NetTcp.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\de\System.ServiceModel.NetTcp.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\es\System.ServiceModel.NetTcp.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\fr\System.ServiceModel.NetTcp.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\it\System.ServiceModel.NetTcp.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ja\System.ServiceModel.NetTcp.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ko\System.ServiceModel.NetTcp.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\pl\System.ServiceModel.NetTcp.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\pt-BR\System.ServiceModel.NetTcp.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ru\System.ServiceModel.NetTcp.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\tr\System.ServiceModel.NetTcp.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\zh-Hans\System.ServiceModel.NetTcp.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\zh-Hant\System.ServiceModel.NetTcp.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\cs\System.ServiceModel.Primitives.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\de\System.ServiceModel.Primitives.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\es\System.ServiceModel.Primitives.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\fr\System.ServiceModel.Primitives.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\it\System.ServiceModel.Primitives.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ja\System.ServiceModel.Primitives.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ko\System.ServiceModel.Primitives.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\pl\System.ServiceModel.Primitives.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\pt-BR\System.ServiceModel.Primitives.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ru\System.ServiceModel.Primitives.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\tr\System.ServiceModel.Primitives.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\zh-Hans\System.ServiceModel.Primitives.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\zh-Hant\System.ServiceModel.Primitives.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\cs\System.Web.Services.Description.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\de\System.Web.Services.Description.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\es\System.Web.Services.Description.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\fr\System.Web.Services.Description.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\it\System.Web.Services.Description.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ja\System.Web.Services.Description.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ko\System.Web.Services.Description.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\pl\System.Web.Services.Description.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\pt-BR\System.Web.Services.Description.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\ru\System.Web.Services.Description.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\tr\System.Web.Services.Description.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\zh-Hans\System.Web.Services.Description.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\zh-Hant\System.Web.Services.Description.resources.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\runtimes\linux-arm\native\libSystem.IO.Ports.Native.so
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\runtimes\linux-arm64\native\libSystem.IO.Ports.Native.so
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\runtimes\linux-x64\native\libSystem.IO.Ports.Native.so
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\runtimes\osx-arm64\native\libSystem.IO.Ports.Native.dylib
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\runtimes\osx-x64\native\libSystem.IO.Ports.Native.dylib
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\runtimes\win-arm64\native\sni.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\runtimes\win-x64\native\sni.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\runtimes\win-x86\native\sni.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\runtimes\freebsd\lib\net8.0\System.Data.Odbc.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\runtimes\illumos\lib\net8.0\System.Data.Odbc.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\runtimes\ios\lib\net8.0\System.Data.Odbc.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\runtimes\linux\lib\net8.0\System.Data.Odbc.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\runtimes\osx\lib\net8.0\System.Data.Odbc.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\runtimes\solaris\lib\net8.0\System.Data.Odbc.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\runtimes\tvos\lib\net8.0\System.Data.Odbc.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\runtimes\win\lib\net8.0\System.Data.Odbc.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\runtimes\win\lib\net8.0\System.Data.OleDb.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\runtimes\win\lib\net8.0\System.Diagnostics.PerformanceCounter.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\runtimes\win\lib\net8.0\System.DirectoryServices.AccountManagement.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\runtimes\linux\lib\net8.0\System.DirectoryServices.Protocols.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\runtimes\osx\lib\net8.0\System.DirectoryServices.Protocols.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\runtimes\win\lib\net8.0\System.DirectoryServices.Protocols.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\runtimes\unix\lib\net8.0\System.IO.Ports.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\runtimes\win\lib\net8.0\System.IO.Ports.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\runtimes\win\lib\net8.0\System.Management.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\runtimes\win\lib\net8.0\System.Runtime.Caching.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\runtimes\win\lib\net8.0\System.ServiceProcess.ServiceController.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\runtimes\win\lib\net8.0\System.Speech.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\Microsoft.Web.WebView2.Core.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\Microsoft.Web.WebView2.WinForms.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\Microsoft.Web.WebView2.Wpf.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\MIDAuthServiceClient.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\MIDAuthServiceClientContract.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\PACICardLibrary.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\Microsoft.Web.WebView2.Core.xml
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\Microsoft.Web.WebView2.Wpf.xml
+C:\Users\Surya\Downloads\Exchange\Exchange\bin\Release\net8.0-windows\Microsoft.Web.WebView2.WinForms.xml
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Exchange.csproj.AssemblyReference.cache
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wTransferpay.baml
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\MainWindow.g.cs
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\Accounts.g.cs
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\Landing.g.cs
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\LoadingScreen.g.cs
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\Login.g.cs
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\Login2.g.cs
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\Page1.g.cs
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\Page2.g.cs
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\UpdateProfile.g.cs
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\waddbeneficiary.g.cs
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wBeneficiary.g.cs
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wChooseLang.g.cs
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wComponents.g.cs
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wContact.g.cs
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\WelcomePage.g.cs
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wExchangecalculator.g.cs
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wFaq.g.cs
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wHistorytransaction.g.cs
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wLogin.g.cs
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wMainPage.g.cs
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wPaymentmethod.g.cs
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wRegister.g.cs
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wResetPassword.g.cs
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wSelectbeneficary.g.cs
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wSelectcountry.g.cs
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wSelectProduct.g.cs
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wSendMoney.g.cs
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wThankyou.g.cs
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wtobankorcash.g.cs
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wTransferpay.g.cs
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wViewBenficiaryDetails.g.cs
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wWelcomepage.g.cs
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\App.g.cs
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Exchange_Content.g.cs
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Exchange_MarkupCompile.cache
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Exchange_MarkupCompile.lref
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\MainWindow.baml
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\Accounts.baml
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\Landing.baml
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\LoadingScreen.baml
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\Login.baml
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\Login2.baml
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\Page1.baml
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\Page2.baml
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\UpdateProfile.baml
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\waddbeneficiary.baml
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wBeneficiary.baml
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wChooseLang.baml
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wComponents.baml
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wContact.baml
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\WelcomePage.baml
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wExchangecalculator.baml
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wFaq.baml
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wHistorytransaction.baml
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wLogin.baml
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wMainPage.baml
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wPaymentmethod.baml
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wRegister.baml
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wResetPassword.baml
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wSelectbeneficary.baml
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wSelectcountry.baml
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wSelectProduct.baml
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wSendMoney.baml
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wThankyou.baml
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wtobankorcash.baml
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wViewBenficiaryDetails.baml
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Pages\wWelcomepage.baml
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Exchange.g.resources
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Exchange.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Exchange.AssemblyInfoInputs.cache
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Exchange.AssemblyInfo.cs
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Exchange.csproj.CoreCompileInputs.cache
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Exchange.csproj.Up2Date
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Exchange.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\refint\Exchange.dll
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Exchange.pdb
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\Exchange.genruntimeconfig.cache
+C:\Users\Surya\Downloads\Exchange\Exchange\obj\Release\net8.0-windows\ref\Exchange.dll

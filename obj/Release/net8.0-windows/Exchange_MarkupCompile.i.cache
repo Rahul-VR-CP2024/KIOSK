@@ -1,0 +1,20 @@
+﻿Exchange
+1.0.0.0
+
+winexe
+C#
+.cs
+D:\Projects\Rahul\WallStreet KW Latest\KIOSK\obj\Release\net8.0-windows\
+Exchange
+none
+false
+TRACE;RELEASE;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
+D:\Projects\Rahul\WallStreet KW Latest\KIOSK\App.xaml
+32732165861
+3387927614
+561427439253
+256-544474161
+MainWindow.xaml;Pages\Accounts.xaml;Pages\Landing.xaml;Pages\LoadingScreen.xaml;Pages\Login.xaml;Pages\Login2.xaml;Pages\Page1.xaml;Pages\Page2.xaml;Pages\UpdateProfile.xaml;Pages\waddbeneficiary.xaml;Pages\wBeneficiary.xaml;Pages\wChooseLang.xaml;Pages\wComponents.xaml;Pages\wContact.xaml;Pages\WelcomePage.xaml;Pages\wExchangecalculator.xaml;Pages\wFaq.xaml;Pages\wHistorytransaction.xaml;Pages\wLogin.xaml;Pages\wMainPage.xaml;Pages\wPaymentmethod.xaml;Pages\wRegister.xaml;Pages\wResetPassword.xaml;Pages\wSelectbeneficary.xaml;Pages\wSelectcountry.xaml;Pages\wSelectProduct.xaml;Pages\wSendMoney.xaml;Pages\wThankyou.xaml;Pages\wtobankorcash.xaml;Pages\wTransferpay.xaml;Pages\wViewBenficiaryDetails.xaml;Pages\wWelcomepage.xaml;
+
+True
+

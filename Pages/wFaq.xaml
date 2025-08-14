@@ -1,0 +1,165 @@
+﻿<Page x:Class="Exchange.Pages.wFaq"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Exchange.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1920" d:DesignWidth="1080"
+      Title="wFaq">
+
+    <Page.Resources>
+        
+        
+
+    </Page.Resources>
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="267*"/>
+            <ColumnDefinition Width="463*"/>
+            <ColumnDefinition Width="270*"/>
+        </Grid.ColumnDefinitions>
+
+
+
+
+        <!--<Border CornerRadius="10" Grid.ColumnSpan="3">
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#7be9f6" Offset="0.0"/>
+                    <GradientStop Color="#f083da" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>-->
+
+
+
+        <StackPanel Grid.Column="1" VerticalAlignment="Center" Height="1200">
+
+
+
+            <TextBlock Text="FAQ"
+            FontWeight="Light"
+            FontFamily="helvetica"
+            FontSize="35"
+            Foreground="White"
+                    x:Name="titlef"
+            Margin="0,40,0,0"
+            HorizontalAlignment="Center"/>
+
+            <StackPanel Margin="0,50,0,0">
+
+
+
+                <!--<Grid>
+                    <ItemsControl ItemsSource="{Binding FaqItems}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Expander Header="{Binding Question}">
+
+                                    <TextBlock Text="{Binding Answer}" Margin="10"/>
+                                </Expander>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>-->
+                <StackPanel>
+                    <GroupBox Header="Who are we ?" Margin="0,10,0,0" FontSize="20" Foreground="#FFFF" x:Name="h1">
+                        <ContentPresenter >
+                            <ContentPresenter.Content>
+                                <StackPanel Margin="10">
+                                    <TextBlock Text="Since Wall Street Exchange has been established in Kuwait, the company could find out values and concepts in the field pertaining to the management and marketing of banking business taking, several positive and favorable steps towards a future vision for business trends as well as for our exchange progress plans in connection with the banking business of our company.
+Wall Street Exchange is one of the leading companies in the field of banking services, financial transfers and money exchange. Our company has, over the past years, extended its banking services to the largest sector of citizens and residents in State of Kuwait. Based on its commitment towards its clients and constant interest in its clients, the company has always been keen on offering the best services .Ever since, we have been adopting the best practices and means for developing banking business in addition to valuable principles that have supported and backed up the business system and the internal control inside the company based on a belief on our own part that so as to get stronger and more advanced, there must be a sound base for our business to rest on. We at Wall Street Exchange put ahead of our eyes a future vision which we seek to achieve according to our own abilities and discretion for our company to become the pioneering exchange entity with tangible existence in State of Kuwait and to be the top company at the level of the exchange sector.
+" TextWrapping="Wrap"  FontSize="14" Foreground="#FFFF" x:Name="b1"/>
+                                  </StackPanel>
+                            </ContentPresenter.Content>
+                        </ContentPresenter>
+                    </GroupBox>
+                    <GroupBox Header="What we do ?" Margin="0,10,0,0" FontSize="20"  Foreground="#FFFF" x:Name="h2" >
+                        <ContentPresenter >
+                            <ContentPresenter.Content>
+                                <StackPanel Margin="10">
+                                    <TextBlock Text="
+" TextWrapping="Wrap"  FontSize="14" Foreground="#FFFF" x:Name="b2" >Online based money remittance platform for sending payments across the globe with pay-out locations in over 100 countries. Wall Street Online has been built keeping in mind the digitalization of money market and its impact on remittance industry.
+Wall Street online simply gives all its customers an access to reach every corner in the world. In addition, Wall Street Online also provides the following pay out modes to receivers in over 100 countries.
+  <LineBreak/>                                     
+•	Cash pick up
+        <LineBreak/>                                       
+•	Bank deposit</TextBlock>
+                                </StackPanel>
+                            </ContentPresenter.Content>
+                        </ContentPresenter>
+                    </GroupBox>
+                    <GroupBox Header="Why us ?" Margin="0,10,0,0" FontSize="20"  Foreground="#FFFF" x:Name="h3">
+                        <ContentPresenter >
+                            <ContentPresenter.Content>
+                                <StackPanel Margin="10">
+                                <TextBlock x:Name="b3" Text="Wall Street Exchange is one of the leading players in currency and foreign exchange in both the local and international market. At Wall Street Exchange, you always get the best exchange rates in the market today." TextWrapping="Wrap"  FontSize="14" Foreground="#FFFF" />
+                                </StackPanel>
+                            </ContentPresenter.Content>
+                        </ContentPresenter>
+                    </GroupBox>
+                    <GroupBox Header="Are there any advantages of using Wall Street KIOSK" Margin="0,10,0,0" FontSize="18" Foreground="#FFFF"  x:Name="h4">
+                        <ContentPresenter >
+                            <ContentPresenter.Content>
+                                <StackPanel Margin="10">
+                                    <TextBlock Text="" TextWrapping="Wrap"  FontSize="14" Foreground="#FFFF" x:Name="b4">
+                                    •	Speed and Efficiency 
+                                    <LineBreak/>
+                                           •	Security
+                                    <LineBreak/>
+                                           •	24/7 Hour Service
+                                    <LineBreak/>
+                                           •	User Friendly
+
+                                    </TextBlock>
+                                </StackPanel>
+                            </ContentPresenter.Content>
+                        </ContentPresenter>
+                    </GroupBox>
+                </StackPanel>
+
+
+
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Column="2">
+            <StackPanel HorizontalAlignment="Right" Margin="0,0,0,935">
+                <Button Content="Back" Width="100" Height="45" BorderThickness="0" Margin="0,10,20,0"  Foreground="#10358e" FontSize="18" Click="LoginButton_Click" x:Name="backbtn">
+                    <Button.Background>
+                        <LinearGradientBrush  StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FFFF " Offset="0"/>
+                            <GradientStop Color="#FFFF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                    <Button.Resources>
+
+
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"></Setter>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+
+
+
+
+
+
+
+
+
+
+
+
+    </Grid>
+</Page>

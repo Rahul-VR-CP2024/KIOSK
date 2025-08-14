@@ -1,0 +1,191 @@
+﻿<Page x:Class="Exchange.Pages.Login2"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Exchange.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1300" d:DesignWidth="1000"
+     
+      Title="Login2">
+
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+
+            </Grid.RowDefinitions>
+
+
+
+
+
+
+
+            <StackPanel VerticalAlignment="Center">
+                <Image Source="/Images/wallstreetwhite.jpeg" Width="300" Height="250"/>
+                <TextBlock 
+                    x:Name="logintitle"
+                    Text="Login"
+                           FontWeight="Light"
+                           FontFamily="helvetica"
+                           FontSize="50"
+                           Foreground="White"
+                    Margin="0,100,0,100"
+                           HorizontalAlignment="Center"/>
+            </StackPanel>
+
+
+
+            <StackPanel Grid.Row="1" Margin="0,50,0,0">
+                <!--testimran67895
+                12345678
+                -->
+                <StackPanel Orientation="Horizontal" Margin="70,20,0,0">
+                    <Label Content="Username :" FontSize="25" Foreground="White" Width="200" Margin="100,0,50,0" x:Name="usernamelbl"/>
+                    <StackPanel Orientation="Horizontal" Width="235">
+                        <TextBox FontFamily="Helvetica"
+                                 FontWeight="Light"
+                                 Text=""
+                                 FontSize="24"
+                                 HorizontalAlignment="Center"
+                                 Width="230"
+                                 Foreground="White"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                             TextAlignment="Left"
+                                 
+                                 HorizontalContentAlignment="Center"
+                                 Opacity="0.5"
+                                 Height="40"
+                                 Margin="0,0,0,0"
+                                 x:Name="usernameTextBox"
+                                 />
+
+                    </StackPanel>
+                </StackPanel>
+                <Border Width="250"
+                        Height="2"
+                        Margin="100,0,100,0"
+                        Background="White"
+                        Opacity="0.5"/>
+
+
+                <StackPanel Orientation="Horizontal" Margin="70,20,0,0">
+                    <Label Content="Password :" FontSize="25" Foreground="White" Width="200" Margin="100,0,50,0" x:Name="passwordlbl"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Width="235">
+
+                        <PasswordBox FontFamily="Helvetica"
+                                 FontWeight="Light"
+                                 Password=""
+                                 FontSize="24"
+                                 HorizontalAlignment="Left"
+                                 Foreground="White"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                Width="230"
+                                 HorizontalContentAlignment="Left"
+                                     
+                                 Opacity="0.5"
+                                 Height="40"
+                                 Margin="0,0,0,0"
+                                 x:Name="passwordBox"
+                                     />
+
+                    </StackPanel>
+                </StackPanel>
+                <Border Width="250"
+                        Height="2"
+                        Margin="100,0,100,0"
+                        Background="White"
+                        Opacity="0.5"/>
+
+
+
+
+
+
+                <StackPanel Orientation="Horizontal" Margin="0,150,0,0" HorizontalAlignment="Center">
+                    <!--<Button Width="100" Height="40" Content="LOGIN" Margin="0,0,60,0" Click="LoginButton_Clickx"/>-->
+
+                    <Button Content="Login" Width="300" Height="70" BorderThickness="0" Margin="0,0,60,0"  Foreground="#10358e" FontSize="30" Click="LoginButton_Click" x:Name="loginbtn">
+                        <Button.Background>
+                            <LinearGradientBrush  StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#FFFF " Offset="0"/>
+                                <GradientStop Color="#FFFF" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                        <Button.Resources>
+
+
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"></Setter>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+
+
+                    <!--<Button Width="100" Height="40" Content="REGISTER" Click="RegisterButton_Clickx"/>-->
+
+
+                    <Button Content="Register" Width="300" Height="70" BorderThickness="0" Margin="0,0,0,0"  Foreground="#10358e" FontSize="30" Click="RegisterButton_Click" x:Name="registerbtn">
+                        <Button.Background>
+                            <LinearGradientBrush  StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#FFFF " Offset="0"/>
+                                <GradientStop Color="#FFFF" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                        <Button.Resources>
+
+
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"></Setter>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,50,0,0" HorizontalAlignment="Center">
+
+
+                    <!--<Button Content="Reset Password" Width="300" Height="70" BorderThickness="0" Margin="0,0,0,0"  Foreground="#10358e" FontSize="30" Click="resetpasswordclick" x:Name="resetpasswordbtn">
+                        <Button.Background>
+                            <LinearGradientBrush  StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#FFFF " Offset="0"/>
+                                <GradientStop Color="#FFFF" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                        <Button.Resources>
+
+
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"></Setter>
+                            </Style>
+                        </Button.Resources>
+                    </Button>-->
+
+
+                </StackPanel>
+
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Right" Margin="0,0,0,0">
+                <Button Content="Back" Width="200" Height="70" BorderThickness="0" Margin="0,50,50,0"  Foreground="#10358e" FontSize="30" Click="Back_Click" x:Name="backbtn" >
+                    <Button.Background>
+                        <LinearGradientBrush  StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FFFF " Offset="0"/>
+                            <GradientStop Color="#FFFF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                    <Button.Resources>
+
+
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"></Setter>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

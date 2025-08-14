@@ -1,0 +1,171 @@
+﻿<Page x:Class="Exchange.Pages.wHistorytransaction"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Exchange.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1920" d:DesignWidth="1080"
+      Loaded="Page_load"
+      Title="wHistorytransaction">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="267*"/>
+            <ColumnDefinition Width="463*"/>
+            <ColumnDefinition Width="270*"/>
+        </Grid.ColumnDefinitions>
+
+
+
+
+        <!--<Border CornerRadius="10" Grid.ColumnSpan="3">
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#7be9f6" Offset="0.0"/>
+                    <GradientStop Color="#f083da" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>-->
+
+
+
+        <StackPanel Grid.ColumnSpan="3" VerticalAlignment="Center" Height="762">
+
+
+
+            <TextBlock Text="Transaction History"
+        FontWeight="Light"
+        FontFamily="helvetica"
+        FontSize="35"
+        Foreground="White"
+          x:Name="tranhistlbl"
+        Margin="0,40,0,0"
+        HorizontalAlignment="Center"/>
+
+            <StackPanel Margin="0,50,0,0">
+
+                <Grid Width="800" Height="500">
+                    <ListView Name="countryListView" ScrollViewer.CanContentScroll="True" SelectionChanged="countryListView_SelectionChanged" Background="{x:Null}" BorderBrush="{x:Null}" Margin="-75,0,-68,0" Foreground="White">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Transaction ID رقم المعاملة:" Width="105" DisplayMemberBinding="{Binding TID}" />
+                                <GridViewColumn Header="Date التاريخ" Width="75" DisplayMemberBinding="{Binding Date}" />
+                                <!--<GridViewColumn Header="To Country" Width="65">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Image Source="{Binding FlagImage}" Width="30" Height="20" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>-->
+                                <GridViewColumn Header="Country دولة" Width="50" DisplayMemberBinding="{Binding Countryname}" />
+
+                                <GridViewColumn Header="Beneficiary Name الاسم ا للمستفيد" Width="250" DisplayMemberBinding="{Binding Bene}" />
+                                <GridViewColumn Header="Agent البنك الوسيط" Width="150" DisplayMemberBinding="{Binding BANK}" />
+                                <GridViewColumn Header="FC Amount المبلغ بالعمله الاجنبيه" Width="120" >
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Amt}" TextAlignment="Right"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+
+                                </GridViewColumn>
+                                <!--<GridViewColumn Header="LC Amount" Width="120" DisplayMemberBinding="{Binding LCamt}" />-->
+                                <GridViewColumn Header="LC Amount المبلغ بالعمله المحليه" Width="120" >
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding LCamt}" TextAlignment="Right"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+
+                                </GridViewColumn>
+                                <!--<GridViewColumn Header="View" Width="100" >
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                            <Button Content="View" Height="25" BorderThickness="0" Foreground="#10358e" Click="RESEND_Click">
+
+                                                <Button.Background>
+                                                    <LinearGradientBrush  StartPoint="0,0" EndPoint="1,1">
+                                                        <GradientStop Color="#FFFF " Offset="0"/>
+                                                        <GradientStop Color="#FFFF" Offset="1"/>
+                                                    </LinearGradientBrush>
+                                                </Button.Background>
+                                                <Button.Resources>
+
+
+                                                    <Style TargetType="Border">
+                                                        <Setter Property="CornerRadius" Value="10"></Setter>
+                                                    </Style>
+                                                </Button.Resources>
+                                            </Button>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+
+                            </GridViewColumn>-->
+                                <GridViewColumn Header="Status حالة" Width="50">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Image Source="{Binding stsimg}" Width="30" Height="20" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
+                            </GridView>
+                        </ListView.View>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                <Setter Property="Height" Value="50"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="Navy"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                </Grid>
+
+
+
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Column="2">
+            <StackPanel HorizontalAlignment="Right" Margin="0,0,0,935">
+                <Button Content="Back" Width="100" Height="45" BorderThickness="0" Margin="0,10,20,0"  Foreground="#10358e" FontSize="18" Click="LoginButton_Click" x:Name="backbtnlbl" >
+                    <Button.Background>
+                        <LinearGradientBrush  StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#FFFF " Offset="0"/>
+                            <GradientStop Color="#FFFF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                    <Button.Resources>
+
+
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"></Setter>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+
+
+
+
+
+
+
+
+
+
+
+
+    </Grid>
+</Page>

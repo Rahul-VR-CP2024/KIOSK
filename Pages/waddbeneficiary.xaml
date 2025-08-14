@@ -1,0 +1,722 @@
+﻿<Page x:Class="Exchange.Pages.waddbeneficiary"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Exchange.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1920" d:DesignWidth="1080"
+      Loaded="Page_Load"
+      Title="waddbeneficiary">
+
+    <ScrollViewer>
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition />
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+
+        </Grid.RowDefinitions>
+
+        <!--<Border CornerRadius="10" Grid.ColumnSpan="3" Grid.RowSpan="2">
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#7be9f6" Offset="0.0"/>
+                    <GradientStop Color="#f083da" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>-->
+
+        <StackPanel HorizontalAlignment="Right" Margin="0,0,0,0" Grid.Row="0" Grid.Column="3">
+            <Button Content="Back" Width="200" Height="70" BorderThickness="0" Margin="0,50,50,0"  Foreground="#10358e" FontSize="30"  Click="backbutton" x:Name="backbtn">
+                <Button.Background>
+                    <LinearGradientBrush  StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#FFFF " Offset="0"/>
+                        <GradientStop Color="#FFFF" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+                <Button.Resources>
+
+
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"></Setter>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
+
+        <StackPanel Grid.ColumnSpan="3" HorizontalAlignment="Center" Margin="0,404,0,9" Grid.RowSpan="2">
+            <StackPanel Orientation="Horizontal" >
+                <TextBlock Text="Beneficiary Details"
+                FontWeight="Light"
+                FontFamily="helvetica"
+                FontSize="50"
+                Foreground="White"
+                Margin="0,10,0,50"
+                           x:Name="benefidetlstitle"
+                HorizontalAlignment="Center"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="0,500,0,9" Grid.RowSpan="2" Name="x">
+            <StackPanel Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="0,0,0,0" Grid.RowSpan="2" Name="myStackPanel">
+                <!--<StackPanel Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="0,500,0,9" Grid.RowSpan="2" Name="myStackPanel">-->
+
+            <!--<TextBlock Text="Beneficiary Details"
+    FontWeight="Light"
+    FontFamily="helvetica"
+    FontSize="40"
+    Foreground="White"
+    Margin="0,10,0,50"
+    HorizontalAlignment="Center"/>-->
+            
+            
+            <!--<StackPanel Orientation="Horizontal" >
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="30,0,0,0">
+                    <Label Content="Beneficiary Firstname" FontSize="20" Width="400" Foreground="White"></Label>
+                </StackPanel>
+                <StackPanel   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,0,0">
+
+                    <TextBox FontFamily="Helvetica"
+FontWeight="Medium"
+Text="John"
+FontSize="25"
+HorizontalAlignment="Left"
+Foreground="black"
+Background="White"
+BorderThickness="0"
+Width="600"
+HorizontalContentAlignment="Left"
+Opacity="0.5"
+Height="30"
+Margin="0,0,0,0"
+Padding="20,0,0,0"
+                             Name="BENE_FNAME"
+>
+
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </StackPanel>
+
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="30,0,0,0">
+                    <Label Content="Beneficiary Middlename" FontSize="20" Width="400" Foreground="White"></Label>
+                </StackPanel>
+                <StackPanel   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,0,0">
+
+                    <TextBox FontFamily="Helvetica"
+    FontWeight="Medium"
+    Text="Doe"
+    FontSize="25"
+    HorizontalAlignment="Left"
+    Foreground="black"
+    Background="White"
+    BorderThickness="0"
+    Width="600"
+    HorizontalContentAlignment="Left"
+    Opacity="0.5"
+    Height="30"
+    Margin="0,0,0,0"
+    Padding="20,0,0,0"
+                             Name="BENE_MNAME"
+    >
+
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </StackPanel>
+
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="30,0,0,0">
+                    <Label Content="Beneficiary Lastname" FontSize="20" Width="400" Foreground="White"></Label>
+                </StackPanel>
+                <StackPanel   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,0,0">
+
+                    <TextBox FontFamily="Helvetica"
+    FontWeight="Medium"
+    Text="Steave"
+    FontSize="25"
+    HorizontalAlignment="Left"
+    Foreground="black"
+    Background="White"
+    BorderThickness="0"
+    Width="600"
+    HorizontalContentAlignment="Left"
+    Opacity="0.5"
+    Height="30"
+    Margin="0,0,0,0"
+    Padding="20,0,0,0"
+                              Name="BENE_LNAME"
+    >
+
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </StackPanel>
+
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="30,0,0,0">
+                    <Label Content="Beneficiary Address1" FontSize="20" Width="400" Foreground="White"></Label>
+                </StackPanel>
+                <StackPanel   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,0,0">
+
+                    <TextBox FontFamily="Helvetica"
+    FontWeight="Medium"
+    Text="Hawally, Building No 5 , Tunis St. "
+    FontSize="25"
+    HorizontalAlignment="Left"
+    Foreground="black"
+    Background="White"
+    BorderThickness="0"
+    Width="600"
+    HorizontalContentAlignment="Left"
+    Opacity="0.5"
+    Height="30"
+    Margin="0,0,0,0"
+    Padding="20,0,0,0"
+                             Name="BENE_ADDRESS1"
+    >
+
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </StackPanel>
+
+
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="30,0,0,0">
+                    <Label Content="Beneficiary Address2" FontSize="20" Width="400" Foreground="White"></Label>
+                </StackPanel>
+                <StackPanel   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,0,0">
+
+                    <TextBox FontFamily="Helvetica"
+    FontWeight="Medium"
+    Text=""
+    FontSize="25"
+    HorizontalAlignment="Left"
+    Foreground="black"
+    Background="White"
+    BorderThickness="0"
+    Width="600"
+    HorizontalContentAlignment="Left"
+    Opacity="0.5"
+    Height="30"
+    Margin="0,0,0,0"
+    Padding="20,0,0,0"
+                             Name="BENE_ADDRESS2"
+    >
+
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </StackPanel>
+
+
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="30,0,0,0">
+                    <Label Content="Nationality" FontSize="20" Width="400" Foreground="White"></Label>
+                </StackPanel>
+                <StackPanel   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,0,0">
+
+                    <ComboBox FontFamily="Helvetica"
+FontWeight="Medium"
+FontSize="25"
+HorizontalAlignment="Left"
+Foreground="Black"
+Background="White"
+BorderThickness="0"
+Width="600"
+HorizontalContentAlignment="Left"
+Opacity="0.5"
+Height="30"
+Margin="0,0,0,0"
+Padding="20,0,0,0"
+                              x:Name="BENE_NATION"
+                SelectedIndex="1">
+                        <ComboBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </ComboBox.Resources>
+                        --><!-- Sample ComboBox Items --><!--
+                        <ComboBoxItem Content="Japan" />
+                        <ComboBoxItem Content="Indian" />
+                        <ComboBoxItem Content="China" />
+                        <ComboBoxItem Content="Egypt" />
+                    </ComboBox>
+                </StackPanel>
+
+
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="30,0,0,0">
+                    <Label Content="Beneficiary Mobile" FontSize="20" Width="400" Foreground="White"></Label>
+                </StackPanel>
+                <StackPanel   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,0,0">
+
+                    <TextBox FontFamily="Helvetica"
+    FontWeight="Medium"
+    Text="12345678"
+    FontSize="25"
+    HorizontalAlignment="Left"
+    Foreground="black"
+    Background="White"
+    BorderThickness="0"
+    Width="600"
+    HorizontalContentAlignment="Left"
+    Opacity="0.5"
+    Height="30"
+    Margin="0,0,0,0"
+    Padding="20,0,0,0"
+                             Name="BENE_MOBILE"
+    >
+
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </StackPanel>
+
+
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="30,0,0,0">
+                    <Label Content="Beneficiary Bank" FontSize="20" Width="400" Foreground="White"></Label>
+                </StackPanel>
+                <StackPanel   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,0,0">
+
+                    <TextBox FontFamily="Helvetica"
+    FontWeight="Medium"
+    Text="Bank of Baroda"
+    FontSize="25"
+    HorizontalAlignment="Left"
+    Foreground="black"
+    Background="White"
+    BorderThickness="0"
+    Width="600"
+    HorizontalContentAlignment="Left"
+    Opacity="0.5"
+    Height="30"
+    Margin="0,0,0,0"
+    Padding="20,0,0,0"
+                             Name="BENE_BANKID"
+    >
+
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </StackPanel>
+
+
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="30,0,0,0">
+                    <Label Content="Beneficiary Branch" FontSize="20" Width="400" Foreground="White"></Label>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,0,0">
+                    <TextBox FontFamily="Helvetica"
+FontWeight="Medium"
+Text="Mumbai"
+FontSize="25"
+HorizontalAlignment="Left"
+Foreground="black"
+Background="White"
+BorderThickness="0"
+Width="600"
+HorizontalContentAlignment="Left"
+Opacity="0.5"
+Height="30"
+Margin="0,0,0,0"
+Padding="20,0,0,0"
+                             Name="BENE_BRANCHID"
+>
+
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </StackPanel>
+
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="30,0,0,0">
+                    <Label Content="Payment Details 1" FontSize="20" Width="400" Foreground="White"></Label>
+                </StackPanel>
+                <StackPanel   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,0,0">
+
+                    <TextBox FontFamily="Helvetica"
+    FontWeight="Medium"
+    Text="INDR00000125364"
+    FontSize="25"
+    HorizontalAlignment="Left"
+    Foreground="black"
+    Background="White"
+    BorderThickness="0"
+    Width="600"
+    HorizontalContentAlignment="Left"
+    Opacity="0.5"
+    Height="30"
+    Margin="0,0,0,0"
+    Padding="20,0,0,0"
+    >
+
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </StackPanel>
+
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="30,0,0,0">
+                    <Label Content="Payment Details 2" FontSize="20" Width="400" Foreground="White"></Label>
+                </StackPanel>
+                <StackPanel   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,0,0">
+
+                    <TextBox FontFamily="Helvetica"
+    FontWeight="Medium"
+    Text=""
+    FontSize="25"
+    HorizontalAlignment="Left"
+    Foreground="black"
+    Background="White"
+    BorderThickness="0"
+    Width="600"
+    HorizontalContentAlignment="Left"
+    Opacity="0.5"
+    Height="30"
+    Margin="0,0,0,0"
+    Padding="20,0,0,0"
+    >
+
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </StackPanel>
+
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="30,0,0,0">
+                    <Label Content="Branch Account number" FontSize="20" Width="400" Foreground="White"></Label>
+                </StackPanel>
+                <StackPanel   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,0,0">
+
+                    <TextBox FontFamily="Helvetica"
+    FontWeight="Medium"
+    Text="753697"
+    FontSize="25"
+    HorizontalAlignment="Left"
+    Foreground="black"
+    Background="White"
+    BorderThickness="0"
+    Width="600"
+    HorizontalContentAlignment="Left"
+    Opacity="0.5"
+    Height="30"
+    Margin="0,0,0,0"
+    Padding="20,0,0,0"
+                             Name="BENE_ACCNO"
+    >
+
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </StackPanel>
+
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="30,0,0,0">
+                    <Label Content="Branch Swift Code" FontSize="20" Width="400" Foreground="White"></Label>
+                </StackPanel>
+                <StackPanel   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,0,0">
+
+                    <TextBox FontFamily="Helvetica"
+    FontWeight="Medium"
+    Text="INDCR"
+    FontSize="25"
+    HorizontalAlignment="Left"
+    Foreground="black"
+    Background="White"
+    BorderThickness="0"
+    Width="600"
+    HorizontalContentAlignment="Left"
+    Opacity="0.5"
+    Height="30"
+    Margin="0,0,0,0"
+    Padding="20,0,0,0"
+    >
+
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </StackPanel>
+
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="30,0,0,0">
+                    <Label Content="Remarks" FontSize="20" Width="400" Foreground="White"></Label>
+                </StackPanel>
+                <StackPanel   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,0,0">
+
+                    <TextBox FontFamily="Helvetica"
+    FontWeight="Medium"
+    Text=""
+    FontSize="25"
+    HorizontalAlignment="Left"
+    Foreground="black"
+    Background="White"
+    BorderThickness="0"
+    Width="600"
+    HorizontalContentAlignment="Left"
+    Opacity="0.5"
+    Height="30"
+    Margin="0,0,0,0"
+    Padding="20,0,0,0"
+    >
+
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                </StackPanel>
+
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="30,0,0,0">
+                    <Label Content="Beneficiary Currency" FontSize="20" Width="400" Foreground="White"></Label>
+                </StackPanel>
+                <StackPanel   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,0,0">
+
+                    <ComboBox FontFamily="Helvetica"
+    FontWeight="Medium"
+    FontSize="25"
+    HorizontalAlignment="Left"
+    Foreground="Black"
+    Background="White"
+    BorderThickness="0"
+    Width="600"
+    HorizontalContentAlignment="Left"
+    Opacity="0.5"
+    Height="30"
+    Margin="0,0,0,0"
+    Padding="20,0,0,0"
+                              x:Name="BENE_CURR"
+                    SelectedIndex="1">
+                        <ComboBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </ComboBox.Resources>
+                        --><!-- Sample ComboBox Items --><!--
+                        <ComboBoxItem Content="YEN" />
+                        <ComboBoxItem Content="INR" />
+                        <ComboBoxItem Content="USD" />
+                        <ComboBoxItem Content="PHP" />
+                    </ComboBox>
+                </StackPanel>
+
+
+            </StackPanel>-->
+
+                <StackPanel x:Name="onlyshowonbt">
+                <StackPanel  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="200,20,0,0" x:Name="bankdropdown">
+                    <StackPanel Orientation="Horizontal">
+                            <Label Content="Bank" FontSize="18" Foreground="#FFFF" x:Name="banklabel"   Width="250"></Label>
+                        <ComboBox FontFamily="Helvetica"
+FontWeight="Medium"
+FontSize="25"
+HorizontalAlignment="Left"
+Foreground="Black"
+Background="White"
+BorderThickness="0"
+Width="400"
+HorizontalContentAlignment="Left"
+Opacity="0.5"
+Height="30"
+Margin="0,0,0,0"
+Padding="20,0,0,0"
+                                  SelectionChanged="bankselectionchanged"
+                              x:Name="bankcombo"
+                SelectedIndex="1" 
+                                  IsEditable="True">
+                            <ComboBox.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="10"/>
+                                </Style>
+                            </ComboBox.Resources>
+
+                            <!--Sample ComboBox Items-->
+
+                            <!--<ComboBoxItem Content="." />-->
+                            <!--<ComboBoxItem Content="Indian" />
+                            <ComboBoxItem Content="China" />
+                            <ComboBoxItem Content="Egypt" />-->
+                        </ComboBox>
+
+                    </StackPanel>
+
+                </StackPanel>
+
+                <StackPanel  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="200,20,0,0" x:Name="branchdropdown">
+                    <StackPanel Orientation="Horizontal">
+                            <Label Content="Branch" FontSize="18" Foreground="#FFFF" x:Name="branchlabel"  Width="250"></Label>
+                        <ComboBox FontFamily="Helvetica"
+FontWeight="Medium"
+FontSize="25"
+HorizontalAlignment="Left"
+Foreground="Black"
+Background="White"
+BorderThickness="0"
+Width="400"
+HorizontalContentAlignment="Left"
+Opacity="0.5"
+Height="30"
+Margin="0,0,0,0"
+Padding="20,0,0,0"
+                              x:Name="branchcombo"
+                SelectedIndex="1">
+                            <ComboBox.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="10"/>
+                                </Style>
+                            </ComboBox.Resources>
+
+                            <!--Sample ComboBox Items-->
+
+                            <!--<ComboBoxItem Content="." />-->
+                            <!--<ComboBoxItem Content="Indian" />
+                            <ComboBoxItem Content="China" />
+                            <ComboBoxItem Content="Egypt" />-->
+                        </ComboBox>
+
+                    </StackPanel>
+
+                </StackPanel>
+
+                </StackPanel>
+                <StackPanel  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="200,20,0,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Nationality" FontSize="18" Foreground="#FFFF" x:Name="nationalitylabel" Width="250"></Label>
+                        <ComboBox FontFamily="Helvetica"
+FontWeight="Medium"
+FontSize="25"
+HorizontalAlignment="Left"
+Foreground="Black"
+Background="White"
+BorderThickness="0"
+Width="400"
+HorizontalContentAlignment="Left"
+Opacity="0.5"
+Height="30"
+Margin="0,0,0,0"
+Padding="20,0,0,0"
+                              x:Name="NationalityCOUNTRYcombo"
+                SelectedIndex="1">
+                            <ComboBox.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="10"/>
+                                </Style>
+                            </ComboBox.Resources>
+
+                            Sample ComboBox Items
+
+                            <ComboBoxItem Content="." />
+                            <!--<ComboBoxItem Content="Indian" />
+                            <ComboBoxItem Content="China" />
+                            <ComboBoxItem Content="Egypt" />-->
+                        </ComboBox>
+
+                    </StackPanel>
+
+                </StackPanel>
+
+
+
+            </StackPanel>
+            <StackPanel Margin="0,70,0,0">
+                <Button Content="Save Beneficiary" Width="400" Height="70" BorderThickness="0" Margin="0,10,0,0"  Foreground="#10358e" FontSize="30" Click="Button_Click" x:Name="addnewbtn">
+                    <Button.Background>
+                        <LinearGradientBrush  StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="white" Offset="0"/>
+                            <GradientStop Color="white" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                    <Button.Resources>
+
+
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"></Setter>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+        
+
+
+
+
+
+    </Grid>
+    </ScrollViewer>
+</Page>
