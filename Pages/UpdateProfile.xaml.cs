@@ -1,5 +1,7 @@
 ﻿using Exchange.Managers;
 using System.Net.Http;
+using System.Text;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,68 +18,184 @@ namespace Exchange.Pages
             InitializeComponent();
         }
 
-        private void mobile_GotFocus(object sender, RoutedEventArgs e)
+        private async void updateProfileButton_Click_old()
         {
-            //if (mobileTextBox.Text == "Mobile Number")
-            //{
-            //    mobileTextBox.Text = "";
-            //    mobileTextBox.Opacity = 1;
-            //    mobileTextBox.Foreground = new SolidColorBrush(Colors.White);
-            //}
+            try
+            {
+                string email = usernameemailTextBox.Text;
 
-        }
+                // Email validation
+                string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+                bool isValid = Regex.IsMatch(email, pattern);
+                if (!isValid)
+                {
+                    MessageBox.Show("Invalid Email ID");
+                    return;
+                }
 
-        private void mobile_LostFocus(object sender, RoutedEventArgs e)
-        {
-            //if (string.IsNullOrWhiteSpace(mobileTextBox.Text))
-            //{
-            //    mobileTextBox.Text = "Mobile Number";
-            //    mobileTextBox.Opacity = 0.5;
-            //    mobileTextBox.Foreground = new SolidColorBrush(Colors.Gray);
-            //}
+                // Collect user details
+                string remID = LoginManager.Remiduser;
+                string mobileNo = LoginManager.UserMOBILE;
+                string civilId = LoginManager.civilidno;
+
+                var client = new HttpClient();
+
+                var request = new HttpRequestMessage(
+                    HttpMethod.Post, "http://" + Variable.apiipadd + "/api/Auth/Email_Updation"
+                );
+
+                request.Headers.Add("accept", "*/*");
+                request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
+
+                // Create JSON payload with required fields
+                var requestBody = new
+                {
+                    e_id = remID,
+                    mobile_code = 965,
+                    mobile_number = mobileNo,
+                    name = "",             // Provide appropriate values below
+                    first_name = "",
+                    middle_name = "",
+                    last_name = "",
+                    date_of_birth = DateTime.MinValue, // Format: "YYYY-MM-DDT00:00:00.000Z"
+                    gender = "",
+                    country_code = "",
+                    country = "",
+                    state_code = "",
+                    state = "",
+                    city_id = "",
+                    city = "",
+                    address1 = "",
+                    address2 = "",
+                    nationality_code = "",
+                    nationality = "",
+                    country_of_birth_code = "",
+                    country_of_birth = "",
+                    email = email,
+                    residency_type = "",
+                    status = "",
+                    status_description = "",
+                    is_user_registered = true,
+                    is_k_y_c_registered = true,
+                    is_approved = true,
+                    is_m_p_i_n_created = false,
+                    app_member_code = 0,
+                    member_code = Convert.ToInt32(remID),
+                    salary = 0,
+                    is_bio_metric_login_enabled = false,
+                    profession = "",
+                    expected_turnover1 = 0,
+                    expected_turnover = 0,
+                    expected_turnover_range = "",
+                    expected_transaction_count_per_year = 0,
+                    expected_transaction_count = 0,
+                    expected_transaction_count_range = "",
+                    mobile_number_with_out_code = mobileNo,
+                    salutation = "",
+                    employer = "",
+                    place_of_birth = "",
+                    economic_activity_code = "",
+                    sub_economic_activity_code = "",
+                    member_group_id = 0,
+                    present_address2 = "",
+                    risk_type_code = "",
+                    economic_activity_name = "",
+                    sub_economic_activity_name = "",
+                    member_group = "",
+                    risk_type_name = "",
+                    salutation_name = "",
+                    expiry_date = (DateTime?)null,
+                    identity_type_code = "",
+                    expected_transaction_count_per_month = 0,
+                    income_source = "",
+                    other_income = "",
+                    account_number = ""
+                };
+
+                // Serialize request body to JSON
+                string json = JsonSerializer.Serialize(requestBody);
+                request.Content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await client.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+
+                // Read and parse response
+                string responseText = await response.Content.ReadAsStringAsync();
+                using var doc = JsonDocument.Parse(responseText);
+                var root = doc.RootElement;
+
+                bool success = root.TryGetProperty("success", out JsonElement successElem) &&
+                               successElem.GetString()?.ToLower() == "true";
+                string message = root.GetProperty("message").GetString();
+
+                if (success)
+                {
+                    MessageBox.Show("Profile Updated Successfully");
+                    NavigationManager.NavigateToHome();
+                }
+                else
+                {
+                    MessageBox.Show($"Failed to update profile: {message}");
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
         }
 
         private async void updateProfileButton_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                string email = usernameemailTextBox.Text;
 
-            string email = usernameemailTextBox.Text;
+                // Email validation
+                string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+                if (!Regex.IsMatch(email, pattern))
+                {
+                    MessageBox.Show("Invalid Email ID");
+                    return;
+                }
 
-            // Regular expression pattern for email validation
-            string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+                // Collect user details
+                string remID = LoginManager.Remiduser; // MemberCode
+                string apiUrl = $"https://" + Variable.apiipadd + "/api/Auth/Email_Updation?MemberCode="+remID+"&Email="+Uri.EscapeDataString(email);
 
-            // Check if the email matches the pattern
-            bool isValid = Regex.IsMatch(email, pattern);
+                using var client = new HttpClient();
 
-            if (!isValid) {
-                MessageBox.Show("Invalid Email ID");
-                return;
+                var request = new HttpRequestMessage(HttpMethod.Get, apiUrl);
+                request.Headers.Add("accept", "*/*");
+                request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
+
+                var response = await client.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+
+                // Read and parse response
+                string responseText = await response.Content.ReadAsStringAsync();
+                using var doc = JsonDocument.Parse(responseText);
+                var root = doc.RootElement;
+
+                bool success = root.TryGetProperty("success", out JsonElement successElem) &&
+                               successElem.GetString()?.ToLower() == "true";
+                string message = root.GetProperty("message").GetString();
+
+                if (success)
+                {
+                    MessageBox.Show("Profile Updated Successfully");
+                    NavigationManager.NavigateToHome();
+                }
+                else
+                {
+                    MessageBox.Show($"Failed to update profile: {message}");
+                }
             }
-
-            string reminid = LoginManager.Remiduser;
-            string mobileno = LoginManager.UserMOBILE;
-            string civilid = LoginManager.civilidno;
-
-            //MessageBox.Show(reminid + " " + mobileno + " " + civilid + " " + email);
-                
-
-            var client = new HttpClient();
-            var request = new HttpRequestMessage(HttpMethod.Post, "http://"+Variable.apiipadd+"/api/v1/sxRemitter/Remitter/PostRemitterUpdate");
-            request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
-            var content = new MultipartFormDataContent();
-            content.Add(new StringContent("3"), "appID");
-            content.Add(new StringContent("1"), "moduleID");
-            content.Add(new StringContent("KIOSK"), "channelCode");
-            content.Add(new StringContent(reminid), "RemID");
-            content.Add(new StringContent(mobileno), "MobileNo");
-            content.Add(new StringContent(civilid), "IdentityNo");
-            content.Add(new StringContent(email), "EmailID");
-            request.Content = content;
-            var response = await client.SendAsync(request);
-            response.EnsureSuccessStatusCode();
-            //Console.WriteLine(await response.Content.ReadAsStringAsync());
-            MessageBox.Show("Profile Updated Successfully");
-            NavigationManager.NavigateToHome();
-
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)
@@ -88,7 +206,6 @@ namespace Exchange.Pages
         private void Page_Load(object sender, RoutedEventArgs e)
         {
             usernameemailTextBox.Text = LoginManager.UserEMAILID;
-            //mobileTextBox.Text = LoginManager.UserMOBILE;
         }
     }
 }

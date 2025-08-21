@@ -17,7 +17,6 @@ namespace Exchange.Pages
         public wViewBenficiaryDetails()
         {
             InitializeComponent();
-            //MessageBox.Show("Hi");
 
             if (TokenManager.Langofsoft == "ar")
             {
@@ -33,146 +32,52 @@ namespace Exchange.Pages
         {
 
 
-
-
-            var client = new HttpClient();
-            var request = new HttpRequestMessage(HttpMethod.Post, "http://"+Variable.apiipadd+ "/api/Beneficiary/get-beneficiary-by-id");
-            request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
-            //LoginManager.Remiduser
-            //130824
-            var content = new StringContent("{\n \"eid\":"+ SelectedBeneficiaryManager.BENE_SLNO+ "\"\n}", null, "application/json");
-            request.Content = content;
-            var response = await client.SendAsync(request);
-            response.EnsureSuccessStatusCode();
-            Console.WriteLine(await response.Content.ReadAsStringAsync());
-            //MessageBox.Show(await response.Content.ReadAsStringAsync());
-
-
-            var responseBody5 = await response.Content.ReadAsStringAsync();
-
-            //string REM_ID = "";
-
-
-           // string validatesymaxregister = "99";
-
-            // Parse the JSON response using System.Text.Json
-            using (JsonDocument doc = JsonDocument.Parse(responseBody5))
+            try
             {
+                var client = new HttpClient();
+                var request = new HttpRequestMessage(HttpMethod.Post, "http://" + Variable.apiipadd + "/api/Beneficiary/get-beneficiary-by-id");
+                request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
+
+                var content = new StringContent("{\n \"eid\":" + SelectedBeneficiaryManager.BENE_SLNO + "\"\n}", null, "application/json");
+                request.Content = content;
+                var response = await client.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+                Console.WriteLine(await response.Content.ReadAsStringAsync());
 
 
+                var responseBody5 = await response.Content.ReadAsStringAsync();
 
-
-
-
-                // Access the root JSON object
-                JsonElement root = doc.RootElement;
-
-
-                //validatesymaxregister = root.GetProperty("Code").ToString();
-
-
-
-                //if (validatesymaxregister == "2")
-                //{
-                //    //return;
-                //}
-
-
-
-
-
-                // Navigate to the 'Data' object
-                //JsonElement dataElement = root.GetProperty("Data");
-                JsonElement dataArray = root.GetProperty("Data");
-
-                // Extract the accessToken
-                //string REM_ID_val = dataElement.GetProperty("REM_ID").GetString();
-                //REM_ID = dataElement.GetProperty("REM_ID").ToString();
-
-                //REM_ID = dataElement.GetProperty("REM_ID").GetInt32().ToString();
-                //REM_ID = dataElement.GetProperty("REM_ID").GetString();
-
-
-                // Loop through each element in the data array
-                foreach (JsonElement dataElement in dataArray.EnumerateArray())
+                using (JsonDocument doc = JsonDocument.Parse(responseBody5))
                 {
-                    // Check if the element has a property named "REM_ID"
-                    if (dataElement.TryGetProperty("BENE_FNAME", out JsonElement remIdElement))
+
+                    JsonElement root = doc.RootElement;
+
+                    JsonElement dataArray = root.GetProperty("Data");
+
+                    foreach (JsonElement dataElement in dataArray.EnumerateArray())
                     {
-                        //REM_ID = remIdElement.ToString();
-                        //firstnameTextbox.Text = remIdElement.ToString();
-                        //break; // Stop after finding the first REM_ID (optional)
+                        // Check if the element has a property named "REM_ID"
+                        if (dataElement.TryGetProperty("BENE_FNAME", out JsonElement remIdElement))
+                        {
+                            //REM_ID = remIdElement.ToString();
+                            //firstnameTextbox.Text = remIdElement.ToString();
+                            //break; // Stop after finding the first REM_ID (optional)
+                        }
+
+
                     }
-
-
-
-                    //middlenametextbox.Text = dataElement.TryGetProperty("BENE_MNAME", out JsonElement mdElement) ? mdElement.GetString() : "";
-                    //lastnametextbox.Text = dataElement.TryGetProperty("BENE_LNAME", out JsonElement lnElement) ? lnElement.GetString() : "";
-
-
-                    //addr1textbox.Text = dataElement.TryGetProperty("BENE_ADDRESS1", out JsonElement ad1Element) ? ad1Element.GetString() : "";
-                    //addr2textbox.Text = dataElement.TryGetProperty("BENE_ADDRESS2", out JsonElement ad2Element) ? ad2Element.GetString() : "";
-
-
-                    //nationalitytextbox.Text = dataElement.TryGetProperty("BENE_NATION", out JsonElement beneElement) ? beneElement.GetString() : "";
-                    //mobiletextbox.Text = dataElement.TryGetProperty("BENE_MOBILE", out JsonElement mobElement) ? mobElement.GetString() : "";
-
-
-                    //banknametextbox.Text = dataElement.TryGetProperty("BENE_BANK", out JsonElement bankElement) ? bankElement.GetString() : "";
-                    //bankbranchtextbox.Text = dataElement.TryGetProperty("BENE_BRANCH", out JsonElement bankbranchElement) ? bankbranchElement.GetString() : "";
-
-
-                    //acntnotextbox.Text = dataElement.TryGetProperty("BENE_IBANCODE", out JsonElement acntnoElement) ? acntnoElement.GetString() : "";
-                    //swiftnotextbox.Text = dataElement.TryGetProperty("BENE_SWIFTCODE", out JsonElement swiftnoElement) ? swiftnoElement.GetString() : "";
-
-
-                    //remarkstextbox.Text = dataElement.TryGetProperty("BENE_LNDMRK", out JsonElement remarkesElement) ? remarkesElement.GetString() : "";
-                    //currtextbox.Text = dataElement.TryGetProperty("BENE_CURR", out JsonElement currentext) ? currentext.GetString() : "";
-                    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                 }
 
-                // Extract the accessToken
-                //OTP = root.GetProperty("Data").GetString();
 
-                // Display the accessToken in a message box
-                //Console.WriteLine($"Access Token: {accessToken}");
-                //MessageBox.Show($"Message: {Message}");
-
-               // MessageBox.Show(REM_ID);
-
+                loadbenefieldstoedit();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
             }
 
 
-
-
-           // runtheloaderfornationalitycountries();
-
-            //MessageBox.Show("add screen " + SelectedBeneficiaryManager.BENE_SLNO);
-            loadbenefieldstoedit();
 
         }
 

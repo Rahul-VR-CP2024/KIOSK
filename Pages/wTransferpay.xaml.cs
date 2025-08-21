@@ -45,9 +45,10 @@ namespace Exchange.Pages
 
 
             loadbenedetails();
-            runtheloader();
-            runtheloadersource();
-
+            //runtheloader();
+            //runtheloadersource();
+            runtheloader(1, 1);
+            runtheloadersource(1);
             //nameofreciver.Text = "Test";
             Unloaded += OnPageUnloaded;
         }
@@ -284,9 +285,113 @@ namespace Exchange.Pages
             NavigationManager.NavigateToHome();
 
         }
+        private async void runtheloader(int ProductCode, int CountryCode)
+        {
+            try
+            {
+                var client = new HttpClient();
 
+                // Build GET URL with query parameters
+                string url = $"https://{Variable.apiipadd}/api/Transaction/get-purpose-combo-list?ProductCode=" + ProductCode + "&CountryCode=" + CountryCode;
+
+                var request = new HttpRequestMessage(HttpMethod.Get, url);
+                request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
+                request.Headers.Add("accept", "text/plain");
+
+                using var response = await client.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+
+                using (var responseStream = await response.Content.ReadAsStreamAsync())
+                using (var doc = JsonDocument.Parse(responseStream))
+                {
+                    var root = doc.RootElement;
+
+                    if (root.TryGetProperty("data", out JsonElement dataElement) &&
+                        dataElement.TryGetProperty("purpose_list", out JsonElement purposeList))
+                    {
+                        purposecombo.Items.Clear();
+
+                        foreach (var purpose in purposeList.EnumerateArray())
+                        {
+                            var item = new PurposeItem
+                            {
+                                Code = purpose.GetProperty("code").GetString(),
+                                Name = purpose.GetProperty("name").GetString(),
+                                IsDefault = purpose.GetProperty("is_default").GetBoolean()
+                            };
+
+                            purposecombo.Items.Add(item);
+                        }
+                    }
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                Console.WriteLine($"Error sending request: {ex.Message}");
+            }
+
+            // Auto-select default item if available, otherwise first
+            if (purposecombo.Items.Count > 0)
+            {
+                var defaultItem = purposecombo.Items.Cast<PurposeItem>()
+                    .FirstOrDefault(p => p.IsDefault);
+
+                purposecombo.SelectedItem = defaultItem ?? purposecombo.Items[0];
+            }
+        }
+        public class PurposeItem
+        {
+            public string Code { get; set; }
+            public string Name { get; set; }
+            public bool IsDefault { get; set; }
+
+            public override string ToString()
+            {
+                return Name; // Display only the name in the combo box
+            }
+        }
+
+
+        private async void runtheloadersource(int ProductCode)
+        {
+            try
+            {
+                var client = new HttpClient();
+
+                // Updated to GET request with new URL
+                var request = new HttpRequestMessage(HttpMethod.Get, "http://" + Variable.apiipadd + "api/Transaction/get-income-source-combo-list?ProductCode=" + ProductCode);
+                request.Headers.Add("accept", "text/plain");
+                request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
+
+                using var response = await client.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+
+                using (var responseStream = await response.Content.ReadAsStreamAsync())
+                {
+                    using (var doc = JsonDocument.Parse(responseStream))
+                    {
+                        JsonElement root = doc.RootElement;
+
+                        if (root.TryGetProperty("data", out JsonElement data) &&
+                            data.TryGetProperty("income_source_list", out JsonElement incomeList))
+                        {
+                            UpdateComboBoxsource(incomeList);
+                        }
+                    }
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                Console.WriteLine($"Error sending request: {ex.Message}");
+            }
+
+            if (sourcecombo.Items.Count > 0)
+            {
+                sourcecombo.SelectedIndex = 0;
+            }
+        }
         //Purpose of Transfer
-        private async void runtheloader()
+        private async void runtheloader_old()
         {
             try
             {
@@ -326,7 +431,7 @@ namespace Exchange.Pages
         }
 
         //Source of Income
-        private async void runtheloadersource()
+        private async void runtheloadersource_old()
         {
             try
             {

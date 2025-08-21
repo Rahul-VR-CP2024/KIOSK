@@ -49,7 +49,7 @@
     <None Remove="Images\wallstreetwhite.jpeg" />
     <None Remove="Images\welcome page final.jpg" />
     <None Remove="Images\welcomeedited.jpg" />
-    <None Remove="Images\welcomepagev3.jpeg" />
+    <None Remove="Images\welcomepagev3.jpeg" />                                               
     <None Remove="Images\WST1200.png" />
     <None Remove="Images\WST1202.png" />
     <None Remove="Pages\CIVILID.png" />

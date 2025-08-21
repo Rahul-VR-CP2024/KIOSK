@@ -19,7 +19,7 @@ namespace Exchange.Pages
     /// </summary>
     public partial class wExchangecalculator : Page
     {
-      //  public ObservableCollection<Country> Countries { get; set; }
+        //  public ObservableCollection<Country> Countries { get; set; }
 
         /// <summary>
         /// public Country SelectedCountry { get; set; }
@@ -27,29 +27,25 @@ namespace Exchange.Pages
 
         public SeriesCollection SeriesCollection { get; set; }
         private DisposableTimer disposableTimer;
+        string fcorlcswitch = "FC";
+        string productcode = ProductManager.selectedproductcode;
+        string disbtypecode = ProductManager.selecteddispcode;
+        string CurrencyCode = ProductManager.selectedProdCurrCode;
+        string CountryCode = SelectedAddBeneCountry.seladdbenecount;
+        bool isUpdating = false;
+
         public wExchangecalculator()
         {
             InitializeComponent();
-            //webView.Source = "a";
-            
-            //webBrowser.Navigate("http://www.google.com"); // Replace with your 
-            //webBrowser.Navigate(new Uri("https://www.google.com"));
-            //webView1.Source = new Uri("https://www.google.com");
-
 
 
             if (TokenManager.Langofsoft == "ar")
             {
-              //  backbtn.Content = "يرجع";
-              //  exratecal.Text = "سعر الصرف:";
+                //  backbtn.Content = "يرجع";
+                //  exratecal.Text = "سعر الصرف:";
             }
 
-                ///CHARTTT
-
-
-
-
-                SeriesCollection = new SeriesCollection
+            SeriesCollection = new SeriesCollection
             {
                 new LineSeries
                 {
@@ -93,29 +89,25 @@ namespace Exchange.Pages
             Unloaded += OnPageUnloaded;
         }
 
+        private async void Page_Load(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Environment.SetEnvironmentVariable("WEBVIEW2_DEFAULT_BACKGROUND_COLOR", "FF10358E"); // Blue
+                await webView.EnsureCoreWebView2Async(); // Ensure WebView2 is initialized
+                webView.CoreWebView2.Navigate("https://www.wallstreetkwt.com/cp/public/");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+            
+        }
+
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
 
-            // Pass parameters to Page1.xaml after successful login
-            // Page1 page1 = new Page1(username);
             NavigationManager.NavigateToHome();
-        }
-
-        private void LCamounTextchanged(object sender, TextChangedEventArgs e)
-        {
-            if (isUpdating) return;
-
-            fcorlcswitch = "LC";
-            StartTimer();
-        }
-
-        private void FCamounTextchanged(object sender, TextChangedEventArgs e)
-        {
-            if (isUpdating) return;
-
-
-            fcorlcswitch = "FC";
-            StartTimer();
         }
 
         private void StartTimer()
@@ -124,62 +116,31 @@ namespace Exchange.Pages
             disposableTimer = new DisposableTimer(() => DoSomethingAfter3Seconds(), 3);
         }
 
-
         private void DoSomethingAfter3Seconds()
         {
             REFRESHCURRENCYMETHOD("no");
-            // Your code to execute after 3 seconds of no text change
         }
 
-        string fcorlcswitch = "FC";
-        string deliverymethod = "";
-
-        string productcode = ProductManager.selectedproductcode;
-        string disbtypecode = ProductManager.selecteddispcode;
-        string CurrencyCode = ProductManager.selectedProdCurrCode;
-        string CountryCode = SelectedAddBeneCountry.seladdbenecount;
-        //ControlValue
         private async void REFRESHCURRENCYMETHOD(string buttonclick)
         {
 
             //MessageBox.Show(ProductManager.selecteddispcode);
             var client = new HttpClient();
-            var request = new HttpRequestMessage(HttpMethod.Post, "http://"+Variable.apiipadd+"/api/v1/sxremittance/ControlValue");
+            var request = new HttpRequestMessage(HttpMethod.Post, "http://" + Variable.apiipadd + "/api/v1/sxremittance/ControlValue");
             request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
-            //MessageBox.Show("productcode " + productcode + "CurrencyCode " + CurrencyCode + "CountryCode " + CountryCode + "disbtypecode " + deliverymethod + " " );
-            //var content = new StringContent("{\r" +
-            //    "\n  \"ProductCode\": \""+ productcode + "\"," +
-            //    "\r\n  \"CurrencyCode\": \""+CurrencyCode+"\"," +
-            //    "\r\n  \"CountryCode\": \""+ CountryCode + "\"," +
-            //    "\r\n  \"DisbursalCode\": \""+ deliverymethod + "\"," +
-            //    "\r\n  \"Amount\": " + amounttosendTextbox.Text + "," +
-
-            //    "\r\n  \"ReceiverCityId\": \"\"," +
-            //    "\r\n  \"PayerId\": \"\"," +
-            //    "\r\n  \"BankCode\": \"\"," +
-            //    "\r\n  \"PayingAgentId\": \"\"," +
-            //    "\r\n  \"ReceiverTownId\": \"\"," +
-            //    "\r\n  \"RateType\": \"FC\"\r\n}"
-            //    , null, "application/json");
-
-
-            //var content = new StringContent("{\r\n  \"ProductCode\": \""+ productcode + "\",\r\n  \"CurrencyCode\": \""+CurrencyCode+"\",\r\n  \"CountryCode\": \""+ CountryCode + "\",\r\n  \"DisbursalCode\": \"2\",\r\n  \"Amount\": " + amounttosendTextbox.Text + ",\r\n  \"ReceiverCityId\": \"\",\r\n  \"PayerId\": \"\",\r\n  \"BankCode\": \"\",\r\n  \"PayingAgentId\": \"\",\r\n  \"ReceiverTownId\": \"\",\r\n  \"RateType\": \"FC\"\r\n}", null, "application/json");
-
-
-            //var content = new StringContent("{\r\n  \"ProductCode\": \""+ productcode + "\",\r\n  \"CurrencyCode\": \"" + CurrencyCode + "\",\r\n  \"CountryCode\": \"" + CountryCode + "\",\r\n  \"DisbursalCode\": \"" + deliverymethod + "\",\r\n  \"Amount\": " + amounttosendTextbox.Text + ",\r\n  \"ReceiverCityId\": \"\",\r\n  \"PayerId\": \"\",\r\n  \"BankCode\": \"\",\r\n  \"PayingAgentId\": \"\",\r\n  \"ReceiverTownId\": \"\",\r\n  \"RateType\": \"FC\"\r\n}", null, "application/json");
             var finalamount = "";
 
             if (fcorlcswitch == "FC")
             {
-              //  finalamount = amounttosendTextbox.Text;
+                //  finalamount = amounttosendTextbox.Text;
             }
 
             if (fcorlcswitch == "LC")
             {
-              //  finalamount = kdamount.Text;
+                //  finalamount = kdamount.Text;
             }
 
-           // currencymoneytoTextBlock.Text = CurrencyCode;
+            // currencymoneytoTextBlock.Text = CurrencyCode;
 
             var content = new StringContent("{\r\n  \"ProductCode\": \"" + productcode + "\"," +
                 "\r\n  \"CurrencyCode\": \"" + CurrencyCode + "\"," +
@@ -194,7 +155,7 @@ namespace Exchange.Pages
                 "\r\n  \"RateType\": \"" + fcorlcswitch + "\"\r\n}", null, "application/json");
 
             string jsonContent = content.ReadAsStringAsync().Result; // Replace with content.Encoding if known
-          MessageBox.Show(jsonContent);
+            MessageBox.Show(jsonContent);
 
 
             request.Content = content;
@@ -237,24 +198,9 @@ namespace Exchange.Pages
 
 
         }
-        bool isUpdating = false;
 
-        private async void Page_Load(object sender, RoutedEventArgs e)
-        {
-            //webBrowser.Navigate("https://www.google.com");
-            //webView.CoreWebView2.Navigate("https://www.wallstreetkwt.com/cp/public/");
-            Environment.SetEnvironmentVariable("WEBVIEW2_DEFAULT_BACKGROUND_COLOR", "FF10358E"); // Blue
-            await webView.EnsureCoreWebView2Async(); // Ensure WebView2 is initialized
-            webView.CoreWebView2.Navigate("https://www.wallstreetkwt.com/cp/public/");
-        }
-
-
-
-        //Update amounts fields
         private void updateadmounts(JsonElement root)
         {
-
-
 
             // Assuming "Data" is an array and contains "PURPNAME" property
             if (root.TryGetProperty("Data", out JsonElement dataElement) && dataElement.ValueKind == JsonValueKind.Array)
@@ -265,55 +211,55 @@ namespace Exchange.Pages
                     {
                         //sourcecombo.Items.Add(purpNameElement.GetString());
                         //  MessageBox.Show(SessionIDNameElement.GetString());
-                       // TransferManagers1.SetSessionid(SessionIDNameElement.ToString());
+                        // TransferManagers1.SetSessionid(SessionIDNameElement.ToString());
                     }
 
                     if (item.TryGetProperty("CurrencyCode", out JsonElement IDNameElement))
                     {
                         //sourcecombo.Items.Add(purpNameElement.GetString());
                         //  MessageBox.Show(IDNameElement.GetString());
-                       // TransferManagers1.SetCurrencyCode(IDNameElement.ToString());
+                        // TransferManagers1.SetCurrencyCode(IDNameElement.ToString());
                     }
 
                     if (item.TryGetProperty("CountryCode", out JsonElement CountryCodeIDNameElement))
                     {
                         //sourcecombo.Items.Add(purpNameElement.GetString());
                         //  MessageBox.Show(IDNameElement.GetString());
-                       // TransferManagers1.SetCountryCode(CountryCodeIDNameElement.ToString());
+                        // TransferManagers1.SetCountryCode(CountryCodeIDNameElement.ToString());
                     }
                     if (item.TryGetProperty("Rate", out JsonElement RateIDNameElement))
                     {
                         //sourcecombo.Items.Add(purpNameElement.GetString());
                         //  MessageBox.Show(IDNameElement.GetString());
-                       // TransferManagers1.SetRate(RateIDNameElement.ToString());
+                        // TransferManagers1.SetRate(RateIDNameElement.ToString());
                     }
 
                     if (item.TryGetProperty("Commison", out JsonElement CommisonIDNameElement))
                     {
                         //sourcecombo.Items.Add(purpNameElement.GetString());
                         //  MessageBox.Show(IDNameElement.GetString());
-                     //   TransferManagers1.SetCommison(CommisonIDNameElement.ToString());
+                        //   TransferManagers1.SetCommison(CommisonIDNameElement.ToString());
                     }
 
                     if (item.TryGetProperty("DiscoutPercentage", out JsonElement DiscoutPercentageIDNameElement))
                     {
                         //sourcecombo.Items.Add(purpNameElement.GetString());
                         //  MessageBox.Show(IDNameElement.GetString());
-                      //  TransferManagers1.SetDiscoutPercentage(DiscoutPercentageIDNameElement.ToString());
+                        //  TransferManagers1.SetDiscoutPercentage(DiscoutPercentageIDNameElement.ToString());
                     }
 
                     if (item.TryGetProperty("Operator", out JsonElement OperatorIDNameElement))
                     {
                         //sourcecombo.Items.Add(purpNameElement.GetString());
                         //  MessageBox.Show(IDNameElement.GetString());
-                       // TransferManagers1.SetOperator(OperatorIDNameElement.ToString());
+                        // TransferManagers1.SetOperator(OperatorIDNameElement.ToString());
                     }
 
                     if (item.TryGetProperty("LCAmt", out JsonElement LCAmtIDNameElement))
                     {
                         //sourcecombo.Items.Add(purpNameElement.GetString());
                         //  MessageBox.Show(IDNameElement.GetString());
-                      //  TransferManagers1.SetLCAmt(LCAmtIDNameElement.ToString());
+                        //  TransferManagers1.SetLCAmt(LCAmtIDNameElement.ToString());
                     }
 
 
@@ -321,7 +267,7 @@ namespace Exchange.Pages
                     {
                         //sourcecombo.Items.Add(purpNameElement.GetString());
                         //  MessageBox.Show(IDNameElement.GetString());
-                     //   TransferManagers1.SetNetAmt(NetAmtIDNameElement.ToString());
+                        //   TransferManagers1.SetNetAmt(NetAmtIDNameElement.ToString());
                     }
 
 
@@ -329,23 +275,22 @@ namespace Exchange.Pages
                     {
                         //sourcecombo.Items.Add(purpNameElement.GetString());
                         //  MessageBox.Show(IDNameElement.GetString());
-                       // TransferManagers1.SetFCAmt(FCAmtIDNameElement.ToString());
+                        // TransferManagers1.SetFCAmt(FCAmtIDNameElement.ToString());
                     }
 
                     if (item.TryGetProperty("VatAmt", out JsonElement VatAmtIDNameElement))
                     {
                         //sourcecombo.Items.Add(purpNameElement.GetString());
                         //  MessageBox.Show(IDNameElement.GetString());
-                      //  TransferManagers1.SetVatAmt(VatAmtIDNameElement.ToString());
+                        //  TransferManagers1.SetVatAmt(VatAmtIDNameElement.ToString());
                     }
 
                     if (item.TryGetProperty("VatPec", out JsonElement VatPecIDNameElement))
                     {
                         //sourcecombo.Items.Add(purpNameElement.GetString());
                         //  MessageBox.Show(IDNameElement.GetString());
-                      //  TransferManagers1.SetVatPec(VatPecIDNameElement.ToString());
+                        //  TransferManagers1.SetVatPec(VatPecIDNameElement.ToString());
                     }
-
 
 
 
@@ -353,14 +298,8 @@ namespace Exchange.Pages
                     {
                         //sourcecombo.Items.Add(purpNameElement.GetString());
                         //  MessageBox.Show(IDNameElement.GetString());
-                      //  TransferManagers1.SetDiscoutValue(DiscoutValueIDNameElement.ToString());
+                        //  TransferManagers1.SetDiscoutValue(DiscoutValueIDNameElement.ToString());
                     }
-
-
-
-
-
-
 
                     if (item.TryGetProperty("LCAmt", out JsonElement LCAmtNameElement))
                     {
@@ -371,7 +310,7 @@ namespace Exchange.Pages
                         //kdamount.Text = LCAmtNameElement.ToString();
                         isUpdating = false;
 
-                      //  tal.Content = LCAmtNameElement.ToString() + " KWD";
+                        //  tal.Content = LCAmtNameElement.ToString() + " KWD";
                     }
 
                     if (item.TryGetProperty("Commison", out JsonElement CommisonNameElement))
@@ -380,7 +319,7 @@ namespace Exchange.Pages
                         //MessageBox.Show(LCAmtNameElement.GetString());
 
                         //kdamount.Text = LCAmtNameElement.ToString();
-                      //  tfl.Content = CommisonNameElement.ToString() + " KWD";
+                        //  tfl.Content = CommisonNameElement.ToString() + " KWD";
 
                     }
 
@@ -391,7 +330,7 @@ namespace Exchange.Pages
                         //MessageBox.Show(LCAmtNameElement.GetString());
 
 
-                      //  totl.Content = NetAmtNameElement.ToString() + " KWD";
+                        //  totl.Content = NetAmtNameElement.ToString() + " KWD";
                     }
 
                     if (item.TryGetProperty("FCAmt", out JsonElement FCamtNameElement))
@@ -402,7 +341,7 @@ namespace Exchange.Pages
                         //amounttosendTextbox.Text = FCamtNameElement.ToString();
                         isUpdating = false;
 
-                    //    ral.Content = FCamtNameElement.ToString() + " " + CurrencyCode;
+                        //    ral.Content = FCamtNameElement.ToString() + " " + CurrencyCode;
                     }
 
 
@@ -414,6 +353,7 @@ namespace Exchange.Pages
                 Console.WriteLine("Invalid JSON response structure or missing 'Data' array");
             }
         }
+
         private void OnPageUnloaded(object sender, RoutedEventArgs e)
         {
             disposableTimer?.Cancel();

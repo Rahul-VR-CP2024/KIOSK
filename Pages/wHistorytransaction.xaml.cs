@@ -131,12 +131,66 @@ namespace Exchange.Pages
             //Console.WriteLine(await response.Content.ReadAsStringAsync());
 
 
-            LoadTransactionHistory();
+            LoadTransactionHistory("1","","","","");
             //API CALLING ENDS
         }
 
+        public async Task LoadTransactionHistory(string memberCode, string fromDate, string toDate, string pageIndex, string noOfRecords)
+        {
+            var client = new HttpClient();
+             
+            var request = new HttpRequestMessage(
+                HttpMethod.Post, "http://" + Variable.apiipadd + "/api/Transaction/get-transaction-list?AppMemberCode="+ memberCode + "&FromDate="+fromDate+"&ToDate="+toDate+"&PageIndex="+pageIndex+"&NoOfRecords="+noOfRecords
+            );
 
-        public async Task LoadTransactionHistory()
+            request.Headers.Add("accept", "text/plain");
+            request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
+
+            var response = await client.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+
+            using var responseStream = await response.Content.ReadAsStreamAsync();
+            using var jsonDocument = await JsonDocument.ParseAsync(responseStream);
+
+            var root = jsonDocument.RootElement;
+
+            if (root.TryGetProperty("data", out JsonElement data) &&
+                data.TryGetProperty("transactions", out JsonElement transactions))
+            {
+                Countries.Clear();
+
+                foreach (var txn in transactions.EnumerateArray())
+                {
+                    try
+                    {
+                        Countries.Add(new Country
+                        {
+                            CountryName = txn.GetProperty("destination_country_name").GetString(),
+                            Countryname = txn.GetProperty("destination_country_name").GetString(),
+
+                            Amt = $"{txn.GetProperty("destination_amount").GetDecimal():0.000} {txn.GetProperty("destination_currency_code").GetString()}",
+                            LCamt = $"{txn.GetProperty("pay_amount").GetDecimal():0.000} KWD",
+
+                            Bene = txn.GetProperty("beneficiary_name").GetString(),
+                            Date = txn.GetProperty("transaction_date").ToString(),
+                            TID = txn.GetProperty("transaction_reference").ToString(),
+                            BANK = txn.GetProperty("product").GetString(),
+
+                            stsimg = new BitmapImage(new Uri("pack://application:,,,/Exchange;component/Images/check.png")),
+                            FlagImage = new BitmapImage(new Uri("pack://application:,,,/Exchange;component/Images/INR.png"))
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error parsing transaction: " + ex.Message);
+                    }
+                }
+            }
+
+            countryListView.ItemsSource = Countries;
+        }
+
+        public async Task LoadTransactionHistory_OLD()
         {
             var client = new HttpClient();
             var request = new HttpRequestMessage(HttpMethod.Post, "http://"+Variable.apiipadd+"/api/v1/sxRemittance/Transaction/History");

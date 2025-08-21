@@ -10,7 +10,7 @@ namespace Exchange.Managers
 
         public static string Langofsoft { get; set; }
 
-        private static void SetToken(string token)
+        public static void SetToken(string token)
         {
             Token = token;
         }

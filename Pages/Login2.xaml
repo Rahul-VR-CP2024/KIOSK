@@ -43,7 +43,7 @@
                 12345678
                 -->
                 <StackPanel Orientation="Horizontal" Margin="70,20,0,0">
-                    <Label Content="Username :" FontSize="25" Foreground="White" Width="200" Margin="100,0,50,0" x:Name="usernamelbl"/>
+                    <Label Content="Id Number :" FontSize="25" Foreground="White" Width="200" Margin="100,0,50,0" x:Name="usernamelbl"/>
                     <StackPanel Orientation="Horizontal" Width="235">
                         <TextBox FontFamily="Helvetica"
                                  FontWeight="Light"
@@ -73,7 +73,7 @@
 
 
                 <StackPanel Orientation="Horizontal" Margin="70,20,0,0">
-                    <Label Content="Password :" FontSize="25" Foreground="White" Width="200" Margin="100,0,50,0" x:Name="passwordlbl"/>
+                    <Label Content="Mob Number :" FontSize="25" Foreground="White" Width="200" Margin="100,0,50,0" x:Name="passwordlbl"/>
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,0" Width="235">
 
                         <PasswordBox FontFamily="Helvetica"

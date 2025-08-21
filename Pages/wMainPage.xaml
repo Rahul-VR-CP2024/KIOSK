@@ -338,37 +338,7 @@
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  Grid.Row="1">
-                            <!--<Button Width="150" Height="150" BorderThickness="0" Margin="20,10,0,0"  Foreground="#10358e" Click="FAQButton_Click" >
-                            <Grid Width="140" Height="150">
-
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="82*"/>
-                                    <ColumnDefinition Width="98*"/>
-                                </Grid.ColumnDefinitions>
-
-
-                                <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,5,0">
-                                    <Image Source="/Images/FAQ.png"  Stretch="Fill"/>
-                                </StackPanel>
-                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                                    <TextBlock  TextWrapping="WrapWithOverflow" FontSize="20" FontWeight="Bold" x:Name="faqbtn">FAQ</TextBlock>
-                                </StackPanel>
-                            </Grid>
-
-                            <Button.Background>
-                                <LinearGradientBrush  StartPoint="0,0" EndPoint="1,1">
-                                    <GradientStop Color="#FFFF " Offset="0"/>
-                                    <GradientStop Color="#FFFF" Offset="1"/>
-                                </LinearGradientBrush>
-                            </Button.Background>
-                            <Button.Resources>
-
-
-                                <Style TargetType="Border">
-                                    <Setter Property="CornerRadius" Value="10"></Setter>
-                                </Style>
-                            </Button.Resources>
-                        </Button>-->
+                           
                             <Button Width="300" Height="300" BorderThickness="0" Margin="0,90,100,0"  Foreground="#10358e" Click="ContactButton_Click" >
 
                                 <Grid Width="300" Height="300">

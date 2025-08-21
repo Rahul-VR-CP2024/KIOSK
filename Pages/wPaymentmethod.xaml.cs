@@ -1,6 +1,7 @@
 ﻿using Exchange.Common;
 using Exchange.Knet;
 using Exchange.Managers;
+using Exchange.Model;
 using Newtonsoft.Json;
 using System.IO;
 using System.Net.Http;
@@ -321,98 +322,257 @@ namespace Exchange.Pages
         }
 
         string TranID;
+        //public async void posttobo()
+        //{
+        //    var client = new HttpClient();
+        //    var request = new HttpRequestMessage(HttpMethod.Post, "http://"+Variable.apiipadd+"/api/v1/sxTransaction/Transaction");
+        //    request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
+        //    var content = new StringContent("{" +
+        //        "\n    \"TransactionID\": 0," +
+        //        "\n    \"BENE_REMID\": "+ LoginManager.Remiduser + "," +
+        //        "\n    \"BENE_SLNO\": "+ SelectedBeneficiaryManager.BENE_SLNO.ToString() + "," +
+        //        "\n    \"BENE_NAME\": \""+TransferManagers1.BENE_FNAME + " " + TransferManagers1.BENE_MNAME + " "+ TransferManagers1.BENE_LNAME +"\"," +
+        //        "\n    \"LCCurrency\": \"KWD\"," +
+        //        "\n    \"LCAmount\": "+ TransferManagers1.LCAmt + "," +
+        //        "\n    \"FCCurrency\": \""+TransferManagers1.CurrencyCode+"\"," +
+        //        "\n    \"FCAmount\": "+ TransferManagers1.FCAmt+ "," +
+        //        "\n    \"Rate\": "+ TransferManagers1.Rate + "," +
+        //        "\n    \"Commission\": "+TransferManagers1.Commison+"," +
+        //        "\n    \"Discount\": "+TransferManagers1.DiscoutValue+"," +
+        //        "\n    \"SOICode\": \"BSN\"," +
+        //        "\n    \"SOIName\": \"\"," +
+        //        "\n    \"POTCode\": \"034\"," +
+        //        "\n    \"POTName\": \"\"," +
+        //        "\n    \"TaxPerc\": 0," +
+        //        "\n    \"TaxAmount\": 0," +
+        //        "\n    \"PaymentType\": 11," +
+        //        "\n    \"TransStatus\": 1," +
+        //        "\n    \"RemittanceType\": \""+ BCManager.selectedoptionborc + "\"," +
+        //        "\n    \"CreatedOn\": \"\"," +
+        //        "\n    \"ModifiedOn\": \"\"," +
+        //        "\n    \"NetAmt\": "+ TransferManagers1.NetAmt +"," +
+        //        "\n    \"BENE_SALUTE\": \"MR.\"," +
+        //        "\n    \"BENE_GENDER\": \"0\"," +
+        //        "\n    \"BENE_FNAME\": \""+TransferManagers1.BENE_FNAME+"\"," +
+        //        "\n    \"BENE_MNAME\": \""+TransferManagers1.BENE_MNAME+"\"," +
+        //        "\n    \"BENE_LNAME\": \""+TransferManagers1.BENE_LNAME+"\"," +
+        //        "\n    \"BENE_ADDRESS1\": \"\"," +
+        //        "\n    \"BENE_ADDRESS2\": \"\"," +
+        //        "\n    \"BENE_CITY\": \"\"," +
+        //        "\n    \"BENE_STATE\": \"\"," +
+        //        "\n    \"BENE_CNTRY\": \""+TransferManagers1.CountryCode+"\"," +
+        //        "\n    \"BENE_NATION\": \""+TransferManagers1.CountryCode+"\"," +
+        //        "\n    \"BENE_ZIP\": \"\"," +
+        //        "\n    \"BENE_PHONE\": \"\"," +
+        //        "\n    \"BENE_MOBILE\": \""+ BeneficiaryDetailsManager.BENE_MOBILE+ "\"," +
+        //        "\n    \"BENE_FAX\": \"\"," +
+        //        "\n    \"BENE_EMAIL\": \"\"," +
+        //        "\n    \"BENE_PROD\": \""+TransferManagers1.ProductCode+"\"," +
+        //        "\n    \"BENE_CURR\": \""+TransferManagers1.CurrencyCode+"\"," +
+        //        "\n    \"BENE_ACCNO\": \"\"," +
+        //        "\n    \"BENE_ACCTYPE\": \"\"," +
+        //        "\n    \"BENE_BANKID\": \"\"," +
+        //        "\n    \"BENE_BANK\": \"\"," +
+        //        "\n    \"BENE_BRANCHID\": \"\"," +
+        //        "\n    \"BENE_BRANCH\": \"\"," +
+        //        "\n    \"BENE_BRADD1\": \"\"," +
+        //        "\n    \"BENE_BRADD2\": \"\"," +
+        //        "\n    \"BENE_BBRCITY\": \"\"," +
+        //        "\n    \"BENE_BBRSTATE\": \"\"," +
+        //        "\n    \"BENE_BBRCNTRY\": \"\"," +
+        //        "\n    \"BENE_BBRZIP\": \"\"," +
+        //        "\n    \"BENE_BIDTYP\": \"\"," +
+        //        "\n    \"BENE_BIDREF\": \"\"," +
+        //        "\n    \"BENE_REMRKS\": \"\"," +
+        //        "\n    \"BENE_STATUS\": \"1\"," +
+        //        "\n    \"BENE_BRIFSCCODE\": \"\"," +
+        //        "\n    \"BENE_SWIFTCODE\": \"\"," +
+        //        "\n    \"BENE_SORTCODE\": \"\"," +
+        //        "\n    \"BENE_ROUTCODE\": \"\"," +
+        //        "\n    \"BENE_IBANCODE\": \"\"," +
+        //        "\n    \"BENE_BBANKTYPE\": \"\"," +
+        //        "\n    \"BENE_BANKCODE\": \"\"," +
+        //        "\n    \"BENE_DISB\": \"\"," +
+        //        "\n    \"BENE_EMIRATE\": \"\"," +
+        //        "\n    \"BENE_AIRPORT\": \"\"," +
+        //        "\n    \"BENE_MOBILECODE\": \"\"," +
+        //        "\n    \"BENE_DOB\": \"\"," +
+        //        "\n    \"BENE_CNIC\": \"\"," +
+        //        "\n    \"BENE_TAXID\": \"\"," +
+        //        "\n    \"BENE_LNDMRK\": \"\"," +
+        //        "\n    \"BENE_OUTBR\": \"\"," +
+        //        "\n    \"BENE_OUTBRCODE\": \"\"," +
+        //        "\n    \"BENE_TYPE\": \"\"," +
+        //        "\n    \"BENE_REL\": \"\"," +
+        //        "\n    \"BENE_BRNDIST\": \"\"," +
+        //        "\n    \"VATCODE\": \"\"," +
+        //        "\n    \"Operator\": \"\"," +
+        //        "\n    \"SessionID\":\""+ TransferManagers1.Sessionid + "\"," +
+        //        "\n    \"CurrentTime\": \"\"\n}", null, "application/json");
+        //    request.Content = content;
+        //    using var response = await client.SendAsync(request);
+        //    response.EnsureSuccessStatusCode();
+        //    Console.WriteLine(await response.Content.ReadAsStringAsync());
+        //    //MessageBox.Show(await response.Content.ReadAsStringAsync());
+
+        //    var contentString = await request.Content.ReadAsStringAsync();
+        //    //foreach (var part in content)
+        //    //{
+        //    //    //contentString += part.Headers.ToString() + "\n" + await part.ReadAsStringAsync() + "\n";
+        //    //    if (part.Headers.ContentDisposition != null)
+        //    //    {
+        //    //        var name = part.Headers.ContentDisposition.Name?.Trim('"'); // Trims the quotes around the name
+        //    //        var value = await part.ReadAsStringAsync(); // Reads the value of the part
+        //    //        //contentString += $"Name: {name}, Value: {value}\n";
+        //    //        contentString += $"{name}: {value}\n";
+        //    //    }
+        //    //}
+        //    // MessageBox.Show(contentString);
+
+        //    //WORKING V1
+        //    //var contentString = await content.ReadAsStringAsync();
+
+
+        //    // Get response content as a string
+        //    string responseString = await response.Content.ReadAsStringAsync();
+
+        //    //MessageBox.Show(contentString);
+
+        //    // Display content and response in separate RichMessageBoxes
+        //    //RichMessageBox.Show(formDataString + "Request Data");
+        //    RichMessageBox.Show("Request Data to api/v1/sxTransaction/Transaction\n" + DateTime.Now + "\n" + contentString);
+        //    RichMessageBox.Show("Response from api/v1/sxTransaction/Transaction\n" + DateTime.Now + "\n" + responseString);
+
+        //    //var response = await client.SendAsync(request);
+        //    //response.EnsureSuccessStatusCode();
+        //    //Console.WriteLine(await response.Content.ReadAsStringAsync());
+        //    //MessageBox.Show(await response.Content.ReadAsStringAsync());
+
+
+
+        //    // Read the response content as a string
+        //    var responseBody = await response.Content.ReadAsStringAsync();
+
+        //    // Parse the JSON response using System.Text.Json
+        //    using (JsonDocument doc = JsonDocument.Parse(responseBody))
+        //    {
+        //        // Access the root JSON object
+        //        JsonElement root = doc.RootElement;
+
+        //        // Navigate to the 'Data' object
+        //        //JsonElement dataElement = root.GetProperty("Message");
+
+        //        // Extract the accessToken
+        //        string Message = root.GetProperty("Message").GetString();
+
+
+        //        // Navigate to the 'Data' object
+        //        JsonElement dataElement = root.GetProperty("Data");
+
+        //        // Extract the accessToken
+        //        //RemitterID
+        //        //string remid = dataElement.GetProperty("UserId").ToString();
+        //        TranID = dataElement.GetProperty("TransactionID").ToString();
+        //        //MessageBox.Show(TranID);
+        //        //LoginManager.SetRemiduser(remid);
+
+        //        //// Display the accessToken in a message box
+        //        ////Console.WriteLine($"Access Token: {accessToken}");
+        //        ////MessageBox.Show($"Message: {Message}");
+
+        //        //MessageBox.Show(Message + " RemID : " + remid);
+
+        //        //if (Message == "Login Successfully")
+        //        //{
+        //        //    wMainPage wmainpage = new wMainPage();
+        //        //    NavigationService.Navigate(wmainpage);
+        //        //}
+
+
+        //        // RemoveToken(accessToken);
+        //        // SaveToken(accessToken);
+        //        //TokenManager.SetToken(accessToken);
+        //        // MessageBox.Show(LoadToken());
+
+        //    }
+
+        //    posttobranch();
+
+        //}
+
         public async void posttobo()
         {
+            var beneficiary = new Beneficiary
+            {
+                BeneficiarySalutation = "MR.",
+                BeneficiaryGender = "0",
+                BeneficiaryFirstName = TransferManagers1.BENE_FNAME,
+                BeneficiaryMiddleName = TransferManagers1.BENE_MNAME,
+                BeneficiaryLastName = TransferManagers1.BENE_LNAME,
+                BeneficiaryAddress1 = "",
+                BeneficiaryAddress2 = "",
+                BeneficiaryCity = "",
+                BeneficiaryState = "",
+                BeneficiaryCountryCode = TransferManagers1.CountryCode,
+                BeneficiaryNationalityCode = TransferManagers1.CountryCode,
+                BeneficiaryZipCode = "",
+                BeneficiaryPhone = "",
+                BeneficiaryMobile = BeneficiaryDetailsManager.BENE_MOBILE,
+                BeneficiaryEmail = "",
+                BeneficiaryFax = "",
+                ProductCode = TransferManagers1.ProductCode,
+                CurrencyCode = TransferManagers1.CurrencyCode,
+                BeneficiaryBankAccountNumber = "",
+                BeneficiaryBankAccountType = "",
+                BeneficiaryBankCode = "",
+                BeneficiaryBankName = "",
+                BeneficiaryBranchCode = "",
+                BeneficiaryBranchName = "",
+                BeneficiaryBranchLandMark = "",
+                Remarks = "",
+                Status = "1"
+            };
+
+            var transactionRequest = new TransactionRequest
+            {
+                TransactionReference = 0,
+                SourceCurrencyCode = "KWD",
+                SourceAmount = Convert.ToDecimal(TransferManagers1.LCAmt),
+                DestinationCurrencyCode = TransferManagers1.CurrencyCode,
+                DestinationAmount = Convert.ToDecimal(TransferManagers1.FCAmt),
+                Rate = Convert.ToDecimal(TransferManagers1.Rate),
+                Commission = Convert.ToDecimal(TransferManagers1.Commison),
+                TaxPercentage = 0,
+                TaxCollected = 0,
+                NetAmount = Convert.ToDecimal(TransferManagers1.NetAmt),
+                TransferModeCode = "BSN",
+                PurposeCode = "034",
+                IncomeSourceCode = BCManager.selectedoptionborc,
+                BeneficiaryCode = Convert.ToInt32(SelectedBeneficiaryManager.BENE_SLNO),
+                BeneficiaryName = $"{TransferManagers1.BENE_FNAME} {TransferManagers1.BENE_MNAME} {TransferManagers1.BENE_LNAME}",
+                Beneficiary = beneficiary,
+                CreatedOn = DateTime.Now,
+                ModifiedOn = DateTime.Now
+            };
+            string payTransactionJson = System.Text.Json.JsonSerializer.Serialize(transactionRequest);
             var client = new HttpClient();
-            var request = new HttpRequestMessage(HttpMethod.Post, "http://"+Variable.apiipadd+"/api/v1/sxTransaction/Transaction");
-            request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
-            var content = new StringContent("{" +
-                "\n    \"TransactionID\": 0," +
-                "\n    \"BENE_REMID\": "+ LoginManager.Remiduser + "," +
-                "\n    \"BENE_SLNO\": "+ SelectedBeneficiaryManager.BENE_SLNO.ToString() + "," +
-                "\n    \"BENE_NAME\": \""+TransferManagers1.BENE_FNAME + " " + TransferManagers1.BENE_MNAME + " "+ TransferManagers1.BENE_LNAME +"\"," +
-                "\n    \"LCCurrency\": \"KWD\"," +
-                "\n    \"LCAmount\": "+ TransferManagers1.LCAmt + "," +
-                "\n    \"FCCurrency\": \""+TransferManagers1.CurrencyCode+"\"," +
-                "\n    \"FCAmount\": "+ TransferManagers1.FCAmt+ "," +
-                "\n    \"Rate\": "+ TransferManagers1.Rate + "," +
-                "\n    \"Commission\": "+TransferManagers1.Commison+"," +
-                "\n    \"Discount\": "+TransferManagers1.DiscoutValue+"," +
-                "\n    \"SOICode\": \"BSN\"," +
-                "\n    \"SOIName\": \"\"," +
-                "\n    \"POTCode\": \"034\"," +
-                "\n    \"POTName\": \"\"," +
-                "\n    \"TaxPerc\": 0," +
-                "\n    \"TaxAmount\": 0," +
-                "\n    \"PaymentType\": 11," +
-                "\n    \"TransStatus\": 1," +
-                "\n    \"RemittanceType\": \""+ BCManager.selectedoptionborc + "\"," +
-                "\n    \"CreatedOn\": \"\"," +
-                "\n    \"ModifiedOn\": \"\"," +
-                "\n    \"NetAmt\": "+ TransferManagers1.NetAmt +"," +
-                "\n    \"BENE_SALUTE\": \"MR.\"," +
-                "\n    \"BENE_GENDER\": \"0\"," +
-                "\n    \"BENE_FNAME\": \""+TransferManagers1.BENE_FNAME+"\"," +
-                "\n    \"BENE_MNAME\": \""+TransferManagers1.BENE_MNAME+"\"," +
-                "\n    \"BENE_LNAME\": \""+TransferManagers1.BENE_LNAME+"\"," +
-                "\n    \"BENE_ADDRESS1\": \"\"," +
-                "\n    \"BENE_ADDRESS2\": \"\"," +
-                "\n    \"BENE_CITY\": \"\"," +
-                "\n    \"BENE_STATE\": \"\"," +
-                "\n    \"BENE_CNTRY\": \""+TransferManagers1.CountryCode+"\"," +
-                "\n    \"BENE_NATION\": \""+TransferManagers1.CountryCode+"\"," +
-                "\n    \"BENE_ZIP\": \"\"," +
-                "\n    \"BENE_PHONE\": \"\"," +
-                "\n    \"BENE_MOBILE\": \""+ BeneficiaryDetailsManager.BENE_MOBILE+ "\"," +
-                "\n    \"BENE_FAX\": \"\"," +
-                "\n    \"BENE_EMAIL\": \"\"," +
-                "\n    \"BENE_PROD\": \""+TransferManagers1.ProductCode+"\"," +
-                "\n    \"BENE_CURR\": \""+TransferManagers1.CurrencyCode+"\"," +
-                "\n    \"BENE_ACCNO\": \"\"," +
-                "\n    \"BENE_ACCTYPE\": \"\"," +
-                "\n    \"BENE_BANKID\": \"\"," +
-                "\n    \"BENE_BANK\": \"\"," +
-                "\n    \"BENE_BRANCHID\": \"\"," +
-                "\n    \"BENE_BRANCH\": \"\"," +
-                "\n    \"BENE_BRADD1\": \"\"," +
-                "\n    \"BENE_BRADD2\": \"\"," +
-                "\n    \"BENE_BBRCITY\": \"\"," +
-                "\n    \"BENE_BBRSTATE\": \"\"," +
-                "\n    \"BENE_BBRCNTRY\": \"\"," +
-                "\n    \"BENE_BBRZIP\": \"\"," +
-                "\n    \"BENE_BIDTYP\": \"\"," +
-                "\n    \"BENE_BIDREF\": \"\"," +
-                "\n    \"BENE_REMRKS\": \"\"," +
-                "\n    \"BENE_STATUS\": \"1\"," +
-                "\n    \"BENE_BRIFSCCODE\": \"\"," +
-                "\n    \"BENE_SWIFTCODE\": \"\"," +
-                "\n    \"BENE_SORTCODE\": \"\"," +
-                "\n    \"BENE_ROUTCODE\": \"\"," +
-                "\n    \"BENE_IBANCODE\": \"\"," +
-                "\n    \"BENE_BBANKTYPE\": \"\"," +
-                "\n    \"BENE_BANKCODE\": \"\"," +
-                "\n    \"BENE_DISB\": \"\"," +
-                "\n    \"BENE_EMIRATE\": \"\"," +
-                "\n    \"BENE_AIRPORT\": \"\"," +
-                "\n    \"BENE_MOBILECODE\": \"\"," +
-                "\n    \"BENE_DOB\": \"\"," +
-                "\n    \"BENE_CNIC\": \"\"," +
-                "\n    \"BENE_TAXID\": \"\"," +
-                "\n    \"BENE_LNDMRK\": \"\"," +
-                "\n    \"BENE_OUTBR\": \"\"," +
-                "\n    \"BENE_OUTBRCODE\": \"\"," +
-                "\n    \"BENE_TYPE\": \"\"," +
-                "\n    \"BENE_REL\": \"\"," +
-                "\n    \"BENE_BRNDIST\": \"\"," +
-                "\n    \"VATCODE\": \"\"," +
-                "\n    \"Operator\": \"\"," +
-                "\n    \"SessionID\":\""+ TransferManagers1.Sessionid + "\"," +
-                "\n    \"CurrentTime\": \"\"\n}", null, "application/json");
+           
+            var request = new HttpRequestMessage(HttpMethod.Post, "http://" + Variable.apiipadd + "/api/Transaction/update-cart-transaction");
+
+            // Set headers
+            request.Headers.Add("accept", "text/plain");
+            request.Headers.Add("Authorization", "Bearer " + TokenManager.Token); // Use your token
+
+            // Prepare content
+            var content = new StringContent(payTransactionJson, System.Text.Encoding.UTF8, "application/json");
             request.Content = content;
+
+            // Send Request and Handle Response
             using var response = await client.SendAsync(request);
-            response.EnsureSuccessStatusCode();
-            Console.WriteLine(await response.Content.ReadAsStringAsync());
-            //MessageBox.Show(await response.Content.ReadAsStringAsync());
+            response.EnsureSuccessStatusCode(); // Throws if not successful
+
+            string responseContent = await response.Content.ReadAsStringAsync();
+            Console.WriteLine(responseContent);
 
             var contentString = await request.Content.ReadAsStringAsync();
             //foreach (var part in content)

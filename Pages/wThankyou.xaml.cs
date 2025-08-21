@@ -1388,8 +1388,62 @@ namespace Exchange.Pages
             return new string(array);
         }
 
-
         private async void Page_load(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                int memberCode = 1;
+                var client = new HttpClient();
+
+                // Create the GET request to the new API endpoint
+                var request = new HttpRequestMessage(
+                    HttpMethod.Get,
+                    "http://" + Variable.apiipadd + "/api/Transaction/get-transaction-list?AppMemberCode=" + memberCode);
+
+                request.Headers.Add("accept", "text/plain");
+                request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
+
+                var response = await client.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+
+                using var responseStream = await response.Content.ReadAsStreamAsync();
+                using var jsonDoc = await JsonDocument.ParseAsync(responseStream);
+
+                var root = jsonDoc.RootElement;
+
+                // Access data.transactions array
+                if (root.TryGetProperty("data", out JsonElement data) &&
+                    data.TryGetProperty("transactions", out JsonElement transactions))
+                {
+                    // Just showing the first transaction (modify as needed)
+                    if (transactions.GetArrayLength() > 0)
+                    {
+                        var txn = transactions[0];
+
+                        wthankreceivername.Content = txn.GetProperty("beneficiary_name").GetString();
+                        wthanktid.Content = txn.GetProperty("transaction_reference").ToString();
+                        wttid.Content = txn.GetProperty("transaction_date").GetString();
+                        wthankpaymentid.Content = txn.GetProperty("payment_mode").GetString();
+
+                        wthanktransferamount.Content = txn.GetProperty("source_amount").GetDecimal().ToString("0.000") + " KWD";
+                        wthanktransferfee.Content = txn.GetProperty("commission").GetDecimal().ToString("0.000") + " KWD";
+                        wothercharges.Content = txn.GetProperty("tax_collected").GetDecimal().ToString("0.000") + " KWD";
+                        wthankdiscount.Content = "0.000 KWD";
+                        wthanktotal.Content = txn.GetProperty("pay_amount").GetDecimal().ToString("0.000") + " KWD";
+
+                        wthankreceiveamount.Content =
+                            txn.GetProperty("destination_amount").GetDecimal().ToString("0.000") + " " +
+                            txn.GetProperty("destination_currency_code").GetString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading transaction data: " + ex.Message);
+            }
+        }
+
+        private async void Page_load_old(object sender, RoutedEventArgs e)
         {
 
             if (POSTTOBRANCHDONE.kt3 != "APPROVE")

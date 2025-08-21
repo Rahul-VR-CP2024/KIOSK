@@ -31,8 +31,6 @@ namespace Exchange.Pages
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
 
-            // Pass parameters to Page1.xaml after successful login
-            // Page1 page1 = new Page1(username);
             NavigationManager.NavigateToHome();
 
         }

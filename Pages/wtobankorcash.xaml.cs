@@ -12,67 +12,26 @@ namespace Exchange.Pages
     {
         public wtobankorcash()
         {
-            InitializeComponent();
-
-            //MessageBox.Show("" + BCManager.fromwhereopenedwtbc);
-            if (TokenManager.Langofsoft == "ar")
+            try
             {
-                tobp1.Text = "إلى حساب مصرفي";
-                tobp2.Text = "تحويل الأموال عبر الإنترنت إلى المستفيد الخاص بك.";
-                tocp1.Text = "تسليم نقدا";
-                tocp2.Text = "استلام النقدية من أقرب وكيل.";
-                backbtn.Content = "يرجع";
-                sendmontitle.Text = "إرسال الأموال";
+                InitializeComponent();
+
+                if (TokenManager.Langofsoft == "ar")
+                {
+                    tobp1.Text = "إلى حساب مصرفي";
+                    tobp2.Text = "تحويل الأموال عبر الإنترنت إلى المستفيد الخاص بك.";
+                    tocp1.Text = "تسليم نقدا";
+                    tocp2.Text = "استلام النقدية من أقرب وكيل.";
+                    backbtn.Content = "يرجع";
+                    sendmontitle.Text = "إرسال الأموال";
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+           
         }
-
-
-        //transferbtnclick
-
-
-        private void transferbtnclick(object sender, RoutedEventArgs e)
-        {
-
-            // Pass parameters to Page1.xaml after successful login
-            // Page1 page1 = new Page1(username);
-            //wTransferpay wtpay = new wTransferpay();
-            //NavigationService.Navigate(wtpay);
-
-            BCManager.SetTokenselectedoptionborc("BT");
-            //wSelectbeneficary wx = new wSelectbeneficary();
-            //NavigationService.Navigate(wx);
-
-
-            if (BCManager.fromwhereopenedwtbc == "beneficiary")
-            {
-                wBeneficiary welocmepage = new wBeneficiary();
-                NavigationService.Navigate(welocmepage);
-            }
-
-            if (BCManager.fromwhereopenedwtbc == "sendmoney")
-            {
-
-                wSelectbeneficary wx = new wSelectbeneficary();
-                NavigationService.Navigate(wx);
-            }
-            if (BCManager.fromwhereopenedwtbc == "exchangerate")
-            {
-
-                wSelectcountry mainpage = new wSelectcountry();
-                NavigationService.Navigate(mainpage);
-            }
-
-        }
-
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
-        {
-
-            // Pass parameters to Page1.xaml after successful login
-            // Page1 page1 = new Page1(username);
-            NavigationManager.NavigateToHome();
-
-        }
-
 
         public static class BCManager
         {
@@ -91,34 +50,78 @@ namespace Exchange.Pages
             }
         }
 
-        private void cashbtnclick(object sender, RoutedEventArgs e)
+        private void transferbtnclick(object sender, RoutedEventArgs e)
         {
 
-            BCManager.SetTokenselectedoptionborc("CP");
-            //BCManager.SetTokenfromwhereopenedwtbc("sendmoney");
-            //BCManager.SetTokenfromwhereopenedwtbc("beneficiary");
+            try
+            {
+                BCManager.SetTokenselectedoptionborc("BT");
+
+                if (BCManager.fromwhereopenedwtbc == "beneficiary")
+                {
+                    wBeneficiary welocmepage = new wBeneficiary();
+                    NavigationService.Navigate(welocmepage);
+                }
+
+                if (BCManager.fromwhereopenedwtbc == "sendmoney")
+                {
+                    wSelectbeneficary wx = new wSelectbeneficary();
+                    NavigationService.Navigate(wx);
+                }
+                if (BCManager.fromwhereopenedwtbc == "exchangerate")
+                {
+                    wSelectcountry mainpage = new wSelectcountry();
+                    NavigationService.Navigate(mainpage);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
             
 
-
-            if(BCManager.fromwhereopenedwtbc == "beneficiary")
-            {
-                wBeneficiary welocmepage = new wBeneficiary();
-                NavigationService.Navigate(welocmepage);
-            }
-
-            if (BCManager.fromwhereopenedwtbc == "sendmoney")
-            {
-                
-                wSelectbeneficary wx = new wSelectbeneficary();
-                NavigationService.Navigate(wx);
-            }
-
-            if (BCManager.fromwhereopenedwtbc == "exchangerate")
-            {
-
-                wSelectcountry mainpage = new wSelectcountry();
-                NavigationService.Navigate(mainpage);
-            }
         }
+
+        private void cashbtnclick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                BCManager.SetTokenselectedoptionborc("CP");
+
+
+                if (BCManager.fromwhereopenedwtbc == "beneficiary")
+                {
+                    wBeneficiary welocmepage = new wBeneficiary();
+                    NavigationService.Navigate(welocmepage);
+                }
+
+                if (BCManager.fromwhereopenedwtbc == "sendmoney")
+                {
+
+                    wSelectbeneficary wx = new wSelectbeneficary();
+                    NavigationService.Navigate(wx);
+                }
+
+                if (BCManager.fromwhereopenedwtbc == "exchangerate")
+                {
+
+                    wSelectcountry mainpage = new wSelectcountry();
+                    NavigationService.Navigate(mainpage);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+            
+        }
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            NavigationManager.NavigateToHome();
+
+        }
+
     }
 }

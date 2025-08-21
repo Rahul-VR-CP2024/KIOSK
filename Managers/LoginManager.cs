@@ -1,4 +1,6 @@
-﻿using System.Net.Http;
+﻿using DocumentFormat.OpenXml.Spreadsheet;
+using System.Net.Http;
+using System.Reflection;
 using System.Text;
 using System.Text.Json;
 using System.Windows;
@@ -52,99 +54,114 @@ namespace Exchange.Managers
         {
             try
             {
-                // bool tokenGenerated = await TokenManager.FetchAndSaveToken();
-                //if (!tokenGenerated)
-                //{
-                //    return false;
-                //}
 
-                var client = new HttpClient();
-                var request = new HttpRequestMessage(HttpMethod.Post, "https://" + Variable.apiipadd + "/api/Auth/verify-login-otp");
+                var clientotp = new HttpClient();
 
-                // Optional: Authorization header
-                // request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
+                var requestotp = new HttpRequestMessage(HttpMethod.Post, "https://" + Variable.apiipadd + "/api/Auth/request-otp");
 
-                // Create payload using an anonymous object
-                var payload = new
+                var payloadotp = new
                 {
-                    mobile_Code = 987,
+                    mobile_Code = 965,
                     mobile_number = password?.Trim(),
                     id_number = username?.Trim()
                 };
 
                 // Serialize payload to JSON
-                string json = JsonSerializer.Serialize(payload);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
-                request.Content = content;
+                string jsonotp = JsonSerializer.Serialize(payloadotp);
+                var contentotp = new StringContent(jsonotp, Encoding.UTF8, "application/json");
+                requestotp.Content = contentotp;
 
                 // Log request info
-                MessageBox.Show("Request Body:\n" + json);
-                MessageBox.Show("Request URL:\n" + request.RequestUri.ToString());
 
                 // Send request
-                var response = await client.SendAsync(request);
-
+                var responseotp = await clientotp.SendAsync(requestotp);
                 // Read response content
-                string responseBody = await response.Content.ReadAsStringAsync();
+                string responseBodyotp = await responseotp.Content.ReadAsStringAsync();
 
-                // Log response
-               // MessageBox.Show("Status: " + (int)response.StatusCode + "\n\nResponse Body:\n" + responseBody);
 
                 // Optional: Throw exception if not 2xx
-                response.EnsureSuccessStatusCode();
-                //Console.WriteLine(await response.Content.ReadAsStringAsync());
-                //MessageBox.Show(await response.Content.ReadAsStringAsync());
+                responseotp.EnsureSuccessStatusCode();
 
-
-
-                // Read the response content as a string
-                // var responseBody = await response.Content.ReadAsStringAsync();
-
-                // Parse the JSON response using System.Text.Json
-                using (JsonDocument doc = JsonDocument.Parse(responseBody))
+                using (JsonDocument docotp = JsonDocument.Parse(responseBodyotp))
                 {
-                    JsonElement root = doc.RootElement;
-                    MessageBox.Show(root.ToString());
+
+                    JsonElement roototp = docotp.RootElement;
                     // Try to get the "message" field
-                    if (!root.TryGetProperty("message", out JsonElement messageElement))
+                    if (!roototp.TryGetProperty("success", out JsonElement messageElementotp))
                         return false;
-
-                    string message = messageElement.GetString();
-                    MessageBox.Show(message);
+                    string messageotp = messageElementotp.GetString();
                     // Check if the login was successful
-                    if (message != "Login Successful")
+                    if (messageotp != "true")
                         return false;
 
-                    // Try to access "data.user"
-                    if (!root.TryGetProperty("data", out JsonElement dataElement) ||
-                        !dataElement.TryGetProperty("user", out JsonElement userElement))
-                        return false;
 
-                    // Safely extract needed fields from "user"
-                    string eId = userElement.GetProperty("e_id").GetString();
-                    string mobileNumber = userElement.GetProperty("mobile_number").GetString();
-                    string firstName = userElement.GetProperty("first_name").GetString();
-                    string lastName = userElement.GetProperty("last_name").GetString();
-                    string fullName = $"{firstName} {lastName}".Trim();
-                    string dateOfBirth = userElement.GetProperty("date_of_birth").GetString();
-                    string nationality = userElement.GetProperty("nationality").GetString();
-                    string riskType = userElement.GetProperty("risk_type_name").GetString();
-                    int memberCode = userElement.GetProperty("member_code").GetInt32();
-                    MessageBox.Show(mobileNumber);
-                    // You can now assign these to your session, service, or display
-                    // SetUserEId(eId);
-                    // SetUserMobile(mobileNumber);
-                    // SetUserFullName(fullName);
-                    // SetUserDOB(dateOfBirth);
-                    // SetUserNationality(nationality);
-                    // SetUserRiskType(riskType);
-                    // SetMemberCode(memberCode);
+                    var client = new HttpClient();
+                    var request = new HttpRequestMessage(HttpMethod.Post, "https://" + Variable.apiipadd + "/api/Auth/verify-login-otp");
 
-                    // Optional: Navigate to the main page after login
-                    // wMainPage wmainpage = new wMainPage();
-                    // NavigationService.Navigate(wmainpage);
+                    var payload = new
+                    {
+                        mobile_Code = 965,
+                        mobile_number = password?.Trim(),
+                        id_number = username?.Trim(),
+                        o_t_p = 1234
+                    };
 
-                    return true;
+                    // Serialize payload to JSON
+                    string json = JsonSerializer.Serialize(payload);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+                    request.Content = content;
+
+                    // Log request info
+
+                    // Send request
+                    var response = await client.SendAsync(request);
+                    // Read response content
+                    string responseBody = await response.Content.ReadAsStringAsync();
+
+
+                    // Optional: Throw exception if not 2xx
+                    response.EnsureSuccessStatusCode();
+
+                    using (JsonDocument doc = JsonDocument.Parse(responseBody))
+                    {
+                        JsonElement root = doc.RootElement;
+                        // Try to get the "message" field
+                        if (!root.TryGetProperty("message", out JsonElement messageElement))
+                            return false;
+                        string message = messageElement.GetString();
+
+                        // Check if the login was successful
+                        if (message != "OTP Verified Successfully")
+                            return false;
+
+                        // Try to access "data.user"
+                        if (!root.TryGetProperty("data", out JsonElement dataElement) ||
+                            !dataElement.TryGetProperty("user", out JsonElement userElement))
+                            return false;
+
+                        string eId = userElement.GetProperty("e_id").GetString();
+                        string mobileNumber = userElement.GetProperty("mobile_number").GetString();
+                        string firstName = userElement.GetProperty("first_name").GetString();
+                        string lastName = userElement.GetProperty("last_name").GetString();
+                        string fullName = $"{firstName} {lastName}".Trim();
+                        string dateOfBirth = userElement.GetProperty("date_of_birth").GetString();
+                        string nationality = userElement.GetProperty("nationality").GetString();
+                        string riskType = userElement.GetProperty("risk_type_name").GetString();
+                        string email = userElement.GetProperty("email").GetString();
+                        string civilno = userElement.GetProperty("id_number").GetString();
+                        int memberCode = userElement.GetProperty("member_code").GetInt32();
+                        string accessToken = dataElement.GetProperty("jwt_token").GetString();
+                        TokenManager.SetToken(accessToken);
+                        SetRemiduser(memberCode.ToString());
+                        SetUserid(eId);
+                        SetUserEMAILID(email);
+                        SetUserMOBILE(mobileNumber);
+                        SetUserFullname(fullName);
+                        Setcivilidno(civilno);
+
+
+                        return true;
+                    }
                 }
 
 
@@ -162,7 +179,7 @@ namespace Exchange.Managers
         }
         public static bool IsLoggedIn()
         {
-            return !string.IsNullOrEmpty(TokenManager.Token) && !string.IsNullOrEmpty(UserEMAILID);
+            return !string.IsNullOrEmpty(TokenManager.Token);
         }
         private static void Clear()
         {

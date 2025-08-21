@@ -13,10 +13,12 @@ namespace Exchange.Pages
     {
         //private IdleTimer _idleTimer;
         private Page _returnPage;
+
         public Login2()
         {
             LoginInit();
         }
+
         public Login2(Page returnPage)
         {
             _returnPage = returnPage;
@@ -27,16 +29,6 @@ namespace Exchange.Pages
         {
             InitializeComponent();
             usernameTextBox.Focus();
-
-            //_idleTimer = new IdleTimer(NavigationService);
-            //_idleTimer.Start();
-
-            //// Reset the timer on user interaction
-            //PreviewMouseDown += (sender, e) => _idleTimer.Reset();
-            //PreviewKeyDown += (sender, e) => _idleTimer.Reset();
-            //PreviewMouseMove += (sender, e) => _idleTimer.Reset();
-
-
 
             if (TokenManager.Langofsoft == "ar")
             {
@@ -56,12 +48,6 @@ namespace Exchange.Pages
                 string username = usernameTextBox.Text;
                 string password = passwordBox.Password;
 
-
-                //MessageBox.Show(TokenManager.Token);
-
-                //"username": "Halani",
-                //"password": "Halani@123",
-
                 bool isLoginSuccessful = await LoginManager.Login(username, password);
 
                 if (!isLoginSuccessful)
@@ -75,35 +61,11 @@ namespace Exchange.Pages
                     NavigationService.Navigate(_returnPage);
                 }
                 return;
-
-                // Replace this with your actual login logic
-                if (IsValidLogin(username, password))
-                {
-                    MessageBox.Show("Login successful!");
-                    // Navigate to the next window or perform other actions
-
-                    // Navigate to Page1.xaml after successful login
-                    //NavigationService.Navigate(new Uri("Pages/Page1.xaml", UriKind.Relative));
-
-                    // Pass parameters to Page1.xaml after successful login
-                    Page1 page1 = new Page1(username);
-                    NavigationService.Navigate(page1);
-                }
-                else
-                {
-                    //MessageBox.Show("Invalid username or password.");
-                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Login failed");
+                MessageBox.Show(ex.Message.ToString());
             }
-        }
-
-        private bool IsValidLogin(string username, string password)
-        {
-            // Replace this with your actual validation logic
-            return username == "user" && password == "password";
         }
 
         private NavigationService NavigationService
@@ -114,8 +76,6 @@ namespace Exchange.Pages
         private async void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
             await TokenManager.FetchAndSaveToken();
-            //wRegister wmainpage = new wRegister();
-            //NavigationService.Navigate(wmainpage);
 
             WelcomePage welco = new WelcomePage();
             NavigationService.Navigate(welco);
@@ -126,6 +86,7 @@ namespace Exchange.Pages
             wResetPassword welco = new wResetPassword();
             NavigationService.Navigate(welco);
         }
+
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();

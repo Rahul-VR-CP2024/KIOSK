@@ -20,46 +20,133 @@ namespace Exchange.Pages
 
         public Country SelectedCountry { get; set; }
 
-
         public wSelectbeneficary()
         {
-            InitializeComponent();
-
-            if (TokenManager.Langofsoft == "ar")
+            try
             {
-                backbtn.Content = "يرجع";
-                benetitle.Text = "المستفيد";
-                addnewbtn.Content = "إضافة مستفيد جديد";
+                InitializeComponent();
 
+                Countries = new ObservableCollection<Country>();
+
+                if (TokenManager.Langofsoft == "ar")
+                {
+                    backbtn.Content = "يرجع";
+                    benetitle.Text = "المستفيد";
+                    addnewbtn.Content = "إضافة مستفيد جديد";
+
+                }
             }
-
-            //MessageBox.Show("" + BCManager.selectedoptionborc);
-            Countries = new ObservableCollection<Country>
+            catch (Exception ex)
             {
-                //new Country { FlagImage = new BitmapImage(new Uri("pack://application:,,,/Exchange;component/Images/INR.png")), CountryName = "Bank of Baroda" , Amt = "2,00,000 INR", Bene = "John Doe", Date = "01/01/2023", TID="123456" , BANK="Bank of Baroda", stsimg=new BitmapImage(new Uri("pack://application:,,,/Exchange;component/Images/check.png"))},
-                // new Country { FlagImage = new BitmapImage(new Uri("pack://application:,,,/Exchange;component/Images/AUSTRAILA.png")), CountryName = "National Australia Bank", Amt = "200 AU$", Bene = "Steave", Date = "15/02/2023", TID="678912" , BANK="National Australia Bank", stsimg=new BitmapImage(new Uri("pack://application:,,,/Exchange;component/Images/cross.png")) },
-                // new Country { FlagImage = new BitmapImage(new Uri("pack://application:,,,/Exchange;component/Images/USA.png")), CountryName = "Bank of America" , Amt = "9000 USD", Bene = "Harvey", Date = "06/03/2023", TID="789147" , BANK="Bank of America", stsimg=new BitmapImage(new Uri("pack://application:,,,/Exchange;component/Images/check.png")) },
-                // new Country { FlagImage = new BitmapImage(new Uri("pack://application:,,,/Exchange;component/Images/UK.png")), CountryName = "London Bank", Amt = "500 £", Bene = "Nicole", Date = "10/04/2023" , TID="963852" , BANK="London Bank", stsimg=new BitmapImage(new Uri("pack://application:,,,/Exchange;component/Images/check.png"))},
-                // new Country { FlagImage = new BitmapImage(new Uri("pack://application:,,,/Exchange;component/Images/CANADA.png")), CountryName = "Bank of Canada" , Amt = "2500 CAD", Bene = "Sama", Date = "20/05/2023" , TID="753951" , BANK="Bank of Canada", stsimg=new BitmapImage(new Uri("pack://application:,,,/Exchange;component/Images/check.png"))},
-                // new Country { FlagImage = new BitmapImage(new Uri("pack://application:,,,/Exchange;component/Images/CHINA.png")), CountryName = "ICBC", Amt = "10,000 USD", Bene = "Rio", Date = "14/06/2023" , TID="456741" , BANK="ICBC", stsimg=new BitmapImage(new Uri("pack://application:,,,/Exchange;component/Images/check.png"))},
-                // new Country { FlagImage = new BitmapImage(new Uri("pack://application:,,,/Exchange;component/Images/MOROCCO.png")), CountryName = "BANK AL-MAGHRIB" , Amt = "3000 MAD", Bene = "Michael", Date = "13/07/2023" , TID="159753" , BANK="BANK AL-MAGHRIB", stsimg=new BitmapImage(new Uri("pack://application:,,,/Exchange;component/Images/check.png"))},
-                // new Country { FlagImage = new BitmapImage(new Uri("pack://application:,,,/Exchange;component/Images/PHILIPINES.png")), CountryName = "Philippine National Bank", Amt = "5000 PHP", Bene = "Mohammed", Date = "02/12/2023", TID="897563" , BANK="Philippine National Bank", stsimg=new BitmapImage(new Uri("pack://application:,,,/Exchange;component/Images/check.png")) },
-                 
-                //new Country { FlagImage = new BitmapImage(new Uri("/Images/KWTFlag.png")), CountryName = "Canada" },
-                // Add more countries as needed
-            };
-
-            countryListView.ItemsSource = Countries;
+                MessageBox.Show(ex.Message.ToString());
+            }
+            
         }
 
-
-        //back button
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        public class Country
         {
+            public string? CountryName { get; set; }
 
-            // Pass parameters to Page1.xaml after successful login
-            // Page1 page1 = new Page1(username);
-            NavigationManager.NavigateToHome();
+            public string? TID { get; set; }
+            public string? BANK { get; set; }
+
+            public string? Amt { get; set; }
+
+            public string? Date { get; set; }
+
+            public string? Bene { get; set; }
+        }
+
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                LoadCountries();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+
+        }
+
+        public async Task LoadCountries()
+        {
+            try
+            {
+                var client = new HttpClient();
+                string url = $"https://{Variable.apiipadd}/api/Beneficiary/get-beneficiary-list?AppMemberCode={LoginManager.Remiduser}";
+
+
+                var request = new HttpRequestMessage(HttpMethod.Get, url);
+                request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
+                request.Headers.Add("accept", "application/json");
+
+                var response = await client.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+                using (var responseStream = await response.Content.ReadAsStreamAsync())
+                using (var jsonDocument = await JsonDocument.ParseAsync(responseStream))
+                {
+                    bool dataElemen= jsonDocument.RootElement.TryGetProperty("data", out JsonElement dataElements);
+                    bool beneficiaryLis = dataElements.TryGetProperty("beneficiary_list", out JsonElement beneficiaryLists);
+
+                    // Response root contains success, status_code, message, data
+                    if ((dataElemen==true) && (beneficiaryLis==true))
+                    {
+                        //jCountries.Clear();
+                        foreach (var bene in beneficiaryLists.EnumerateArray())
+                        {
+                            string firstName = GetSafeString(bene, "beneficiary_first_name");
+                            string middleName = GetSafeString(bene, "beneficiary_middle_name");
+                            string lastName = GetSafeString(bene, "beneficiary_last_name");
+                            string beneficiary_country_name = GetSafeString(bene, "beneficiary_country_name");
+                            string beneficiary_bank_account_number = GetSafeString(bene, "beneficiary_bank_account_number");
+                            string beneficiary_bank_name = GetSafeString(bene, "beneficiary_bank_name");
+
+                            Countries.Add(new Country
+                            {
+                                CountryName = beneficiary_country_name,
+                                Amt = "", // put actual mapping later
+                                Bene = $"{firstName} {middleName} {lastName}".Trim(),
+                                Date = "",
+                                TID = beneficiary_bank_account_number,
+                                BANK = beneficiary_bank_name
+                            });
+
+                        }
+
+                    }
+                }
+                countryListView.ItemsSource = Countries;
+            }
+            catch (HttpRequestException ex)
+            {
+                MessageBox.Show($"Request error: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Unexpected error: {ex.Message}");
+            }
+        }
+
+        private string GetSafeString(JsonElement element, string propertyName)
+        {
+            try
+            {
+                if (element.TryGetProperty(propertyName, out JsonElement prop))
+                {
+                    if (prop.ValueKind != JsonValueKind.Null && prop.ValueKind != JsonValueKind.Undefined)
+                        return prop.GetString() ?? "";
+                }
+            }
+            catch (Exception)
+            {
+
+                return "";
+            }
+           
+            return "";
         }
 
         private void countryListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -72,112 +159,68 @@ namespace Exchange.Pages
             }
         }
 
-        //public SeriesCollection SeriesCollection { get; set; }
-
         private void RESEND_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                var myValue = ((Button)sender).Tag;
+                SelectedBeneficiaryManager.SetBENE_SLNO(myValue.ToString());
 
-            var myValue = ((Button)sender).Tag;
-            //MessageBox.Show(myValue.ToString());
-            SelectedBeneficiaryManager.SetBENE_SLNO(myValue.ToString());
-
-            //var button = sender as Button;
-            //var theValue = button.Attributes["myParam"].ToString();
-
-            // Pass parameters to Page1.xaml after successful login
-            // Page1 page1 = new Page1(username);
-            //wtobankorcash wx = new wtobankorcash();
-            //NavigationService.Navigate(wx);
-            wViewBenficiaryDetails wx = new wViewBenficiaryDetails();
-            NavigationService.Navigate(wx);
+                wViewBenficiaryDetails wx = new wViewBenficiaryDetails();
+                NavigationService.Navigate(wx);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
 
         }
 
         private void RESEND_Click_edit(object sender, RoutedEventArgs e)
         {
-
-            //var myValue = ((Button)sender).Tag;
-            //MessageBox.Show(myValue.ToString());
-            //SelectedBeneficiaryManager.SetBENE_SLNO(myValue.ToString());
-
-            var myValue = ((Button)sender).Tag;
-            SelectedBeneficiaryManager.SetBENE_SLNO(myValue.ToString());
-            //MessageBox.Show(myValue.ToString());
-
-            SelectedCountry = countryListView.SelectedItem as Country;
-            if (SelectedCountry != null)
+            try
             {
-                // MessageBox.Show($"Selected Country: {SelectedCountry.CountryName}");
+                var myValue = ((Button)sender).Tag;
+                SelectedBeneficiaryManager.SetBENE_SLNO(myValue.ToString());
+
+                waddbeneficiary mainpage = new waddbeneficiary("edit");
+                NavigationService.Navigate(mainpage);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
             }
 
-            // Pass parameters to Page1.xaml after successful login
-            // Page1 page1 = new Page1(username);
-            waddbeneficiary mainpage = new waddbeneficiary("edit");
-            NavigationService.Navigate(mainpage);
-
         }
 
-        //
         private void addnewben(object sender, RoutedEventArgs e)
         {
-
-            // Pass parameters to Page1.xaml after successful login
-            // Page1 page1 = new Page1(username);
-            //waddbeneficiary mainpage = new waddbeneficiary();
-            wSelectcountry mainpage = new wSelectcountry();
-            NavigationService.Navigate(mainpage);
+            try
+            {
+                wSelectcountry mainpage = new wSelectcountry();
+                NavigationService.Navigate(mainpage);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+            
 
         }
 
-        public class Country
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            public BitmapImage FlagImage { get; set; }
 
-            public BitmapImage stsimg { get; set; }
-
-            public string CountryName { get; set; }
-
-            public string TID { get; set; }
-            public string BANK { get; set; }
-
-            public string Amt { get; set; }
-
-            public string Date { get; set; }
-
-            public string Bene { get; set; }
+            NavigationManager.NavigateToHome();
         }
 
-        private async void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-            //API CALLING STARTS
-
-            var client = new HttpClient();
-            var request = new HttpRequestMessage(HttpMethod.Post, "http://"+Variable.apiipadd+ "/api/Beneficiary​/get-beneficiary-list");
-            request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
-            //LoginManager
-            //LoginManager.Remiduser;
-
-            //BCManager
-            var content = new StringContent("{ \n    \"remID\":"+ LoginManager.RemCode + ",\n    \"transferModeCpde\":\""+BCManager.selectedoptionborc+"\",\n    \"beneSLNO\":0,\n    \"beneCon\":\"\",\n    \"channelCode\":\"\",\n    \"ProductCode\":\"\"\n    }", null, "application/json");
-            //var content = new StringContent("{ \n    \"remID\":" + LoginManager.Remiduser + ",\n    \"disbMode\":\"\",\n    \"beneSLNO\":0,\n    \"beneCon\":\"\",\n    \"channelCode\":\"\",\n    \"ProductCode\":\"\"\n    }", null, "application/json");
-            request.Content = content;
-            var response = await client.SendAsync(request);
-            response.EnsureSuccessStatusCode();
-            //Console.WriteLine(await response.Content.ReadAsStringAsync());
-
-            // MessageBox.Show(await response.Content.ReadAsStringAsync());
-
-            LoadCountries();
-            //API CALLING ENDS
-        }
-
-        public async Task LoadCountries()
+        public async Task LoadCountries_old()
         {
             var client = new HttpClient();
-            var request = new HttpRequestMessage(HttpMethod.Post, "http://"+Variable.apiipadd+ "/api/Beneficiary​/get-beneficiary-list");
+            var request = new HttpRequestMessage(HttpMethod.Post, "http://" + Variable.apiipadd + "/api/Beneficiary/get-beneficiary-list");
             request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
 
-            var content = new StringContent("{ \n    \"remID\":"+ LoginManager.RemCode + ",\n    \"transferModeCode\":\""+BCManager.selectedoptionborc+"\",\n    \"beneSLNO\":0,\n    \"beneCon\":\"\",\n    \"channelCode\":\"\",\n    \"ProductCode\":\"\"\n    }", null, "application/json");
+            var content = new StringContent("{ \n    \"remID\":" + LoginManager.Remiduser + ",\n    \"disbMode\":\"" + BCManager.selectedoptionborc + "\",\n    \"beneSLNO\":0,\n    \"beneCon\":\"\",\n    \"channelCode\":\"\",\n    \"ProductCode\":\"\"\n    }", null, "application/json");
             //var content = new StringContent("{ \n    \"remID\":" + LoginManager.Remiduser + ",\n    \"disbMode\":\"\",\n    \"beneSLNO\":0,\n    \"beneCon\":\"\",\n    \"channelCode\":\"\",\n    \"ProductCode\":\"\"\n    }", null, "application/json");
             request.Content = content;
 
@@ -199,9 +242,7 @@ namespace Exchange.Pages
                         Bene = $"{dataElement.GetProperty("BENE_SALUTE").GetString()} {dataElement.GetProperty("BENNAME").GetString()}",
                         Date = dataElement.GetProperty("BENE_SLNO").ToString(), // You need to specify how to get the date from the JSON response
                         TID = dataElement.GetProperty("BENE_ACCNO").ToString(), // You need to specify how to get the TID from the JSON response BENE_SLNO
-                        BANK = dataElement.GetProperty("BENE_BANK").GetString(),
-                        stsimg = new BitmapImage(new Uri("pack://application:,,,/Exchange;component/Images/check.png")), // You need to adjust this based on your logic
-                        FlagImage = new BitmapImage(new Uri("pack://application:,,,/Exchange;component/Images/INR.png"))
+                        BANK = dataElement.GetProperty("BENE_BANK").GetString()
 
 
                         //FlagImage = GetFlagImage(dataElement.GetProperty("BENE_COUNTRY").GetString()) // Assuming you have a method to get flag image based on country code
@@ -211,5 +252,7 @@ namespace Exchange.Pages
 
             countryListView.ItemsSource = Countries;
         }
+
+
     }
 }
