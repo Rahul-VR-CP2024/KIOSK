@@ -14,6 +14,17 @@ namespace Exchange.Pages
     /// </summary>
     public partial class wViewBenficiaryDetails : Page
     {
+
+        JsonElement dataArrayedit;
+        private JsonDocument jsonDocument;
+        // Create an empty list to store CoreFieldNames
+        List<string> coreFieldNames = new List<string>();
+
+        string BENE_PRODedit = "";
+        string DISBTYPEedit = "";
+        string BENE_CNTRYedit = "";
+        string BENE_CURRedit = "";
+
         public wViewBenficiaryDetails()
         {
             InitializeComponent();
@@ -81,16 +92,6 @@ namespace Exchange.Pages
 
         }
 
-        JsonElement dataArrayedit;
-        private JsonDocument jsonDocument;
-        // Create an empty list to store CoreFieldNames
-        List<string> coreFieldNames = new List<string>();
-
-        string BENE_PRODedit = "";
-        string DISBTYPEedit = "";
-        string BENE_CNTRYedit = "";
-        string BENE_CURRedit = "";
-
         public async void loadbenefieldstoedit()
         {
             try
@@ -142,20 +143,12 @@ namespace Exchange.Pages
             }
         }
 
-
         public async Task LoadBenefieldseditmode(string BENE_PRODv, string DISBTYPEv, string BENE_CNTRYv, string COREDISBv)
         {
 
 
-
-
             try
             {
-
-
-
-
-
 
                 var client = new HttpClient();
                 var request = new HttpRequestMessage(HttpMethod.Post, "http://"+Variable.apiipadd+"/api/v1/sxGeneral/DefaultProduct/FieldSettingsbyProduct");
@@ -347,27 +340,6 @@ namespace Exchange.Pages
             }
         }
 
-
-        public string getthefieldvaluebackup19112024(string fieldvalue)
-        {
-            //MessageBox.Show("Step 34 " );
-            //MessageBox.Show("Step 3 " + ABC.ToString());
-            //JsonElement dataArrayeditinside = dataArrayedit;
-            string ans = "";
-
-            foreach (JsonElement dataElement2 in dataArrayedit.EnumerateArray())
-            {
-                ans = dataElement2.TryGetProperty(fieldvalue, out JsonElement mdElement) ? mdElement.GetString() : "";
-
-
-                //CreateUI(dataElement.GetProperty("CoreFieldName").GetString(), dataElement.GetProperty("DisplayText").GetString(), ans);
-            }
-
-
-            return (ans);
-
-        }
-
         public string getthefieldvalue(string fieldvalue)
         {
             string ans = "";
@@ -487,7 +459,6 @@ namespace Exchange.Pages
             wTransferpay wtpay = new wTransferpay();
             NavigationService.Navigate(wtpay);
         }
-
 
         public static class BeneficiaryDetailsManager
         {

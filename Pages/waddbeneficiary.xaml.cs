@@ -1,6 +1,7 @@
 ﻿using Exchange.Common;
 using Exchange.Managers;
 using System.Net.Http;
+using System.ServiceModel;
 using System.Text;
 using System.Text.Json;
 using System.Windows;
@@ -11,7 +12,6 @@ using System.Windows.Threading;
 using static Exchange.Pages.wSelectcountry;
 using static Exchange.Pages.wSelectProduct;
 using static Exchange.Pages.wtobankorcash;
-
 
 namespace Exchange.Pages
 {
@@ -28,27 +28,6 @@ namespace Exchange.Pages
         string branchvisibile = "yes";
 
         string editmodebranch = "";
-
-        public class NationalityCountry
-        {
-            public string ConID { get; set; }
-            public string ConName { get; set; }
-            public string ConCode { get; set; }
-        }
-
-        public class BanksC
-        {
-            public string BankID { get; set; }
-            public string BankName { get; set; }
-            public string BankCode { get; set; }
-        }
-
-        public class BanksBanchC
-        {
-            public string BanksBanchID { get; set; }
-            public string BanksBanchName { get; set; }
-            public string BanksBanchCode { get; set; }
-        }
 
         // Create an empty list to store CoreFieldNames
         List<string> coreFieldNames = new List<string>();
@@ -75,6 +54,27 @@ namespace Exchange.Pages
 
         string BENE_CURRedit = "";
 
+        public class NationalityCountry
+        {
+            public string ConID { get; set; }
+            public string ConName { get; set; }
+            public string ConCode { get; set; }
+        }
+
+        public class BanksC
+        {
+            public string BankID { get; set; }
+            public string BankName { get; set; }
+            public string BankCode { get; set; }
+        }
+
+        public class BanksBanchC
+        {
+            public string BanksBanchID { get; set; }
+            public string BanksBanchName { get; set; }
+            public string BanksBanchCode { get; set; }
+        }
+
         public waddbeneficiary(string addoredit)
         {
             InitializeComponent();
@@ -100,6 +100,382 @@ namespace Exchange.Pages
             //MessageBox.Show(addoredit);
             //if()
 
+        }
+
+        private async void Page_Load(object sender, RoutedEventArgs e)
+        {
+
+            try
+            {
+                
+                if (BCManager.selectedoptionborc == "CPX")
+                {
+                    //onlyshowonbt.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    if (addoreditvalue == "add")
+                    {
+                        runtheloadersource();
+                    }
+                }
+
+                runtheloaderfornationalitycountries();
+
+                if (addoreditvalue == "add")
+                {
+                    MessageBox.Show("11");
+                    LoadBenefields();
+                }
+
+                if (addoreditvalue == "edit")
+                {
+                    MessageBox.Show("12");
+                    loadbenefieldstoedit();
+
+                    _ = new DisposableTimer(() => SelectBranchByConID(editmodebranch), 1);
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+
+        private async void runtheloadersource()
+        {
+            try
+            {
+                string productCode, transferMode, countryCode;
+
+                if (addoreditvalue == "add")
+                {
+                    productCode = ProductManager.selectedproductcode;
+                    transferMode = ProductManager.selecteddispcode;
+                    countryCode = SelectedAddBeneCountry.seladdbenecount;
+                }
+                else
+                {
+                    productCode = BENE_PRODedit;
+                    transferMode = DISBTYPEedit;
+                    countryCode = BENE_CNTRYedit;
+                }
+
+                // Build API URL with query params
+                string url = $"https://{Variable.apiipadd}/api/Beneficiary/get-beneficiary-bank-combo-list" +$"?ProductCode={productCode}&TransferMode={transferMode}&CountryCode={countryCode}";
+
+                var client = new HttpClient();
+                var request = new HttpRequestMessage(HttpMethod.Get, url);
+                request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
+        
+                try
+                {
+                    var response = client.Send(request);
+                    string respString = await response.Content.ReadAsStringAsync();
+
+                    response.EnsureSuccessStatusCode();
+                    using (var doc = JsonDocument.Parse(respString))
+                    {
+                        UpdateComboBoxsource(doc.RootElement);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
+
+                if (bankcombo.Items.Count >= 1)
+                {
+                    runtheloaderdelivery();
+                }
+
+                if (bankcombo.Items.Count > 0)
+                {
+                    bankcombo.IsEditable = bankcombo.Items.Count > 1;
+                    bankcombo.SelectedIndex = 0;
+                }
+                else
+                {
+                    bankdropdown.Visibility = Visibility.Hidden;
+                    branchdropdown.Visibility = Visibility.Hidden;
+                    bankvisible = "no";
+                    branchvisibile = "no";
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+
+        private void UpdateComboBoxsource(JsonElement root)
+        {
+            try
+            {
+                if (root.TryGetProperty("data", out JsonElement dataElement) &&
+                    dataElement.TryGetProperty("beneficiary_bank_list", out JsonElement bankListElement) &&
+                    bankListElement.ValueKind == JsonValueKind.Array)
+                {
+                    productb.Clear();
+
+                    foreach (var item in bankListElement.EnumerateArray())
+                    {
+                        string name = item.TryGetProperty("name", out JsonElement nameEl) ? nameEl.GetString() ?? "" : "";
+                        string code = item.TryGetProperty("code", out JsonElement codeEl) ? codeEl.GetString() ?? "" : "";
+                        bool isDefault = item.TryGetProperty("is_default", out JsonElement defEl) && defEl.GetBoolean();
+
+                        productb.Add(new BanksC
+                        {
+                            BankName = name,
+                            BankCode = code,
+                            BankID = isDefault ? "default" : ""   // no e_id in response, so marking default
+                        });
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid JSON response structure");
+                }
+
+                bankcombo.ItemsSource = productb;
+
+                if (productb.Count > 0)
+                {
+                    bankcombo.SelectedItem = productb[0];
+                }
+                bankcombo.DisplayMemberPath = "BankName";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+
+        private async void runtheloaderdelivery()
+        {
+            try
+            {
+                var selectedProduct = (BanksC)bankcombo.SelectedItem;
+                if (selectedProduct == null)
+                {
+                    Console.WriteLine("No bank selected. Please select a bank.");
+                    return;
+                }
+
+                var bankCode = selectedProduct.BankCode;
+                string productCode = (addoreditvalue == "add")
+                    ? ProductManager.selectedproductcode
+                    : BENE_PRODedit;
+
+                // Build API URL with query params
+                string apiUrl = $"https://{Variable.apiipadd}/api/Beneficiary/get-beneficiary-branch-combo-list" +$"?ProductCode={productCode}&BankCode={bankCode}";
+
+                var token = TokenManager.Token;
+                using (var client = new HttpClient())
+                {
+                    client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+
+                    var response = await client.GetAsync(apiUrl);
+                    string responseString = await response.Content.ReadAsStringAsync();
+                    response.EnsureSuccessStatusCode();
+
+                    using (var doc = JsonDocument.Parse(responseString))
+                    {
+                        if (doc.RootElement.TryGetProperty("data", out var dataElement) &&
+                            dataElement.TryGetProperty("beneficiary_branch_list", out var branchListElement) &&
+                            branchListElement.ValueKind == JsonValueKind.Array)
+                        {
+                            branchcombo.Items.Clear();
+
+                            foreach (var branch in branchListElement.EnumerateArray())
+                            {
+                                string code = branch.GetProperty("code").GetString() ?? "";
+                                string name = branch.GetProperty("name").GetString() ?? "";
+                                bool isDefault = branch.GetProperty("is_default").GetBoolean();
+
+                                string display = $"{name} ({code})";
+                                branchcombo.Items.Add(display);
+
+                                if (isDefault)
+                                    branchcombo.SelectedItem = display;
+                            }
+                            if (branchcombo.Items.Count > 0 && branchcombo.SelectedIndex == -1)
+                            {
+                                branchcombo.SelectedIndex = 0; // select first by default
+                            }
+                            else if (branchcombo.Items.Count == 0)
+                            {
+                                branchvisibile = "no";
+                                branchdropdown.Visibility = Visibility.Hidden;
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid API response format.");
+                        }
+                    }
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                Console.WriteLine($"Error sending request: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+
+        private async void runtheloaderfornationalitycountries()
+        {
+
+            var CPORBT = BCManager.selectedoptionborc;
+            //MessageBox.Show(CPORBT);
+            try
+            {
+                var client = new HttpClient();
+                var request = new HttpRequestMessage(
+                    HttpMethod.Get, "https://" + Variable.apiipadd + "/api/Customer/get-country-combo-list"
+                );
+                request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
+                request.Headers.Add("accept", "text/plain");
+
+                var response = await client.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+
+                // Parse the JSON response with JsonDocument
+                using (var responseStream = await response.Content.ReadAsStreamAsync())
+                {
+                    using (var doc = JsonDocument.Parse(responseStream))
+                    {
+                        UpdateNationilityComboBoxsource(doc.RootElement);
+                    }
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                Console.WriteLine($"Error sending request: {ex.Message}");
+            }
+
+        }
+
+        public async Task LoadBenefields()
+        {
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    string baseUrl = "https://" + Variable.apiipadd + "/api/Beneficiary/get-all-product-field-settings";
+
+                    string productCode = ProductManager.selectedproductcode;
+                    string disbursalMode = BCManager.selectedoptionborc;
+                    string memberSection = "Beneficiary";
+                    string countryCode = SelectedAddBeneCountry.seladdbenecount;
+                    string destinationCurrencyCode = ProductManager.selectedProdCurrCode;
+                    string language = "EN";
+                    string token = TokenManager.Token;
+
+                    string url = $"{baseUrl}?ProductCode={productCode}&DisbursalModeCode={disbursalMode}&MemberSection={memberSection}&CountryCode={countryCode}&DestinationCurrencyCode={destinationCurrencyCode}&Language={language}";
+
+                    MessageBox.Show("url");
+                    var request = new HttpRequestMessage(HttpMethod.Get, url);
+                    request.Headers.Add("Authorization", "Bearer " + token);
+                    request.Headers.Add("Accept", "application/json");
+                    var response = await client.SendAsync(request);
+                    MessageBox.Show(response.ToString());
+                    MessageBox.Show("123");
+                    response.EnsureSuccessStatusCode();
+
+                    using (var responseStream = await response.Content.ReadAsStreamAsync())
+                    {
+                        MessageBox.Show("1234");
+                        var jsonDocument = await JsonDocument.ParseAsync(responseStream);
+
+                        if (jsonDocument.RootElement.TryGetProperty("data", out var dataElement) &&
+                            dataElement.TryGetProperty("all_product_field_setting_list", out var allFieldsElement) &&
+                            allFieldsElement.TryGetProperty("beneficiary", out var beneficiaryArray) &&
+                            beneficiaryArray.ValueKind == JsonValueKind.Array)
+                        {
+                            foreach (var field in beneficiaryArray.EnumerateArray())
+                            {
+                                string fieldName = field.GetProperty("field_name").GetString();
+                                string displayName = field.GetProperty("display_field_name").GetString();
+                                string type = field.GetProperty("type").GetString();
+                                bool mandatory = field.GetProperty("mandatory").GetBoolean();
+                                bool visible = field.GetProperty("visible").GetBoolean();
+
+                                if (!visible)
+                                    continue;
+
+                                // Append * if mandatory
+                                if (mandatory)
+                                    displayName += " *";
+
+                                // Create UI control
+                                CreateUI(fieldName, displayName, "", type);
+
+                                // Track field names
+                                coreFieldNames.Add(fieldName);
+                                if (mandatory)
+                                    MANDATORYcoreFieldNames.Add(fieldName);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid API response format.");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        public async void loadbenefieldstoedit()
+        {
+            try
+            {
+                var client = new HttpClient();
+                MessageBox.Show("1111");
+                // Construct the GET URL with eId
+                var url = new HttpRequestMessage(HttpMethod.Post, "https://" + Variable.apiipadd + "/api/Beneficiary/get-beneficiary-by-id" + SelectedBeneficiaryManager.BENE_SLNO);
+                var request = new HttpRequestMessage(HttpMethod.Get, url.RequestUri);
+                request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
+                request.Headers.Add("Accept", "text/plain");
+                MessageBox.Show(url.RequestUri.ToString());
+                var response = await client.SendAsync(request);
+                MessageBox.Show("122233");
+                response.EnsureSuccessStatusCode();
+                var responseBody = await response.Content.ReadAsStringAsync();
+                jsonDocument = JsonDocument.Parse(responseBody);
+                JsonElement root = jsonDocument.RootElement;
+                JsonElement dataElement = root.GetProperty("data").GetProperty("beneficiary_by_id");
+                BENE_PRODedit = dataElement.TryGetProperty("product_name", out JsonElement prodElement) ? prodElement.GetString() : "";
+                DISBTYPEedit = dataElement.TryGetProperty("disbursal_mode_name", out JsonElement disbElement) ? disbElement.GetString() : "";
+                BENE_CNTRYedit = dataElement.TryGetProperty("beneficiary_country_name", out JsonElement cntryElement) ? cntryElement.GetString() : "";
+                BENE_CURRedit = dataElement.TryGetProperty("beneficiary_country_code", out JsonElement currElement) ? currElement.GetString() : "";
+
+                LoadBenefieldseditmode(
+                    BENE_PRODedit,
+                    DISBTYPEedit,
+                    BENE_CNTRYedit,
+                    DISBTYPEedit // This replaces "COREDISB" which doesn't exist in new response
+                );
+
+                runtheloadersource();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
 
         private void backbutton(object sender, RoutedEventArgs e)
@@ -645,286 +1021,40 @@ namespace Exchange.Pages
             //
         }
 
-        private async void Page_Load(object sender, RoutedEventArgs e)
-        {
-
-            try
-            {
-                if (BCManager.selectedoptionborc == "CPX")
-                {
-                    //onlyshowonbt.Visibility = Visibility.Hidden;
-                }
-                else
-                {
-
-                    if (addoreditvalue == "add")
-                    {
-                        runtheloadersource();
-                    }
-                }
-
-                runtheloaderfornationalitycountries();
-                //ORIGINAL POSITION OF THIS SCRIPT
-
-
-                Thread.Sleep(2000); // Sleep for 2 seconds
-
-                if (addoreditvalue == "add")
-                {
-                    LoadBenefields();
-                    //SetTextBoxText(myStackPanel, "BENE_FNAME", "Test");
-                }
-
-                if (addoreditvalue == "edit")
-                {
-
-                    runtheloaderfornationalitycountries();
-
-                    //MessageBox.Show("add screen " + SelectedBeneficiaryManager.BENE_SLNO);
-                    loadbenefieldstoedit();
-
-                    _ = new DisposableTimer(() => SelectBranchByConID(editmodebranch), 1);
-
-                    //RUN THE CODE AFTER 3 SEOCNDS
-
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
-        }
-
-        public async void loadbenefieldstoedit()
-        {
-            try
-            {
-                var client = new HttpClient();
-
-                // Construct the GET URL with eId
-                var url = new HttpRequestMessage(HttpMethod.Post, "http://" + Variable.apiipadd + "/api/Beneficiary/get-beneficiary-by-id" + SelectedBeneficiaryManager.BENE_SLNO);
-                var request = new HttpRequestMessage(HttpMethod.Get, url.RequestUri);
-                request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
-                request.Headers.Add("Accept", "text/plain");
-
-                var response = await client.SendAsync(request);
-                response.EnsureSuccessStatusCode();
-                var responseBody = await response.Content.ReadAsStringAsync();
-                jsonDocument = JsonDocument.Parse(responseBody);
-                JsonElement root = jsonDocument.RootElement;
-                JsonElement dataElement = root.GetProperty("data").GetProperty("beneficiary_by_id");
-                BENE_PRODedit = dataElement.TryGetProperty("product_name", out JsonElement prodElement) ? prodElement.GetString() : "";
-                DISBTYPEedit = dataElement.TryGetProperty("disbursal_mode_name", out JsonElement disbElement) ? disbElement.GetString() : "";
-                BENE_CNTRYedit = dataElement.TryGetProperty("beneficiary_country_name", out JsonElement cntryElement) ? cntryElement.GetString() : "";
-                BENE_CURRedit = dataElement.TryGetProperty("beneficiary_country_code", out JsonElement currElement) ? currElement.GetString() : "";
-
-                LoadBenefieldseditmode(
-                    BENE_PRODedit,
-                    DISBTYPEedit,
-                    BENE_CNTRYedit,
-                    DISBTYPEedit // This replaces "COREDISB" which doesn't exist in new response
-                );
-
-                runtheloadersource();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-        }
-
-        private void runtheloadersource()
-        {
-            try
-            {
-                var CPORBT = BCManager.selectedoptionborc;
-
-                var client = new HttpClient();
-                var request = new HttpRequestMessage(HttpMethod.Post, "http://" + Variable.apiipadd + "​/api​/Beneficiary​/get-beneficiary-bank-combo-list/");
-                request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
-
-                string contentString;
-                if (addoreditvalue == "add")
-                {
-                    contentString = "{\n  \"ProductCode\":\"" + ProductManager.selectedproductcode + "\",\n  \"TransferMode\":\"" + ProductManager.selecteddispcode + "\",\n  \"CountryCode\":\"" + SelectedAddBeneCountry.seladdbenecount + "\"\n}";
-                }
-                else
-                {
-                    contentString = "{\n  \"ProductCode\":\"" + BENE_PRODedit + "\",\n  \"TransferMode\":\"" + DISBTYPEedit + "\",\n  \"CountryCode\":\"" + BENE_CNTRYedit + "\"\n}";
-                }
-
-                var content = new StringContent(contentString, Encoding.UTF8, "application/json");
-                request.Content = content;
-
-                var response = client.Send(request); // Synchronous call
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    throw new HttpRequestException($"Request failed with status code: {response.StatusCode}");
-                }
-
-                var responseString = response.Content.ReadAsStringAsync().Result;
-
-                RichMessageBox.Show("Request Data to api​/Beneficiary​/get-beneficiary-bank-combo-list\n" + DateTime.Now + "\n" + contentString);
-                RichMessageBox.Show("Response from api​/Beneficiary​/get-beneficiary-bank-combo-list\n" + DateTime.Now + "\n" + responseString);
-
-                using (var responseStream = response.Content.ReadAsStream())
-                using (var doc = JsonDocument.Parse(responseStream))
-                {
-                    UpdateComboBoxsource(doc.RootElement);
-                }
-
-                if (bankcombo.Items.Count >= 1)
-                {
-                    runtheloaderdelivery();
-                }
-
-                if (bankcombo.Items.Count > 0)
-                {
-                    if (bankcombo.Items.Count == 1)
-                    {
-                        bankcombo.IsEditable = false;
-                    }
-                    else
-                    {
-                        bankcombo.IsEditable = true;
-                    }
-                    bankcombo.SelectedIndex = 1;
-                }
-                else
-                {
-                    bankdropdown.Visibility = Visibility.Hidden;
-                    branchdropdown.Visibility = Visibility.Hidden;
-                    bankvisible = "no";
-                    branchvisibile = "no";
-                }
-            }
-            catch (HttpRequestException ex)
-            {
-                Console.WriteLine($"Error sending request: {ex.Message}");
-            }
-        }
-
-        private async void runtheloaderfornationalitycountries()
-        {
-
-            var CPORBT = BCManager.selectedoptionborc;
-            //MessageBox.Show(CPORBT);
-            try
-            {
-                var client = new HttpClient();
-
-                // Assuming you have the authorization token
-                // string authorizationToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...";
-
-                //var request = new HttpRequestMessage(HttpMethod.Post, "http://192.168.1.67:55525/api/v1/sxmaster/SOI");
-                //SelectedAddBeneCountry.seladdbenecount
-                //var request = new HttpRequestMessage(HttpMethod.Get, "http://192.168.1.67:55525/api/v1/sxgeneral/DefaultProduct?DisbursalMode="+ CPORBT + "&CountryCode=IN");
-                //var request = new HttpRequestMessage(HttpMethod.Get, "http://192.168.1.67:55525/api/v1/sxgeneral/DefaultProduct?DisbursalMode=" + CPORBT + "&CountryCode=" + SelectedAddBeneCountry.seladdbenecount);
-
-                // var request = new HttpRequestMessage(HttpMethod.Post, "http://192.168.1.67:55525/api/v1/sxbeneficiary/BeneBank/BANK");
-                var request = new HttpRequestMessage(HttpMethod.Get, "http://" + Variable.apiipadd + "/api/Customer​/get-country-combo-list\r\n");
-                request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
-
-                //var content = new StringContent("{\n\"purpID\":0,\n\"purpCode\":\"\",\n\"bankID\":1160\n}", Encoding.UTF8, "application/json");
-                // var content = new StringContent("{\n    \"productCode\":\"" + ProductManager.selectedproductcode + "\",\n    \"disbMode\":\"" + ProductManager.selecteddispcode + "\",\n    \"destnCntry\":\"" + SelectedAddBeneCountry.seladdbenecount + "\"\n}", null, "application/json");
-
-                var content = new StringContent("", null, "text/plain");
-                //request.Content = content;
-                //var response = await client.SendAsync(request);
-                //response.EnsureSuccessStatusCode();
-                //Console.WriteLine(await response.Content.ReadAsStringAsync());
-
-                //request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
-
-                // var content = new StringContent("{\n\"purpID\":0,\n\"purpCode\":\"\",\n\"bankID\":1160\n}", Encoding.UTF8, "application/json");
-                //var content = new StringContent("{\n  \"SrcIncomeId\": 0,\n  \"Sou_Code\": \"\",\n  \"CustType\": \"I\",\n  \"BankID\": 1160\n}", null, "application/json");
-                //var content = new StringContent("", null, "text/plain");
-                request.Content = content;
-
-                var response = await client.SendAsync(request);
-                response.EnsureSuccessStatusCode();
-
-                // Parse the JSON response with JsonDocument
-                using (var responseStream = await response.Content.ReadAsStreamAsync())
-                {
-                    using (var doc = JsonDocument.Parse(responseStream))
-                    {
-                        UpdateNationilityComboBoxsource(doc.RootElement);
-                    }
-                }
-
-                // runtheloaderdelivery();
-            }
-            catch (HttpRequestException ex)
-            {
-                Console.WriteLine($"Error sending request: {ex.Message}");
-            }
-
-            // Select the first item (if any)
-            if (NationalityCOUNTRYcombo.Items.Count > 0)
-            {
-                //  productcombo.SelectedIndex = 0;
-
-            }
-        }
-
         private void UpdateNationilityComboBoxsource(JsonElement root)
         {
             try
             {
-                //NationalityCOUNTRYcombo.Items.Clear();
                 NationalityCOUNTRYcombo.ItemsSource = null;
                 NationalityCOUNTRYcombo.Items.Clear();
 
-                // List<NationalityCountry> products = new List<NationalityCountry>();
-
-
-
-                //}
-
-                // Assuming "Data" is an array and contains "Productname" and "Productcode" properties
-                if (root.TryGetProperty("Data", out JsonElement dataElement) && dataElement.ValueKind == JsonValueKind.Array)
+                if (jsonDocument.RootElement.TryGetProperty("data", out JsonElement dataElement) &&
+                        dataElement.TryGetProperty("country_list", out JsonElement countryListElement))
                 {
-                    foreach (var item in dataElement.EnumerateArray())
+                    foreach (var country in countryListElement.EnumerateArray())
                     {
-                        if (item.TryGetProperty("ConID", out JsonElement productNameElement) &&
-                            item.TryGetProperty("ConName", out JsonElement productCodeElement) &&
-                            item.TryGetProperty("ConCode", out JsonElement DisbursalModeCodeElement))
+                        string code = country.GetProperty("code").GetString() ?? "";
+                        string name = country.GetProperty("name").GetString() ?? "";
+                        bool isDefault = country.TryGetProperty("is_default", out JsonElement defaultElement)
+                                         && defaultElement.GetBoolean();
 
-                        //DisbursalModeCode
+                        productsc.Add(new NationalityCountry
                         {
-
-                            //   MessageBox.Show(productCodeElement.GetString());
-                            //   MessageBox.Show(productNameElement.GetString());
-
-                            productsc.Add(new NationalityCountry
-                            {
-                                ConID = productNameElement.ToString(),
-                                ConName = productCodeElement.ToString(),
-                                ConCode = DisbursalModeCodeElement.ToString()
-                            });
-                        }
+                            ConID = code.ToString(),
+                            ConName = name.ToString(),
+                            ConCode = code.ToString()
+                        });
                     }
                 }
-                else
-                {
-                    // Handle potential errors (optional)
-                    Console.WriteLine("Invalid JSON response structure or missing 'Data' array");
-                }
-
-                // Bind the ComboBox to the products list
+                
                 NationalityCOUNTRYcombo.ItemsSource = productsc;
 
-                // Assuming products is a collection and has at least one item
                 if (productsc.Count > 0)
                 {
                     NationalityCOUNTRYcombo.SelectedItem = productsc[0];
                 }
                 NationalityCOUNTRYcombo.DisplayMemberPath = "ConName";
 
-                //SelectNationalityByConID("IN");
             }
             catch (Exception ex)
             {
@@ -1035,68 +1165,6 @@ namespace Exchange.Pages
             {
                 MessageBox.Show(ex.Message.ToString());
             }
-            
-        }
-
-        private void UpdateComboBoxsource(JsonElement root)
-        {
-            try
-            {
-                bankcombo.Items.Clear();
-
-                //List<BanksC> productb = new List<BanksC>();
-
-
-
-                //}
-
-                // Assuming "Data" is an array and contains "Productname" and "Productcode" properties
-                if (root.TryGetProperty("Data", out JsonElement dataElement) && dataElement.ValueKind == JsonValueKind.Array)
-                {
-                    foreach (var item in dataElement.EnumerateArray())
-                    {
-                        if (item.TryGetProperty("ID", out JsonElement productNameElement) &&
-                            item.TryGetProperty("NAME", out JsonElement productCodeElement) &&
-                            item.TryGetProperty("CODE", out JsonElement DisbursalModeCodeElement))
-
-                        //DisbursalModeCode
-                        {
-
-                            //   MessageBox.Show(productCodeElement.GetString());
-                            //   MessageBox.Show(productNameElement.GetString());
-
-                            productb.Add(new BanksC
-                            {
-                                BankID = productNameElement.ToString(),
-                                BankName = productCodeElement.ToString(),
-                                BankCode = DisbursalModeCodeElement.ToString()
-                            });
-                        }
-                    }
-                }
-                else
-                {
-                    // Handle potential errors (optional)
-                    Console.WriteLine("Invalid JSON response structure or missing 'Data' array");
-                }
-
-                // Bind the ComboBox to the products list
-                bankcombo.ItemsSource = productb;
-
-                // Assuming products is a collection and has at least one item
-                if (productb.Count > 0)
-                {
-                    bankcombo.SelectedItem = productb[0];
-                    //bankcombo.SelectedItem = productb[1];
-                }
-                bankcombo.DisplayMemberPath = "BankName";
-                //runtheloaderdelivery();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
-            //bankcombo.ItemsSource = null;
             
         }
 
@@ -1441,41 +1509,82 @@ namespace Exchange.Pages
             return null;
         }
 
-        public async Task LoadBenefields()
+        private void bankselectionchanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                // MessageBox.Show(productcombo.Text);
+                if (bankcombo.SelectedItem != null && bankcombo.Text != "")
+                {
+                    // MessageBox.Show("Hi" + productcombo.SelectedItem.ToString);
+                    runtheloaderdelivery();
+                    // string selectedItemName = ((ComboBoxItem)productcombo.SelectedItem).Content.ToString();
+                    // MessageBox.Show(selectedItemName);
+                }
+
+
+                // Assuming productcombo is your ComboBox control
+                var selectedItem = bankcombo.SelectedItem;
+
+                // If the ComboBox is bound to a list of strings
+                if (selectedItem is string selectedTexta)
+                {
+                    //MessageBox.Show(selectedTexta);
+                    //runtheloaderdelivery();
+                }
+                else
+                {
+                    // If the ComboBox is bound to a list of objects,
+                    // you might need to handle it differently depending on the type
+                    // For example:
+                    // MessageBox.Show(selectedItem.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+            
+        }
+
+        public async Task LoadBenefields_old()
         {
             try
             {
                 //Thread.Sleep(2000);
-
+                MessageBox.Show("22222222222222");
                 //MessageBox.Show(branchvisibile);
+
                 var client = new HttpClient();
-                var baseUrl = "http://" + Variable.apiipadd + "/api/Beneficiary/get-beneficiary-by-id";
+                var baseUrl = "https://" + Variable.apiipadd + "/api​/Beneficiary​/get-all-product-field-settings";
 
                 // Replace with actual values
-                string productCode = "";
-                string disbursalMode = " ";
+                string productCode = ProductManager.selectedproductcode;
+                string disbursalMode = BCManager.selectedoptionborc;
                 string memberSection = "Beneficiary";
-                string countryCode = "";
-                string destinationCurrencyCode = "INR";
+                string countryCode = SelectedAddBeneCountry.seladdbenecount;
+                string destinationCurrencyCode = ProductManager.selectedProdCurrCode;
                 string language = "EN";
-                string token = TokenManager.Token; // Replace with actual token retrieval
+                string token = TokenManager.Token;
 
                 // Construct the full URL with query parameters
                 string url = $"{baseUrl}?ProductCode={productCode}&DisbursalModeCode={disbursalMode}&MemberSection={memberSection}&CountryCode={countryCode}&DestinationCurrencyCode={destinationCurrencyCode}&Language={language}";
 
-                // Create the request
+                MessageBox.Show(url);
+
                 var request = new HttpRequestMessage(HttpMethod.Get, url);
                 request.Headers.Add("Authorization", "Bearer " + token);
                 request.Headers.Add("Accept", "text/plain");
 
+                MessageBox.Show("33333");
                 // Send the request
                 var response = await client.SendAsync(request);
 
+                MessageBox.Show(response.ToString());
 
                 var contentString = await request.Content.ReadAsStringAsync();
                 string responseString = await response.Content.ReadAsStringAsync();
-                RichMessageBox.Show("Request Data to api/v1/sxGeneral/DefaultProduct/FieldSettingsbyProduct\n" + DateTime.Now + "\n" + contentString);
-                RichMessageBox.Show("Response from api/v1/sxGeneral/DefaultProduct/FieldSettingsbyProduct\n" + DateTime.Now + "\n" + responseString);
+
 
                 // MessageBox.Show((await response.Content.ReadAsStringAsync()));
 
@@ -1687,138 +1796,9 @@ namespace Exchange.Pages
             {
                 MessageBox.Show(ex.Message.ToString());
             }
-           
-        }
-
-        private void bankselectionchanged(object sender, SelectionChangedEventArgs e)
-        {
-            try
-            {
-                // MessageBox.Show(productcombo.Text);
-                if (bankcombo.SelectedItem != null && bankcombo.Text != "")
-                {
-                    // MessageBox.Show("Hi" + productcombo.SelectedItem.ToString);
-                    runtheloaderdelivery();
-                    // string selectedItemName = ((ComboBoxItem)productcombo.SelectedItem).Content.ToString();
-                    // MessageBox.Show(selectedItemName);
-                }
-
-
-                // Assuming productcombo is your ComboBox control
-                var selectedItem = bankcombo.SelectedItem;
-
-                // If the ComboBox is bound to a list of strings
-                if (selectedItem is string selectedTexta)
-                {
-                    //MessageBox.Show(selectedTexta);
-                    //runtheloaderdelivery();
-                }
-                else
-                {
-                    // If the ComboBox is bound to a list of objects,
-                    // you might need to handle it differently depending on the type
-                    // For example:
-                    // MessageBox.Show(selectedItem.ToString());
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
-            
-        }
-
-        private void runtheloaderdelivery()
-        {
-            try
-            {
-                var selectedProduct = (BanksC)bankcombo.SelectedItem;
-                var banid = selectedProduct?.BankID;
-                var bancode = selectedProduct?.BankCode;
-                var apiUrl = $"http://{Variable.apiipadd}/api/Beneficiary/get-beneficiary-branch-combo-list";
-
-                var token = TokenManager.Token;
-
-                if (selectedProduct == null)
-                {
-                    Console.WriteLine("No product selected. Please select a product.");
-                    return;
-                }
-
-                try
-                {
-                    using (var client = new HttpClient())
-                    {
-                        client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
-
-                        string jsonBody;
-                        if (addoreditvalue == "add")
-                        {
-                            jsonBody = $"{{\"BankID\": {banid}, \"BankCode\": \"{bancode}\", \"DestnCtry\": \"{SelectedAddBeneCountry.seladdbenecount}\", \"ProductCode\": \"{ProductManager.selectedproductcode}\", \"DisbursalMode\": \"{ProductManager.selecteddispcode}\"}}";
-                        }
-                        else
-                        {
-                            jsonBody = $"{{\"BankID\": {banid}, \"BankCode\": \"{bancode}\", \"DestnCtry\": \"{BENE_CNTRYedit}\", \"ProductCode\": \"{BENE_PRODedit}\", \"DisbursalMode\": \"{DISBTYPEedit}\"}}";
-                        }
-
-                        var content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
-                        var request = new HttpRequestMessage(HttpMethod.Get, apiUrl) { Content = content };
-                        var response = client.SendAsync(request).Result;
-
-                        response.EnsureSuccessStatusCode();
-
-                        var responseString = response.Content.ReadAsStringAsync().Result;
-
-                        using (var doc = JsonDocument.Parse(responseString))
-                        {
-                            if (doc.RootElement.TryGetProperty("data", out var dataElement) &&
-                                dataElement.TryGetProperty("beneficiary_branch_list", out var branchListElement) &&
-                                branchListElement.ValueKind == JsonValueKind.Array)
-                            {
-                                branchcombo.Items.Clear();
-
-                                foreach (var branch in branchListElement.EnumerateArray())
-                                {
-                                    var code = branch.GetProperty("code").GetString();
-                                    var name = branch.GetProperty("name").GetString();
-                                    var isDefault = branch.GetProperty("is_default").GetBoolean();
-
-                                    branchcombo.Items.Add($"{name} ({code})");
-
-                                    if (isDefault)
-                                        branchcombo.SelectedItem = $"{name} ({code})";
-                                }
-
-                                if (branchcombo.Items.Count > 0 && branchcombo.SelectedIndex == -1)
-                                    branchcombo.SelectedIndex = 0;
-                                else if (branchcombo.Items.Count == 0)
-                                {
-                                    branchvisibile = "no";
-                                    branchdropdown.Visibility = Visibility.Hidden;
-                                }
-                            }
-                            else
-                            {
-                                Console.WriteLine("Invalid API response format.");
-                            }
-                        }
-                    }
-                }
-                catch (HttpRequestException ex)
-                {
-                    Console.WriteLine($"Error sending request: {ex.Message}");
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Unexpected error: {ex.Message}");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
 
         }
+
 
     }
 }

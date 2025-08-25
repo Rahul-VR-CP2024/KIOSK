@@ -16,20 +16,13 @@ namespace Exchange.Pages
     public partial class wComponents : Page
     {
         public ObservableCollection<Country> Countries { get; set; }
+        public SeriesCollection SeriesCollection { get; set; }
 
         public Country SelectedCountry { get; set; }
 
         public wComponents()
         {
-
-
-
-
             InitializeComponent();
-
-
-
-
 
             // Sample data (replace with your actual data)
             Countries = new ObservableCollection<Country>
@@ -42,12 +35,6 @@ namespace Exchange.Pages
             };
 
             countryListView.ItemsSource = Countries;
-
-
-
-
-            ///CHARTTT
-
 
 
 
@@ -106,9 +93,6 @@ namespace Exchange.Pages
                 MessageBox.Show($"Selected Country: {SelectedCountry.CountryName}");
             }
         }
-
-        public SeriesCollection SeriesCollection { get; set; }
-
 
         public class Country
         {

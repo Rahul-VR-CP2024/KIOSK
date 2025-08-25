@@ -18,6 +18,8 @@ namespace Exchange.Pages
             InitializeComponent();
         }
 
+        private static Dictionary<string, byte[]> EncryptedTokens = new Dictionary<string, byte[]>();
+
         private async void ImageButton_Clickar(object sender, RoutedEventArgs e)
         {
             TokenManager.SetLang("ar");
@@ -29,9 +31,7 @@ namespace Exchange.Pages
         {
             TokenManager.SetLang("en");
             loginpressed();
-            //MessageBox.Show(TokenManager.Langofsoft);
         }
-
 
         public async void loginpressed()
         {
@@ -53,18 +53,7 @@ namespace Exchange.Pages
                 MessageBox.Show($"Request failed: {ex.Message}", "Error");
                 return;
             }
-            //Console.WriteLine(await response.Content.ReadAsStringAsync());
-            //MessageBox.Show(await response.Content.ReadAsStringAsync());
-            //MessageBox.Show(LoadToken());
 
-
-            // Read the response content as a string
-            //var responseBody = await response.Content.ReadAsStringAsync();
-
-
-
-
-            // Parse the JSON response using System.Text.Json
             using (JsonDocument doc = JsonDocument.Parse(responseBody))
             {
                 // Access the root JSON object
@@ -76,29 +65,10 @@ namespace Exchange.Pages
                 // Extract the accessToken
                 string accessToken = dataElement.GetProperty("accessToken").GetString();
 
-                // Display the accessToken in a message box
-                //Console.WriteLine($"Access Token: {accessToken}");
-                //MessageBox.Show($"Access Token: {accessToken}");
-                // RemoveToken(accessToken);
-                // SaveToken(accessToken);
-                //TokenManager.SetToken(accessToken);
-                // MessageBox.Show(LoadToken());
-
             }
-
-
-
-            //WelcomePage wl2 = new WelcomePage();
-            //NavigationService.Navigate(wl2);
-
-            //Login2 lg2 = new Login2();
-            //NavigationService.Navigate(lg2);
 
             NavigationManager.NavigateToHome();
         }
-
-
-        private static Dictionary<string, byte[]> EncryptedTokens = new Dictionary<string, byte[]>();
 
         public static void SaveToken(string token)
         {
@@ -109,9 +79,7 @@ namespace Exchange.Pages
             EncryptedTokens.Add("AuthenticationToken", encryptedToken);
            
         }
-
-        
-
+     
         public static void RemoveToken(string token)
         {
             byte[] encryptedToken = ProtectedData.Protect(
@@ -124,31 +92,40 @@ namespace Exchange.Pages
 
         public static string LoadToken()
         {
-            if (!EncryptedTokens.ContainsKey("AuthenticationToken"))
-            {
-                return null;
-            }
-
-            byte[] encryptedToken = EncryptedTokens["AuthenticationToken"];
-
-            if (encryptedToken == null)
-            {
-                return null;
-            }
-
             try
             {
-                byte[] decryptedToken = ProtectedData.Unprotect(
-                    encryptedToken,
-                    null,
-                    DataProtectionScope.CurrentUser);
-                return Encoding.UTF8.GetString(decryptedToken);
+                if (!EncryptedTokens.ContainsKey("AuthenticationToken"))
+                {
+                    return null;
+                }
+
+                byte[] encryptedToken = EncryptedTokens["AuthenticationToken"];
+
+                if (encryptedToken == null)
+                {
+                    return null;
+                }
+
+                try
+                {
+                    byte[] decryptedToken = ProtectedData.Unprotect(
+                        encryptedToken,
+                        null,
+                        DataProtectionScope.CurrentUser);
+                    return Encoding.UTF8.GetString(decryptedToken);
+                }
+                catch (CryptographicException)
+                {
+                    // Handle decryption failure (e.g., invalid token)
+                    return null;
+                }
             }
-            catch (CryptographicException)
+            catch (Exception)
             {
-                // Handle decryption failure (e.g., invalid token)
-                return null;
+
+                throw;
             }
+           
         }       
     }
 }

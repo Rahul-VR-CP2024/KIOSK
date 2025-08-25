@@ -24,6 +24,7 @@ namespace Exchange.Pages
     {
         PACMAN test;
         DispatcherTimer LiveTime = new DispatcherTimer();
+        private static Dictionary<string, byte[]> EncryptedTokens = new Dictionary<string, byte[]>();
         string golang = "0";
         DisposableTimer QR_Timer;
         public WelcomePage()
@@ -41,38 +42,16 @@ namespace Exchange.Pages
             }
 
 
-            //MessageBox.Show(golang);
-            //if (golang == "0")
-            //{
-            //LiveTime.Stop();
-
             LiveTime.Interval = TimeSpan.FromSeconds(3);
             LiveTime.Tick += timer_Tick;
 
-            //if (golang != "0"){
-            //    LiveTime.Stop();
-            //}
-                //}
-                //LiveTime.Start();
-
-                //if (golang == "0")
-                //{
-                //LiveTime.Tick += timer_Tick;
             LiveTime.Start();
                 
-           // } else
-            //{
-             //   LiveTime.Stop();
-            //}
-
             pacionload();
-            //pacionclick();
 
-            // Subscribe to Unloaded event
             this.Unloaded += WelcomePage_Unloaded;
         }
 
-        // Unloaded event handler to stop the timer
         private void WelcomePage_Unloaded(object sender, RoutedEventArgs e)
         {
             // Stop the DispatcherTimer when the page is closed or unloaded
@@ -83,7 +62,6 @@ namespace Exchange.Pages
             }
             QR_Timer?.Cancel();
         }
-
 
         private void Paci_ReadersEvent()
         {
@@ -104,50 +82,12 @@ namespace Exchange.Pages
             Console.WriteLine("Card in reader index: " + ReaderIndex + " is connected");
         }
 
-
-        public void MyCardRemovalHandler(int ReaderIndex)
-        {
-            Console.WriteLine("A card was removed from reader with index: " + ReaderIndex + " at time:" + DateTime.Now.ToString("h:mm:ss tt"));
-        }
-
         private void ClearFields()
         {
             try
             {
                 //textBox1.Text = "";
-                //textBox2.Text = "";
-                //textBox3.Text = "";
-                //textBox4.Text = "";
-                //textBox5.Text = "";
-                //textBox6.Text = "";
-                //textBox7.Text = "";
-                //textBox8.Text = "";
-                //textBox9.Text = "";
-                //textBox10.Text = "";
-                //textBox11.Text = "";
-                //textBox12.Text = "";
-                //textBox13.Text = "";
-                //textBox14.Text = "";
-                //textBox15.Text = "";
-                //textBox16.Text = "";
-                //textBox17.Text = "";
-                //textBox18.Text = "";
-                //textBox19.Text = "";
-                //textBox20.Text = "";
-                //textBox21.Text = "";
-                //textBox22.Text = "";
-                //textBox23.Text = "";
-                //textBox24.Text = "";
-                //textBox26.Text = "";
-                //textBox25.Text = "";
-                //textBox27.Text = "";
-                //textBox28.Text = "";
-                //textBox29.Text = "";
-                //textBox30.Text = "";
-                //pictureBox1.Visible = false;
-                //label29.Visible = false;
-                //label33.Visible = false;
-                //label34.Visible = false;
+                
             }
             catch (Exception ex)
             {
@@ -160,22 +100,14 @@ namespace Exchange.Pages
             try
             {
                 //comboBox1.Items.Clear();
-                //comboBox1.Text = "";
-                //string[] readers = test.GetReaders(true);
-                //if (readers != null && readers.Length != 0)
-                //{
-                //    for (int i = 0; i < readers.Length; i++)
-                //    {
-                //        comboBox1.Items.Add(readers[i]);
-                //    }
-                //    comboBox1.SelectedIndex = 0;
-                //}
+
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
         }
+
         public void pacionload()
         {
             test = new PACMAN();
@@ -531,126 +463,9 @@ namespace Exchange.Pages
 
         }
 
-
-        //register_Click
-        private void register_Click(object sender, RoutedEventArgs e)
-        {
-            // Pass parameters to Page1.xaml after successful login
-            // Page1 page1 = new Page1(username);
-            wRegister wmainpage = new wRegister();
-            NavigationService.Navigate(wmainpage);
-
-        }
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
-        {
-
-            // Pass parameters to Page1.xaml after successful login
-            // Page1 page1 = new Page1(username);
-            MessageBox.Show(TokenManager.Token);
-            //MessageBox.Show(LoadToken());
-
-            NavigationManager.NavigateToHome();
-        }
-
-        private static Dictionary<string, byte[]> EncryptedTokens = new Dictionary<string, byte[]>();
-        public static string LoadToken()
-        {
-            if (!EncryptedTokens.ContainsKey("AuthenticationToken"))
-            {
-                return null;
-            }
-
-            byte[] encryptedToken = EncryptedTokens["AuthenticationToken"];
-
-            if (encryptedToken == null)
-            {
-                return null;
-            }
-
-            try
-            {
-                byte[] decryptedToken = ProtectedData.Unprotect(
-                    encryptedToken,
-                    null,
-                    DataProtectionScope.CurrentUser);
-                return Encoding.UTF8.GetString(decryptedToken);
-            }
-            catch (CryptographicException)
-            {
-                // Handle decryption failure (e.g., invalid token)
-                return null;
-            }
-        }
-
         private void backbutton(object sender, RoutedEventArgs e)
         {
             NavigationManager.NavigateToHome();
-        }
-
-        private void qrbtn_Click(object sender, RoutedEventArgs e)
-        {
-
-            // Create an instance of your Windows Forms form
-            //var winForm = new qrcodeint.Form1();
-
-            // Enable keyboard input in the WinForms control
-            //ElementHost.EnableModelessKeyboardInterop(winForm);
-
-            // Show the form
-            //winForm.test4();
-
-
-
-
-            // MessageBox.Show("Hi");
-            try
-            {
-               //  test4();
-                
-                //MessageBox.Show("" + );
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-
-        //Authenticate using Push Notification
-        public string test4()
-        {
-            X509Certificate2 cert = new X509Certificate2();
-            X509Store x509Store = new X509Store(StoreName.My, StoreLocation.LocalMachine);
-            x509Store.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);
-            var certificate2Collection = x509Store.Certificates
-                .Find(X509FindType.FindByThumbprint, "07C8705C099003552A9012A6B44627A931727756", false);
-            if (certificate2Collection == null || certificate2Collection.Count == 0 ||
-            certificate2Collection.Count > 1)
-            {
-                throw new Exception("Certificate not found");
-            }
-            cert = certificate2Collection[0];
-
-            var authClient = new MIDAuthServiceClient(cert, "mid-auth-p.paci.gov.kw", "5869");
-            //var authClient = new MIDAuthServiceClient(cert, "mid-auth-p.paci.gov.kw", "5869");
-
-            //var res = authClient.InitiateAuthRequestPN(new
-            //MIDAuthSignContract.Entities.AuthenticateRequest
-            //{
-            //    ServiceProviderId = "aa513452-fa95-47cc-9977-d5b60e0fa420",
-            //    ServiceDescriptionEN = "TEST EN",
-            //    ServiceDescriptionAR = "TEST AR",
-            //    AuthenticationReasonEn = "TEST RES EN",
-            //    AuthenticationReasonAr = "TEST RES AR",
-            //    RequestUserDetails = true,
-            //    SPCallbackURL = "https://api.wallstreetkwt.com/auth/AuthenticateUser",
-            //    PersonCivilNo = "292120200792"
-            //});
-
-            //MessageBox.Show("Response : " + res.Data);
-            //return res.Data;
-
-            return "";
         }
 
         private void QRscantextbox_KeyDown(object sender, KeyEventArgs e)

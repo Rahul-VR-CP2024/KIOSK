@@ -103,40 +103,48 @@ namespace Exchange.Pages
 
         public async Task LoadCountries()
         {
-            var client = new HttpClient();
-            var request = new HttpRequestMessage(HttpMethod.Post, "http://" + Variable.apiipadd + "/api/Beneficiary​/get-beneficiary-list");
-            request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
-            //130824
-            var content = new StringContent("{ \n    \"remID\":" + LoginManager.RemCode + ",\n    \"transferModeCode\":\"" + BCManager.selectedoptionborc + "\",\n    \"beneSLNO\":0,\n    \"beneCon\":\"\",\n    \"channelCode\":\"\",\n    \"ProductCode\":\"\"\n    }", null, "application/json");
-            request.Content = content;
-
-            var response = await client.SendAsync(request);
-            response.EnsureSuccessStatusCode();
-
-            using (var responseStream = await response.Content.ReadAsStreamAsync())
+            try
             {
-                // Parse JSON response using JsonDocument.Parse
-                var jsonDocument = await JsonDocument.ParseAsync(responseStream);
+                var client = new HttpClient();
+                var request = new HttpRequestMessage(HttpMethod.Post, "http://" + Variable.apiipadd + "/api/Beneficiary​/get-beneficiary-list");
+                request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
+                //130824
+                var content = new StringContent("{ \n    \"remID\":" + LoginManager.RemCode + ",\n    \"transferModeCode\":\"" + BCManager.selectedoptionborc + "\",\n    \"beneSLNO\":0,\n    \"beneCon\":\"\",\n    \"channelCode\":\"\",\n    \"ProductCode\":\"\"\n    }", null, "application/json");
+                request.Content = content;
 
-                // Access root object (assuming it's an array) and iterate over its elements
-                foreach (var dataElement in jsonDocument.RootElement.GetProperty("Data").EnumerateArray())
+                var response = await client.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+
+                using (var responseStream = await response.Content.ReadAsStreamAsync())
                 {
-                    Countries.Add(new Country
+                    // Parse JSON response using JsonDocument.Parse
+                    var jsonDocument = await JsonDocument.ParseAsync(responseStream);
+
+                    // Access root object (assuming it's an array) and iterate over its elements
+                    foreach (var dataElement in jsonDocument.RootElement.GetProperty("Data").EnumerateArray())
                     {
-                        CountryName = dataElement.GetProperty("BENNAME").GetString(),
-                        Amt = $"{dataElement.GetProperty("COREDISB").GetString()} {dataElement.GetProperty("BENE_CURRENCY").GetString()}",
-                        Bene = $"{dataElement.GetProperty("BENE_SALUTE").GetString()} {dataElement.GetProperty("BENNAME").GetString()}",
-                        Date = dataElement.GetProperty("BENE_SLNO").ToString(), // You need to specify how to get the date from the JSON response
-                        TID = dataElement.GetProperty("BENE_ACCNO").ToString(), // You need to specify how to get the TID from the JSON response BENE_SLNO
-                        BANK = dataElement.GetProperty("BENE_BANK").GetString(),
-                        stsimg = new BitmapImage(new Uri("pack://application:,,,/Exchange;component/Images/check.png")), // You need to adjust this based on your logic
-                        FlagImage = new BitmapImage(new Uri("pack://application:,,,/Exchange;component/Images/INR.png"))
-                        //FlagImage = GetFlagImage(dataElement.GetProperty("BENE_COUNTRY").GetString()) // Assuming you have a method to get flag image based on country code
-                    });
+                        Countries.Add(new Country
+                        {
+                            CountryName = dataElement.GetProperty("BENNAME").GetString(),
+                            Amt = $"{dataElement.GetProperty("COREDISB").GetString()} {dataElement.GetProperty("BENE_CURRENCY").GetString()}",
+                            Bene = $"{dataElement.GetProperty("BENE_SALUTE").GetString()} {dataElement.GetProperty("BENNAME").GetString()}",
+                            Date = dataElement.GetProperty("BENE_SLNO").ToString(), // You need to specify how to get the date from the JSON response
+                            TID = dataElement.GetProperty("BENE_ACCNO").ToString(), // You need to specify how to get the TID from the JSON response BENE_SLNO
+                            BANK = dataElement.GetProperty("BENE_BANK").GetString(),
+                            stsimg = new BitmapImage(new Uri("pack://application:,,,/Exchange;component/Images/check.png")), // You need to adjust this based on your logic
+                            FlagImage = new BitmapImage(new Uri("pack://application:,,,/Exchange;component/Images/INR.png"))
+                            //FlagImage = GetFlagImage(dataElement.GetProperty("BENE_COUNTRY").GetString()) // Assuming you have a method to get flag image based on country code
+                        });
+                    }
                 }
+
+                countryListView.ItemsSource = Countries;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
             }
 
-            countryListView.ItemsSource = Countries;
         }
 
         public static ICommand GetEditCommand(DependencyObject obj)

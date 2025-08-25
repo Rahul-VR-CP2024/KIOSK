@@ -59,8 +59,6 @@ namespace Exchange.Pages
             };
         }
 
-        //LoginButton_Click
-
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
 
@@ -69,6 +67,7 @@ namespace Exchange.Pages
             NavigationManager.NavigateToHome();
 
         }
+
         public class FaqItem
         {
             public string Question { get; set; }
