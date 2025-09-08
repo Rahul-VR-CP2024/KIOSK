@@ -39,45 +39,62 @@ namespace Exchange.Pages
             }
         }
 
+        public static class BeneficiaryDetailsManager
+        {
+            public static string BENE_MOBILE { get; set; }
+
+            public static void SetBENE_MOBILE(string token)
+            {
+                BENE_MOBILE = token;
+            }
+        }
+
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-
-
             try
             {
-                var client = new HttpClient();
-                var request = new HttpRequestMessage(HttpMethod.Post, "http://" + Variable.apiipadd + "/api/Beneficiary/get-beneficiary-by-id");
-                request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
+                using var client = new HttpClient();
 
-                var content = new StringContent("{\n \"eid\":" + SelectedBeneficiaryManager.BENE_SLNO + "\"\n}", null, "application/json");
-                request.Content = content;
+           
+               var url = $"https://{Variable.apiipadd}/api/Beneficiary/get-beneficiary-by-id?eId={SelectedBeneficiaryManager.BENE_SLNO}";
+
+                var request = new HttpRequestMessage(HttpMethod.Get, url);
+
+                request.Headers.Authorization =
+                    new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", TokenManager.Token);
+
                 var response = await client.SendAsync(request);
                 response.EnsureSuccessStatusCode();
-                Console.WriteLine(await response.Content.ReadAsStringAsync());
 
+                var responseBody = await response.Content.ReadAsStringAsync();
 
-                var responseBody5 = await response.Content.ReadAsStringAsync();
-
-                using (JsonDocument doc = JsonDocument.Parse(responseBody5))
+                using (JsonDocument doc = JsonDocument.Parse(responseBody))
                 {
-
                     JsonElement root = doc.RootElement;
 
-                    JsonElement dataArray = root.GetProperty("Data");
-
-                    foreach (JsonElement dataElement in dataArray.EnumerateArray())
+                    // Get the "data" object
+                    if (root.TryGetProperty("data", out JsonElement dataObj))
                     {
-                        // Check if the element has a property named "REM_ID"
-                        if (dataElement.TryGetProperty("BENE_FNAME", out JsonElement remIdElement))
+                        // Inside "data", get "beneficiary_by_id" object
+                        if (dataObj.TryGetProperty("beneficiary_by_id", out JsonElement beneficiary))
                         {
-                            //REM_ID = remIdElement.ToString();
-                            //firstnameTextbox.Text = remIdElement.ToString();
-                            //break; // Stop after finding the first REM_ID (optional)
+                            // Now extract specific fields
+                            //if (beneficiary.TryGetProperty("beneficiary_first_name", out JsonElement fnameElement))
+                            //{
+                            //    firstnameTextbox.Text = fnameElement.GetString();
+                            //}
+
+                            ////if (beneficiary.TryGetProperty("beneficiary_last_name", out JsonElement lnameElement))
+                            ////{
+                            ////    lastnameTextbox.Text = lnameElement.GetString();
+                            ////}
+
+                            //if (beneficiary.TryGetProperty("beneficiary_mobile", out JsonElement mobileElement))
+                            //{
+                            //    mobileTextbox.Text = mobileElement.GetString();
+                            //}
                         }
-
-
                     }
-
                 }
 
 
@@ -85,63 +102,59 @@ namespace Exchange.Pages
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString());
+                MessageBox.Show(ex.Message);
             }
-
-
-
         }
+
 
         public async void loadbenefieldstoedit()
         {
             try
             {
-                var client = new HttpClient();
-                var request = new HttpRequestMessage(HttpMethod.Post, "http://"+Variable.apiipadd+ "/api/Beneficiary/get-beneficiary-by-id");
-                request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
+                using var client = new HttpClient();
+                var url = $"https://{Variable.apiipadd}/api/Beneficiary/get-beneficiary-by-id?eId={SelectedBeneficiaryManager.BENE_SLNO}";
+                var request = new HttpRequestMessage(HttpMethod.Get, url);
+                request.Headers.Authorization =
+                    new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", TokenManager.Token);
 
-                var content = new StringContent("{\n    \"eid\":" + SelectedBeneficiaryManager.BENE_SLNO + "\"\n}", null, "application/json");
-                request.Content = content;
                 var response = await client.SendAsync(request);
                 response.EnsureSuccessStatusCode();
 
                 var responseBody = await response.Content.ReadAsStringAsync();
-
-
-                //MessageBox.Show(await response.Content.ReadAsStringAsync());
-                // Parse and store the JsonDocument at the class level
                 jsonDocument = JsonDocument.Parse(responseBody);
                 JsonElement root = jsonDocument.RootElement;
 
-                dataArrayedit = root.GetProperty("Data");
-                // MessageBox.Show("Step 1 " + dataArrayedit.ToString());
-
-                foreach (JsonElement dataElement in dataArrayedit.EnumerateArray())
+                if (root.TryGetProperty("data", out JsonElement dataObj) &&
+                    dataObj.TryGetProperty("beneficiary_by_id", out JsonElement beneficiary))
                 {
+                    //// Example mappings
+                    //BeneficiaryDetailsManager.SetBENE_MOBILE(
+                    //    beneficiary.TryGetProperty("beneficiary_mobile", out JsonElement mobileElement)
+                    //        ? mobileElement.GetString()
+                    //        : "12345678");
 
-                    BeneficiaryDetailsManager.SetBENE_MOBILE(dataElement.TryGetProperty("BENE_MOBILE", out JsonElement mdElementemobile) ? mdElementemobile.GetString() : "12345678");
-                    BENE_PRODedit = dataElement.TryGetProperty("BENE_PROD", out JsonElement mdElemente) ? mdElemente.GetString() : "";
-                    DISBTYPEedit = dataElement.TryGetProperty("COREDISB", out JsonElement mdElementeee) ? mdElementeee.GetString() : "";
-                    BENE_CNTRYedit = dataElement.TryGetProperty("BENE_CNTRY", out JsonElement mdElementeeee) ? mdElementeeee.GetString() : "";
-                    BENE_CURRedit = dataElement.TryGetProperty("BENE_CURR", out JsonElement mdElementeeeee) ? mdElementeeeee.GetString() : "";
+                    //string productName = beneficiary.TryGetProperty("product_name", out JsonElement prodElement)
+                    //        ? prodElement.GetString()
+                    //        : "";
 
+                    //string countryName = beneficiary.TryGetProperty("beneficiary_country_name", out JsonElement countryElement)
+                    //        ? countryElement.GetString()
+                    //        : "";
 
-
-                    LoadBenefieldseditmode(
-                        dataElement.TryGetProperty("BENE_PROD", out JsonElement mdElement) ? mdElement.GetString() : "",
-                        dataElement.TryGetProperty("DISBTYPE", out JsonElement md2Element) ? md2Element.GetString() : "",
-                        dataElement.TryGetProperty("BENE_CNTRY", out JsonElement md3Element) ? md3Element.GetString() : "",
-                        dataElement.TryGetProperty("COREDISB", out JsonElement md4Element) ? md4Element.GetString() : ""
-                    );
+                    //LoadBenefieldseditmode(
+                    //    productName,
+                    //    "", // no direct DISBTYPE in response
+                    //    countryName,
+                    //    ""  // no direct COREDISB in response
+                    //);
                 }
-
-               // runtheloadersource();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+
 
         public async Task LoadBenefieldseditmode(string BENE_PRODv, string DISBTYPEv, string BENE_CNTRYv, string COREDISBv)
         {
@@ -458,16 +471,6 @@ namespace Exchange.Pages
 
             wTransferpay wtpay = new wTransferpay();
             NavigationService.Navigate(wtpay);
-        }
-
-        public static class BeneficiaryDetailsManager
-        {
-            public static string BENE_MOBILE { get; set; }
-
-            public static void SetBENE_MOBILE(string token)
-            {
-                BENE_MOBILE = token;
-            }
         }
     }
 }

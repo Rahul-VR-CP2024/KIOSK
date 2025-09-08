@@ -107,7 +107,7 @@ namespace Exchange.Pages
 
             try
             {
-                
+
                 if (BCManager.selectedoptionborc == "CPX")
                 {
                     //onlyshowonbt.Visibility = Visibility.Hidden;
@@ -124,13 +124,11 @@ namespace Exchange.Pages
 
                 if (addoreditvalue == "add")
                 {
-                    MessageBox.Show("11");
                     LoadBenefields();
                 }
 
                 if (addoreditvalue == "edit")
                 {
-                    MessageBox.Show("12");
                     loadbenefieldstoedit();
 
                     _ = new DisposableTimer(() => SelectBranchByConID(editmodebranch), 1);
@@ -164,12 +162,12 @@ namespace Exchange.Pages
                 }
 
                 // Build API URL with query params
-                string url = $"https://{Variable.apiipadd}/api/Beneficiary/get-beneficiary-bank-combo-list" +$"?ProductCode={productCode}&TransferMode={transferMode}&CountryCode={countryCode}";
+                string url = $"https://{Variable.apiipadd}/api/Beneficiary/get-beneficiary-bank-combo-list" + $"?ProductCode={productCode}&TransferMode={transferMode}&CountryCode={countryCode}";
 
                 var client = new HttpClient();
                 var request = new HttpRequestMessage(HttpMethod.Get, url);
                 request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
-        
+
                 try
                 {
                     var response = client.Send(request);
@@ -218,23 +216,24 @@ namespace Exchange.Pages
         {
             try
             {
+                List<BanksC> productb = new List<BanksC>();
+
                 if (root.TryGetProperty("data", out JsonElement dataElement) &&
                     dataElement.TryGetProperty("beneficiary_bank_list", out JsonElement bankListElement) &&
                     bankListElement.ValueKind == JsonValueKind.Array)
                 {
-                    productb.Clear();
+                    bankcombo.Items.Clear();
 
                     foreach (var item in bankListElement.EnumerateArray())
                     {
                         string name = item.TryGetProperty("name", out JsonElement nameEl) ? nameEl.GetString() ?? "" : "";
                         string code = item.TryGetProperty("code", out JsonElement codeEl) ? codeEl.GetString() ?? "" : "";
-                        bool isDefault = item.TryGetProperty("is_default", out JsonElement defEl) && defEl.GetBoolean();
-
+                        //bool isDefault = item.TryGetProperty("is_default", out JsonElement defEl) && defEl.GetBoolean();
                         productb.Add(new BanksC
                         {
                             BankName = name,
                             BankCode = code,
-                            BankID = isDefault ? "default" : ""   // no e_id in response, so marking default
+                            BankID = code   // no e_id in response, so marking default
                         });
                     }
                 }
@@ -274,7 +273,7 @@ namespace Exchange.Pages
                     : BENE_PRODedit;
 
                 // Build API URL with query params
-                string apiUrl = $"https://{Variable.apiipadd}/api/Beneficiary/get-beneficiary-branch-combo-list" +$"?ProductCode={productCode}&BankCode={bankCode}";
+                string apiUrl = $"https://{Variable.apiipadd}/api/Beneficiary/get-beneficiary-branch-combo-list" + $"?ProductCode={productCode}&BankCode={bankCode}";
 
                 var token = TokenManager.Token;
                 using (var client = new HttpClient())
@@ -292,7 +291,6 @@ namespace Exchange.Pages
                             branchListElement.ValueKind == JsonValueKind.Array)
                         {
                             branchcombo.Items.Clear();
-
                             foreach (var branch in branchListElement.EnumerateArray())
                             {
                                 string code = branch.GetProperty("code").GetString() ?? "";
@@ -345,16 +343,14 @@ namespace Exchange.Pages
                 );
                 request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
                 request.Headers.Add("accept", "text/plain");
-
                 var response = await client.SendAsync(request);
                 response.EnsureSuccessStatusCode();
-
                 // Parse the JSON response with JsonDocument
                 using (var responseStream = await response.Content.ReadAsStreamAsync())
                 {
                     using (var doc = JsonDocument.Parse(responseStream))
                     {
-                        UpdateNationilityComboBoxsource(doc.RootElement);
+                        UpdateNationilityComboBoxsource(doc);
                     }
                 }
             }
@@ -383,18 +379,15 @@ namespace Exchange.Pages
 
                     string url = $"{baseUrl}?ProductCode={productCode}&DisbursalModeCode={disbursalMode}&MemberSection={memberSection}&CountryCode={countryCode}&DestinationCurrencyCode={destinationCurrencyCode}&Language={language}";
 
-                    MessageBox.Show("url");
                     var request = new HttpRequestMessage(HttpMethod.Get, url);
                     request.Headers.Add("Authorization", "Bearer " + token);
                     request.Headers.Add("Accept", "application/json");
                     var response = await client.SendAsync(request);
-                    MessageBox.Show(response.ToString());
-                    MessageBox.Show("123");
+
                     response.EnsureSuccessStatusCode();
 
                     using (var responseStream = await response.Content.ReadAsStreamAsync())
                     {
-                        MessageBox.Show("1234");
                         var jsonDocument = await JsonDocument.ParseAsync(responseStream);
 
                         if (jsonDocument.RootElement.TryGetProperty("data", out var dataElement) &&
@@ -409,7 +402,6 @@ namespace Exchange.Pages
                                 string type = field.GetProperty("type").GetString();
                                 bool mandatory = field.GetProperty("mandatory").GetBoolean();
                                 bool visible = field.GetProperty("visible").GetBoolean();
-
                                 if (!visible)
                                     continue;
 
@@ -424,6 +416,7 @@ namespace Exchange.Pages
                                 coreFieldNames.Add(fieldName);
                                 if (mandatory)
                                     MANDATORYcoreFieldNames.Add(fieldName);
+
                             }
                         }
                         else
@@ -444,7 +437,6 @@ namespace Exchange.Pages
             try
             {
                 var client = new HttpClient();
-                MessageBox.Show("1111");
                 // Construct the GET URL with eId
                 var url = new HttpRequestMessage(HttpMethod.Post, "https://" + Variable.apiipadd + "/api/Beneficiary/get-beneficiary-by-id" + SelectedBeneficiaryManager.BENE_SLNO);
                 var request = new HttpRequestMessage(HttpMethod.Get, url.RequestUri);
@@ -452,7 +444,6 @@ namespace Exchange.Pages
                 request.Headers.Add("Accept", "text/plain");
                 MessageBox.Show(url.RequestUri.ToString());
                 var response = await client.SendAsync(request);
-                MessageBox.Show("122233");
                 response.EnsureSuccessStatusCode();
                 var responseBody = await response.Content.ReadAsStringAsync();
                 jsonDocument = JsonDocument.Parse(responseBody);
@@ -611,257 +602,165 @@ namespace Exchange.Pages
             }
         }
 
-        public async void createbene()
+        public async Task createbene()
         {
-
             try
             {
-                var client = new HttpClient();
-                var request = new HttpRequestMessage(HttpMethod.Post, "http://" + Variable.apiipadd + "/api/Beneficiary/update-beneficiary");
-                // request.Headers.Add("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJXQUxMU1RLSU9TS1VBVCIsImp0aSI6IjI1ZmRjZjI4LTJiNGItNDMyNS05ZjQ2LWYwZmY3YjIwMjYyNCIsImlhdCI6IjA4LzEyLzIwMjQgMTU6MjE6UE0iLCJLaW9za0lEIjoiMTU0MzU0MyIsIm5iZiI6MTcyMzQ2NTI3NywiZXhwIjoxNzIzNDY3MDc3LCJpc3MiOiJodHRwOi8vd3d3LmNpbnF1ZS5hZSIsImF1ZCI6IkNpbnF1ZSBDdXN0b21lcnMifQ.3HBsleRdWh5v1uXrwdkgD6gKkYvlpTTgEu6U4AsY4Mk");
+                using var client = new HttpClient();
+                var request = new HttpRequestMessage(HttpMethod.Post,
+                    $"https://{Variable.apiipadd}/api/Beneficiary/update-beneficiary");
 
                 request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
-                //var content = new StringContent("{\n  \"BENE_SLNO\": 0,\n  \"BENE_DISB\": \"2\",\n  \"BENE_REMID\": 10168, "+ looperjson + "\n  \"BENE_GENDER\": \"M\",\n  \"BENE_NICKNAME\": \"TFCASH\",\n  \"BENE_FNAME\": \"BURHAN\",\n  \"BENE_MNAME\": \"\",\n  \"BENE_LNAME\": \"ALI\",\n  \"BENE_ADDRESS1\": \"ADD1\",\n  \"BENE_ADDRESS2\": \"\",\n  \"BENE_CITY\": \"\",  \n  \"BENE_STATE\": \"\",  \n  \"BENE_CNTRY\": \"BD\",\n  \"BENE_NATION\": \"BD\",\n  \"BENE_MOBILE\":\"5656456457\",\n  \"BENE_PROD\": \"TF\",\n  \"BENE_CURR\": \"BDT\",\n  \"appID\": 10018,\n  \"moduleID\": 2,\n  \"BENE_CHANNEL\": \"kiosk\",\n  \"BENE_DISBTYPE\": \"CP\"\n}", null, "application/json");
 
+                // --- Bank & Branch ---
+                BanksC selectedBank = (BanksC)bankcombo.SelectedItem;
+                BanksBanchC selectedBranch = (BanksBanchC)branchcombo.SelectedItem;
 
-                //Disbursal Code Pass the DisbursalCode from the API response/ api / v{ v}/ sxgeneral/ DefaultProduct
+                string bankId = selectedBank?.BankID ?? "";
+                string bankCode = selectedBank?.BankCode ?? "";
+                string bankName = selectedBank?.BankName ?? "";
 
+                string branchId = selectedBranch?.BanksBanchID ?? "";
+                string branchCode = selectedBranch?.BanksBanchCode ?? "";
+                string branchName = selectedBranch?.BanksBanchName ?? "";
 
-                if (BCManager.selectedoptionborc == "CPX")
-                {
-                    // onlyshowonbt.Visibility = Visibility.Hidden;
-                }
-                else
-                {
+                // --- Nationality ---
+                NationalityCountry selectedNationality = (NationalityCountry)NationalityCOUNTRYcombo.SelectedItem;
+                string nationalityCode = selectedNationality?.ConCode ?? "";
 
-                    BanksC selectedProduct = (BanksC)bankcombo.SelectedItem;
-                    BanksBanchC selecteddisp = (BanksBanchC)branchcombo.SelectedItem;
-
-                    // Access the product code
-                    string bankksid = "";
-                    string banknameis = "";
-                    string bankkscode = "";
-                    string branchnameis = "";
-
-
-                    // string bankksid = selectedProduct.BankID;
-                    // string bankkscode = selectedProduct.BankCode;
-
-
-                    if (selectedProduct != null)
-                    {
-                        bankksid = selectedProduct.BankID;
-                        banknameis = selectedProduct.BankName;
-                    }
-
-                    try
-                    {
-                        if (selecteddisp != null)
-                        {
-                            bankkscode = selectedProduct.BankCode;
-
-                        }
-
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Bank is not Selected");
-                        return;
-                    }
-
-                    if (selecteddisp != null)
-                    {
-                        bankkscode = selectedProduct.BankCode;
-
-                    }
-
-                    string banbchesid = "";
-                    string banbchescode = "";
-
-
-                    if (branchcombo.Items.Count != 0)
-                    {
-                        banbchesid = selecteddisp.BanksBanchID;
-                        banbchescode = selecteddisp.BanksBanchCode;
-                        branchnameis = selecteddisp.BanksBanchName;
-
-                    }
-                    // runtheloadersource();
-                    // looperjson += ;
-
-                    //            "BENE_BANKID": "113",
-                    //"BENE_BANKCODE": "IND11",
-                    //"BENE_BRANCHID": "ID98000001",
-                    //"BENE_BRANCHCODE": "ID98 | ADCB0000001",
-                    //looperjson += "\"BENE_BANKID\"" + " : \"" + bankksid + "\",\n";
-                    //looperjson += "\"BENE_BANKCODE\"" + " : \"" + bankkscode + "\",\n";
-
-                    if (bankksid == "")
-                    {
-                        looperjson += "\"BENE_BANKID\"" + " : \"001\",\n";
-                    }
-                    else
-                    {
-                        looperjson += "\"BENE_BANKID\"" + " : \"" + bankksid + "\",\n";
-                    }
-
-                    if (bankkscode == "")
-                    {
-                        looperjson += "\"BENE_BANKCODE\"" + " : \"001\",\n";
-                    }
-                    else
-                    {
-                        looperjson += "\"BENE_BANKCODE\"" + " : \"" + bankkscode + "\",\n";
-                    }
-
-                    if (banbchesid == "")
-                    {
-                        looperjson += "\"BENE_BRANCHID\"" + " : \"001\",\n";
-                    }
-                    else
-                    {
-                        looperjson += "\"BENE_BRANCHID\"" + " : \"" + banbchesid + "\",\n";
-                    }
-
-                    if (banbchescode == "")
-                    {
-                        looperjson += "\"BENE_BRANCHCODE\"" + " : \"001\",\n";
-                    }
-                    else
-                    {
-                        looperjson += "\"BENE_BRANCHCODE\"" + " : \"" + banbchescode + "\",\n";
-                    }
-
-                    if (bankvisible == "yes")
-                    {
-                        looperjson += "\"BENE_BANK\"" + " : \"" + banknameis + "\",\n";
-                    }
-                    if (branchvisibile == "yes")
-                    {
-                        looperjson += "\"BENE_BRANCH\"" + " : \"" + branchnameis + "\",\n";
-                    }
-
-
-                }
-
-                //looperjson
-
-                NationalityCountry selectedNATIONALITY = (NationalityCountry)NationalityCOUNTRYcombo.SelectedItem;
-                string selectedNATIONALITYstrg = selectedNATIONALITY.ConCode;
-                looperjson += "\"BENE_NATION\"" + " : \"" + selectedNATIONALITYstrg + "\",\n";
-
-
-                string beneserialno = "0";
-                string benecurrency = "";
-
-                string beneBENE_DISB = "";
-                string beneBENE_CNTRY = "";
-                string beneBENE_PROD = "";
-                string beneBENE_CURR = "";
+                // --- Old values handling ---
+                string beneSerialNo = "0";
+                string beneDisb = "";
+                string beneCountry = "";
+                string beneProd = "";
+                string beneCurr = "";
 
                 if (addoreditvalue == "add")
                 {
-                    benecurrency = ProductManager.selectedProdCurrCode;
-                    beneBENE_DISB = ProductManager.selecteddispcode;
-                    beneBENE_CNTRY = SelectedAddBeneCountry.seladdbenecount;
-                    beneBENE_PROD = ProductManager.selectedproductcode;
-                    beneBENE_CURR = ProductManager.selectedProdCurrCode;
+                    beneDisb = ProductManager.selecteddispcode;
+                    beneCountry = SelectedAddBeneCountry.seladdbenecount;
+                    beneProd = ProductManager.selectedproductcode;
+                    beneCurr = ProductManager.selectedProdCurrCode;
                 }
-
-                if (addoreditvalue == "edit")
+                else if (addoreditvalue == "edit")
                 {
-                    beneserialno = SelectedBeneficiaryManager.BENE_SLNO;
-                    beneBENE_DISB = DISBTYPEedit;
-                    beneBENE_CNTRY = BENE_CNTRYedit;
-                    beneBENE_PROD = BENE_PRODedit;
-                    beneBENE_CURR = BENE_CURRedit;
-                    //benecurrency = SelectedBeneficiaryManager.c;
+                    beneSerialNo = SelectedBeneficiaryManager.BENE_SLNO;
+                    beneDisb = DISBTYPEedit;
+                    beneCountry = BENE_CNTRYedit;
+                    beneProd = BENE_PRODedit;
+                    beneCurr = BENE_CURRedit;
                 }
 
-                var content = new StringContent("{\n  \"BENE_SLNO\": " + beneserialno + ",\n  \"BENE_DISB\": \"" + beneBENE_DISB + "\",\n  \"BENE_REMID\": " + LoginManager.Remiduser + ", \n  \"BENE_GENDER\": \"M\",\n" +
-                    "" +
-                    "" + looperjson +
-                    //"\n  \"BENE_FNAME\": \"BURHAN\",\n  \"BENE_MNAME\": \"\",\n  \"BENE_LNAME\": \"ALI\",\n  \"BENE_ADDRESS1\": \"ADD1\",\n  \"BENE_ADDRESS2\": \"\",\n  \"BENE_CITY\": \"\",  \n  \"BENE_STATE\": \"\",  \n  \"BENE_CNTRY\": \"BD\",\n  \"BENE_NATION\": \"BD\",\n  \"BENE_MOBILE\":\"5656456457\",\n  \"BENE_PROD\": \"TF\",\n  \"BENE_CURR\": \"BDT\"," +
-                    //"" +
-                    //"" +
-                    //"" +
-                    //"" +
-                    "" +
-                   "\"BENE_CNTRY\": \"" + beneBENE_CNTRY + "\",\n" +
-                    "\"BENE_PROD\": \"" + beneBENE_PROD + "\",\n  \"BENE_CURR\": \"" + beneBENE_CURR + "\",\n \"appID\": 3,\n  \"moduleID\": 3,\n  \"BENE_CHANNEL\": \"kiosk\",\n  \"BENE_DISBTYPE\": \"" + BCManager.selectedoptionborc + "\"\n}", null, "application/json");
-                // "\n\"BENE_BRIFSCCODE\": \"IFCNR123456789\"," +
-                //BENE_CURR
-                //  BENE_PROD TF  SelectedAddBeneCountry
+                // --- For now: hardcoded / empty values ---
+                string firstName = "Haritha";
+                string middleName = "T";
+                string lastName = "H";
+                string mobileNumber = "";
+                string relation = "";
+                string accountNo = "";
 
-                //BENE_CHANNEL Channel ID Pass the Code from the API response / api / v{ v}/ AppAuth
+                // --- Build Payload ---
+                var payload = new
+                {
+                    mobile_code = 965,
+                    mobile_number = mobileNumber,
+                    id_number = "",
+                    member_code = LoginManager.Remiduser,
 
-                string jsonContent = content.ReadAsStringAsync().Result; // Replace with content.Encoding if known
-                                                                         //MessageBox.Show(jsonContent);
-                looperjson = "";
-                //string jsonContent = content;
+                    bene_slno = beneSerialNo,
+                    bene_disb = beneDisb,
+                    bene_gender = "M",
 
-                request.Content = content;
+                    bene_currency = beneCurr,
+                    bene_channel = "kiosk",
+                    bene_disbtype = BCManager.selectedoptionborc,
+                    appID = 3,
+                    moduleID = 3,
+
+                    source_of_fund = "",
+                    income_source_code = "",
+                    purpose_of_transaction = "",
+                    purpose_code = 123,
+
+                    source_of_fund_name = "",
+                    purpose_of_transaction_name = "",
+
+                    product_code = 539,  // match working sample
+                    product_name = "DIRECT TRANSFER",
+                    beneficiary_first_name = "Haritha",
+                    beneficiary_last_name = "Thomas",
+
+
+                    beneficiary_middle_name = middleName,
+
+                    beneficiary_first_name_unicode = "",
+                    beneficiary_last_name_unicode = "",
+                    beneficiary_middle_name_unicode = "",
+
+                    beneficiary_salutation = "1",
+                    beneficiary_nationality_code = nationalityCode,
+                    beneficiary_country_code = beneCountry,
+                    beneficiary_country_name = "",
+                    beneficary_relation = relation,
+
+                    beneficiary_address1 = "",
+                    beneficiary_address2 = "",
+                    beneficiary_city = "",
+                    beneficiary_state = "",
+
+                    beneficiary_bank_id = bankId,
+                    beneficiary_bank_code = bankCode,
+                    beneficiary_bank_name = bankName,
+                    beneficiary_bank_account_number = accountNo,
+
+                    beneficiary_branch_id = branchId,
+                    beneficiary_branch_code = branchCode,
+                    beneficiary_branch_name = branchName
+
+                };
+
+                string jsonString = JsonSerializer.Serialize(payload,
+                    new JsonSerializerOptions { WriteIndented = true });
+
+                request.Content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+
+                // --- Call API ---
                 var response = await client.SendAsync(request);
-                response.EnsureSuccessStatusCode();
-                Console.WriteLine(await response.Content.ReadAsStringAsync());
-                //MessageBox.Show(await response.Content.ReadAsStringAsync());
-
-
                 var responseBody = await response.Content.ReadAsStringAsync();
 
-
-
-
-                var contentString = await request.Content.ReadAsStringAsync();
-                string responseString = await response.Content.ReadAsStringAsync();
-                RichMessageBox.Show("Request Data to api/Beneficiary/update-beneficiary\n" + DateTime.Now + "\n" + contentString);
-                RichMessageBox.Show("Response from api/Beneficiary/update-beneficiary\n" + DateTime.Now + "\n" + responseString);
-
-
-
-
-
-                // Parse the JSON response using System.Text.Json
-                string code;
-                string Message;
-                using (JsonDocument doc = JsonDocument.Parse(responseBody))
+                if (!response.IsSuccessStatusCode)
                 {
-                    // Access the root JSON object
-                    JsonElement root = doc.RootElement;
-
-                    // Navigate to the 'Data' object
-                    //JsonElement dataElement = root.GetProperty("Message");
-
-                    // Extract the accessToken
-                    Message = root.GetProperty("Message").ToString();
-                    code = root.GetProperty("Code").ToString();
-
-                    // MessageBox.Show(code + Message);
-
-
+                    MessageBox.Show($"API Error: {(int)response.StatusCode} {response.ReasonPhrase}\n{responseBody}");
+                    return;
                 }
 
-                if (code == "0")
-                {
-                    MessageBox.Show("Saved Sucessfully");
-                    //wBeneficiary welocmepage = new wBeneficiary();
-                    //NavigationService.Navigate(welocmepage);
+                // --- Parse Response ---
+                using JsonDocument doc = JsonDocument.Parse(responseBody);
 
+                string message = doc.RootElement.TryGetProperty("Message", out var msgEl) ? msgEl.GetString() : "No message";
+                
+                    var root = doc.RootElement;
+
+                    string code = root.TryGetProperty("data", out var dataEl) &&
+                                 dataEl.TryGetProperty("e_id", out var eIdEl)
+                                 ? eIdEl.GetString()
+                                 : "-1";
+                
+                if (code != "-1")
+                {
+                    MessageBox.Show("Saved Successfully");
                     wSelectbeneficary wsel = new wSelectbeneficary();
                     NavigationService.Navigate(wsel);
                 }
                 else
                 {
-                    // MessageBox.Show(jsonContent);
-                    // MessageBox.Show(await response.Content.ReadAsStringAsync());
-                    MessageBox.Show(Message);
+                    MessageBox.Show(message);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString());
+                MessageBox.Show("Error: " + ex.Message);
             }
-
         }
 
         private static TextBox FindTextBoxByName(DependencyObject parent, string name)
@@ -1017,26 +916,27 @@ namespace Exchange.Pages
             {
                 MessageBox.Show(ex.Message.ToString());
             }
-            
+
             //
         }
 
-        private void UpdateNationilityComboBoxsource(JsonElement root)
+        private void UpdateNationilityComboBoxsource(JsonDocument jsonDocuments)
         {
             try
             {
-                NationalityCOUNTRYcombo.ItemsSource = null;
+
+                List<NationalityCountry> productsc = new List<NationalityCountry>();
+
                 NationalityCOUNTRYcombo.Items.Clear();
 
-                if (jsonDocument.RootElement.TryGetProperty("data", out JsonElement dataElement) &&
+                if (jsonDocuments.RootElement.TryGetProperty("data", out JsonElement dataElement) &&
                         dataElement.TryGetProperty("country_list", out JsonElement countryListElement))
                 {
                     foreach (var country in countryListElement.EnumerateArray())
                     {
-                        string code = country.GetProperty("code").GetString() ?? "";
-                        string name = country.GetProperty("name").GetString() ?? "";
-                        bool isDefault = country.TryGetProperty("is_default", out JsonElement defaultElement)
-                                         && defaultElement.GetBoolean();
+                        string name = country.TryGetProperty("name", out JsonElement nameEl) ? nameEl.GetString() ?? "" : "";
+                        string code = country.TryGetProperty("code", out JsonElement codeEl) ? codeEl.ToString() : "";
+                        ///string isDefault = country.TryGetProperty("is_default", out JsonElement eIdEl) ? eIdEl.GetString() ?? "" : "";
 
                         productsc.Add(new NationalityCountry
                         {
@@ -1045,14 +945,20 @@ namespace Exchange.Pages
                             ConCode = code.ToString()
                         });
                     }
+
                 }
-                
+                else
+                {
+                    Console.WriteLine("Invalid JSON response structure or missing product_list");
+                }
+
                 NationalityCOUNTRYcombo.ItemsSource = productsc;
 
                 if (productsc.Count > 0)
                 {
                     NationalityCOUNTRYcombo.SelectedItem = productsc[0];
                 }
+
                 NationalityCOUNTRYcombo.DisplayMemberPath = "ConName";
 
             }
@@ -1060,7 +966,7 @@ namespace Exchange.Pages
             {
                 MessageBox.Show(ex.Message.ToString());
             }
-            
+
         }
 
         public void SelectNationalityByConID(string ConCode)
@@ -1087,7 +993,7 @@ namespace Exchange.Pages
             {
                 MessageBox.Show(ex.Message.ToString());
             }
-            
+
         }
 
         public void SelectBankByConID(string ConCode)
@@ -1126,7 +1032,7 @@ namespace Exchange.Pages
             {
                 MessageBox.Show(ex.Message.ToString());
             }
-            
+
         }
 
         public void SelectBranchByConID(string ConCode)
@@ -1165,7 +1071,7 @@ namespace Exchange.Pages
             {
                 MessageBox.Show(ex.Message.ToString());
             }
-            
+
         }
 
         public async Task LoadBenefieldseditmode(string BENE_PRODv, string DISBTYPEv, string BENE_CNTRYv, string COREDISBv)
@@ -1544,7 +1450,7 @@ namespace Exchange.Pages
             {
                 MessageBox.Show(ex.Message.ToString());
             }
-            
+
         }
 
         public async Task LoadBenefields_old()

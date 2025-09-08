@@ -1,12 +1,14 @@
 ﻿using Exchange.Common;
 using Exchange.Managers;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using System.Windows.Threading;
+using static Exchange.Pages.wViewBenficiaryDetails;
 
 namespace Exchange.Pages
 {
@@ -63,191 +65,76 @@ namespace Exchange.Pages
 
         public async void loadbenedetails()
         {
-            var client = new HttpClient();
-            var request = new HttpRequestMessage(HttpMethod.Post, "http://"+Variable.apiipadd+"/api/v1/sxBeneficiary/Beneficiary/Get");
-            request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
-            //request.Headers.Add("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJXQUxMU1RLSU9TS1VBVCIsImp0aSI6Ijg2ZWYyMmU2LTUxNDItNGNmMi04M2UzLTc3NTNmYTI2OGRhMSIsImlhdCI6IjA4LzE1LzIwMjQgMDA6MDA6QU0iLCJLaW9za0lEIjoiMTU0MzU0MyIsIm5iZiI6MTcyMzY2OTIzMiwiZXhwIjoxNzIzNjcxMDMyLCJpc3MiOiJodHRwOi8vd3d3LmNpbnF1ZS5hZSIsImF1ZCI6IkNpbnF1ZSBDdXN0b21lcnMifQ.Fe16sIjMdkoCbtasqRBXh7fQaU57yiygF6YlfMVvSgs");
-            var content = new StringContent("{\n    \"remID\":"+ LoginManager.Remiduser + ",\n    \"disbMode\":\"\",\n    \"beneSLNO\":"+ SelectedBeneficiaryManager.BENE_SLNO+ ",\n    \"beneCon\":\"\",\n    \"channelCode\":\"\",\n    \"ProductCode\":\"\"\n}", null, "application/json");
-            request.Content = content;
-            using var response = await client.SendAsync(request);
-            response.EnsureSuccessStatusCode();
-            //Console.WriteLine(await response.Content.ReadAsStringAsync());
-
-            // Read the response content as a string
-            var responseBody = await response.Content.ReadAsStringAsync();
-
-            // Parse the JSON response using System.Text.Json
-            using (JsonDocument doc = JsonDocument.Parse(responseBody))
+            try
             {
-                // Access the root JSON object
-                JsonElement root = doc.RootElement;
+                using var client = new HttpClient();
 
-                // Navigate to the 'Data' object
-                //JsonElement dataElement = root.GetProperty("Message");
+                var url = $"https://{Variable.apiipadd}/api/Beneficiary/get-beneficiary-by-id?eId={SelectedBeneficiaryManager.BENE_SLNO}";
+                var request = new HttpRequestMessage(HttpMethod.Get, url);
 
-                // Extract the accessToken
-                //string Message = root.GetProperty("Message").GetString();
+                request.Headers.Authorization =
+                    new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", TokenManager.Token);
 
+                var response = await client.SendAsync(request);
+                response.EnsureSuccessStatusCode();
 
-                // Navigate to the 'Data' object
-                JsonElement dataElement = root.GetProperty("Data");
+                var responseBody = await response.Content.ReadAsStringAsync();
 
-                // Extract the accessToken
-                //RemitterID
-                //string remid = dataElement.GetProperty("UserId").ToString();
-                //string remid = dataElement.GetProperty("BENE_FNAME").ToString() + " " + dataElement.GetProperty("BENE_MNAME").ToString() + " " + dataElement.GetProperty("BENE_LNAME").ToString();
-//                nameofreciver.Text = remid;
-
-                //request.Content = content;
-
-                //var response = await client.SendAsync(request);
-                //response.EnsureSuccessStatusCode();
-
-                
-                // LoginManager.SetRemiduser(remid);
-
-                // Display the accessToken in a message box
-                //Console.WriteLine($"Access Token: {accessToken}");
-                //MessageBox.Show($"Message: {Message}");
-
-                //MessageBox.Show(Message + " RemID : " + remid);
-
-                //if (Message == "Login Successfully")
-                //{
-                //    wMainPage wmainpage = new wMainPage();
-                //    NavigationService.Navigate(wmainpage);
-                //}
-
-
-                // RemoveToken(accessToken);
-                // SaveToken(accessToken);
-                //TokenManager.SetToken(accessToken);
-                // MessageBox.Show(LoadToken());
-
-            }
-
-
-           
-
-            using (var responseStream = await response.Content.ReadAsStreamAsync())
-            {
-                // Parse JSON response using JsonDocument.Parse
-                var jsonDocument = await JsonDocument.ParseAsync(responseStream);
-
-                // Access root object (assuming it's an array) and iterate over its elements
-                foreach (var dataElement in jsonDocument.RootElement.GetProperty("Data").EnumerateArray())
+                using (JsonDocument doc = JsonDocument.Parse(responseBody))
                 {
-                    //Countries.Add(new Country
-                    //{
-                    //    CountryName = dataElement.GetProperty("BENNAME").GetString(),
-                    //    Amt = $"{dataElement.GetProperty("COREDISB").GetString()} {dataElement.GetProperty("BENE_CURRENCY").GetString()}",
-                    //    Bene = $"{dataElement.GetProperty("BENE_SALUTE").GetString()} {dataElement.GetProperty("BENNAME").GetString()}",
-                    //    Date = "", // You need to specify how to get the date from the JSON response
-                    //    TID = dataElement.GetProperty("BENE_SLNO").ToString(), // You need to specify how to get the TID from the JSON response BENE_SLNO
-                    //    BANK = dataElement.GetProperty("BENE_BANK").GetString(),
-                    //    stsimg = new BitmapImage(new Uri("pack://application:,,,/Exchange;component/Images/check.png")), // You need to adjust this based on your logic
-                    //    FlagImage = new BitmapImage(new Uri("pack://application:,,,/Exchange;component/Images/INR.png"))
-                    //    //FlagImage = GetFlagImage(dataElement.GetProperty("BENE_COUNTRY").GetString()) // Assuming you have a method to get flag image based on country code
-                    //});
+                    JsonElement root = doc.RootElement;
 
-                    
-                    string remid = dataElement.GetProperty("BENE_SALUTE").ToString() + dataElement.GetProperty("BENE_FNAME").ToString() + " " + dataElement.GetProperty("BENE_MNAME").ToString() + " " + dataElement.GetProperty("BENE_LNAME").ToString();
-
-                    TransferManagers1.SetBENE_FNAME(dataElement.GetProperty("BENE_FNAME").ToString());
-                    TransferManagers1.SetBENE_MNAME(dataElement.GetProperty("BENE_MNAME").ToString());
-                    TransferManagers1.SetBENE_LNAME(dataElement.GetProperty("BENE_LNAME").ToString());
-
-
-
-
-
-
-                    currencymoneytoTextBlock.Text = dataElement.GetProperty("BENE_CURR").ToString();
-                    ral.Content =  "0 " + dataElement.GetProperty("BENE_CURR").ToString();
-
-                    nameofreciver.Text = remid;
-                    productcode = dataElement.GetProperty("BENE_PROD").ToString();
-                    TransferManagers1.SetProductCode(productcode);
-                    CurrencyCode = dataElement.GetProperty("BENE_CURR").ToString();
-                    CountryCode = dataElement.GetProperty("BENE_CNTRY").ToString();
-                    //BENE_PROD
-                    Paymentmethod.Text = "";
-                    disbtypecode = dataElement.GetProperty("DISBTYPE").ToString();
-                    if (dataElement.GetProperty("DISBTYPE").ToString() == "CP") { 
-
-                    //BT OR CP BANK TRANSFER OR CASH PAYMENT
-                    //BCManager.selectedoptionborc;
-                    Paymentmethod.Text = "CASH PAYMENT";
-                    }
-                    if (dataElement.GetProperty("DISBTYPE").ToString() == "BT")
+                    if (root.TryGetProperty("data", out JsonElement dataObj) &&
+                        dataObj.TryGetProperty("beneficiary_by_id", out JsonElement beneficiary))
                     {
                         
-                        Paymentmethod.Text = "BANK TRANSFER";
+                        string firstName = beneficiary.TryGetProperty("beneficiary_first_name", out var f) ? f.GetString() : "";
+                        string middleName = beneficiary.TryGetProperty("beneficiary_middle_name", out var m) ? m.GetString() : "";
+                        string lastName = beneficiary.TryGetProperty("beneficiary_last_name", out var l) ? l.GetString() : "";
+
+                        nameofreciver.Text = $"{firstName} {middleName} {lastName}".Trim();
+
+                        // Save to managers
+                        TransferManagers1.SetBENE_FNAME(firstName);
+                        TransferManagers1.SetBENE_MNAME(middleName);
+                        TransferManagers1.SetBENE_LNAME(lastName);
+
+                        // Mobile
+                        if (beneficiary.TryGetProperty("beneficiary_mobile", out var mobileElement))
+                            BeneficiaryDetailsManager.SetBENE_MOBILE(mobileElement.GetString());
+
+                        // Currency
+                        if (beneficiary.TryGetProperty("beneficiary_category_code", out var currencyElement))
+                        {
+                            currencymoneytoTextBlock.Text = currencyElement.GetString();
+                            ral.Content = $"0 {currencyElement.GetString()}";
+                        }
+
+                        // Product Code
+                        if (beneficiary.TryGetProperty("product_code", out var productElement))
+                        {
+                            productcode = productElement.ToString();
+                            TransferManagers1.SetProductCode(productcode);
+                        }
+
+                        // Country
+                        if (beneficiary.TryGetProperty("beneficiary_country_code", out var countryElement))
+                        {
+                            CountryCode = countryElement.GetString();
+                        }
+                        if (beneficiary.TryGetProperty("currency_code", out var CurrencyElement))
+                        {
+                            CurrencyCode = CurrencyElement.GetString();
+                        }
                     }
-
-                    deliverymethod = dataElement.GetProperty("COREDISB").ToString();
-
                 }
             }
-
-
-            var client3 = new HttpClient();
-            var request3 = new HttpRequestMessage(HttpMethod.Get, "http://"+Variable.apiipadd+"/api/v1/sxgeneral/DefaultProduct/Disbmodes?ProductCode="+ productcode + "&MobDisbcode="+ disbtypecode + "");
-            request3.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
-            //request.Headers.Add("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJXQUxMU1RLSU9TS1VBVCIsImp0aSI6ImVjY2QwNDM0LWE4NjctNDk5Zi1hNTI1LTZkMTI0NjlmMTkyYiIsImlhdCI6IjA4LzE1LzIwMjQgMDE6NDg6QU0iLCJLaW9za0lEIjoiMTU0MzU0MyIsIm5iZiI6MTcyMzY3NTczMiwiZXhwIjoxNzIzNjc3NTMyLCJpc3MiOiJodHRwOi8vd3d3LmNpbnF1ZS5hZSIsImF1ZCI6IkNpbnF1ZSBDdXN0b21lcnMifQ.GGiaVTGdmMkyupZuWx7VbxfoeEe4LAxnoqGJ1D1DKdQ");
-            using var response3 = await client3.SendAsync(request3);
-            response3.EnsureSuccessStatusCode();
-            //Console.WriteLine(await response3.Content.ReadAsStringAsync());
-
-            using (var responseStream = await response3.Content.ReadAsStreamAsync())
+            catch (Exception ex)
             {
-                // Parse JSON response using JsonDocument.Parse
-                var jsonDocument = await JsonDocument.ParseAsync(responseStream);
-
-                // Access root object (assuming it's an array) and iterate over its elements
-                foreach (var dataElement in jsonDocument.RootElement.GetProperty("Data").EnumerateArray())
-                {
-
-
-                    //string remid = dataElement.GetProperty("BENE_SALUTE").ToString() + dataElement.GetProperty("BENE_FNAME").ToString() + " " + dataElement.GetProperty("BENE_MNAME").ToString() + " " + dataElement.GetProperty("BENE_LNAME").ToString();
-
-
-                    //currencymoneytoTextBlock.Text = dataElement.GetProperty("BENE_CURR").ToString();
-
-
-                    //nameofreciver.Text = remid;
-                    //productcode = dataElement.GetProperty("BENE_PROD").ToString();
-                    ////BENE_PROD
-                    //Paymentmethod.Text = "";
-                    //disbtypecode = dataElement.GetProperty("DISBTYPE").ToString();
-                    //if (dataElement.GetProperty("DISBTYPE").ToString() == "CP")
-                    //{
-
-                    //    //BT OR CP BANK TRANSFER OR CASH PAYMENT
-                    //    //BCManager.selectedoptionborc;
-                    //    Paymentmethod.Text = "CASH PAYMENT";
-                    //}
-                    //if (dataElement.GetProperty("DISBTYPE").ToString() == "BT")
-                    //{
-
-                    //    Paymentmethod.Text = "BANK TRANSFER";
-                    //}
-                    DM.Text = dataElement.GetProperty("DisbName").ToString();
-
-                    //deliverymethod = dataElement.GetProperty("COREDISB").ToString();
-
-                }
+                MessageBox.Show("Error: " + ex.Message);
             }
-
-
-
-
-
-
-
-
-
         }
+
 
         //Payment_Click
         private void Payment_Click(object sender, RoutedEventArgs e)
@@ -266,7 +153,7 @@ namespace Exchange.Pages
             if (amounttosendTextbox.Text != "" && amounttosendTextbox.Text != null && amounttosendTextbox.Text != "0" && amounttosendTextbox.Text != "0.000" && amounttosendTextbox.Text != "0.00" && kdamount.Text != "" && kdamount.Text != null && kdamount.Text != "0" && kdamount.Text != "0.000" && kdamount.Text != "0.00")
             {
 
-                    REFRESHCURRENCYMETHOD("yes");
+                    //REFRESHCURRENCYMETHOD("yes");
             }
             else
             {
@@ -358,9 +245,13 @@ namespace Exchange.Pages
             {
                 var client = new HttpClient();
 
-                // Updated to GET request with new URL
-                var request = new HttpRequestMessage(HttpMethod.Get, "http://" + Variable.apiipadd + "api/Transaction/get-income-source-combo-list?ProductCode=" + ProductCode);
-                request.Headers.Add("accept", "text/plain");
+                var request = new HttpRequestMessage(
+                    HttpMethod.Get,
+                    "https://" + Variable.apiipadd + "/api/Transaction/get-income-source-combo-list?ProductCode=" + ProductCode
+                );
+
+              
+                request.Headers.Add("Accept", "application/json");
                 request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
 
                 using var response = await client.SendAsync(request);
@@ -390,6 +281,8 @@ namespace Exchange.Pages
                 sourcecombo.SelectedIndex = 0;
             }
         }
+
+
         //Purpose of Transfer
         private async void runtheloader_old()
         {
@@ -535,27 +428,26 @@ namespace Exchange.Pages
         //Source of Income Combo update
         private void UpdateComboBoxsource(JsonElement root)
         {
-            // Clear existing items (optional)
-            sourcecombo.Items.Clear();
             
+            sourcecombo.Items.Clear();
 
-            // Assuming "Data" is an array and contains "PURPNAME" property
-            if (root.TryGetProperty("Data", out JsonElement dataElement) && dataElement.ValueKind == JsonValueKind.Array)
+            // root itself is already an array (not an object with "Data")
+            if (root.ValueKind == JsonValueKind.Array)
             {
-                foreach (var item in dataElement.EnumerateArray())
+                foreach (var item in root.EnumerateArray())
                 {
-                    if (item.TryGetProperty("NAME", out JsonElement purpNameElement))
+                    if (item.TryGetProperty("name", out JsonElement nameElement)) 
                     {
-                        sourcecombo.Items.Add(purpNameElement.GetString());
+                        sourcecombo.Items.Add(nameElement.GetString());
                     }
                 }
             }
             else
             {
-                // Handle potential errors (optional)
-                Console.WriteLine("Invalid JSON response structure or missing 'Data' array");
+                Console.WriteLine("Invalid JSON response: expected array at root.");
             }
         }
+
 
         //Update amounts fields
         private void updateadmounts(JsonElement root)
@@ -765,110 +657,103 @@ namespace Exchange.Pages
 
         string fcorlcswitch = "FC";
         //ControlValue
-        private async void REFRESHCURRENCYMETHOD(string buttonclick)
+        private async void RefreshCurrencyMethod(string buttonClick)
         {
-
-            var client = new HttpClient();
-            var request = new HttpRequestMessage(HttpMethod.Post, "http://"+Variable.apiipadd+"/api/v1/sxremittance/ControlValue");
-            request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
-            //MessageBox.Show("productcode " + productcode + "CurrencyCode " + CurrencyCode + "CountryCode " + CountryCode + "disbtypecode " + deliverymethod + " " );
-            //var content = new StringContent("{\r" +
-            //    "\n  \"ProductCode\": \""+ productcode + "\"," +
-            //    "\r\n  \"CurrencyCode\": \""+CurrencyCode+"\"," +
-            //    "\r\n  \"CountryCode\": \""+ CountryCode + "\"," +
-            //    "\r\n  \"DisbursalCode\": \""+ deliverymethod + "\"," +
-            //    "\r\n  \"Amount\": " + amounttosendTextbox.Text + "," +
-
-            //    "\r\n  \"ReceiverCityId\": \"\"," +
-            //    "\r\n  \"PayerId\": \"\"," +
-            //    "\r\n  \"BankCode\": \"\"," +
-            //    "\r\n  \"PayingAgentId\": \"\"," +
-            //    "\r\n  \"ReceiverTownId\": \"\"," +
-            //    "\r\n  \"RateType\": \"FC\"\r\n}"
-            //    , null, "application/json");
-
-
-            //var content = new StringContent("{\r\n  \"ProductCode\": \""+ productcode + "\",\r\n  \"CurrencyCode\": \""+CurrencyCode+"\",\r\n  \"CountryCode\": \""+ CountryCode + "\",\r\n  \"DisbursalCode\": \"2\",\r\n  \"Amount\": " + amounttosendTextbox.Text + ",\r\n  \"ReceiverCityId\": \"\",\r\n  \"PayerId\": \"\",\r\n  \"BankCode\": \"\",\r\n  \"PayingAgentId\": \"\",\r\n  \"ReceiverTownId\": \"\",\r\n  \"RateType\": \"FC\"\r\n}", null, "application/json");
-
-
-            //var content = new StringContent("{\r\n  \"ProductCode\": \""+ productcode + "\",\r\n  \"CurrencyCode\": \"" + CurrencyCode + "\",\r\n  \"CountryCode\": \"" + CountryCode + "\",\r\n  \"DisbursalCode\": \"" + deliverymethod + "\",\r\n  \"Amount\": " + amounttosendTextbox.Text + ",\r\n  \"ReceiverCityId\": \"\",\r\n  \"PayerId\": \"\",\r\n  \"BankCode\": \"\",\r\n  \"PayingAgentId\": \"\",\r\n  \"ReceiverTownId\": \"\",\r\n  \"RateType\": \"FC\"\r\n}", null, "application/json");
-            var finalamount = "";
-
-            if(fcorlcswitch == "FC")
+            try
             {
-                finalamount = amounttosendTextbox.Text;
-            }
+                string source_amount = "";
+                string destination_amount = "";
 
-            if (fcorlcswitch == "LC")
-            {
-                finalamount = kdamount.Text;
-            }
-
-
-
-            var content = new StringContent("{\r\n  \"ProductCode\": \"" + productcode + "\"," +
-                "\r\n  \"CurrencyCode\": \"" + CurrencyCode + "\"," +
-                "\r\n  \"CountryCode\": \"" + CountryCode + "\"," +
-                "\r\n  \"DisbursalCode\": \"" + deliverymethod + "\"," +
-                "\r\n  \"Amount\": " + finalamount + "," +
-                "\r\n  \"ReceiverCityId\": \"\"," +
-                "\r\n  \"PayerId\": \"\"," +
-                "\r\n  \"BankCode\": \"\"," +
-                "\r\n  \"PayingAgentId\": \"\"," +
-                "\r\n  \"ReceiverTownId\": \"\"," +
-                "\r\n  \"RateType\": \""+ fcorlcswitch + "\"\r\n}", null, "application/json");
-
-            string jsonContent = content.ReadAsStringAsync().Result; // Replace with content.Encoding if known
-            //MessageBox.Show(jsonContent);
-
-
-            request.Content = content;
-            using var response = await client.SendAsync(request);
-            response.EnsureSuccessStatusCode();
-            Console.WriteLine(await response.Content.ReadAsStringAsync());
-            //MessageBox.Show(await response.Content.ReadAsStringAsync());
-
-            var contentString = await request.Content.ReadAsStringAsync();
-            string responseString = await response.Content.ReadAsStringAsync();
-            RichMessageBox.Show("Request Data to api/v1/sxremittance/ControlValue\n" + DateTime.Now + "\n" + contentString);
-            RichMessageBox.Show("Response from api/v1/sxremittance/ControlValue\n" + DateTime.Now + "\n" + responseString);
-
-
-
-            if (buttonclick == "yes")
-            {
-                // Parse the JSON response with JsonDocument
-                using (var responseStream = await response.Content.ReadAsStreamAsync())
+                if (fcorlcswitch == "FC")
                 {
-                    using (var doc = JsonDocument.Parse(responseStream))
-                    {
-                        // UpdateComboBoxsource(doc.RootElement);
-                        updateadmounts(doc.RootElement);
+                    destination_amount = amounttosendTextbox.Text;
+                }
+                else if (fcorlcswitch == "LC")
+                {
+                    source_amount = kdamount.Text;
+                }
 
+                using var client = new HttpClient();
+
+                // Build API URL with PascalCase param names (exactly as backend expects)
+                var url = $"http://{Variable.apiipadd}/api/Transaction/calculate-amount" +
+                          $"?DestinationCountryCode={CountryCode}" +
+                          $"&DestinationCurrencyCode={CurrencyCode}" +
+                          $"&SourceCountryCode=KW" +
+                          $"&SourceCurrencyCode=KWD" +
+                          $"&SourceAmount={source_amount}" +
+                          $"&DestinationAmount={destination_amount}" +
+                          $"&ProductCode={productcode}" +
+                          $"&TransferModeCode={deliverymethod}" +
+                          $"&PaymentMode={Paymentmethod.Text}";
+
+                var request = new HttpRequestMessage(HttpMethod.Get, url);
+                request.Headers.Authorization =
+                    new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", TokenManager.Token);
+                request.Headers.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
+                using var response = await client.SendAsync(request);
+                string responseString = await response.Content.ReadAsStringAsync();
+
+                Console.WriteLine("Response: " + responseString);
+
+                using var doc = JsonDocument.Parse(responseString);
+                var root = doc.RootElement;
+
+                if (root.TryGetProperty("success", out JsonElement successProp) &&
+                    successProp.GetString()?.ToLower() == "true")
+                {
+                    if (root.TryGetProperty("data", out JsonElement data) &&
+                        data.TryGetProperty("amount", out JsonElement amount))
+                    {
+                        // Update amounts correctly
+                        if (fcorlcswitch == "FC" &&
+                            amount.TryGetProperty("net_pay_amount", out JsonElement srcAmt))
+                        {
+                            kdamount.Text = srcAmt.GetDecimal().ToString("N3");
+                        }
+
+                        if (fcorlcswitch == "LC" &&
+                            amount.TryGetProperty("net_receive_amount", out JsonElement destAmt))
+                        {
+                            amounttosendTextbox.Text = destAmt.GetDecimal().ToString("N3");
+                        }
+
+                        // Labels
+                        tal.Content = amount.GetProperty("pay_amount").GetDecimal().ToString("N3") + " KWD";
+                        tfl.Content = amount.GetProperty("commission").GetDecimal().ToString("N3") + " KWD";
+                        totl.Content = amount.GetProperty("net_pay_amount").GetDecimal().ToString("N3") + " KWD";
+                        ral.Content = amount.GetProperty("net_receive_amount").GetDecimal().ToString("N0")
+                                      + " " + CurrencyCode;
+                    }
+
+                    if (buttonClick == "yes")
+                    {
                         checklimits();
-                        //wPaymentmethod mainpage = new wPaymentmethod();
-                        //NavigationService.Navigate(mainpage);
-
                     }
                 }
-            }
-            else
-            {
-                // Parse the JSON response with JsonDocument
-                using (var responseStream = await response.Content.ReadAsStreamAsync())
+                else
                 {
-                    using (var doc = JsonDocument.Parse(responseStream))
-                    {
-                        // UpdateComboBoxsource(doc.RootElement);
-                        updateadmounts(doc.RootElement);
-
-                    }
+                    string errorMsg = root.TryGetProperty("message", out JsonElement msgEl)
+                        ? msgEl.GetString()
+                        : "Unknown error from API.";
+                    MessageBox.Show(errorMsg, "API Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
-
-            
-
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error calling calculate-amount API: " + ex.Message,
+                                "System Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
+
+
+
+
+
+
+
+
 
         public async void checklimits()
         {
@@ -1113,18 +998,40 @@ namespace Exchange.Pages
 
         }
 
+
         private void amounttosendTextbox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (isUpdating) return;
 
-            fcorlcswitch = "FC";
+            fcorlcswitch = "FC"; // user entered Foreign Currency (INR etc.)
+
             curencyRefreshTimer?.Cancel();
-            curencyRefreshTimer = new DisposableTimer(() => DoSomethingAfter3Seconds(), 3);
+            curencyRefreshTimer = new DisposableTimer(() =>
+            {
+                Dispatcher.Invoke(() => RefreshCurrencyMethod("no"));
+            }, 3);
         }
+
+        private void lcamounttosendTextbox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (isUpdating) return;
+
+            fcorlcswitch = "LC"; // user entered Local Currency (KWD)
+
+            curencyRefreshTimer?.Cancel();
+            curencyRefreshTimer = new DisposableTimer(() =>
+            {
+                Dispatcher.Invoke(() => RefreshCurrencyMethod("no"));
+            }, 3);
+        }
+
+
+
+
 
         private void DoSomethingAfter3Seconds()
         {
-           REFRESHCURRENCYMETHOD("no");
+        //   REFRESHCURRENCYMETHOD("no");
            // Your code to execute after 3 seconds of no text change
         }
 
@@ -1233,14 +1140,14 @@ namespace Exchange.Pages
 
 
         //LC AMOUNT
-        private void lcamounttosendTextbox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (isUpdating) return;
+        //private void lcamounttosendTextbox_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    if (isUpdating) return;
 
-            fcorlcswitch = "LC";
-            curencyRefreshTimer?.Cancel();
-            curencyRefreshTimer = new DisposableTimer(() => DoSomethingAfter3Seconds(), 3);
-        }
+        //    fcorlcswitch = "LC";
+        //    curencyRefreshTimer?.Cancel();
+        //    curencyRefreshTimer = new DisposableTimer(() => DoSomethingAfter3Seconds(), 3);
+        //}
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {

@@ -103,13 +103,14 @@ namespace Exchange.Pages
                             string beneficiary_country_name = GetSafeString(bene, "beneficiary_country_name");
                             string beneficiary_bank_account_number = GetSafeString(bene, "beneficiary_bank_account_number");
                             string beneficiary_bank_name = GetSafeString(bene, "beneficiary_bank_name");
+                            string E_ID = GetSafeString(bene, "e_id");
 
                             Countries.Add(new Country
                             {
                                 CountryName = beneficiary_country_name,
                                 Amt = "", // put actual mapping later
                                 Bene = $"{firstName} {middleName} {lastName}".Trim(),
-                                Date = "",
+                                Date = E_ID,
                                 TID = beneficiary_bank_account_number,
                                 BANK = beneficiary_bank_name
                             });
