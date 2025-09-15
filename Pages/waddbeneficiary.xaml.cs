@@ -1,5 +1,6 @@
 ﻿using Exchange.Common;
 using Exchange.Managers;
+using Newtonsoft.Json.Linq;
 using System.Net.Http;
 using System.ServiceModel;
 using System.Text;
@@ -39,6 +40,22 @@ namespace Exchange.Pages
         List<NationalityCountry> productsc = new List<NationalityCountry>();
 
         List<BanksC> productb = new List<BanksC>();
+
+        private Dictionary<string, Control> fieldControls = new Dictionary<string, Control>();
+
+
+        public class DropdownItem
+        {
+            public string code { get; set; }
+            public string name { get; set; }
+
+            public override string ToString() => name; // for ComboBox display
+        }
+
+        private List<DropdownItem> nationalityList = new();
+        private List<DropdownItem> relationshipList = new();
+        private List<DropdownItem> beneficiaryBankList = new();
+        private List<DropdownItem> beneficiaryBranchList = new();
 
         JsonElement dataArrayedit;
 
@@ -124,12 +141,18 @@ namespace Exchange.Pages
 
                 if (addoreditvalue == "add")
                 {
+                    await LoadDropdownData();
+
                     LoadBenefields();
                 }
 
                 if (addoreditvalue == "edit")
                 {
-                    loadbenefieldstoedit();
+                    await LoadDropdownData();
+
+                   await LoadBenefields();
+
+                    await loadbenefieldstoedit();
 
                     _ = new DisposableTimer(() => SelectBranchByConID(editmodebranch), 1);
 
@@ -386,44 +409,72 @@ namespace Exchange.Pages
 
                     response.EnsureSuccessStatusCode();
 
-                    using (var responseStream = await response.Content.ReadAsStreamAsync())
+                    string jsonString = await response.Content.ReadAsStringAsync();
+                    var json = JObject.Parse(jsonString);
+
+                    var fields = json["data"]?["all_product_field_setting_list"]?["beneficiary"];
+                    if (fields == null)
                     {
-                        var jsonDocument = await JsonDocument.ParseAsync(responseStream);
-
-                        if (jsonDocument.RootElement.TryGetProperty("data", out var dataElement) &&
-                            dataElement.TryGetProperty("all_product_field_setting_list", out var allFieldsElement) &&
-                            allFieldsElement.TryGetProperty("beneficiary", out var beneficiaryArray) &&
-                            beneficiaryArray.ValueKind == JsonValueKind.Array)
-                        {
-                            foreach (var field in beneficiaryArray.EnumerateArray())
-                            {
-                                string fieldName = field.GetProperty("field_name").GetString();
-                                string displayName = field.GetProperty("display_field_name").GetString();
-                                string type = field.GetProperty("type").GetString();
-                                bool mandatory = field.GetProperty("mandatory").GetBoolean();
-                                bool visible = field.GetProperty("visible").GetBoolean();
-                                if (!visible)
-                                    continue;
-
-                                // Append * if mandatory
-                                if (mandatory)
-                                    displayName += " *";
-
-                                // Create UI control
-                                CreateUI(fieldName, displayName, "", type);
-
-                                // Track field names
-                                coreFieldNames.Add(fieldName);
-                                if (mandatory)
-                                    MANDATORYcoreFieldNames.Add(fieldName);
-
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Invalid API response format.");
-                        }
+                        MessageBox.Show("No fields found in API.");
+                        return;
                     }
+
+                    myStackPanel.Children.Clear(); // Clear previous dynamic UI
+
+                    foreach (var field in fields)
+                    {
+                        string fieldName = field["field_name"]?.ToString();
+                        string label = field["display_field_name"]?.ToString();
+                        string type = field["type"]?.ToString();
+                        bool mandatory = field["mandatory"]?.ToObject<bool>() ?? false;
+                        bool visible = field["visible"]?.ToObject<bool>() ?? true;
+
+                        if (!visible) continue;
+
+                        // Add a * to mandatory fields
+                        if (mandatory) label += " *";
+
+                        AddDynamicField(fieldName, label, type, mandatory);
+                    }
+
+                    //using (var responseStream = await response.Content.ReadAsStreamAsync())
+                    //{
+                    //    var jsonDocument = await JsonDocument.ParseAsync(responseStream);
+
+                    //    if (jsonDocument.RootElement.TryGetProperty("data", out var dataElement) &&
+                    //        dataElement.TryGetProperty("all_product_field_setting_list", out var allFieldsElement) &&
+                    //        allFieldsElement.TryGetProperty("beneficiary", out var beneficiaryArray) &&
+                    //        beneficiaryArray.ValueKind == JsonValueKind.Array)
+                    //    {
+                    //        foreach (var field in beneficiaryArray.EnumerateArray())
+                    //        {
+                    //            string fieldName = field.GetProperty("field_name").GetString();
+                    //            string displayName = field.GetProperty("display_field_name").GetString();
+                    //            string type = field.GetProperty("type").GetString();
+                    //            bool mandatory = field.GetProperty("mandatory").GetBoolean();
+                    //            bool visible = field.GetProperty("visible").GetBoolean();
+                    //            if (!visible)
+                    //                continue;
+
+                    //            // Append * if mandatory
+                    //            if (mandatory)
+                    //                displayName += " *";
+
+                    //            // Create UI control
+                    //            CreateUI(fieldName, displayName, "", type);
+
+                    //            // Track field names
+                    //            coreFieldNames.Add(fieldName);
+                    //            if (mandatory)
+                    //                MANDATORYcoreFieldNames.Add(fieldName);
+
+                    //        }
+                    //    }
+                    //    else
+                    //    {
+                    //        MessageBox.Show("Invalid API response format.");
+                    //    }
+                    //}
                 }
             }
             catch (Exception ex)
@@ -432,42 +483,177 @@ namespace Exchange.Pages
             }
         }
 
-        public async void loadbenefieldstoedit()
+
+
+        //public async void loadbenefieldstoedit()
+        //{
+        //    try
+        //    {
+        //        using var client = new HttpClient();
+
+
+        //        var url = $"https://{Variable.apiipadd}/api/Beneficiary/get-beneficiary-by-id?eId={SelectedBeneficiaryManager.BENE_EID}";
+
+        //        var request = new HttpRequestMessage(HttpMethod.Get, url);
+        //        request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", TokenManager.Token);
+        //        request.Headers.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
+        //        //MessageBox.Show(url); // Debug check
+
+        //        var response = await client.SendAsync(request);
+        //        response.EnsureSuccessStatusCode();
+
+        //        var responseBody = await response.Content.ReadAsStringAsync();
+        //        using var jsonDocument = JsonDocument.Parse(responseBody);
+
+        //        JsonElement root = jsonDocument.RootElement;
+        //        JsonElement dataElement = root.GetProperty("data").GetProperty("beneficiary_by_id");
+
+        //        BENE_PRODedit = dataElement.TryGetProperty("product_name", out var prodElement) ? prodElement.GetString() : "";
+        //        DISBTYPEedit = dataElement.TryGetProperty("disbursal_mode_name", out var disbElement) ? disbElement.GetString() : "";
+        //        BENE_CNTRYedit = dataElement.TryGetProperty("beneficiary_country_name", out var cntryElement) ? cntryElement.GetString() : "";
+        //        BENE_CURRedit = dataElement.TryGetProperty("beneficiary_country_code", out var currElement) ? currElement.GetString() : "";
+
+        //        // Load into edit fields
+        //        LoadBenefieldseditmode(
+        //            BENE_PRODedit,
+        //            DISBTYPEedit,
+        //            BENE_CNTRYedit,
+        //            DISBTYPEedit // You might want another property here instead of reusing
+        //        );
+
+        //        //runtheloadersource();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Error: " + ex.Message);
+        //    }
+        //}
+
+        //public async Task loadbenefieldstoedit()
+        //{
+        //    try
+        //    {
+        //        var client = new HttpClient();
+        //        // Construct the GET URL with eId
+        //        var url = new HttpRequestMessage(HttpMethod.Post, "https://" + Variable.apiipadd + "/api/Beneficiary/get-beneficiary-by-id" + SelectedBeneficiaryManager.BENE_SLNO);
+        //        var request = new HttpRequestMessage(HttpMethod.Get, url.RequestUri);
+        //        request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
+        //        request.Headers.Add("Accept", "text/plain");
+        //        MessageBox.Show(url.RequestUri.ToString());
+        //        var response = await client.SendAsync(request);
+        //        response.EnsureSuccessStatusCode();
+        //        var responseBody = await response.Content.ReadAsStringAsync();
+        //        jsonDocument = JsonDocument.Parse(responseBody);
+        //        JsonElement root = jsonDocument.RootElement;
+        //        JsonElement dataElement = root.GetProperty("data").GetProperty("beneficiary_by_id");
+        //        BENE_PRODedit = dataElement.TryGetProperty("product_name", out JsonElement prodElement) ? prodElement.GetString() : "";
+        //        DISBTYPEedit = dataElement.TryGetProperty("disbursal_mode_name", out JsonElement disbElement) ? disbElement.GetString() : "";
+        //        BENE_CNTRYedit = dataElement.TryGetProperty("beneficiary_country_name", out JsonElement cntryElement) ? cntryElement.GetString() : "";
+        //        BENE_CURRedit = dataElement.TryGetProperty("beneficiary_country_code", out JsonElement currElement) ? currElement.GetString() : "";
+
+        //        LoadBenefieldseditmode(
+        //            BENE_PRODedit,
+        //            DISBTYPEedit,
+        //            BENE_CNTRYedit,
+        //            DISBTYPEedit // This replaces "COREDISB" which doesn't exist in new response
+        //        );
+
+        //        runtheloadersource();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Error: " + ex.Message);
+        //    }
+        //}
+
+        public async Task loadbenefieldstoedit()
         {
             try
             {
-                var client = new HttpClient();
-                // Construct the GET URL with eId
-                var url = new HttpRequestMessage(HttpMethod.Post, "https://" + Variable.apiipadd + "/api/Beneficiary/get-beneficiary-by-id" + SelectedBeneficiaryManager.BENE_SLNO);
-                var request = new HttpRequestMessage(HttpMethod.Get, url.RequestUri);
-                request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
-                request.Headers.Add("Accept", "text/plain");
-                MessageBox.Show(url.RequestUri.ToString());
-                var response = await client.SendAsync(request);
-                response.EnsureSuccessStatusCode();
-                var responseBody = await response.Content.ReadAsStringAsync();
-                jsonDocument = JsonDocument.Parse(responseBody);
-                JsonElement root = jsonDocument.RootElement;
-                JsonElement dataElement = root.GetProperty("data").GetProperty("beneficiary_by_id");
-                BENE_PRODedit = dataElement.TryGetProperty("product_name", out JsonElement prodElement) ? prodElement.GetString() : "";
-                DISBTYPEedit = dataElement.TryGetProperty("disbursal_mode_name", out JsonElement disbElement) ? disbElement.GetString() : "";
-                BENE_CNTRYedit = dataElement.TryGetProperty("beneficiary_country_name", out JsonElement cntryElement) ? cntryElement.GetString() : "";
-                BENE_CURRedit = dataElement.TryGetProperty("beneficiary_country_code", out JsonElement currElement) ? currElement.GetString() : "";
+                using (var client = new HttpClient())
+                {
+                    // 1️⃣ Fetch the specific beneficiary data using eId
+                    var url = $"https://{Variable.apiipadd}/api/Beneficiary/get-beneficiary-by-id?eId={SelectedBeneficiaryManager.BENE_EID}";
+                    var request = new HttpRequestMessage(HttpMethod.Get, url);
+                    request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
+                    request.Headers.Add("Accept", "application/json");
 
-                LoadBenefieldseditmode(
-                    BENE_PRODedit,
-                    DISBTYPEedit,
-                    BENE_CNTRYedit,
-                    DISBTYPEedit // This replaces "COREDISB" which doesn't exist in new response
-                );
+                    var response = await client.SendAsync(request);
+                    response.EnsureSuccessStatusCode();
 
-                runtheloadersource();
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    var json = JObject.Parse(responseBody);
+                    var data = json["data"]?["beneficiary_by_id"];
+
+                    if (data == null)
+                    {
+                        MessageBox.Show("No beneficiary data found.");
+                        return;
+                    }
+
+                    // 2️⃣ Convert JSON data to dictionary: fieldName → value
+                    var beneValues = new Dictionary<string, string>();
+                    foreach (var prop in data.Children<JProperty>())
+                    {
+                        beneValues[prop.Name] = prop.Value?.ToString();
+                    }
+
+                    // 3️⃣ Fetch all field definitions (same as LoadBenefields)
+                    string baseUrl = $"https://{Variable.apiipadd}/api/Beneficiary/get-all-product-field-settings";
+                    string fieldUrl = $"{baseUrl}?ProductCode={ProductManager.selectedproductcode}&DisbursalModeCode={BCManager.selectedoptionborc}&MemberSection=Beneficiary&CountryCode={SelectedAddBeneCountry.seladdbenecount}&DestinationCurrencyCode={ProductManager.selectedProdCurrCode}&Language=EN";
+
+                    var fieldRequest = new HttpRequestMessage(HttpMethod.Get, fieldUrl);
+                    fieldRequest.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
+                    fieldRequest.Headers.Add("Accept", "application/json");
+
+                    var fieldResponse = await client.SendAsync(fieldRequest);
+                    fieldResponse.EnsureSuccessStatusCode();
+
+                    string fieldJsonString = await fieldResponse.Content.ReadAsStringAsync();
+                    var fieldJson = JObject.Parse(fieldJsonString);
+                    var fields = fieldJson["data"]?["all_product_field_setting_list"]?["beneficiary"];
+
+                    if (fields == null)
+                    {
+                        MessageBox.Show("No field definitions found.");
+                        return;
+                    }
+
+                    // 4️⃣ Clear previous UI
+                    myStackPanel.Children.Clear();
+
+                    // 5️⃣ Create dynamic fields and prefill values
+                    foreach (var field in fields)
+                    {
+                        string fieldName = field["field_name"]?.ToString();
+                        string label = field["display_field_name"]?.ToString();
+                        string type = field["type"]?.ToString();
+                        bool mandatory = field["mandatory"]?.ToObject<bool>() ?? false;
+                        bool visible = field["visible"]?.ToObject<bool>() ?? true;
+
+                        if (!visible) continue;
+                        if (mandatory) label += " *";
+
+                        AddDynamicField(fieldName, label, type, mandatory);
+
+                        // Prefill value if it exists in beneficiary data
+                        if (beneValues.TryGetValue(fieldName, out string value))
+                        {
+                            SetFieldValue(fieldName, value);
+                        }
+                    }
+
+                    // 6️⃣ Optional: run any additional loader logic
+                    runtheloadersource();
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+
 
         private void backbutton(object sender, RoutedEventArgs e)
         {
@@ -477,132 +663,389 @@ namespace Exchange.Pages
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
 
+        //    try
+        //    {
+        //        BanksC selectedProduct = (BanksC)bankcombo.SelectedItem;
+
+
+
+        //        //BanksBanchC selecteddisp = (BanksBanchC)branchcombo.SelectedItem;
+
+        //        // Access the product code
+        //        string bankksid = "";
+        //        string banknameis = "";
+        //        //string bankksid = selectedProduct.BankID;
+        //        //string banksid = selectedProduct.BankID != null ? selectedProduct.BankID : "";
+
+
+        //        if (selectedProduct != null)
+        //        {
+        //            bankksid = selectedProduct.BankID;
+        //            banknameis = selectedProduct.BankName;
+        //            //MessageBox.Show(selectedProduct.BankName + "");
+        //        }
+        //        //string banbchesid = selecteddisp.BanksBanchID;
+        //        string banbchesid = "";
+        //        string branchnameis = "";
+
+        //        if (branchcombo.Items.Count != 0)
+        //        {
+        //            // MessageBox.Show(branchcombo.Items.Count + "");
+        //            //MessageBox.Show(branchcombo.Text);
+        //            BanksBanchC selecteddisp = (BanksBanchC)branchcombo.SelectedItem;
+        //            //MessageBox.Show(selecteddisp + "");
+        //            banbchesid = selecteddisp.BanksBanchID;
+        //            branchnameis = selecteddisp.BanksBanchName;
+        //            //MessageBox.Show(selecteddisp.BanksBanchName + "");
+        //        }
+
+        //        if (coreFieldNames == null || coreFieldNames.Count == 0)
+        //        {
+        //            MessageBox.Show("No CoreFieldNames available!");
+        //            return;
+        //        }
+
+        //        // Create a dictionary to store field names and their values
+        //        Dictionary<string, string> fieldValues = new Dictionary<string, string>();
+
+
+        //        foreach (string coreFieldName in MANDATORYcoreFieldNames)
+        //        {
+        //            TextBox textBox = FindTextBoxByName(myStackPanel, coreFieldName);
+        //            Label lab = FindlabelBoxByName(myStackPanel, coreFieldName + "label");
+        //            if (textBox != null)
+        //            {
+        //                // Get the TextBox value
+        //                string value = textBox.Text;
+
+        //                if (value == null || value == "")
+        //                {
+        //                    MessageBox.Show("" + lab.Content + " is Mandatory !");
+        //                    return;
+        //                }
+
+        //            }
+        //        }
+
+        //        // Loop through coreFieldNames
+        //        foreach (string coreFieldName in coreFieldNames)
+        //        {
+        //            // Find TextBox recursively starting from myStackPanel
+        //            TextBox textBox = FindTextBoxByName(myStackPanel, coreFieldName);
+
+        //            if (textBox != null)
+        //            {
+        //                // Get the TextBox value
+        //                string value = textBox.Text;
+
+        //                //textBox.Text = "Hi";
+        //                //SetTextBoxText(myStackPanel, coreFieldName, "Test");
+
+        //                //MessageBox.Show(coreFieldName + " : " + value);
+
+
+        //                if (coreFieldName == "BENE_NATION" || coreFieldName == "BENE_CNTRY" || coreFieldName == "BENE_CURR" || coreFieldName == "BENE_BANKID" || coreFieldName == "BENE_BANKCODE" || coreFieldName == "BENE_BRANCHID" || coreFieldName == "BENE_BRANCHCODE")
+        //                {
+
+        //                }
+        //                else
+        //                {
+
+        //                    looperjson += "\"" + coreFieldName + "\"" + " : \"" + value + "\",\n";
+
+        //                }
+
+
+
+
+
+
+        //                // Add the field name and value to the dictionary
+        //                fieldValues.Add(coreFieldName, value);
+
+
+
+
+        //            }
+        //            else
+        //            {
+        //                MessageBox.Show($"TextBox with name '{coreFieldName}' not found!");
+        //            }
+        //        }
+
+        //        // ... Use fieldValues as needed
+        //        //MessageBox.Show("Saved Sucessfully");
+        //        createbene();
+
+        //        //XXXXX V2
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message.ToString());
+        //    }
+        //}
+
+        //public async Task createbene()
+        //{
+        //    try
+        //    {
+        //        using var client = new HttpClient();
+        //        var request = new HttpRequestMessage(HttpMethod.Post,
+        //            $"https://{Variable.apiipadd}/api/Beneficiary/update-beneficiary");
+
+        //        request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
+
+        //        // --- Bank & Branch ---
+        //        BanksC selectedBank = (BanksC)bankcombo.SelectedItem;
+        //        BanksBanchC selectedBranch = (BanksBanchC)branchcombo.SelectedItem;
+
+        //        string bankId = selectedBank?.BankID ?? "";
+        //        string bankCode = selectedBank?.BankCode ?? "";
+        //        string bankName = selectedBank?.BankName ?? "";
+
+        //        string branchId = selectedBranch?.BanksBanchID ?? "";
+        //        string branchCode = selectedBranch?.BanksBanchCode ?? "";
+        //        string branchName = selectedBranch?.BanksBanchName ?? "";
+
+        //        // --- Nationality ---
+        //        NationalityCountry selectedNationality = (NationalityCountry)NationalityCOUNTRYcombo.SelectedItem;
+        //        string nationalityCode = selectedNationality?.ConCode ?? "";
+
+        //        // --- Old values handling ---
+        //        string beneSerialNo = "0";
+        //        string beneDisb = "";
+        //        string beneCountry = "";
+        //        string beneProd = "";
+        //        string beneCurr = "";
+
+        //        if (addoreditvalue == "add")
+        //        {
+        //            beneDisb = ProductManager.selecteddispcode;
+        //            beneCountry = SelectedAddBeneCountry.seladdbenecount;
+        //            beneProd = ProductManager.selectedproductcode;
+        //            beneCurr = ProductManager.selectedProdCurrCode;
+        //        }
+        //        else if (addoreditvalue == "edit")
+        //        {
+        //            beneSerialNo = SelectedBeneficiaryManager.BENE_SLNO;
+        //            beneDisb = DISBTYPEedit;
+        //            beneCountry = BENE_CNTRYedit;
+        //            beneProd = BENE_PRODedit;
+        //            beneCurr = BENE_CURRedit;
+        //        }
+
+        //        // --- For now: hardcoded / empty values ---
+        //        string firstName = "Haritha";
+        //        string middleName = "T";
+        //        string lastName = "H";
+        //        string mobileNumber = "";
+        //        string relation = "";
+        //        string accountNo = "";
+
+        //        // --- Build Payload ---
+        //        var payload = new
+        //        {
+        //            mobile_code = 965,
+        //            mobile_number = mobileNumber,
+        //            id_number = "",
+        //            member_code = LoginManager.Remiduser,
+
+        //            bene_slno = beneSerialNo,
+        //            bene_disb = beneDisb,
+        //            bene_gender = "M",
+
+        //            bene_currency = beneCurr,
+        //            bene_channel = "kiosk",
+        //            bene_disbtype = BCManager.selectedoptionborc,
+        //            appID = 3,
+        //            moduleID = 3,
+
+        //            source_of_fund = "",
+        //            income_source_code = "",
+        //            purpose_of_transaction = "",
+        //            purpose_code = 123,
+
+        //            source_of_fund_name = "",
+        //            purpose_of_transaction_name = "",
+
+        //            product_code = 539,  // match working sample
+        //            product_name = "DIRECT TRANSFER",
+        //            beneficiary_first_name = "Haritha",
+        //            beneficiary_last_name = "Thomas",
+
+
+        //            beneficiary_middle_name = middleName,
+
+        //            beneficiary_first_name_unicode = "",
+        //            beneficiary_last_name_unicode = "",
+        //            beneficiary_middle_name_unicode = "",
+
+        //            beneficiary_salutation = "1",
+        //            beneficiary_nationality_code = nationalityCode,
+        //            beneficiary_country_code = beneCountry,
+        //            beneficiary_country_name = "",
+        //            beneficary_relation = relation,
+
+        //            beneficiary_address1 = "",
+        //            beneficiary_address2 = "",
+        //            beneficiary_city = "",
+        //            beneficiary_state = "",
+
+        //            beneficiary_bank_id = bankId,
+        //            beneficiary_bank_code = bankCode,
+        //            beneficiary_bank_name = bankName,
+        //            beneficiary_bank_account_number = accountNo,
+
+        //            beneficiary_branch_id = branchId,
+        //            beneficiary_branch_code = branchCode,
+        //            beneficiary_branch_name = branchName
+
+        //        };
+
+        //        string jsonString = JsonSerializer.Serialize(payload,
+        //            new JsonSerializerOptions { WriteIndented = true });
+
+        //        request.Content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+
+        //        // --- Call API ---
+        //        var response = await client.SendAsync(request);
+        //        var responseBody = await response.Content.ReadAsStringAsync();
+
+        //        if (!response.IsSuccessStatusCode)
+        //        {
+        //            MessageBox.Show($"API Error: {(int)response.StatusCode} {response.ReasonPhrase}\n{responseBody}");
+        //            return;
+        //        }
+
+        //        // --- Parse Response ---
+        //        using JsonDocument doc = JsonDocument.Parse(responseBody);
+
+        //        string message = doc.RootElement.TryGetProperty("Message", out var msgEl) ? msgEl.GetString() : "No message";
+
+        //        var root = doc.RootElement;
+
+        //        string code = root.TryGetProperty("data", out var dataEl) &&
+        //                     dataEl.TryGetProperty("e_id", out var eIdEl)
+        //                     ? eIdEl.GetString()
+        //                     : "-1";
+
+        //        if (code != "-1")
+        //        {
+        //            MessageBox.Show("Saved Successfully");
+        //            wSelectbeneficary wsel = new wSelectbeneficary();
+        //            NavigationService.Navigate(wsel);
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show(message);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Error: " + ex.Message);
+        //    }
+        //}
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
             try
             {
-                BanksC selectedProduct = (BanksC)bankcombo.SelectedItem;
-
-
-
-                //BanksBanchC selecteddisp = (BanksBanchC)branchcombo.SelectedItem;
-
-                // Access the product code
-                string bankksid = "";
-                string banknameis = "";
-                //string bankksid = selectedProduct.BankID;
-                //string banksid = selectedProduct.BankID != null ? selectedProduct.BankID : "";
-
-
-                if (selectedProduct != null)
-                {
-                    bankksid = selectedProduct.BankID;
-                    banknameis = selectedProduct.BankName;
-                    //MessageBox.Show(selectedProduct.BankName + "");
-                }
-                //string banbchesid = selecteddisp.BanksBanchID;
-                string banbchesid = "";
-                string branchnameis = "";
-
-                if (branchcombo.Items.Count != 0)
-                {
-                    // MessageBox.Show(branchcombo.Items.Count + "");
-                    //MessageBox.Show(branchcombo.Text);
-                    BanksBanchC selecteddisp = (BanksBanchC)branchcombo.SelectedItem;
-                    //MessageBox.Show(selecteddisp + "");
-                    banbchesid = selecteddisp.BanksBanchID;
-                    branchnameis = selecteddisp.BanksBanchName;
-                    //MessageBox.Show(selecteddisp.BanksBanchName + "");
-                }
-
-                if (coreFieldNames == null || coreFieldNames.Count == 0)
-                {
-                    MessageBox.Show("No CoreFieldNames available!");
-                    return;
-                }
-
-                // Create a dictionary to store field names and their values
-                Dictionary<string, string> fieldValues = new Dictionary<string, string>();
-
-
+                // 1. Validate Mandatory Fields
                 foreach (string coreFieldName in MANDATORYcoreFieldNames)
                 {
-                    TextBox textBox = FindTextBoxByName(myStackPanel, coreFieldName);
-                    Label lab = FindlabelBoxByName(myStackPanel, coreFieldName + "label");
-                    if (textBox != null)
+                    var ctrl = FindControlByName(myStackPanel, coreFieldName);
+                    if (ctrl is TextBox tb && string.IsNullOrWhiteSpace(tb.Text))
                     {
-                        // Get the TextBox value
-                        string value = textBox.Text;
-
-                        if (value == null || value == "")
-                        {
-                            MessageBox.Show("" + lab.Content + " is Mandatory !");
-                            return;
-                        }
-
+                        Label lbl = FindlabelBoxByName(myStackPanel, coreFieldName + "label");
+                        MessageBox.Show($"{lbl?.Content ?? coreFieldName} is Mandatory!");
+                        return;
+                    }
+                    else if (ctrl is ComboBox cb && cb.SelectedItem == null)
+                    {
+                        Label lbl = FindlabelBoxByName(myStackPanel, coreFieldName + "label");
+                        MessageBox.Show($"{lbl?.Content ?? coreFieldName} is Mandatory!");
+                        return;
                     }
                 }
 
-                // Loop through coreFieldNames
+                // 2. Collect Field Values
+                var fieldValues = new Dictionary<string, object>();
                 foreach (string coreFieldName in coreFieldNames)
                 {
-                    // Find TextBox recursively starting from myStackPanel
-                    TextBox textBox = FindTextBoxByName(myStackPanel, coreFieldName);
+                    var ctrl = FindControlByName(myStackPanel, coreFieldName);
+                    string value = "";
 
-                    if (textBox != null)
-                    {
-                        // Get the TextBox value
-                        string value = textBox.Text;
+                    if (ctrl is TextBox tb)
+                        value = tb.Text.Trim();
+                    else if (ctrl is ComboBox cb && cb.SelectedItem != null)
+                        value = (cb.SelectedItem as DropdownItem)?.code ?? cb.SelectedItem.ToString();
 
-                        //textBox.Text = "Hi";
-                        //SetTextBoxText(myStackPanel, coreFieldName, "Test");
-
-                        //MessageBox.Show(coreFieldName + " : " + value);
-
-
-                        if (coreFieldName == "BENE_NATION" || coreFieldName == "BENE_CNTRY" || coreFieldName == "BENE_CURR" || coreFieldName == "BENE_BANKID" || coreFieldName == "BENE_BANKCODE" || coreFieldName == "BENE_BRANCHID" || coreFieldName == "BENE_BRANCHCODE")
-                        {
-
-                        }
-                        else
-                        {
-
-                            looperjson += "\"" + coreFieldName + "\"" + " : \"" + value + "\",\n";
-
-                        }
-
-
-
-
-
-
-                        // Add the field name and value to the dictionary
-                        fieldValues.Add(coreFieldName, value);
-
-
-
-
-                    }
-                    else
-                    {
-                        MessageBox.Show($"TextBox with name '{coreFieldName}' not found!");
-                    }
+                    fieldValues[coreFieldName] = value;
                 }
 
-                // ... Use fieldValues as needed
-                //MessageBox.Show("Saved Sucessfully");
-                createbene();
+                // 3. Build payload dynamically
+                var payload = new Dictionary<string, object>
+                {
+                    ["product_code"] = Convert.ToInt32(ProductManager.selectedproductcode),
+                    ["beneficiary_country_code"] = SelectedAddBeneCountry.seladdbenecount,
+                    ["beneficiary_currency"] = ProductManager.selectedProdCurrCode,
+                    ["beneficiary_channel"] = "kiosk",
+                    ["appID"] = 3,
+                    ["moduleID"] = 3,
+                    ["bene_disbtype"] = BCManager.selectedoptionborc,
+                };
 
-                //XXXXX V2
+                // Map dynamic fields to API keys
+                foreach (var kvp in fieldValues)
+                {
+                    string apiKey = ToSnakeCase(kvp.Key); // map field name
+                    payload[apiKey] = kvp.Value ?? "";
+                }
+
+                // 4. Send API Request
+                await SaveBeneficiary(payload);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString());
+                MessageBox.Show($"Error: {ex.Message}");
             }
         }
 
-        public async Task createbene()
+        private Control FindControlByName(DependencyObject parent, string name)
+        {
+            // Loop through all child elements
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
+            {
+                var child = VisualTreeHelper.GetChild(parent, i);
+
+                if (child is FrameworkElement fe && fe.Name == name)
+                    return fe as Control;
+
+                var result = FindControlByName(child, name);
+                if (result != null)
+                    return result;
+            }
+            return null;
+        }
+
+        private string ToSnakeCase(string input)
+        {
+            if (string.IsNullOrWhiteSpace(input))
+                return input;
+            var sb = new StringBuilder();
+            foreach (char c in input)
+            {
+                if (char.IsUpper(c) && sb.Length > 0)
+                    sb.Append('_');
+                sb.Append(char.ToLower(c));
+            }
+            return sb.ToString();
+        }
+
+        private async Task SaveBeneficiary(Dictionary<string, object> payload)
         {
             try
             {
@@ -612,154 +1055,108 @@ namespace Exchange.Pages
 
                 request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
 
-                // --- Bank & Branch ---
-                BanksC selectedBank = (BanksC)bankcombo.SelectedItem;
-                BanksBanchC selectedBranch = (BanksBanchC)branchcombo.SelectedItem;
-
-                string bankId = selectedBank?.BankID ?? "";
-                string bankCode = selectedBank?.BankCode ?? "";
-                string bankName = selectedBank?.BankName ?? "";
-
-                string branchId = selectedBranch?.BanksBanchID ?? "";
-                string branchCode = selectedBranch?.BanksBanchCode ?? "";
-                string branchName = selectedBranch?.BanksBanchName ?? "";
-
-                // --- Nationality ---
-                NationalityCountry selectedNationality = (NationalityCountry)NationalityCOUNTRYcombo.SelectedItem;
-                string nationalityCode = selectedNationality?.ConCode ?? "";
-
-                // --- Old values handling ---
-                string beneSerialNo = "0";
-                string beneDisb = "";
-                string beneCountry = "";
-                string beneProd = "";
-                string beneCurr = "";
-
-                if (addoreditvalue == "add")
-                {
-                    beneDisb = ProductManager.selecteddispcode;
-                    beneCountry = SelectedAddBeneCountry.seladdbenecount;
-                    beneProd = ProductManager.selectedproductcode;
-                    beneCurr = ProductManager.selectedProdCurrCode;
-                }
-                else if (addoreditvalue == "edit")
-                {
-                    beneSerialNo = SelectedBeneficiaryManager.BENE_SLNO;
-                    beneDisb = DISBTYPEedit;
-                    beneCountry = BENE_CNTRYedit;
-                    beneProd = BENE_PRODedit;
-                    beneCurr = BENE_CURRedit;
-                }
-
-                // --- For now: hardcoded / empty values ---
-                string firstName = "Haritha";
-                string middleName = "T";
-                string lastName = "H";
-                string mobileNumber = "";
-                string relation = "";
-                string accountNo = "";
-
-                // --- Build Payload ---
-                var payload = new
-                {
-                    mobile_code = 965,
-                    mobile_number = mobileNumber,
-                    id_number = "",
-                    member_code = LoginManager.Remiduser,
-
-                    bene_slno = beneSerialNo,
-                    bene_disb = beneDisb,
-                    bene_gender = "M",
-
-                    bene_currency = beneCurr,
-                    bene_channel = "kiosk",
-                    bene_disbtype = BCManager.selectedoptionborc,
-                    appID = 3,
-                    moduleID = 3,
-
-                    source_of_fund = "",
-                    income_source_code = "",
-                    purpose_of_transaction = "",
-                    purpose_code = 123,
-
-                    source_of_fund_name = "",
-                    purpose_of_transaction_name = "",
-
-                    product_code = 539,  // match working sample
-                    product_name = "DIRECT TRANSFER",
-                    beneficiary_first_name = "Haritha",
-                    beneficiary_last_name = "Thomas",
-
-
-                    beneficiary_middle_name = middleName,
-
-                    beneficiary_first_name_unicode = "",
-                    beneficiary_last_name_unicode = "",
-                    beneficiary_middle_name_unicode = "",
-
-                    beneficiary_salutation = "1",
-                    beneficiary_nationality_code = nationalityCode,
-                    beneficiary_country_code = beneCountry,
-                    beneficiary_country_name = "",
-                    beneficary_relation = relation,
-
-                    beneficiary_address1 = "",
-                    beneficiary_address2 = "",
-                    beneficiary_city = "",
-                    beneficiary_state = "",
-
-                    beneficiary_bank_id = bankId,
-                    beneficiary_bank_code = bankCode,
-                    beneficiary_bank_name = bankName,
-                    beneficiary_bank_account_number = accountNo,
-
-                    beneficiary_branch_id = branchId,
-                    beneficiary_branch_code = branchCode,
-                    beneficiary_branch_name = branchName
-
-                };
-
                 string jsonString = JsonSerializer.Serialize(payload,
                     new JsonSerializerOptions { WriteIndented = true });
-
                 request.Content = new StringContent(jsonString, Encoding.UTF8, "application/json");
 
-                // --- Call API ---
                 var response = await client.SendAsync(request);
                 var responseBody = await response.Content.ReadAsStringAsync();
 
+                // 🔹 Handle non-200 HTTP codes first
                 if (!response.IsSuccessStatusCode)
                 {
-                    MessageBox.Show($"API Error: {(int)response.StatusCode} {response.ReasonPhrase}\n{responseBody}");
+                    try
+                    {
+                        using JsonDocument doc = JsonDocument.Parse(responseBody);
+                        string apiMessage = doc.RootElement.TryGetProperty("message", out var msgEl)
+                            ? msgEl.GetString() ?? "Unknown error"
+                            : "Unknown error";
+
+                        string errorDetails = "";
+                        if (doc.RootElement.TryGetProperty("errors", out var errorsEl) &&
+                            errorsEl.ValueKind == JsonValueKind.Array)
+                        {
+                            foreach (var error in errorsEl.EnumerateArray())
+                            {
+                                string field = error.TryGetProperty("error_field", out var f) ? f.GetString() ?? "" : "";
+                                string desc = error.TryGetProperty("error_description", out var d) ? d.GetString() ?? "" : "";
+
+                                errorDetails += $"- {field}: {desc}\n";
+
+                                // 🔹 Highlight the field in UI
+                                HighlightInvalidField(field);
+                            }
+                        }
+                        MessageBox.Show($"API Error: {(int)response.StatusCode} {response.ReasonPhrase}\n{apiMessage + "  " + errorDetails}");
+                    }
+                    catch
+                    {
+                        MessageBox.Show($"API Error: {(int)response.StatusCode} {response.ReasonPhrase}\n{responseBody}");
+                    }
                     return;
                 }
 
-                // --- Parse Response ---
-                using JsonDocument doc = JsonDocument.Parse(responseBody);
+                // 🔹 Parse JSON for success/failure
+                using JsonDocument jsonDoc = JsonDocument.Parse(responseBody);
 
-                string message = doc.RootElement.TryGetProperty("Message", out var msgEl) ? msgEl.GetString() : "No message";
-                
-                    var root = doc.RootElement;
+                string success = jsonDoc.RootElement.TryGetProperty("success", out var successEl)
+                    ? successEl.GetString() ?? "false"
+                    : "false";
 
-                    string code = root.TryGetProperty("data", out var dataEl) &&
-                                 dataEl.TryGetProperty("e_id", out var eIdEl)
-                                 ? eIdEl.GetString()
-                                 : "-1";
-                
-                if (code != "-1")
+                string message = jsonDoc.RootElement.TryGetProperty("message", out var msgEl2)
+                    ? msgEl2.GetString() ?? "Unknown response"
+                    : "Unknown response";
+
+                if (!success.Equals("true", StringComparison.OrdinalIgnoreCase))
                 {
-                    MessageBox.Show("Saved Successfully");
-                    wSelectbeneficary wsel = new wSelectbeneficary();
-                    NavigationService.Navigate(wsel);
+                    string statusCode = jsonDoc.RootElement.TryGetProperty("status_code", out var statusEl)
+                        ? statusEl.GetRawText()
+                        : "N/A";
+                    MessageBox.Show($"Save Failed ({statusCode}): {message}");
+                    return;
+                }
+
+                // 🔹 Check if `e_id` is present
+                string eId = jsonDoc.RootElement.TryGetProperty("data", out var dataEl) &&
+                             dataEl.TryGetProperty("e_id", out var eIdEl)
+                    ? eIdEl.GetString()
+                    : "-1";
+
+                if (eId != "-1")
+                {
+                    MessageBox.Show("Beneficiary saved successfully!");
+                    NavigationService.Navigate(new wSelectbeneficary());
                 }
                 else
                 {
-                    MessageBox.Show(message);
+                    MessageBox.Show($"Save failed: {message}");
                 }
+            }
+            catch (JsonException)
+            {
+                MessageBox.Show("Invalid JSON response from server.");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show($"Save Error: {ex.Message}");
+            }
+        }
+
+        private void HighlightInvalidField(string fieldName)
+        {
+            try
+            {
+                // Find TextBox by name
+                var textBox = FindTextBoxByName(myStackPanel, fieldName);
+                if (textBox != null)
+                {
+                    textBox.BorderBrush = Brushes.Red;
+                    textBox.BorderThickness = new Thickness(2);
+                }
+            }
+            catch
+            {
+                // If the field doesn't exist visually, ignore
             }
         }
 
@@ -1704,6 +2101,151 @@ namespace Exchange.Pages
             }
 
         }
+
+        private async Task LoadDropdownData()
+        {
+            try
+            {
+                string baseUrl = "https://" + Variable.apiipadd + "/api/beneficiary/get-beneficiary-combo-list";
+                string productCode = ProductManager.selectedproductcode;
+                string destinationCountryCode = SelectedAddBeneCountry.seladdbenecount;
+                string url = $"{baseUrl}?destination_country_code={destinationCountryCode}&product_code={productCode}";
+
+                using (var client = new HttpClient())
+                {
+                    var request = new HttpRequestMessage(HttpMethod.Get, url);
+                    request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
+                    request.Headers.Add("Accept", "application/json");
+
+                    var response = await client.SendAsync(request);
+                    response.EnsureSuccessStatusCode();
+                    string json = await response.Content.ReadAsStringAsync();
+                    var data = JObject.Parse(json)["data"];
+
+                    nationalityList = data["country_list"]?.ToObject<List<DropdownItem>>() ?? new();
+                    relationshipList = data["relationship_list"]?.ToObject<List<DropdownItem>>() ?? new();
+                    beneficiaryBankList = data["beneficiaryBankList"]?.ToObject<List<DropdownItem>>() ?? new();
+                    beneficiaryBranchList = data["beneficiaryBranchList"]?.ToObject<List<DropdownItem>>() ?? new();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Dropdown load error: " + ex.Message);
+            }
+
+        }
+
+        private void SetFieldValue(string fieldName, string value)
+        {
+            foreach (var child in myStackPanel.Children)
+            {
+                if (child is StackPanel row && row.Tag?.ToString() == fieldName)
+                {
+                    foreach (var control in row.Children)
+                    {
+                        if (control is TextBox tb)
+                        {
+                            tb.Text = value;
+                        }
+                        else if (control is ComboBox cb)
+                        {
+                            // Try to match DropdownItem by Code or ToString()
+                            foreach (var item in cb.Items)
+                            {
+                                if (item is DropdownItem di &&
+                                    (di.code == value || di.name == value))
+                                {
+                                    cb.SelectedItem = item;
+                                    break;
+                                }
+                                else if (item?.ToString() == value)
+                                {
+                                    cb.SelectedItem = item;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        private void AddDynamicField(string fieldName, string label, string type, bool mandatory)
+        {
+            if (!coreFieldNames.Contains(fieldName))
+                coreFieldNames.Add(fieldName);
+
+            if (mandatory && !MANDATORYcoreFieldNames.Contains(fieldName))
+                MANDATORYcoreFieldNames.Add(fieldName);
+
+            var rowPanel = new StackPanel
+            {
+                Orientation = Orientation.Horizontal,
+                Margin = new Thickness(0, 10, 0, 0),
+                Tag = fieldName
+            };
+
+            var lbl = new Label
+            {
+                Content = label,
+                Width = 250,
+                Foreground = Brushes.White,
+                FontSize = 20
+            };
+            rowPanel.Children.Add(lbl);
+
+            FrameworkElement inputControl;
+
+            if (type.Equals("Dropdown", StringComparison.OrdinalIgnoreCase) ||
+                type.Equals("SubDropdown", StringComparison.OrdinalIgnoreCase))
+            {
+                var combo = new ComboBox
+                {
+                    Width = 400,
+                    Height = 30,
+                    Name = fieldName,
+                    Background = Brushes.White,
+                    Foreground = Brushes.Black,
+                    BorderThickness = new Thickness(0),
+                    Tag = fieldName
+                };
+
+                // Populate based on fieldName
+                List<DropdownItem> source = fieldName switch
+                {
+                    "beneficiaryNationalityCode" => nationalityList,
+                    "beneficaryRelation" => relationshipList,
+                    "beneficiaryBankCode" => beneficiaryBankList,
+                    "beneficiaryBranchCode" => beneficiaryBranchList,
+                    _ => new List<DropdownItem>()
+                };
+
+                foreach (var item in source)
+                {
+                    combo.Items.Add(item);
+                }
+
+                inputControl = combo;
+            }
+            else
+            {
+                var txt = new TextBox
+                {
+                    Width = 400,
+                    Height = 30,
+                    Name = fieldName,
+                    Background = Brushes.White,
+                    Foreground = Brushes.Black,
+                    BorderThickness = new Thickness(0),
+                    Tag = fieldName
+                };
+                inputControl = txt;
+            }
+
+            rowPanel.Children.Add(inputControl);
+            myStackPanel.Children.Add(rowPanel);
+        }
+
+
 
 
     }

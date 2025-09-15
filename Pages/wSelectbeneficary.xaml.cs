@@ -55,6 +55,7 @@ namespace Exchange.Pages
             public string? Date { get; set; }
 
             public string? Bene { get; set; }
+            public string EID { get; set; }
         }
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
@@ -78,23 +79,24 @@ namespace Exchange.Pages
                 var client = new HttpClient();
                 string url = $"https://{Variable.apiipadd}/api/Beneficiary/get-beneficiary-list?AppMemberCode={LoginManager.Remiduser}";
 
-
                 var request = new HttpRequestMessage(HttpMethod.Get, url);
                 request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
                 request.Headers.Add("accept", "application/json");
 
                 var response = await client.SendAsync(request);
                 response.EnsureSuccessStatusCode();
+
                 using (var responseStream = await response.Content.ReadAsStreamAsync())
                 using (var jsonDocument = await JsonDocument.ParseAsync(responseStream))
                 {
-                    bool dataElemen= jsonDocument.RootElement.TryGetProperty("data", out JsonElement dataElements);
+                    bool dataElemen = jsonDocument.RootElement.TryGetProperty("data", out JsonElement dataElements);
                     bool beneficiaryLis = dataElements.TryGetProperty("beneficiary_list", out JsonElement beneficiaryLists);
 
-                    // Response root contains success, status_code, message, data
-                    if ((dataElemen==true) && (beneficiaryLis==true))
+                    if (dataElemen && beneficiaryLis)
                     {
-                        //jCountries.Clear();
+                        Countries = new ObservableCollection<Country>(); // initialize once
+                        int slNo = 1;
+
                         foreach (var bene in beneficiaryLists.EnumerateArray())
                         {
                             string firstName = GetSafeString(bene, "beneficiary_first_name");
@@ -103,22 +105,24 @@ namespace Exchange.Pages
                             string beneficiary_country_name = GetSafeString(bene, "beneficiary_country_name");
                             string beneficiary_bank_account_number = GetSafeString(bene, "beneficiary_bank_account_number");
                             string beneficiary_bank_name = GetSafeString(bene, "beneficiary_bank_name");
-                            string E_ID = GetSafeString(bene, "e_id");
+                            string e_id = GetSafeString(bene, "e_id"); // real internal id
 
                             Countries.Add(new Country
                             {
                                 CountryName = beneficiary_country_name,
-                                Amt = "", // put actual mapping later
+                                Amt = "",
                                 Bene = $"{firstName} {middleName} {lastName}".Trim(),
-                                Date = E_ID,
+                                Date = slNo.ToString(),      // display 1,2,3...
                                 TID = beneficiary_bank_account_number,
-                                BANK = beneficiary_bank_name
+                                BANK = beneficiary_bank_name,
+                                EID = e_id                 // store real id for later use
                             });
 
+                            slNo++;
                         }
-
                     }
                 }
+
                 countryListView.ItemsSource = Countries;
             }
             catch (HttpRequestException ex)
@@ -130,6 +134,70 @@ namespace Exchange.Pages
                 MessageBox.Show($"Unexpected error: {ex.Message}");
             }
         }
+
+
+        //public async Task LoadCountries()
+        //{
+        //    try
+        //    {
+        //        var client = new HttpClient();
+        //        string url = $"https://{Variable.apiipadd}/api/Beneficiary/get-beneficiary-list?AppMemberCode={LoginManager.Remiduser}";
+
+
+        //        var request = new HttpRequestMessage(HttpMethod.Get, url);
+        //        request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
+        //        request.Headers.Add("accept", "application/json");
+
+        //        var response = await client.SendAsync(request);
+        //        response.EnsureSuccessStatusCode();
+        //        using (var responseStream = await response.Content.ReadAsStreamAsync())
+        //        using (var jsonDocument = await JsonDocument.ParseAsync(responseStream))
+        //        {
+        //            bool dataElemen= jsonDocument.RootElement.TryGetProperty("data", out JsonElement dataElements);
+        //            bool beneficiaryLis = dataElements.TryGetProperty("beneficiary_list", out JsonElement beneficiaryLists);
+
+        //            // Response root contains success, status_code, message, data
+        //            if ((dataElemen==true) && (beneficiaryLis==true))
+        //            {
+        //                Countries = new ObservableCollection<Country>();
+        //                int slNo = 1;
+        //                //jCountries.Clear();
+        //                foreach (var bene in beneficiaryLists.EnumerateArray())
+        //                {
+        //                    string firstName = GetSafeString(bene, "beneficiary_first_name");
+        //                    string middleName = GetSafeString(bene, "beneficiary_middle_name");
+        //                    string lastName = GetSafeString(bene, "beneficiary_last_name");
+        //                    string beneficiary_country_name = GetSafeString(bene, "beneficiary_country_name");
+        //                    string beneficiary_bank_account_number = GetSafeString(bene, "beneficiary_bank_account_number");
+        //                    string beneficiary_bank_name = GetSafeString(bene, "beneficiary_bank_name");
+        //                    string E_ID = GetSafeString(bene, "e_id");
+        //                    int beneficiary_code = bene.GetProperty("beneficiary_code").GetInt32();
+
+        //                    Countries.Add(new Country
+        //                    {
+        //                        CountryName = beneficiary_country_name,
+        //                        Amt = "", // put actual mapping later
+        //                        Bene = $"{firstName} {middleName} {lastName}".Trim(),
+        //                        Date = slNo.ToString(),
+        //                        TID = beneficiary_bank_account_number,
+        //                        BANK = beneficiary_bank_name
+        //                    });
+        //                    slNo++;
+        //                }
+
+        //            }
+        //        }
+        //        countryListView.ItemsSource = Countries;
+        //    }
+        //    catch (HttpRequestException ex)
+        //    {
+        //        MessageBox.Show($"Request error: {ex.Message}");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show($"Unexpected error: {ex.Message}");
+        //    }
+        //}
 
         private string GetSafeString(JsonElement element, string propertyName)
         {
@@ -150,13 +218,27 @@ namespace Exchange.Pages
             return "";
         }
 
+        //private void countryListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    // Update the SelectedCountry property when the selection changes
+        //    SelectedCountry = countryListView.SelectedItem as Country;
+        //    if (SelectedCountry != null)
+        //    {
+        //        // MessageBox.Show($"Selected Country: {SelectedCountry.CountryName}");//was already commented
+        //    }
+        //}
+
         private void countryListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // Update the SelectedCountry property when the selection changes
-            SelectedCountry = countryListView.SelectedItem as Country;
-            if (SelectedCountry != null)
+            if (countryListView.SelectedItem is Country selected)
             {
-                // MessageBox.Show($"Selected Country: {SelectedCountry.CountryName}");
+                // Save the real e_id to your selected manager (create a new property if needed)
+                SelectedBeneficiaryManager.BENE_EID = selected.EID; // <-- add this property to SelectedBeneficiaryManager
+
+                // Now navigate or load details
+                // Example: call load details method (if it's in this page) or navigate then call load on details page
+                // If you want to open details page now:
+                // NavigationService?.Navigate(new BeneficiaryDetailsPage()); // your page class
             }
         }
 
@@ -164,8 +246,11 @@ namespace Exchange.Pages
         {
             try
             {
-                var myValue = ((Button)sender).Tag;
-                SelectedBeneficiaryManager.SetBENE_SLNO(myValue.ToString());
+                var myValue = ((Button)sender).Tag?.ToString();
+                if (!string.IsNullOrEmpty(myValue))
+                {
+                    SelectedBeneficiaryManager.SetBENE_EID(myValue); // store EID
+                }
 
                 wViewBenficiaryDetails wx = new wViewBenficiaryDetails();
                 NavigationService.Navigate(wx);
@@ -174,16 +259,19 @@ namespace Exchange.Pages
             {
                 MessageBox.Show(ex.Message.ToString());
             }
-
         }
 
         private void RESEND_Click_edit(object sender, RoutedEventArgs e)
         {
             try
             {
-                var myValue = ((Button)sender).Tag;
-                SelectedBeneficiaryManager.SetBENE_SLNO(myValue.ToString());
+                var myValue = ((Button)sender).Tag?.ToString();
+                if (!string.IsNullOrEmpty(myValue))
+                {
+                    SelectedBeneficiaryManager.SetBENE_EID(myValue); // ✅ store EID
+                }
 
+                // Navigate to edit page
                 waddbeneficiary mainpage = new waddbeneficiary("edit");
                 NavigationService.Navigate(mainpage);
             }
@@ -191,8 +279,10 @@ namespace Exchange.Pages
             {
                 MessageBox.Show(ex.Message.ToString());
             }
-
         }
+
+
+
 
         private void addnewben(object sender, RoutedEventArgs e)
         {

@@ -13,7 +13,7 @@
         }
 
         //LIVE
-        public static string apiipadd = "wallstreet-kuwait-mob-api.codepoint-solutions.com";
+        public static string apiipadd = "kiosk-api-wallstreetkuwait.codepointrs.com";
         public static string apiClientKey = "WALLSTKIOSK";
 
         public static string _kioskidno;

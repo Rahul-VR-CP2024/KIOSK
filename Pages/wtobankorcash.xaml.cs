@@ -38,16 +38,21 @@ namespace Exchange.Pages
             public static string fromwhereopenedwtbc { get; set; }
 
             public static string selectedoptionborc { get; set; }
+            public static string SelectedDeliveryMethod { get; private set; }
 
             public static void SetTokenfromwhereopenedwtbc(string token)
             {
                 fromwhereopenedwtbc = token;
             }
 
-            public static void SetTokenselectedoptionborc(string token)
+            public static void SetTokenselectedoptionborc(string option)
             {
-                selectedoptionborc = token;
+                selectedoptionborc = option;       
+                SelectedDeliveryMethod = option;    // this is the one we'll use in Payment Page
             }
+
+
+
         }
 
         private void transferbtnclick(object sender, RoutedEventArgs e)

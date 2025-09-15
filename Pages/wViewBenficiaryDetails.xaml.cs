@@ -55,8 +55,8 @@ namespace Exchange.Pages
             {
                 using var client = new HttpClient();
 
-           
-               var url = $"https://{Variable.apiipadd}/api/Beneficiary/get-beneficiary-by-id?eId={SelectedBeneficiaryManager.BENE_SLNO}";
+
+                var url = $"https://{Variable.apiipadd}/api/Beneficiary/get-beneficiary-by-id?eId={SelectedBeneficiaryManager.BENE_EID}";
 
                 var request = new HttpRequestMessage(HttpMethod.Get, url);
 
@@ -112,7 +112,7 @@ namespace Exchange.Pages
             try
             {
                 using var client = new HttpClient();
-                var url = $"https://{Variable.apiipadd}/api/Beneficiary/get-beneficiary-by-id?eId={SelectedBeneficiaryManager.BENE_SLNO}";
+                var url = $"https://{Variable.apiipadd}/api/Beneficiary/get-beneficiary-by-id?eId={SelectedBeneficiaryManager.BENE_EID}";
                 var request = new HttpRequestMessage(HttpMethod.Get, url);
                 request.Headers.Authorization =
                     new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", TokenManager.Token);

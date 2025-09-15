@@ -6,8 +6,10 @@ using System.Text;
 using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Threading;
+using static Exchange.Pages.wtobankorcash;
 using static Exchange.Pages.wViewBenficiaryDetails;
 
 namespace Exchange.Pages
@@ -24,6 +26,11 @@ namespace Exchange.Pages
         public wTransferpay()
         {
             InitializeComponent();
+
+            DM.Text = BCManager.SelectedDeliveryMethod == "BT" ? "Bank Transfer" : "Cash Pickup";
+
+            // Optional: set Payment Method if fixed
+            Paymentmethod.Text = "KNET";
 
             if (TokenManager.Langofsoft == "ar")
             {
@@ -51,17 +58,28 @@ namespace Exchange.Pages
             //runtheloadersource();
             runtheloader(1, 1);
             runtheloadersource(1);
+
             //nameofreciver.Text = "Test";
             Unloaded += OnPageUnloaded;
         }
 
         string deliverymethod = "";
 
-        string productcode = "";
+        int productcode = 0;
+
         string disbtypecode = "";
         string CurrencyCode = "";
         string CountryCode = "";
         private DisposableTimer curencyRefreshTimer;
+       
+        private decimal CurrentRate;
+        private decimal CurrentCommission;
+        private decimal CurrentPaymentCommission;
+        private decimal CurrentFCCommission;
+        private decimal CurrentNetAmount;
+        private decimal CurrentReceiveAmount;
+        private int CurrentTaxPercent;
+       
 
         public async void loadbenedetails()
         {
@@ -69,7 +87,7 @@ namespace Exchange.Pages
             {
                 using var client = new HttpClient();
 
-                var url = $"https://{Variable.apiipadd}/api/Beneficiary/get-beneficiary-by-id?eId={SelectedBeneficiaryManager.BENE_SLNO}";
+                var url = $"https://{Variable.apiipadd}/api/Beneficiary/get-beneficiary-by-id?eId={SelectedBeneficiaryManager.BENE_EID}";
                 var request = new HttpRequestMessage(HttpMethod.Get, url);
 
                 request.Headers.Authorization =
@@ -87,7 +105,7 @@ namespace Exchange.Pages
                     if (root.TryGetProperty("data", out JsonElement dataObj) &&
                         dataObj.TryGetProperty("beneficiary_by_id", out JsonElement beneficiary))
                     {
-                        
+
                         string firstName = beneficiary.TryGetProperty("beneficiary_first_name", out var f) ? f.GetString() : "";
                         string middleName = beneficiary.TryGetProperty("beneficiary_middle_name", out var m) ? m.GetString() : "";
                         string lastName = beneficiary.TryGetProperty("beneficiary_last_name", out var l) ? l.GetString() : "";
@@ -113,8 +131,8 @@ namespace Exchange.Pages
                         // Product Code
                         if (beneficiary.TryGetProperty("product_code", out var productElement))
                         {
-                            productcode = productElement.ToString();
-                            TransferManagers1.SetProductCode(productcode);
+                            productcode = productElement.GetInt32();
+                            TransferManagers1.SetProductCode(productcode.ToString());
                         }
 
                         // Country
@@ -122,10 +140,35 @@ namespace Exchange.Pages
                         {
                             CountryCode = countryElement.GetString();
                         }
+
                         if (beneficiary.TryGetProperty("currency_code", out var CurrencyElement))
                         {
                             CurrencyCode = CurrencyElement.GetString();
+                            currencymoneytoTextBlock.Text = CurrencyCode;
+                            ral.Content = $"0 {CurrencyCode}";
                         }
+
+                        // 👇 Only call refresh AFTER both values are set
+                        if (!string.IsNullOrEmpty(CountryCode) && !string.IsNullOrEmpty(CurrencyCode))
+                        {
+                            RefreshCurrencyMethod("no");
+                        }
+
+                        //if (beneficiary.TryGetProperty("currency_code", out var CurrencyElement))
+                        //{
+                        //    string currency = CurrencyElement.GetString();
+
+                        //    // Update currency text
+                        //    currencymoneytoTextBlock.Text = currency;
+                        //    ral.Content = $"0 {currency}";
+
+                        //    // Update currency flag dynamically
+                        //    //string flagPath = GetFlagPathForCurrency(currency);
+                        //    //currencyFlagImage.Source = new BitmapImage(new Uri(flagPath, UriKind.Relative));
+
+                        //}
+
+
                     }
                 }
             }
@@ -137,31 +180,70 @@ namespace Exchange.Pages
 
 
         //Payment_Click
-        private void Payment_Click(object sender, RoutedEventArgs e)
+        // private async void Payment_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if (!string.IsNullOrWhiteSpace(amounttosendTextbox.Text) &&
+        //        amounttosendTextbox.Text != "0" &&
+        //        !string.IsNullOrWhiteSpace(kdamount.Text) &&
+        //        kdamount.Text != "0")
+        //    {
+        //        bool valid = await ValidateTransaction();
+
+        //        if (valid)
+        //        {
+
+        //            wPaymentmethod mainpage = new wPaymentmethod();
+        //            NavigationService.Navigate(mainpage);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Kindly Enter Amount");
+        //    }
+        //}
+
+
+
+        private async void Payment_Click(object sender, RoutedEventArgs e)
         {
-            //checklimits();
-            //return;
-            //REFRESHCURRENCYMETHOD();
-            // Pass parameters to Page1.xaml after successful login
-            // Page1 page1 = new Page1(username);
-            //wPaymentmethod mainpage = new wPaymentmethod();
-            //NavigationService.Navigate(mainpage);
-
-            //kdamount
-            //if (amounttosendTextbox.Text != "" || amounttosendTextbox.Text != null || amounttosendTextbox.Text != "0" || amounttosendTextbox.Text != "0.000" || amounttosendTextbox.Text != "0.00" || kdamount.Text != "" || kdamount.Text != null || kdamount.Text != "0" || kdamount.Text != "0.000" || kdamount.Text != "0.00") {
-
-            if (amounttosendTextbox.Text != "" && amounttosendTextbox.Text != null && amounttosendTextbox.Text != "0" && amounttosendTextbox.Text != "0.000" && amounttosendTextbox.Text != "0.00" && kdamount.Text != "" && kdamount.Text != null && kdamount.Text != "0" && kdamount.Text != "0.000" && kdamount.Text != "0.00")
+            
+            if (!string.IsNullOrWhiteSpace(amounttosendTextbox.Text) &&
+                amounttosendTextbox.Text != "0" &&
+                !string.IsNullOrWhiteSpace(kdamount.Text) &&
+                kdamount.Text != "0")
             {
+                
+                bool valid = await ValidateTransaction();
 
-                    //REFRESHCURRENCYMETHOD("yes");
+                if (valid)
+                {
+                   
+                    string transactionRef = await PayQuickTransaction();
+
+                    if (!string.IsNullOrEmpty(transactionRef))
+                    {
+                        
+                        Variable.TransactionReference = transactionRef;
+
+                       
+                        wPaymentmethod mainpage = new wPaymentmethod(transactionRef);
+                        NavigationService.Navigate(mainpage);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Unable to create transaction. Please try again.",
+                                        "Transaction Error",
+                                        MessageBoxButton.OK,
+                                        MessageBoxImage.Warning);
+                    }
+                }
             }
             else
             {
                 MessageBox.Show("Kindly Enter Amount");
             }
-            
-
         }
+
 
         //BACK BUTTON
         private void LoginButton_Click(object sender, RoutedEventArgs e)
@@ -365,6 +447,53 @@ namespace Exchange.Pages
             }
         }
 
+        public class IncomeSourceItem
+        {
+            public string Code { get; set; }  // API code
+            public string Name { get; set; }  // Display text
+
+            public override string ToString() => Name; // Shows in ComboBox
+        }
+
+        private void UpdateComboBoxsource(JsonElement root)
+        {
+            sourcecombo.Items.Clear();
+
+            if (root.ValueKind == JsonValueKind.Array)
+            {
+                foreach (var item in root.EnumerateArray())
+                {
+                    if (item.TryGetProperty("name", out JsonElement nameElement))
+                    {
+                        // If the API also provides a code, fetch it here
+                        string code = item.TryGetProperty("code", out JsonElement codeElement)
+                                      ? codeElement.GetString()
+                                      : nameElement.GetString(); // fallback to name if code missing
+
+                        var incomeItem = new IncomeSourceItem
+                        {
+                            Name = nameElement.GetString(),
+                            Code = code
+                        };
+
+                        sourcecombo.Items.Add(incomeItem);
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid JSON response: expected array at root.");
+            }
+
+            // Display name in ComboBox, value is code
+            sourcecombo.DisplayMemberPath = "Name";
+            sourcecombo.SelectedValuePath = "Code";
+
+            // Optional: select first item
+            if (sourcecombo.Items.Count > 0)
+                sourcecombo.SelectedIndex = 0;
+        }
+
         //XXXXXXXXXX DOES NOTHING
         private async void Button_Click(object sender, RoutedEventArgs e) // Assuming a button click triggers the action
         {
@@ -426,27 +555,28 @@ namespace Exchange.Pages
 
 
         //Source of Income Combo update
-        private void UpdateComboBoxsource(JsonElement root)
-        {
+        //private void UpdateComboBoxsource(JsonElement root)
+        //{
             
-            sourcecombo.Items.Clear();
+        //    sourcecombo.Items.Clear();
 
-            // root itself is already an array (not an object with "Data")
-            if (root.ValueKind == JsonValueKind.Array)
-            {
-                foreach (var item in root.EnumerateArray())
-                {
-                    if (item.TryGetProperty("name", out JsonElement nameElement)) 
-                    {
-                        sourcecombo.Items.Add(nameElement.GetString());
-                    }
-                }
-            }
-            else
-            {
-                Console.WriteLine("Invalid JSON response: expected array at root.");
-            }
-        }
+        //    // root itself is already an array (not an object with "Data")
+        //    if (root.ValueKind == JsonValueKind.Array)
+        //    {
+        //        foreach (var item in root.EnumerateArray())
+        //        {
+        //            if (item.TryGetProperty("name", out JsonElement nameElement)) 
+        //            {
+        //                sourcecombo.Items.Add(nameElement.GetString());
+        //            }
+
+        //        }
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine("Invalid JSON response: expected array at root.");
+        //    }
+        //}
 
 
         //Update amounts fields
@@ -684,7 +814,7 @@ namespace Exchange.Pages
                           $"&SourceAmount={source_amount}" +
                           $"&DestinationAmount={destination_amount}" +
                           $"&ProductCode={productcode}" +
-                          $"&TransferModeCode={deliverymethod}" +
+                          $"&TransferModeCode={DM.Text}" +
                           $"&PaymentMode={Paymentmethod.Text}";
 
                 var request = new HttpRequestMessage(HttpMethod.Get, url);
@@ -701,7 +831,7 @@ namespace Exchange.Pages
                 var root = doc.RootElement;
 
                 if (root.TryGetProperty("success", out JsonElement successProp) &&
-                    successProp.GetString()?.ToLower() == "true")
+    successProp.GetString()?.ToLower() == "true")
                 {
                     if (root.TryGetProperty("data", out JsonElement data) &&
                         data.TryGetProperty("amount", out JsonElement amount))
@@ -719,7 +849,17 @@ namespace Exchange.Pages
                             amounttosendTextbox.Text = destAmt.GetDecimal().ToString("N3");
                         }
 
-                        // Labels
+                       
+                        CurrentRate = amount.GetProperty("rate").GetDecimal();
+                        CurrentCommission = amount.GetProperty("commission").GetDecimal();
+                       // CurrentPaymentCommission = amount.GetProperty("payment_commission").GetDecimal();
+                        CurrentFCCommission = amount.GetProperty("f_c_commission").GetDecimal();
+                        CurrentNetAmount = amount.GetProperty("net_pay_amount").GetDecimal();
+                        CurrentReceiveAmount = amount.GetProperty("net_receive_amount").GetDecimal();
+                        CurrentTaxPercent = amount.GetProperty("tax_percentage").GetInt32();
+                        //CurrentTaxCollected = amount.GetProperty("tax_collected").GetDouble();
+
+                       
                         tal.Content = amount.GetProperty("pay_amount").GetDecimal().ToString("N3") + " KWD";
                         tfl.Content = amount.GetProperty("commission").GetDecimal().ToString("N3") + " KWD";
                         totl.Content = amount.GetProperty("net_pay_amount").GetDecimal().ToString("N3") + " KWD";
@@ -729,9 +869,10 @@ namespace Exchange.Pages
 
                     if (buttonClick == "yes")
                     {
-                        checklimits();
+                        await ValidateTransaction(); 
                     }
                 }
+
                 else
                 {
                     string errorMsg = root.TryGetProperty("message", out JsonElement msgEl)
@@ -755,99 +896,289 @@ namespace Exchange.Pages
 
 
 
-        public async void checklimits()
-        {
+        //public async void checklimits()
+        //{
 
 
 
 
-            var fcfinalamount = amounttosendTextbox.Text;
+        //    var fcfinalamount = amounttosendTextbox.Text;
 
-            var lcfinalamount = kdamount.Text;
+        //    var lcfinalamount = kdamount.Text;
             
 
 
-            var client = new HttpClient();
-            var request = new HttpRequestMessage(HttpMethod.Post, "http://"+Variable.apiipadd+"/api/v1/sxremittance/LimitValue");
-            request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
-            //request.Headers.Add("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJXQUxMU1RLSU9TS1VBVCIsImp0aSI6ImY0ZTI2Y2FkLWJiNzEtNGJjZi1iNTcwLTcwNDE5NzgzNDM0MyIsImlhdCI6IjEwLzIxLzIwMjQgMTM6MjE6UE0iLCJLaW9za0lEIjoiMTU0MzU0MyIsIm5iZiI6MTcyOTUwNjA3NCwiZXhwIjoxNzI5NTA3ODc0LCJpc3MiOiJodHRwOi8vd3d3LmNpbnF1ZS5hZSIsImF1ZCI6IkNpbnF1ZSBDdXN0b21lcnMifQ.5sBI7RhvcIPZoWOl-fwIgiMC34cb4eKu52SGCH3rHgY");
-            var content = new StringContent("{\r\n  \"ProductCode\": \""+productcode+"\",\r\n  \"CurrencyCode\": \"" + CurrencyCode + "\",\r\n  \"CountryCode\": \"" + CountryCode + "\",\r\n  \"DisbursalCode\": \"" + deliverymethod + "\",\r\n  \"LCAmount\": "+lcfinalamount+",\r\n  \"FCAmount\": "+ fcfinalamount + ",\r\n  \"RemID\": "+ LoginManager.Remiduser +",\r\n  \"BenSlNo\": "+ SelectedBeneficiaryManager.BENE_SLNO+ "\r\n}", null, "application/json");
+        //    var client = new HttpClient();
+        //    var request = new HttpRequestMessage(HttpMethod.Post, "http://"+Variable.apiipadd+"/api/v1/sxremittance/LimitValue");
+        //    request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
+        //    //request.Headers.Add("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJXQUxMU1RLSU9TS1VBVCIsImp0aSI6ImY0ZTI2Y2FkLWJiNzEtNGJjZi1iNTcwLTcwNDE5NzgzNDM0MyIsImlhdCI6IjEwLzIxLzIwMjQgMTM6MjE6UE0iLCJLaW9za0lEIjoiMTU0MzU0MyIsIm5iZiI6MTcyOTUwNjA3NCwiZXhwIjoxNzI5NTA3ODc0LCJpc3MiOiJodHRwOi8vd3d3LmNpbnF1ZS5hZSIsImF1ZCI6IkNpbnF1ZSBDdXN0b21lcnMifQ.5sBI7RhvcIPZoWOl-fwIgiMC34cb4eKu52SGCH3rHgY");
+        //    var content = new StringContent("{\r\n  \"ProductCode\": \""+productcode+"\",\r\n  \"CurrencyCode\": \"" + CurrencyCode + "\",\r\n  \"CountryCode\": \"" + CountryCode + "\",\r\n  \"DisbursalCode\": \"" + deliverymethod + "\",\r\n  \"LCAmount\": "+lcfinalamount+",\r\n  \"FCAmount\": "+ fcfinalamount + ",\r\n  \"RemID\": "+ LoginManager.Remiduser +",\r\n  \"BenSlNo\": "+ SelectedBeneficiaryManager.BENE_SLNO+ "\r\n}", null, "application/json");
 
-            //var content = new StringContent("{\r\n  \"ProductCode\": \"" + productcode + "\"," +
-            //    "\r\n  \"CurrencyCode\": \"" + CurrencyCode + "\"," +
-            //    "\r\n  \"CountryCode\": \"" + CountryCode + "\"," +
-            //    "\r\n  \"DisbursalCode\": \"" + deliverymethod + "\"," +
-            //    "\r\n  \"Amount\": " + finalamount + "," +
-            //    "\r\n  \"ReceiverCityId\": \"\"," +
-            //    "\r\n  \"PayerId\": \"\"," +
-            //    "\r\n  \"BankCode\": \"\"," +
-            //    "\r\n  \"PayingAgentId\": \"\"," +
-            //    "\r\n  \"ReceiverTownId\": \"\"," +
-            //    "\r\n  \"RateType\": \"" + fcorlcswitch + "\"\r\n}", null, "application/json");
-
-
-
-            request.Content = content;
-            using var response = await client.SendAsync(request);
-            response.EnsureSuccessStatusCode();
-            //Console.WriteLine(await response.Content.ReadAsStringAsync());
-
-            var contentString = await request.Content.ReadAsStringAsync();
-            string responseString = await response.Content.ReadAsStringAsync();
-            RichMessageBox.Show("Request Data to api/v1/sxremittance/LimitValue\n" + DateTime.Now + "\n" + contentString);
-            RichMessageBox.Show("Response from api/v1/sxremittance/LimitValue\n" + DateTime.Now + "\n" + responseString);
+        //    //var content = new StringContent("{\r\n  \"ProductCode\": \"" + productcode + "\"," +
+        //    //    "\r\n  \"CurrencyCode\": \"" + CurrencyCode + "\"," +
+        //    //    "\r\n  \"CountryCode\": \"" + CountryCode + "\"," +
+        //    //    "\r\n  \"DisbursalCode\": \"" + deliverymethod + "\"," +
+        //    //    "\r\n  \"Amount\": " + finalamount + "," +
+        //    //    "\r\n  \"ReceiverCityId\": \"\"," +
+        //    //    "\r\n  \"PayerId\": \"\"," +
+        //    //    "\r\n  \"BankCode\": \"\"," +
+        //    //    "\r\n  \"PayingAgentId\": \"\"," +
+        //    //    "\r\n  \"ReceiverTownId\": \"\"," +
+        //    //    "\r\n  \"RateType\": \"" + fcorlcswitch + "\"\r\n}", null, "application/json");
 
 
-            using (var responseStream = await response.Content.ReadAsStreamAsync())
-            {
-                // Parse JSON response using JsonDocument.Parse
-                var jsonDocument = await JsonDocument.ParseAsync(responseStream);
 
-                // Access root object (assuming it's an array) and iterate over its elements
-                foreach (var dataElement in jsonDocument.RootElement.GetProperty("Data").EnumerateArray())
-                {
+        //    request.Content = content;
+        //    using var response = await client.SendAsync(request);
+        //    response.EnsureSuccessStatusCode();
+        //    //Console.WriteLine(await response.Content.ReadAsStringAsync());
+
+        //    var contentString = await request.Content.ReadAsStringAsync();
+        //    string responseString = await response.Content.ReadAsStringAsync();
+        //    RichMessageBox.Show("Request Data to api/v1/sxremittance/LimitValue\n" + DateTime.Now + "\n" + contentString);
+        //    RichMessageBox.Show("Response from api/v1/sxremittance/LimitValue\n" + DateTime.Now + "\n" + responseString);
+
+
+        //    using (var responseStream = await response.Content.ReadAsStreamAsync())
+        //    {
+        //        // Parse JSON response using JsonDocument.Parse
+        //        var jsonDocument = await JsonDocument.ParseAsync(responseStream);
+
+        //        // Access root object (assuming it's an array) and iterate over its elements
+        //        foreach (var dataElement in jsonDocument.RootElement.GetProperty("Data").EnumerateArray())
+        //        {
                     
 
 
-                    string respmsg = dataElement.GetProperty("RESPONSEMSG").ToString();
+        //            string respmsg = dataElement.GetProperty("RESPONSEMSG").ToString();
 
-                    //MessageBox.Show(respmsg);
-                    //respmsg = "CONTACT SER";
-                    if (respmsg != "SUCCESS")
-                    {
-                        MessageBox.Show(respmsg);
-                        return;
-                    }
+        //            //MessageBox.Show(respmsg);
+        //            //respmsg = "CONTACT SER";
+        //            if (respmsg != "SUCCESS")
+        //            {
+        //                MessageBox.Show(respmsg);
+        //                return;
+        //            }
 
 
-                    if(respmsg == "SUCCESS")
-                    {
+        //            if(respmsg == "SUCCESS")
+        //            {
 
-                        //MessageBox.Show(""+validatetransation());
-                        string result = await validatetransation();
+        //                //MessageBox.Show(""+validatetransation());
+        //                string result = await validatetransation();
                        
 
-                        if(result == "True") {
-                            wPaymentmethod mainpage = new wPaymentmethod();
-                            NavigationService.Navigate(mainpage);
-                        } else
-                        {
-                           // MessageBox.Show(" " + result);
-                        }
-                        //return;
+        //                if(result == "True") {
+        //                    wPaymentmethod mainpage = new wPaymentmethod();
+        //                    NavigationService.Navigate(mainpage);
+        //                } else
+        //                {
+        //                   // MessageBox.Show(" " + result);
+        //                }
+        //                //return;
                         
-                    }
+        //            }
 
                     
 
+        //        }
+        //    }
+
+
+        //}
+
+        private async Task<bool> ValidateTransaction()
+        {
+            try
+            {
+                string source_amount = "";
+                string destination_amount = "";
+
+                if (fcorlcswitch == "FC")
+                {
+                    destination_amount = amounttosendTextbox.Text;
+                }
+                else if (fcorlcswitch == "LC")
+                {
+                    source_amount = kdamount.Text;
+                }
+
+                using var client = new HttpClient();
+
+                var url = $"http://{Variable.apiipadd}/api/Transaction/calculate-amount" +
+                          $"?DestinationCountryCode={CountryCode}" +
+                          $"&DestinationCurrencyCode={CurrencyCode}" +
+                          $"&SourceCountryCode=KW" +
+                          $"&SourceCurrencyCode=KWD" +
+                          $"&SourceAmount={source_amount}" +
+                          $"&DestinationAmount={destination_amount}" +
+                          $"&ProductCode={productcode}" +
+                          $"&TransferModeCode={DM.Text}" +
+                          $"&PaymentMode={Paymentmethod.Text}";
+
+                var request = new HttpRequestMessage(HttpMethod.Get, url);
+                request.Headers.Authorization =
+                    new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", TokenManager.Token);
+                request.Headers.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
+                using var response = await client.SendAsync(request);
+                string responseString = await response.Content.ReadAsStringAsync();
+
+                using var doc = JsonDocument.Parse(responseString);
+                var root = doc.RootElement;
+
+                if (root.TryGetProperty("success", out JsonElement successProp) &&
+                    successProp.GetString()?.ToLower() == "true")
+                {
+                    if (root.TryGetProperty("data", out JsonElement data) &&
+                        data.TryGetProperty("amount", out JsonElement amount))
+                    {
+                        bool isValid = true;
+
+                        if (fcorlcswitch == "FC" &&
+                            amount.TryGetProperty("net_pay_amount", out JsonElement srcAmt))
+                        {
+                            string newKwd = srcAmt.GetDecimal().ToString("N3");
+                            if (newKwd != kdamount.Text)
+                                isValid = false;
+                        }
+
+                        if (fcorlcswitch == "LC" &&
+                            amount.TryGetProperty("net_receive_amount", out JsonElement destAmt))
+                        {
+                            string newDest = destAmt.GetDecimal().ToString("N3");
+                            if (newDest != amounttosendTextbox.Text)
+                                isValid = false;
+                        }
+
+                        if (isValid)
+                        {
+                            if (amount.TryGetProperty("net_pay_amount", out JsonElement netPayAmt))
+                            {
+                                TransferManagers1.NetAmt = netPayAmt.GetDecimal().ToString("0.000");
+                            }
+
+                            return true; 
+                        }
+                        else
+                        {
+                            MessageBox.Show("Cannot proceed due to rate change.",
+                                            "Validation Failed",
+                                            MessageBoxButton.OK,
+                                            MessageBoxImage.Warning);
+                            return false;
+                        }
+                    }
+                }
+                else
+                {
+                    string errorMsg = root.TryGetProperty("message", out JsonElement msgEl)
+                        ? msgEl.GetString()
+                        : "Unknown error from API.";
+                    MessageBox.Show(errorMsg, "API Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return false;
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error validating transaction: " + ex.Message,
+                                "System Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
 
-
+            return false;
         }
 
 
-        public async Task<string> validatetransation()
+        private async Task<string> PayQuickTransaction()
+        {
+            try
+            {
+                using var client = new HttpClient();
+                var url = $"https://{Variable.apiipadd}/api/transaction/pay-quick-transaction";
+
+                var request = new HttpRequestMessage(HttpMethod.Post, url);
+                request.Headers.Authorization =
+                    new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", TokenManager.Token);
+                request.Headers.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
+                // Map kiosk variables → API model
+                var transaction = new
+                {
+                    pay_location = 11, // kiosk ID
+                    payment = new { payment_mode = Paymentmethod.Text }, // ensure this is API-compliant code
+                    source_amount = string.IsNullOrEmpty(kdamount.Text) ? 0m : Convert.ToDecimal(kdamount.Text),
+                    rate = CurrentRate,
+                    rate_operator = "*",
+                    destination_amount = string.IsNullOrEmpty(amounttosendTextbox.Text) ? 0m : Convert.ToDecimal(amounttosendTextbox.Text),
+                    commission = CurrentCommission,
+                    //payment_commission = 0.0m,
+                    f_c_commission = CurrentFCCommission,
+                    //tax_percentage = CurrentTaxPercent,
+                    tax_collected = 0.0m,
+                    net_amount = CurrentNetAmount,
+
+                    purpose_code = (purposecombo.SelectedItem as PurposeItem)?.Code,
+                    purpose = (purposecombo.SelectedItem as PurposeItem)?.Name,
+                    income_source_code = (sourcecombo.SelectedItem as IncomeSourceItem)?.Code,
+                    income_source = (sourcecombo.SelectedItem as IncomeSourceItem)?.Name,
+
+                    source_country_code = "KW",
+                    source_currency_code = "KWD",
+                    destination_country_code = CountryCode, 
+                    destination_currency_code = CurrencyCode, 
+                    product_code = productcode,
+                    transfer_mode_code = BCManager.SelectedDeliveryMethod
+,
+
+                    beneficiary_code = 0,
+                    beneficiary_eid = SelectedBeneficiaryManager.BENE_SLNO, 
+                    status = "Drafted"
+                };
+
+
+                string json = JsonSerializer.Serialize(transaction);
+                request.Content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                using var response = await client.SendAsync(request);
+                string responseString = await response.Content.ReadAsStringAsync();
+
+                Console.WriteLine("PayQuickTransaction Response: " + responseString);
+
+                using var doc = JsonDocument.Parse(responseString);
+                var root = doc.RootElement;
+
+                if (root.TryGetProperty("success", out JsonElement successProp) &&
+                    successProp.GetString()?.ToLower() == "true")
+                {
+                    // Extract transaction reference for KNET
+                    var data = root.GetProperty("data");
+                    string transactionRef = data
+                        .GetProperty("app_transaction")
+                        .GetProperty("transaction_reference")
+                        .GetRawText();
+
+                    return transactionRef;
+                }
+                else
+                {
+                    string errorMsg = root.TryGetProperty("message", out JsonElement msgEl)
+                        ? msgEl.GetString()
+                        : "Unknown error while creating transaction.";
+                    MessageBox.Show(errorMsg, "API Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error calling pay-quick-transaction API: " + ex.Message,
+                                "System Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return null;
+            }
+        }
+
+
+        public async Task<string> validatetransation_old()
         {
 
             string paymentmodestr = "2";
@@ -1156,6 +1487,11 @@ namespace Exchange.Pages
         private void OnPageUnloaded(object sender, RoutedEventArgs e)
         {
             curencyRefreshTimer?.Cancel();
+        }
+
+        private void Paymentmethod_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

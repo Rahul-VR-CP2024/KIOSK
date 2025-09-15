@@ -27,6 +27,9 @@ namespace Exchange.Pages
         private eSocketClient eSocketClient;
         static private string TestTerminalId = Variable.kioskidno;
 
+        // hold the transaction reference
+        private readonly string _transactionRef;
+
         public wPaymentmethod()
         {
             InitializeComponent();
@@ -35,19 +38,24 @@ namespace Exchange.Pages
             {
                 backbtn.Content = "يرجع";
                 paymentmethodlbl.Text = "طريقة الدفع او السداد:";
-
             }
 
-            // Example usage:
-            //RichMessageBox.Show("This is a rich text error message.");
-
-            //MessageBox.Show(TransferManagers1.Sessionid);
-
-            //Validate
-            //Post BO
-            //Post to Branch
             Unloaded += OnPageUnloaded;
         }
+        public wPaymentmethod(string transactionRef) : this()
+        {
+            _transactionRef = transactionRef;
+
+            // debug print
+            Console.WriteLine("Transaction Reference received in wPaymentmethod: " + _transactionRef);
+
+            // optional: show it in UI if you want
+            // transactionRefLabel.Content = _transactionRef;
+
+            // TODO: if you want to immediately start KNET redirection here:
+            // StartKnetPayment(_transactionRef);
+        }
+        
 
         
 
@@ -63,65 +71,102 @@ namespace Exchange.Pages
         }
 
         //
+        //private void transferbtnclick(object sender, RoutedEventArgs e)
+        //{
+        //    int getcurrentvalue = 0;
+        //    try
+        //    {
+        //        //OG METHODS
+        //        //POSTTOBRANCHDONE.Setkt3("APPROVE");
+        //        knetbutton.IsEnabled = false;
+        //        //TO TEST WITHOUT KNET
+        //        //validatetransation();
+        //        //OG METHODS
+        //        //return;
+        //        //TO TEST WITHOUT KNET
+
+        //        //knetbutton.IsEnabled = true;
+        //        //wThankyou mainpage = new wThankyou();
+        //        //NavigationService.Navigate(mainpage);
+
+
+        //        statusofknet = "y";
+        //        getcurrentvalue = GetInvoiceNumber(getcurrentvalue);
+        //        // turning this to true will display a lot of information that might hide the command menu
+        //        Utility.DEBUG_MODE = false;
+
+
+        //        //Spin off reader thread, this thread continually processes responses and
+        //        //puts them into a eSocketClient.ReceivedMessages
+        //        //Thread client_thread = new Thread(client.TcpRead);
+        //        //client_thread.Name = "TcpReaderThread";
+        //        //Utility.Log("Starting reading thread..");
+        //        //client_thread.Start();
+
+        //        eSocketClient = new eSocketClient();
+        //        eSocketClient.StartReading();
+
+        //        RequestPaymentCustom(getcurrentvalue.ToString());
+
+        //        // Create a DispatcherTimer and set its interval to 3 seconds
+        //        timer = new DispatcherTimer();
+        //        timer.Interval = TimeSpan.FromSeconds(3);
+
+        //        // Set the Tick event handler
+        //        timer.Tick += Timer_Tick;
+
+        //        //if()
+
+        //        //string a = "y";
+
+
+
+        //        // Start the timer
+
+        //        timer.Start();
+
+        //    }
+        //    catch (Exception ex) 
+        //    {
+        //        MessageBox.Show("Transaction failed");
+        //        RichMessageBox.Show($"TransferToBank-Transaction:{getcurrentvalue}-Error-{ex.Message}\n {JsonConvert.SerializeObject(ex)}");
+        //        NavigationManager.NavigateToHome();
+        //    }
+        //}
+
         private void transferbtnclick(object sender, RoutedEventArgs e)
         {
-            int getcurrentvalue = 0;
             try
             {
-                //OG METHODS
-                //POSTTOBRANCHDONE.Setkt3("APPROVE");
                 knetbutton.IsEnabled = false;
-                //TO TEST WITHOUT KNET
-                //validatetransation();
-                //OG METHODS
-                //return;
-                //TO TEST WITHOUT KNET
-
-                //knetbutton.IsEnabled = true;
-                //wThankyou mainpage = new wThankyou();
-                //NavigationService.Navigate(mainpage);
-
-
                 statusofknet = "y";
-                getcurrentvalue = GetInvoiceNumber(getcurrentvalue);
-                // turning this to true will display a lot of information that might hide the command menu
-                Utility.DEBUG_MODE = false;
 
+                // Use the real transaction reference from API
+                string transactionReference = _transactionRef;
 
-                //Spin off reader thread, this thread continually processes responses and
-                //puts them into a eSocketClient.ReceivedMessages
-                //Thread client_thread = new Thread(client.TcpRead);
-                //client_thread.Name = "TcpReaderThread";
-                //Utility.Log("Starting reading thread..");
-                //client_thread.Start();
+                if (string.IsNullOrEmpty(transactionReference))
+                {
+                    MessageBox.Show("Transaction reference is missing. Cannot proceed to KNET.");
+                    return;
+                }
 
+                // Start KNET client
                 eSocketClient = new eSocketClient();
                 eSocketClient.StartReading();
 
-                RequestPaymentCustom(getcurrentvalue.ToString());
+                // Send payment request with API transaction reference
+                RequestPaymentCustom(transactionReference);
 
-                // Create a DispatcherTimer and set its interval to 3 seconds
+                // Setup polling timer
                 timer = new DispatcherTimer();
                 timer.Interval = TimeSpan.FromSeconds(3);
-
-                // Set the Tick event handler
                 timer.Tick += Timer_Tick;
-
-                //if()
-
-                //string a = "y";
-
-
-
-                // Start the timer
-
                 timer.Start();
-
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show("Transaction failed");
-                RichMessageBox.Show($"TransferToBank-Transaction:{getcurrentvalue}-Error-{ex.Message}\n {JsonConvert.SerializeObject(ex)}");
+                RichMessageBox.Show($"TransferToBank-TransactionRef:{_transactionRef}-Error-{ex.Message}\n {JsonConvert.SerializeObject(ex)}");
                 NavigationManager.NavigateToHome();
             }
         }
@@ -890,7 +935,7 @@ namespace Exchange.Pages
             // Your code to be executed every 3 seconds goes here
             // For example:
             Console.WriteLine("This code runs every 3 seconds.");
-
+             
             if(statusofknet == "n")
             {
                 timer.Stop();
@@ -950,42 +995,62 @@ namespace Exchange.Pages
             eSocketClient.TcpWrite(Utility.XmlToBytes(doc));
         }
 
-        //Burhan 29/09/2024
-        void RequestPaymentCustom(string newinvoiceno)
+        void RequestPaymentCustom(string transactionReference)
         {
+            if (string.IsNullOrEmpty(TransferManagers1.NetAmt))
+            {
+                MessageBox.Show("Net amount is missing. Please validate the transaction first.");
+                return;
+            }
 
-            //TransferManagers1.NetAmt = ""
+            decimal netAmount = decimal.Parse(TransferManagers1.NetAmt);
+            int amountInFils = (int)Math.Round(netAmount * 1000, MidpointRounding.AwayFromZero);
 
-            //string a = "20.000";
-            int amt = int.Parse(TransferManagers1.NetAmt.Replace(".", ""));
+            XDocument doc = XmlRequest.Payment(amountInFils.ToString(), TestTerminalId, transactionReference);
 
-            //int amount = 5000;
-            int amount = amt;
-            //string transactionId = "130024";
-            string transactionId = newinvoiceno;
-            //while (true)
-            //{
-            //    Console.Write("Enter Amount (fils): ");
-            //    try
-            //    {
-            //        amount = Int32.Parse(Console.ReadLine());
-            //        break;
-            //    }
-            //    catch
-            //    {
-            //        Console.WriteLine("Please enter a number!");
-            //    }
-            //}
+            Console.WriteLine($"Sending to KNET: Amount={amountInFils}, TransactionRef={transactionReference}");
 
-            //Console.WriteLine("A transaction ID should be 6 character numeric (xxxxxx, starting with 100001) and unique!");
-            //Console.Write("Enter New Transaction ID: ");
-            //transactionId = Console.ReadLine().Trim();
-
-            //Construct the proper XML 
-            XDocument doc = XmlRequest.Payment(amount.ToString(), TestTerminalId, transactionId);
-            //Convert it to bytes and write it to the TCP connection
             eSocketClient.TcpWrite(Utility.XmlToBytes(doc));
         }
+
+
+
+        //Burhan 29/09/2024
+        //void RequestPaymentCustom(string newinvoiceno)
+        //{
+
+        //    //TransferManagers1.NetAmt = ""
+
+        //    //string a = "20.000";
+        //    int amt = int.Parse(TransferManagers1.NetAmt.Replace(".", ""));
+
+        //    //int amount = 5000;
+        //    int amount = amt;
+        //    //string transactionId = "130024";
+        //    string transactionId = newinvoiceno;
+        //    //while (true)
+        //    //{
+        //    //    Console.Write("Enter Amount (fils): ");
+        //    //    try
+        //    //    {
+        //    //        amount = Int32.Parse(Console.ReadLine());
+        //    //        break;
+        //    //    }
+        //    //    catch
+        //    //    {
+        //    //        Console.WriteLine("Please enter a number!");
+        //    //    }
+        //    //}
+
+        //    //Console.WriteLine("A transaction ID should be 6 character numeric (xxxxxx, starting with 100001) and unique!");
+        //    //Console.Write("Enter New Transaction ID: ");
+        //    //transactionId = Console.ReadLine().Trim();
+
+        //    //Construct the proper XML 
+        //    XDocument doc = XmlRequest.Payment(amount.ToString(), TestTerminalId, transactionId);
+        //    //Convert it to bytes and write it to the TCP connection
+        //    eSocketClient.TcpWrite(Utility.XmlToBytes(doc));
+        //}
 
         void CloseTerminal()
         {
