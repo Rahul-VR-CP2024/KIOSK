@@ -87,10 +87,13 @@ namespace Exchange.Managers
 
                     JsonElement roototp = docotp.RootElement;
                     // Try to get the "message" field
+
                     if (!roototp.TryGetProperty("success", out JsonElement messageElementotp))
                         return false;
                     string messageotp = messageElementotp.GetString();
                     // Check if the login was successful
+                    MessageBox.Show(messageotp);
+
                     if (messageotp != "true")
                         return false;
 
@@ -129,7 +132,7 @@ namespace Exchange.Managers
                         if (!root.TryGetProperty("message", out JsonElement messageElement))
                             return false;
                         string message = messageElement.GetString();
-
+                        
                         // Check if the login was successful
                         if (message != "OTP Verified Successfully")
                             return false;
