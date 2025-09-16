@@ -1,9 +1,11 @@
 ﻿using DocumentFormat.OpenXml.Spreadsheet;
+using Exchange.Pages;
 using System.Net.Http;
 using System.Reflection;
 using System.Text;
 using System.Text.Json;
 using System.Windows;
+using System.Windows.Navigation;
 
 namespace Exchange.Managers
 {
@@ -50,6 +52,91 @@ namespace Exchange.Managers
             civilidno = token;
         }
 
+        internal static async Task<bool> LoginWithOTP(string username, string password, int OTP)
+        {
+            try
+            {
+
+                var clientotp = new HttpClient();
+
+                var client = new HttpClient();
+                var request = new HttpRequestMessage(HttpMethod.Post, "https://" + Variable.apiipadd + "/api/Auth/verify-login-otp");
+
+                var payload = new
+                {
+                    mobile_Code = 965,
+                    mobile_number = password?.Trim(),
+                    id_number = username?.Trim(),
+                    o_t_p = 1234
+                };
+
+                // Serialize payload to JSON
+                string json = JsonSerializer.Serialize(payload);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                request.Content = content;
+
+                // Log request info
+
+                // Send request
+                var response = await client.SendAsync(request);
+                // Read response content
+                string responseBody = await response.Content.ReadAsStringAsync();
+
+
+                // Optional: Throw exception if not 2xx
+                response.EnsureSuccessStatusCode();
+
+                using (JsonDocument doc = JsonDocument.Parse(responseBody))
+                {
+                    JsonElement root = doc.RootElement;
+                    // Try to get the "message" field
+                    if (!root.TryGetProperty("message", out JsonElement messageElement))
+                        return false;
+                    string message = messageElement.GetString();
+
+                    // Check if the login was successful
+                    if (message != "OTP Verified Successfully")
+                        return false;
+
+                    // Try to access "data.user"
+                    if (!root.TryGetProperty("data", out JsonElement dataElement) ||
+                        !dataElement.TryGetProperty("user", out JsonElement userElement))
+                        return false;
+
+                    string eId = userElement.GetProperty("e_id").GetString();
+                    string mobileNumber = userElement.GetProperty("mobile_number").GetString();
+                    string firstName = userElement.GetProperty("first_name").GetString();
+                    string lastName = userElement.GetProperty("last_name").GetString();
+                    string fullName = $"{firstName} {lastName}".Trim();
+                    string dateOfBirth = userElement.GetProperty("date_of_birth").GetString();
+                    string nationality = userElement.GetProperty("nationality").GetString();
+                    string riskType = userElement.GetProperty("risk_type_name").GetString();
+                    string email = userElement.GetProperty("email").GetString();
+                    string civilno = userElement.GetProperty("id_number").GetString();
+                    int memberCode = userElement.GetProperty("member_code").GetInt32();
+                    string accessToken = dataElement.GetProperty("jwt_token").GetString();
+                    TokenManager.SetToken(accessToken);
+                    SetRemiduser(memberCode.ToString());
+                    SetUserid(eId);
+                    SetUserEMAILID(email);
+                    SetUserMOBILE(mobileNumber);
+                    SetUserFullname(fullName);
+                    Setcivilidno(civilno);
+
+
+                    return true;
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+
         internal static async Task<bool> Login(string username, string password)
         {
             try
@@ -87,84 +174,20 @@ namespace Exchange.Managers
 
                     JsonElement roototp = docotp.RootElement;
                     // Try to get the "message" field
-
                     if (!roototp.TryGetProperty("success", out JsonElement messageElementotp))
                         return false;
                     string messageotp = messageElementotp.GetString();
-                    // Check if the login was successful
-                    MessageBox.Show(messageotp);
 
+
+                    // Check if the login was successful
                     if (messageotp != "true")
                         return false;
 
 
-                    var client = new HttpClient();
-                    var request = new HttpRequestMessage(HttpMethod.Post, "https://" + Variable.apiipadd + "/api/Auth/verify-login-otp");
-
-                    var payload = new
-                    {
-                        mobile_Code = 965,
-                        mobile_number = password?.Trim(),
-                        id_number = username?.Trim(),
-                        o_t_p = 1234
-                    };
-
-                    // Serialize payload to JSON
-                    string json = JsonSerializer.Serialize(payload);
-                    var content = new StringContent(json, Encoding.UTF8, "application/json");
-                    request.Content = content;
-
-                    // Log request info
-
-                    // Send request
-                    var response = await client.SendAsync(request);
-                    // Read response content
-                    string responseBody = await response.Content.ReadAsStringAsync();
 
 
-                    // Optional: Throw exception if not 2xx
-                    response.EnsureSuccessStatusCode();
+                    return true;
 
-                    using (JsonDocument doc = JsonDocument.Parse(responseBody))
-                    {
-                        JsonElement root = doc.RootElement;
-                        // Try to get the "message" field
-                        if (!root.TryGetProperty("message", out JsonElement messageElement))
-                            return false;
-                        string message = messageElement.GetString();
-                        
-                        // Check if the login was successful
-                        if (message != "OTP Verified Successfully")
-                            return false;
-
-                        // Try to access "data.user"
-                        if (!root.TryGetProperty("data", out JsonElement dataElement) ||
-                            !dataElement.TryGetProperty("user", out JsonElement userElement))
-                            return false;
-
-                        string eId = userElement.GetProperty("e_id").GetString();
-                        string mobileNumber = userElement.GetProperty("mobile_number").GetString();
-                        string firstName = userElement.GetProperty("first_name").GetString();
-                        string lastName = userElement.GetProperty("last_name").GetString();
-                        string fullName = $"{firstName} {lastName}".Trim();
-                        string dateOfBirth = userElement.GetProperty("date_of_birth").GetString();
-                        string nationality = userElement.GetProperty("nationality").GetString();
-                        string riskType = userElement.GetProperty("risk_type_name").GetString();
-                        string email = userElement.GetProperty("email").GetString();
-                        string civilno = userElement.GetProperty("id_number").GetString();
-                        int memberCode = userElement.GetProperty("member_code").GetInt32();
-                        string accessToken = dataElement.GetProperty("jwt_token").GetString();
-                        TokenManager.SetToken(accessToken);
-                        SetRemiduser(memberCode.ToString());
-                        SetUserid(eId);
-                        SetUserEMAILID(email);
-                        SetUserMOBILE(mobileNumber);
-                        SetUserFullname(fullName);
-                        Setcivilidno(civilno);
-
-
-                        return true;
-                    }
                 }
 
 
@@ -174,7 +197,6 @@ namespace Exchange.Managers
                 return false;
             }
         }
-
         internal static void Logout()
         {
             Clear();

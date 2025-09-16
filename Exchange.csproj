@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -136,6 +136,12 @@
     <Resource Include="Images\WST1200.png" />
     <Resource Include="Images\WST1202.png" />
     <Resource Include="Images\CIVILID.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Pages\Login3.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>

@@ -31,6 +31,8 @@
         public static bool isDecodeQR;
 
         public static bool isAutoOcr;
+        public static string TransactionReference { get; set; }
+
 
         private static void SetKisokId()
         {

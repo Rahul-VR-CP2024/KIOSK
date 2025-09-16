@@ -1,4 +1,4 @@
-﻿using Exchange.Managers;
+using Exchange.Managers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -58,7 +58,10 @@ namespace Exchange.Pages
 
                 if (isLoginSuccessful && _returnPage != null)
                 {
-                    NavigationService.Navigate(_returnPage);
+                    /*NavigationService.Navigate(_returnPage)*/
+                    Login3 login3 = new Login3(username, password, _returnPage);
+                    NavigationService.Navigate(login3);
+
                 }
                 return;
             }
@@ -79,7 +82,7 @@ namespace Exchange.Pages
 
             WelcomePage welco = new WelcomePage();
             NavigationService.Navigate(welco);
-        }        
+        }
 
         private void resetpasswordclick(object sender, RoutedEventArgs e)
         {
@@ -93,3 +96,4 @@ namespace Exchange.Pages
         }
     }
 }
+
