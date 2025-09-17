@@ -1,6 +1,7 @@
 ﻿using ExcelDataReader;
 using Exchange.Common;
 using Exchange.Managers;
+using Newtonsoft.Json.Linq;
 using PACICardLibrary;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +9,9 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Net.Http.Json;
+using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -15,6 +19,8 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
+using static Exchange.Pages.wSelectcountry;
+using static Exchange.Pages.wSelectProduct;
 //using static Exchange.Pages.waddbeneficiary;
 using static Exchange.Pages.wtobankorcash;
 //using DocumentFormat.OpenXml.Drawing.Charts;
@@ -42,9 +48,19 @@ namespace Exchange.Pages
         string civilidfrontbase64 = "";
         string civilidbackbase64 = "";
         string signbase64 = "";
+        string REM_ID = "";
+
 
         private BackgroundWorker backgroundWorker;
 
+
+        public class DropdownItem
+        {
+            public string code { get; set; }
+            public string name { get; set; }
+
+            public override string ToString() => name; // for ComboBox display
+        }
         public wRegister()
         {
             InitializeComponent();
@@ -57,8 +73,8 @@ namespace Exchange.Pages
                 backbtn.Content = "يرجع";
                 registertitle.Text = "تسجيل";
                 regibtn.Content = "تسجيل";
-                usernamelbl.Content = "اسم المستخدم";
-                passwordlbl.Content = "كلمه السر/ المرور";
+                //usernamelbl.Content = "اسم المستخدم";
+                //passwordlbl.Content = "كلمه السر/ المرور";
                 firstnamelbl.Content = "الاسم الاول";
                 middlelbl.Content = "الاسم الاوسط";
                 lastnlbl.Content = "الاسم الاخير ";
@@ -892,735 +908,432 @@ namespace Exchange.Pages
             return hasUppercase && hasLowercase && hasDigit && hasSpecialChar;
         }
 
+        //private async void registerbutton(object sender, RoutedEventArgs e)
+        //{
+        //    Button button = sender as Button;
+        //    button.IsEnabled = false;
+
+        //    string username = usernameTextBox.Text;
+        //    string password = passwordTextBox.Password;
+        //    string firstname = firstnameTextBox.Text;
+        //    string middlename = middlenameTextBox.Text;
+        //    string lastname = lastnameTextBox.Text;
+        //    string address1 = address1TextBox.Text;
+        //    string address2 = address2TextBox.Text;
+        //    string genderv = gender.Text == "Male" ? "M" : "F";
+        //    string emailidv = emailid.Text;
+        //    string mobilenov = mobileno.Text;
+        //    string civilidv = civilid.Text;
+        //    string civilidexpiryv = civilidexpiry.Text;
+        //    string dobv = dob.Text;
+        //    string salarya = salary.Text;
+        //    string occupationa = designation.Text;
+        //    string emploerr = employer.Text;
+
+        //    string filePath = "signature.png";
+        //    RenderTargetBitmap rtb = new RenderTargetBitmap(
+        //        (int)inkCanvas.ActualWidth,
+        //        (int)inkCanvas.ActualHeight,
+        //        96,
+        //        96,
+        //        PixelFormats.Pbgra32
+        //    );
+        //    rtb.Render(inkCanvas);
+
+        //    PngBitmapEncoder encoder = new PngBitmapEncoder();
+        //    encoder.Frames.Add(BitmapFrame.Create(rtb));
+
+        //    using (var stream = File.Create(filePath))
+        //    {
+        //        encoder.Save(stream);
+        //    }
+
+        //    byte[] imageBytes = File.ReadAllBytes(filePath);
+        //    string base64String = Convert.ToBase64String(imageBytes);
+        //    signbase64 = base64String;
+
+        //    if (string.IsNullOrEmpty(civilidfrontbase64))
+        //    {
+        //        MessageBox.Show("Kindly Scan Front of your Civil ID");
+        //        button.IsEnabled = true; return;
+        //    }
+        //    if (string.IsNullOrEmpty(civilidbackbase64))
+        //    {
+        //        MessageBox.Show("Kindly Scan Back of your Civil ID");
+        //        button.IsEnabled = true; return;
+        //    }
+        //    if (string.IsNullOrEmpty(firstname))
+        //    {
+        //        MessageBox.Show("First name is required.");
+        //        button.IsEnabled = true; return;
+        //    }
+        //    if (string.IsNullOrEmpty(lastname))
+        //    {
+        //        MessageBox.Show("Last name is required.");
+        //        button.IsEnabled = true; return;
+        //    }
+        //    if (string.IsNullOrEmpty(address1))
+        //    {
+        //        MessageBox.Show("Address 1 is required.");
+        //        button.IsEnabled = true; return;
+        //    }
+        //    if (string.IsNullOrEmpty(emailidv))
+        //    {
+        //        MessageBox.Show("Email id is required.");
+        //        button.IsEnabled = true; return;
+        //    }
+        //    if (string.IsNullOrEmpty(mobilenov))
+        //    {
+        //        MessageBox.Show("Mobile no is required.");
+        //        button.IsEnabled = true; return;
+        //    }
+        //    if (mobilenov.Length < 8)
+        //    {
+        //        MessageBox.Show("Minimum 8 Length Mobile No Required");
+        //        button.IsEnabled = true; return;
+        //    }
+        //    if (string.IsNullOrEmpty(civilidv))
+        //    {
+        //        MessageBox.Show("Civil id is required.");
+        //        button.IsEnabled = true; return;
+        //    }
+        //    if (civilidv.Length < 12)
+        //    {
+        //        MessageBox.Show("12 Digit Civil id is required.");
+        //        button.IsEnabled = true; return;
+        //    }
+        //    if (string.IsNullOrEmpty(civilidexpiryv))
+        //    {
+        //        MessageBox.Show("Civil id expiry is required.");
+        //        button.IsEnabled = true; return;
+        //    }
+        //    if (string.IsNullOrEmpty(dobv))
+        //    {
+        //        MessageBox.Show("DOB is required.");
+        //        button.IsEnabled = true; return;
+        //    }
+        //    if (string.IsNullOrEmpty(salarya))
+        //    {
+        //        MessageBox.Show("Salary is required.");
+        //        button.IsEnabled = true; return;
+        //    }
+        //    if (string.IsNullOrEmpty(emploerr))
+        //    {
+        //        MessageBox.Show("Employer is required.");
+        //        button.IsEnabled = true; return;
+        //    }
+        //    if (string.IsNullOrEmpty(occupationa))
+        //    {
+        //        MessageBox.Show("Designation is required.");
+        //        button.IsEnabled = true; return;
+        //    }
+
+        //    string existingremid = "";
+
+        //    var client3 = new HttpClient();
+        //    var request3 = new HttpRequestMessage(HttpMethod.Post, "http://" + Variable.apiipadd + "/api/v1/Auth/request-otp");
+        //    request3.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
+        //    var content3 = new StringContent(
+        //        "{\n    \"userID\":0,\n    \"channel\":\"kiosk\",\n    \"moduleID\":1,\n    \"username\":\"" + username + "\",\n    \"Mobile\":\"" + mobilenov + "\",\n    \"email\":\"" + emailidv + "\"\n}",
+        //        null,
+        //        "application/json"
+        //    );
+        //    request3.Content = content3;
+        //    var response3 = await client3.SendAsync(request3);
+        //    response3.EnsureSuccessStatusCode();
+        //    var responseBody3 = await response3.Content.ReadAsStringAsync();
+
+        //    string OTP = "";
+        //    using (JsonDocument doc = JsonDocument.Parse(responseBody3))
+        //    {
+        //        JsonElement root = doc.RootElement;
+        //        OTP = root.GetProperty("Data").GetString();
+        //    }
+
+        //    LoadDropdownDataNationality();
+        //    NationalityCountryr selectedNATIONALITYa = (NationalityCountryr)nationality.SelectedItem;
+        //    string selectedNATIONALITYstrga = selectedNATIONALITYa.ConCode;
+        //    string valueNATIONALITY = selectedNATIONALITYstrga;
+
+        //    if (existingremid == "")
+        //    {
+        //        var client5 = new HttpClient();
+        //        var request5 = new HttpRequestMessage(HttpMethod.Post, "http://" + Variable.apiipadd + "/api/v1/sxRemitter/Remitter/post");
+        //        request5.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
+        //        var content5 = new MultipartFormDataContent
+        //{
+        //    { new StringContent("1"), "appID" },
+        //    { new StringContent("1"), "moduleID" },
+        //    { new StringContent("KIOSK"), "channelCode" },
+        //    { new StringContent("0"), "RemID" },
+        //    { new StringContent("M"), "Gender" },
+        //    { new StringContent(firstname), "RemFName" },
+        //    { new StringContent(middlename), "RemMName" },
+        //    { new StringContent(lastname), "RemLName" },
+        //    { new StringContent(""), "RemARFName" },
+        //    { new StringContent(""), "RemARMName" },
+        //    { new StringContent(""), "RemARLName" },
+        //    { new StringContent(dobv), "RemDOB" },
+        //    { new StringContent(valueNATIONALITY), "RemNation" },
+        //    { new StringContent(valueNATIONALITY), "RemCountry" },
+        //    { new StringContent(mobilenov), "MobileNo" },
+        //    { new StringContent("CI"), "IdentityType" },
+        //    { new StringContent(civilidv), "IdentityNo" },
+        //    { new StringContent(civilidexpiryv), "IDExpiryOn" },
+        //    { new StringContent(emailidv), "EmailID" },
+        //    { new StringContent("I"), "Category" },
+        //    { new StringContent("KW"), "IDCountry" },
+        //    { new StringContent("SAL"), "SOI" },
+        //    { new StringContent(occupationa), "Occupation" },
+        //    { new StringContent(salarya), "Salary" },
+        //    { new StringContent(emploerr), "Employer" },
+        //    { new StringContent(address1 + " " + address2), "Address" },
+        //    { new StringContent(civilidfrontbase64), "IDImg1" },
+        //    { new StringContent(civilidbackbase64), "IDImg2" },
+        //    { new StringContent(signbase64), "Sign" }
+        //};
+        //        request5.Content = content5;
+
+        //        var response5 = await client5.SendAsync(request5);
+        //        response5.EnsureSuccessStatusCode();
+        //        string responseBody5 = await response5.Content.ReadAsStringAsync();
+
+        //        using (JsonDocument doc = JsonDocument.Parse(responseBody5))
+        //        {
+        //            JsonElement root = doc.RootElement;
+        //            string validatesymaxregister = root.GetProperty("Code").ToString();
+        //            var message = root.GetProperty("Message").ToString();
+
+        //            if (validatesymaxregister == "2")
+        //            {
+        //                MessageBox.Show(message);
+        //                button.IsEnabled = true; return;
+        //            }
+
+        //            JsonElement dataArray = root.GetProperty("Data");
+        //            foreach (JsonElement dataElement in dataArray.EnumerateArray())
+        //            {
+        //                if (dataElement.TryGetProperty("REM_ID", out JsonElement remIdElement))
+        //                {
+        //                    REM_ID = remIdElement.ToString();
+        //                    break;
+        //                }
+        //            }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        REM_ID = existingremid;
+        //    }
+
+        //    MessageBox.Show("Registered Successfully !");
+        //    NavigationManager.NavigateToHome();
+        //}
+
+
         private async void registerbutton(object sender, RoutedEventArgs e)
         {
-
-           // MessageBox.Show("Clicked");
-            Button button = sender as Button;
-            button.IsEnabled = false;
-
-            //await Task.Delay(3000); // Delay for 3 seconds
-
-            //Dispatcher.Invoke(() =>
-            //{
-            //    button.IsEnabled = true;
-            //});
-
-            //var selectedItemNATIONALITYa = (ComboBoxItem)nationality.SelectedItem;
-            //string contentdb = selectedItem.Content.ToString();
-            //string valueNATIONALITYa = (string)selectedItemNATIONALITYa.Tag; // Assuming Tag is castable to int
-
-            NationalityCountryr selectedNATIONALITYa = (NationalityCountryr)nationality.SelectedItem;
-            string selectedNATIONALITYstrga = selectedNATIONALITYa.ConCode;
-
-            //MessageBox.Show(selectedNATIONALITYstrga);
-
-            string username = usernameTextBox.Text;
-            string password = passwordTextBox.Password;
-            string firstname = firstnameTextBox.Text;
-            string middlename = middlenameTextBox.Text;
-            string lastname = lastnameTextBox.Text;
-            string address1 = address1TextBox.Text;
-            string address2 = address2TextBox.Text;
-
-           
-            string genderv = gender.Text;
-            //gender.Text = "Female";
-            if (genderv == "Male")
+            try
             {
-                genderv = "M";
-            }else
-            {
-                genderv = "F";
-            }
-            //MessageBox.Show(genderv);
-            string nationalityv = nationality.Text;
-            string emailidv = emailid.Text;
-            string mobilenov = mobileno.Text;
-            string civilidv = civilid.Text;
-            string civilidexpiryv = civilidexpiry.Text;
-            string dobv = dob.Text;
-            string salarya = salary.Text;
-            string occupationa = designation.Text;
-            string emploerr = employer.Text;
+                // 1 Collect input
+               // string username = usernameTextBox.Text;
+               // string password = passwordTextBox.Password;
+                string firstname = firstnameTextBox.Text;
+                string middlename = middlenameTextBox.Text;
+                string lastname = lastnameTextBox.Text;
+                string address1 = address1TextBox.Text;
+                string address2 = address2TextBox.Text;
+                string genderValue = gender.Text == "Male" ? "M" : "F";
+                string email = emailid.Text;
+                string mobile = mobileno.Text;
+                string civilId = civilid.Text;
+                string civilIdExpiry = civilidexpiry.Text;
 
-            //VALIDATING IF FIELDS ARE NOT EMPTY
-            {
+                string dobValue = dob.Text;    
+                string salaryValue = salary.Text; 
 
+                string employerName = employer.Text;
+                string designationValue = designation.Text;
 
-                string filePath = "signature.png";
-
-                RenderTargetBitmap rtb = new RenderTargetBitmap((int)inkCanvas.ActualWidth, (int)inkCanvas.ActualHeight, 96, 96, PixelFormats.Pbgra32);
-                rtb.Render(inkCanvas);
-
-                PngBitmapEncoder encoder = new PngBitmapEncoder();
-                encoder.Frames.Add(BitmapFrame.Create(rtb));
-
-                using (var stream = File.Create(filePath))
+                // 2 Signature to Base64
+                string signatureBase64 = "";
+                if (inkCanvas.Strokes.Count > 0)
                 {
-                    encoder.Save(stream);
+                    RenderTargetBitmap rtb = new RenderTargetBitmap(
+                        (int)inkCanvas.ActualWidth,
+                        (int)inkCanvas.ActualHeight,
+                        96, 96,
+                        PixelFormats.Pbgra32);
+                    rtb.Render(inkCanvas);
+
+                    PngBitmapEncoder encoder = new PngBitmapEncoder();
+                    encoder.Frames.Add(BitmapFrame.Create(rtb));
+
+                    using (var ms = new MemoryStream())
+                    {
+                        encoder.Save(ms);
+                        signatureBase64 = Convert.ToBase64String(ms.ToArray());
+                    }
                 }
 
-                // Convert to Base64 string
-                byte[] imageBytes = File.ReadAllBytes(filePath);
-                string base64String = Convert.ToBase64String(imageBytes);
-
-                signbase64 = base64String;
-
-                //civilidfrontbase64 = signbase64;
-                //civilidbackbase64 = signbase64;
-
-                if (civilidfrontbase64 == null || civilidfrontbase64 == "")
+                // 3 Basic validation
+                if (string.IsNullOrEmpty(firstname) || string.IsNullOrEmpty(lastname) ||
+                    string.IsNullOrEmpty(address1) || string.IsNullOrEmpty(email) ||
+                    string.IsNullOrEmpty(mobile) || string.IsNullOrEmpty(civilId) ||
+                    string.IsNullOrEmpty(civilIdExpiry) || string.IsNullOrEmpty(dobValue) ||
+                    string.IsNullOrEmpty(salaryValue) || string.IsNullOrEmpty(employerName) ||
+                    string.IsNullOrEmpty(designationValue))
                 {
-                    MessageBox.Show("Kindly Scan Front of your Civil ID");
-                    button.IsEnabled = true; return;
-                }
-                if (civilidbackbase64 == null || civilidbackbase64 == "")
-                {
-                    MessageBox.Show("Kindly Scan Back of your Civil ID");
-                    button.IsEnabled = true; return;
-                }
-                if (username == null || username == "")
-                {
-                    MessageBox.Show("Username is required.");
-                    button.IsEnabled = true; return;
+                    MessageBox.Show("All required fields must be filled.");
+                    return;
                 }
 
-
-                //MessageBox.Show("" + IsValidPassword(password));
-                //MessageBox.Show(password);
-                if (IsValidPassword(password))
+                if (mobileno.Text.Length < 8)
                 {
-                    //MessageBox.Show("Valid Password");
-
-                }
-                else
-                {
-                    MessageBox.Show("Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special symbol");
-                    button.IsEnabled = true; return;
+                    MessageBox.Show("Mobile number must be at least 8 digits.");
+                    return;
                 }
 
-                if (password == null || password == "")
+                if (civilId.Length < 12)
                 {
-                    MessageBox.Show("password is required.");
-                    button.IsEnabled = true; return;
+                    MessageBox.Show("Civil ID must be at least 12 digits.");
+                    return;
                 }
 
-                if (password.Length<8)
+                if (string.IsNullOrEmpty(civilidfrontbase64) || string.IsNullOrEmpty(civilidbackbase64))
                 {
-                    MessageBox.Show("Minimum 8 Length Password Required");
-                    button.IsEnabled = true; return;
+                    MessageBox.Show("Please scan both front and back of the Civil ID.");
+                    return;
                 }
 
-                if (firstname == null || firstname == "")
-                {
-                    MessageBox.Show("first name is required.");
-                    button.IsEnabled = true; return;
-                }
+                // 4 Nationality selection
+                NationalityCountryr selectedNationality = (NationalityCountryr)nationality.SelectedItem;
+                string nationalityCode = selectedNationality?.ConCode ?? "";
 
-                if (lastname == null || lastname == "")
+                // 5 Prepare KYC payload
+                var kycPayload = new
                 {
-                    MessageBox.Show("last name is required.");
-                    button.IsEnabled = true; return;
-                }
+                    identity_type_code = "CI",
+                    id_number = civilId,
+                    issue_date = DateTime.Now.ToString("yyyy-MM-dd"), // or actual issue date
+                    expiry_date = civilIdExpiry,
+                    country_code = "KW",
+                    place_of_issue_code = 50,
+                    place_of_issue = "MUBARAK AL KABIR",
+                    doc_ref = new[]
+                    {
+                new { e_id = civilidfrontbase64 },
+                new { e_id = civilidbackbase64 }
+            },
+                    mobile_code = 965,
+                    mobile_number = mobile,
+                    first_name = firstname,
+                    middle_name = middlename,
+                    last_name = lastname,
+                    date_of_birth = dob,
+                    nationality = nationalityCode,
+                    gender = genderValue,
+                    salary = salary,
+                    profession = designationValue,
+                    employer = employerName,
+                    is_default = true,
+                    sub_category_id = 1,
+                    signature = signatureBase64
+                };
 
-                if (address1 == null || address1 == "")
+                // 6 Call KYC API
+                using (var client = new HttpClient())
                 {
-                    MessageBox.Show("address 1 is required.");
-                    button.IsEnabled = true; return;
-                }
+                    var kycResponse = await client.PostAsJsonAsync(
+                        "https://kiosk-api-wallstreetkuwait.codepointrs.com/api/auth/insert-kyc",
+                        kycPayload);
 
-                if (emailidv == null || emailidv == "")
-                {
-                    MessageBox.Show("email id is required.");
-                    button.IsEnabled = true; return;
-                }
+                    if (!kycResponse.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("KYC registration failed.");
+                        return;
+                    }
 
-                if (mobilenov == null || mobilenov == "")
-                {
-                    MessageBox.Show("mobile no  is required.");
-                    button.IsEnabled = true; return;
-                }
-                if (mobilenov.Length < 8)
-                {
-                    MessageBox.Show("Minimum 8 Length Mobile No Required");
-                    button.IsEnabled = true; return;
-                }
-                if (civilidv == null || civilidv == "")
-                {
-                    MessageBox.Show("civil id  is required.");
-                    button.IsEnabled = true; return;
-                }
+                    var kycResult = await kycResponse.Content.ReadFromJsonAsync<JsonElement>();
+                    string kycEid = kycResult.GetProperty("data").GetProperty("user").GetProperty("e_id").GetString();
 
-                if (civilidv.Length < 12)
-                {
-                    MessageBox.Show("12 Digit Civil id  is required.");
-                    button.IsEnabled = true; return;
-                }
+                    // 7 Prepare Create User payload
+                    var createUserPayload = new
+                    {
+                        first_name = firstname,
+                        middle_name = middlename,
+                        last_name = lastname,
+                        date_of_birth = dob,
+                        gender = genderValue,
+                        country_code = "KW",
+                        state_code = "50",
+                        address1 = address1,
+                        address2 = address2,
+                        nationality_code = nationalityCode,
+                        mobile_code = 965,
+                        mobile_number = mobile,
+                        email = email,
+                        app_member_code = kycResult.GetProperty("data").GetProperty("user").GetProperty("app_member_code").GetInt32(),
+                        member_code = 0,
+                        profession = designationValue,
+                        is_default = 0,
+                        salutation = "1",
+                        employer = employerName,
+                        salary = salary,
+                        e_id = kycEid
+                    };
 
-                if (civilidexpiryv == null || civilidexpiryv == "")
-                {
-                    MessageBox.Show("civil id expiry is required.");
-                    button.IsEnabled = true; return;
-                }
+                    // 8 Call Create User API
+                    var createResponse = await client.PostAsJsonAsync(
+                        "https://kiosk-api-wallstreetkuwait.codepointrs.com/api/Auth/create-user",
+                        createUserPayload);
 
-                if (dobv == null || dobv == "")
-                {
-                    MessageBox.Show("dob is required.");
-                    button.IsEnabled = true; return;
-                }
+                    if (!createResponse.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("User creation failed.");
+                        return;
+                    }
 
-                if (salarya == null || salarya == "")
-                {
-                    MessageBox.Show("Salary is required.");
-                    button.IsEnabled = true; return;
-                }
-
-                if (emploerr == null || emploerr == "")
-                {
-                    MessageBox.Show("Employer is required.");
-                    button.IsEnabled = true; return;
-                }
-
-                if (occupationa == null || occupationa == "")
-                {
-                    MessageBox.Show("Designation is required.");
-                    button.IsEnabled = true; return;
+                    MessageBox.Show("Registration successful!");
                 }
             }
-
-            //VALIDATIONS
+            catch (Exception ex)
             {
-
-
-
-
-
-                //TO VERIFY IF USERNAME EXISTS OR NOT
-                var client = new HttpClient();
-                var request = new HttpRequestMessage(HttpMethod.Get, "http://" + Variable.apiipadd + "/api/v1/sxuser/User/" + username);
-                request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
-                var response = await client.SendAsync(request);
-                response.EnsureSuccessStatusCode();
-                Console.WriteLine(await response.Content.ReadAsStringAsync());
-                //MessageBox.Show("sxuser/UserControl "+ await response.Content.ReadAsStringAsync());
-
-
-                var responseBody = await response.Content.ReadAsStringAsync();
-
-                string VERIFYUSERCODE = "";
-
-                // Parse the JSON response using System.Text.Json
-                using (JsonDocument doc = JsonDocument.Parse(responseBody))
-                {
-                    // Access the root JSON object
-                    JsonElement root = doc.RootElement;
-
-                    // Navigate to the 'Data' object
-                    //JsonElement dataElement = root.GetProperty("Code");
-
-                    // Extract the accessToken
-                    //string accessToken = dataElement.GetProperty("accessToken").GetString();
-
-                    // Extract the accessToken
-                    //VERIFYUSERCODE = root.GetProperty("Code").GetString();
-                    //VERIFYUSERCODE = root.GetProperty("Code").GetString();
-
-                    //MessageBox.Show(responseBody);
-
-                    VERIFYUSERCODE = root.GetProperty("Code").ToString();
-
-                    var message = root.GetProperty("Data").ToString();
-
-                    // MessageBox.Show(VERIFYUSERCODE + message);
-
-                    // Display the accessToken in a message box
-                    //Console.WriteLine($"Access Token: {accessToken}");
-                    //MessageBox.Show($"Message: {Message}");
-
-                    //MessageBox.Show(OTP);
-
-                    // Display the accessToken in a message box
-                    //Console.WriteLine($"Access Token: {accessToken}");
-                    //MessageBox.Show($"Message: {Message}");
-
-                    if (VERIFYUSERCODE == "99")
-                    {
-
-                        MessageBox.Show("API Error " + message + responseBody);
-                        button.IsEnabled = true; return;
-                    }
-
-                    if (VERIFYUSERCODE == "2")
-                    {
-                        MessageBox.Show("User Already Exists");
-                        button.IsEnabled = true; return;
-                    }
-
-                    if (VERIFYUSERCODE == "0")
-                    {
-                        // MessageBox.Show("Can Proceed.");
-                    } else
-                    {
-                        MessageBox.Show(message);
-                        button.IsEnabled = true; return;
-                    }
-
-                    //MessageBox.Show(VERIFYUSERCODE);
-
-
-
-                    // Display the accessToken in a message box
-                    //Console.WriteLine($"Access Token: {accessToken}");
-                    //MessageBox.Show($"Access Token: {accessToken}");
-                    // RemoveToken(accessToken);
-                    // SaveToken(accessToken);
-                    //TokenManager.SetToken(accessToken);
-                    // MessageBox.Show(LoadToken());
-
-                }
-
-
-                //TO VERIFY IF CIVIL ID EXISTS OR NOT
-                var client2 = new HttpClient();
-                var request2 = new HttpRequestMessage(HttpMethod.Get, "http://" + Variable.apiipadd + "/api/v1/sxuser/IDType/" + civilidv + "/CI");
-                request2.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
-                var content = new StringContent("", null, "text/plain");
-                request2.Content = content;
-                var response2 = await client2.SendAsync(request2);
-                response2.EnsureSuccessStatusCode();
-                Console.WriteLine(await response2.Content.ReadAsStringAsync());
-                //MessageBox.Show("/sxuser/IDType/ " + await response2.Content.ReadAsStringAsync());
-
-
-                var responseBody2 = await response2.Content.ReadAsStringAsync();
-
-                string VERIFYCIVILCODE = "";
-
-                // Parse the JSON response using System.Text.Json
-                using (JsonDocument doc = JsonDocument.Parse(responseBody2))
-                {
-                    // Access the root JSON object
-                    JsonElement root = doc.RootElement;
-
-                    VERIFYCIVILCODE = root.GetProperty("Code").ToString();
-                    var message = root.GetProperty("Data").ToString();
-
-                    //MessageBox.Show(message);
-
-                    if (VERIFYCIVILCODE == "4")
-                    {
-
-                        //MessageBox.Show("API Error" + responseBody2);
-                        //MessageBox.Show(message);
-                        //button.IsEnabled = true;
-                        //return;
-                    }
-
-                    if (VERIFYCIVILCODE == "99")
-                    {
-
-                        MessageBox.Show(message);
-                        button.IsEnabled = true; return;
-                    }
-
-                    if (VERIFYCIVILCODE == "2")
-                    {
-                        MessageBox.Show("User Already Exists");
-                        button.IsEnabled = true; return;
-                    }
-
-                    if (VERIFYCIVILCODE == "0")
-                    {
-                        // MessageBox.Show("Can Proceed.");
-                    }
-
-                    //MessageBox.Show(VERIFYCIVILCODE);
-                    //button.IsEnabled = true; return;
-
-
-                }
-
-
-                string existingremid = "";
-                if (VERIFYCIVILCODE == "4")
-                {
-                    var clientcs = new HttpClient();
-                    var requestcs = new HttpRequestMessage(HttpMethod.Post, "http://" + Variable.apiipadd + "/api/v1/sxRemitter/Remitter/CheckStatus");
-                    requestcs.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
-                    var contentcs = new StringContent(" {\n     \"appID\":10018,\n     \"moduleID\":1,\n     \"channelCode\":\"kiosk\",\n     \n     \"mobileNo\":\""+ mobilenov + "\",\n     \"identityType\":\"CI\",\n     \"identityNo\":\""+ civilidv + "\",\n     \"emailID\":\""+ emailidv + "\",\n     \"category\":\"I\"\n }", null, "application/json");
-                    requestcs.Content = contentcs;
-                    var responsecs = await clientcs.SendAsync(requestcs);
-                    responsecs.EnsureSuccessStatusCode();
-                    Console.WriteLine(await responsecs.Content.ReadAsStringAsync());
-
-
-                    string VERIFYCIVILCODEcs = "";
-
-                    var responseBody2cs = await responsecs.Content.ReadAsStringAsync();
-                    using (JsonDocument doc = JsonDocument.Parse(responseBody2cs))
-                    {
-
-
-
-                        // Access the root JSON object
-                        JsonElement root = doc.RootElement;
-                        VERIFYCIVILCODEcs = root.GetProperty("Code").ToString();
-                        JsonElement dataArray = root.GetProperty("Data");
-                        //MessageBox.Show(VERIFYCIVILCODEcs );
-                        // Loop through each element in the data array
-
-                        if(VERIFYCIVILCODEcs == "0") { 
-                            foreach (JsonElement dataElement in dataArray.EnumerateArray())
-                            {
-
-
-                                // Check if the element has a property named "REM_ID"
-                                if (dataElement.TryGetProperty("REM_ID", out JsonElement remIdElement))
-                                {
-                                    //REM_ID = remIdElement.ToString();
-                                    existingremid = remIdElement.ToString();
-                                    //MessageBox.Show(existingremid);
-                                    break; // Stop after finding the first REM_ID (optional)
-                                }
-                            }
-                        } else
-                        {
-                            MessageBox.Show("" + root.GetProperty("Message").ToString());
-                            button.IsEnabled = true;
-                            return;
-                        }
-                    }
-
-
-
-
-                }
-                //MessageBox.Show(existingremid);
-                //return;
-
-
-                //GENERATE OTP VIA API 
-                var client3 = new HttpClient();
-                var request3 = new HttpRequestMessage(HttpMethod.Post, "http://" + Variable.apiipadd + "/api/v1/Auth/request-otp");
-                request3.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
-                var content3 = new StringContent("{\n    \"userID\":0,\n    \"channel\":\"kiosk\",\n    \"moduleID\":1,\n    \"username\":\"" + username + "\",\n    \"Mobile\":\"" + mobilenov + "\",\n    \"email\":\"" + emailidv + "\"\n}", null, "application/json");
-                request3.Content = content3;
-                var response3 = await client3.SendAsync(request3);
-                response3.EnsureSuccessStatusCode();
-                Console.WriteLine(await response3.Content.ReadAsStringAsync());
-                //MessageBox.Show(await response3.Content.ReadAsStringAsync());
-
-
-                var responseBody3 = await response3.Content.ReadAsStringAsync();
-
-                string OTP = "";
-
-                // Parse the JSON response using System.Text.Json
-                using (JsonDocument doc = JsonDocument.Parse(responseBody3))
-                {
-                    // Access the root JSON object
-                    JsonElement root = doc.RootElement;
-
-                    // Navigate to the 'Data' object
-                    //JsonElement dataElement = root.GetProperty("Data");
-
-                    // Extract the accessToken
-                    //string accessToken = dataElement.GetProperty("accessToken").GetString();
-
-                    // Extract the accessToken
-                    OTP = root.GetProperty("Data").GetString();
-
-                    // Display the accessToken in a message box
-                    //Console.WriteLine($"Access Token: {accessToken}");
-                    //MessageBox.Show($"Message: {Message}");
-
-                    //MessageBox.Show(OTP);
-                    //button.IsEnabled = true; return;
-
-                    // Display the accessToken in a message box
-                    //Console.WriteLine($"Access Token: {accessToken}");
-                    //MessageBox.Show($"Access Token: {accessToken}");
-                    // RemoveToken(accessToken);
-                    // SaveToken(accessToken);
-                    //TokenManager.SetToken(accessToken);
-                    // MessageBox.Show(LoadToken());
-
-                }
-
-
-                //VERIFY OTP VIA API 
-                var client4 = new HttpClient();
-                var request4 = new HttpRequestMessage(HttpMethod.Post, "http://" + Variable.apiipadd + "/api/v1/sxgeneral/GenerateOTP/ValidateOTP");
-                request4.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
-                var content4 = new StringContent("{\r\n    \"userID\":0,\r\n    \"channelCode\":\"kiosk\",\r\n    \"moduleID\":1,\r\n    \"username\":\"" + username + "\",\r\n    \"OTP\":\"" + OTP + "\"\r\n}", null, "application/json");
-                request4.Content = content4;
-                var response4 = await client4.SendAsync(request4);
-                response4.EnsureSuccessStatusCode();
-                Console.WriteLine(await response4.Content.ReadAsStringAsync());
-                //MessageBox.Show(await response4.Content.ReadAsStringAsync());
-
-
-
-
-                //MessageBox.Show("I STARTED 1");
-                //button.IsEnabled = true; return;
-                //CUSTOMER PROFILE CREATION
-
-
-                // var selectedItemNATIONALITY = (ComboBoxItem)nationality.SelectedItem;
-                ////////string contentdb = selectedItem.Content.ToString();
-                // string valueNATIONALITY = (string)selectedItemNATIONALITY.Tag; // Assuming Tag is castable to int
-
-                string valueNATIONALITY = selectedNATIONALITYstrga;
-                string REM_ID = "";
-                //MessageBox.Show("I STARTED 2");
-
-                //MessageBox.Show(value);
-                //button.IsEnabled = true; return;
-
-                if (existingremid == "") { 
-
-                var client5 = new HttpClient();
-                var request5 = new HttpRequestMessage(HttpMethod.Post, "http://"+Variable.apiipadd+"/api/v1/sxRemitter/Remitter/post");
-                request5.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
-                var content5 = new MultipartFormDataContent();
-                content5.Add(new StringContent("1"), "appID");
-                content5.Add(new StringContent("1"), "moduleID");
-                content5.Add(new StringContent("KIOSK"), "channelCode");
-                //content5.Add(new StringContent("1114"), "userID");
-                //content5.Add(new StringContent("1114"), "userID");
-                content5.Add(new StringContent("0"), "RemID");
-                content5.Add(new StringContent("M"), "Gender");
-                content5.Add(new StringContent(firstname), "RemFName");
-                content5.Add(new StringContent(middlename), "RemMName");
-                content5.Add(new StringContent(lastname), "RemLName");
-                content5.Add(new StringContent(""), "RemARFName");
-                content5.Add(new StringContent(""), "RemARMName");
-                content5.Add(new StringContent(""), "RemARLName");
-                content5.Add(new StringContent(dobv), "RemDOB"); //DD-MM-YYYY 05-08-1988
-                content5.Add(new StringContent(valueNATIONALITY), "RemNation");
-                content5.Add(new StringContent(valueNATIONALITY), "RemCountry");
-                content5.Add(new StringContent(mobilenov), "MobileNo");
-                content5.Add(new StringContent("CI"), "IdentityType");
-                content5.Add(new StringContent(civilidv), "IdentityNo");
-                content5.Add(new StringContent(civilidexpiryv), "IDExpiryOn");//DD-MM-YYYY 05-08-1988
-                content5.Add(new StringContent(emailidv), "EmailID");
-                content5.Add(new StringContent("I"), "Category");
-                content5.Add(new StringContent("KW"), "IDCountry");
-                content5.Add(new StringContent("SAL"), "SOI");
-                content5.Add(new StringContent(occupationa), "Occupation");
-                content5.Add(new StringContent(salarya), "Salary");
-                content5.Add(new StringContent(emploerr), "Employer");
-                //content5.Add(new StringContent("Testing"), "Occupation");
-                content5.Add(new StringContent(address1 + " " + address2), "Address");
-                //content5.Add(new StreamContent(File.OpenRead("")), "IDImgFile1", "");
-                //content5.Add(new StreamContent(File.OpenRead("/C:/Users/rifayath/Downloads/depositphotos_48410095-stock-photo-sample-blue-square-grungy-stamp.jpg")), "IDImgFile2", "/C:/Users/rifayath/Downloads/depositphotos_48410095-stock-photo-sample-blue-square-grungy-stamp.jpg");
-                content5.Add(new StringContent(civilidfrontbase64), "IDImg1");
-                content5.Add(new StringContent(civilidbackbase64), "IDImg2");
-                content5.Add(new StringContent(signbase64), "Sign");
-
-                //content5.Add(new StringContent(""), "IDImg1");
-                //content5.Add(new StringContent(""), "IDImg2");
-                request5.Content = content5;
-                var response5 = await client5.SendAsync(request5);
-                response5.EnsureSuccessStatusCode();
-                Console.WriteLine(await response5.Content.ReadAsStringAsync());
-                //MessageBox.Show("Remitter/post " + await response5.Content.ReadAsStringAsync());
-
-
-                var contentString2 = "";
-                foreach (var part in content5)
-                {
-                    //contentString += part.Headers.ToString() + "\n" + await part.ReadAsStringAsync() + "\n";
-                    if (part.Headers.ContentDisposition != null)
-                    {
-                        var name = part.Headers.ContentDisposition.Name?.Trim('"'); // Trims the quotes around the name
-                        var value = await part.ReadAsStringAsync(); // Reads the value of the part
-                                                                    //contentString += $"Name: {name}, Value: {value}\n";
-                        contentString2 += $"{name}: {value}\n";
-                    }
-                }
-                string responseString2 = await response5.Content.ReadAsStringAsync();
-                RichMessageBox.Show("Request Data to api/v1/sxRemitter/Remitter/post\n" + DateTime.Now + "\n" + contentString2);
-                RichMessageBox.Show("Response from api/v1/sxRemitter/Remitter/post\n" + DateTime.Now + "\n" + responseString2);
-
-
-
-
-
-
-
-                //if code 0 then get data remid
-                //button.IsEnabled = true; return;
-
-                var responseBody5 = await response5.Content.ReadAsStringAsync();
-
-                
-
-
-                string validatesymaxregister = "99";
-
-                // Parse the JSON response using System.Text.Json
-                using (JsonDocument doc = JsonDocument.Parse(responseBody5))
-                {
-
-
-                    
-
-
-
-                    // Access the root JSON object
-                    JsonElement root = doc.RootElement;
-
-
-                    validatesymaxregister = root.GetProperty("Code").ToString();
-                    var message = root.GetProperty("Message").ToString();
-
-                   // MessageBox.Show(message);
-
-
-                    if (validatesymaxregister == "2")
-                    {
-                        
-
-
-                        //MessageBox.Show(message + "api/v1/sxRemitter/Remitter/post " + validatesymaxregister + " API Error " + responseString);
-                        MessageBox.Show(message);
-                        button.IsEnabled = true; return;
-                    }
-
-
-
-
-
-                    // Navigate to the 'Data' object
-                    //JsonElement dataElement = root.GetProperty("Data");
-                    JsonElement dataArray = root.GetProperty("Data");
-
-                    // Extract the accessToken
-                    //string REM_ID_val = dataElement.GetProperty("REM_ID").GetString();
-                    //REM_ID = dataElement.GetProperty("REM_ID").ToString();
-
-                    //REM_ID = dataElement.GetProperty("REM_ID").GetInt32().ToString();
-                    //REM_ID = dataElement.GetProperty("REM_ID").GetString();
-
-
-                    // Loop through each element in the data array
-                    foreach (JsonElement dataElement in dataArray.EnumerateArray())
-                    {
-                        // Check if the element has a property named "REM_ID"
-                        if (dataElement.TryGetProperty("REM_ID", out JsonElement remIdElement))
-                        {
-                            REM_ID = remIdElement.ToString();
-                            break; // Stop after finding the first REM_ID (optional)
-                        }
-                    }
-
-                    // Extract the accessToken
-                    //OTP = root.GetProperty("Data").GetString();
-
-                    // Display the accessToken in a message box
-                    //Console.WriteLine($"Access Token: {accessToken}");
-                    //MessageBox.Show($"Message: {Message}");
-
-                   // MessageBox.Show(REM_ID);
-                    //button.IsEnabled = true; return;
-
-                    // Display the accessToken in a message box
-                    //Console.WriteLine($"Access Token: {accessToken}");
-                    //MessageBox.Show($"Access Token: {accessToken}");
-                    // RemoveToken(accessToken);
-                    // SaveToken(accessToken);
-                    //TokenManager.SetToken(accessToken);
-                    // MessageBox.Show(LoadToken());
-
-                }
-
-                } else
-                {
-                    REM_ID = existingremid;
-                }
-
-
-                //MessageBox.Show("I STARTED 3");
-                ///button.IsEnabled = true; return;
-                ///
-
-                //SIGN UP OF USER
-                var client6 = new HttpClient();
-                var request6 = new HttpRequestMessage(HttpMethod.Post, "http://"+Variable.apiipadd+"/api/v1/sxuser/user/signup");
-                request6.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
-
-                //button.IsEnabled = true; return;
-                var content6 = new StringContent("{\r\n  \"UserId\": 0,\r\n  \"Username\": \"" + username + "\",\r\n  \"Password\": \"" + password + "\",\r\n  \"Firstname\": \"" + firstname + "\",\r\n  \"MiddleName\": \"" + middlename + "\",\r\n  \"Lastname\": \"" + lastname + "\",\r\n  \"ARFirstname\": \"\",\r\n  \"ARMiddlename\": \"\",\r\n  \"ARLastname\": \"\",\r\n  \"Email\": \"" + emailidv + "\",\r\n  \"Mobile\": \"" + mobilenov + "\",\r\n  \"Nationality\": \"IN\",\r\n  \"IDTypeCode\": \"CI\",\r\n  \"IDNumber\": \"" + civilidv + "\",\r\n  \"RemitterID\": " + REM_ID + ",\r\n  \"RefreshToken\": \"\",\r\n  \"IDExpiryDate\": \"" + convertdate(civilidexpiryv) + "\",\r\n  \"DOB\": \"" + convertdate(dobv) + "\",\r\n  \"Gender\": \"M\",\r\n  \"VideoKYCUploaded\": false,\r\n  \"SecurityAnswers\": [\r\n    {\r\n      \"UserId\": 0,\r\n      \"SecurityQnID\": 18,\r\n      \"Answer\": \"NONE\"\r\n    }\r\n  ]\r\n}", null, "application/json");
-                request6.Content = content6;
-                var response6 = await client6.SendAsync(request6);
-                response6.EnsureSuccessStatusCode();
-                Console.WriteLine(await response6.Content.ReadAsStringAsync());
-                //MessageBox.Show("sxuser/user/signup " + await response6.Content.ReadAsStringAsync());
-
-                var responseBody6 = await response6.Content.ReadAsStringAsync();
-
-                //contentString = "";
-                var contentString = await request6.Content.ReadAsStringAsync();
-                string responseString = await response6.Content.ReadAsStringAsync();
-                RichMessageBox.Show("Request Data to api/v1/sxuser/user/signup\n" + DateTime.Now + "\n" + contentString);
-                RichMessageBox.Show("Response from api/v1/sxuser/user/signup\n" + DateTime.Now + "\n" + responseString);
-
-
-
-
-
-
-                string validatesignupuser = "2";
-
-                // Parse the JSON response using System.Text.Json
-                using (JsonDocument doc = JsonDocument.Parse(responseBody6))
-                {
-
-
-
-
-
-
-                    // Access the root JSON object
-                    JsonElement root = doc.RootElement;
-
-
-                    validatesignupuser = root.GetProperty("Code").ToString();
-
-                    var message = root.GetProperty("Message").ToString();
-
-                    //MessageBox.Show(message);
-
-                    if (validatesignupuser == "2")
-                    {
-                        //MessageBox.Show(message + "api/v1/sxuser/user/signup " + validatesignupuser + " API Error " + responseString);
-                        MessageBox.Show(message);
-                        button.IsEnabled = true; return;
-                    }
-
-                    
-
-                }
-
-
-
+                MessageBox.Show("Error: " + ex.Message);
             }
-
-            MessageBox.Show("Registered Successfully !");
-
-
-
-            // Pass parameters to Page1.xaml after successful login
-            // Page1 page1 = new Page1(username);
-
-
-            NavigationManager.NavigateToHome();
-
-
         }
+
+
+
+        private async Task LoadDropdownDataNationality()
+        {
+            try
+            {
+                string baseUrl = "https://" + Variable.apiipadd + "/api/Customer/get-country-combo-list";
+
+                string url = $"{baseUrl}";
+
+                using (var client = new HttpClient())
+                {
+                    var request = new HttpRequestMessage(HttpMethod.Get, url);
+                    request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
+                    request.Headers.Add("Accept", "application/json");
+
+                    var response = await client.SendAsync(request);
+                    response.EnsureSuccessStatusCode();
+                    string json = await response.Content.ReadAsStringAsync();
+                    var data = JObject.Parse(json)["data"];
+
+                    productsc = data["country_list"]?.ToObject<List<NationalityCountryr>>() ?? new();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Dropdown load error: " + ex.Message);
+            }
+        }
+
 
         private void Page_loaded(object sender, RoutedEventArgs e)
         {

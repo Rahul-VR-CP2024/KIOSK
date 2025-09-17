@@ -64,8 +64,8 @@
     HorizontalAlignment="Center"/>
 
 
-            <StackPanel Orientation="Horizontal" >
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="30,0,0,0">
+            <!--<StackPanel Orientation="Horizontal" >-->
+                <!--<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="30,0,0,0">
                     <Label Content="Username" FontSize="20" Width="400"  Foreground="#FFFF" x:Name="usernamelbl"></Label>
                 </StackPanel>
                 <StackPanel   HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,0,0">
@@ -132,7 +132,7 @@ x:Name="passwordTextBox"
                 </StackPanel>
 
 
-            </StackPanel>
+            </StackPanel>-->
 
 
 

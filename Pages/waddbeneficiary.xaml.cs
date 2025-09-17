@@ -43,6 +43,28 @@ namespace Exchange.Pages
 
         private Dictionary<string, Control> fieldControls = new Dictionary<string, Control>();
 
+private readonly Dictionary<string, string> fieldNameMap = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+{
+    { "beneficiary_first_name", "beneficiaryFirstName" },
+    { "beneficiary_last_name", "beneficiaryLastName" },
+    { "beneficiary_middle_name", "beneficiaryMiddleName" },
+    { "beneficiary_d_o_b", "beneficiaryDOB" },
+    { "beneficiary_address1", "beneficiaryAddress1" },
+    { "beneficiary_address2", "beneficiaryAddress2" },
+    { "beneficiary_state", "beneficiaryState" },
+    { "beneficiary_city", "beneficiaryCity" },
+    { "beneficiary_country_code", "beneficiaryCountryCode" },
+    { "beneficiary_nationality_code", "beneficiaryNationalityCode" },
+    { "beneficary_relation", "beneficaryRelation" },
+    { "beneficiary_bank_code", "beneficiaryBankCode" },
+    { "beneficiary_branch_code", "beneficiaryBranchCode" },
+    { "beneficiary_bank_account_number", "beneficiaryBankAccountNumber" },
+    { "beneficiary_category_code", "beneficiaryCategoryCode" },
+    { "currency_code", "currencyCode" },
+    { "disbursal_mode", "disbursalMode" },
+    { "product_code", "productCode" }
+};
+
 
         public class DropdownItem
         {
@@ -148,9 +170,9 @@ namespace Exchange.Pages
 
                 if (addoreditvalue == "edit")
                 {
-                    await LoadDropdownData();
+                    
 
-                   await LoadBenefields();
+                   //await LoadBenefields();
 
                     await loadbenefieldstoedit();
 
@@ -393,12 +415,24 @@ namespace Exchange.Pages
                     string baseUrl = "https://" + Variable.apiipadd + "/api/Beneficiary/get-all-product-field-settings";
 
                     string productCode = ProductManager.selectedproductcode;
+                    if (string.IsNullOrEmpty(productCode))
+                        productCode = BENE_PRODedit;
+
                     string disbursalMode = BCManager.selectedoptionborc;
-                    string memberSection = "Beneficiary";
+                    if (string.IsNullOrEmpty(disbursalMode))
+                        disbursalMode = DISBTYPEedit;
+
                     string countryCode = SelectedAddBeneCountry.seladdbenecount;
+                    if (string.IsNullOrEmpty(countryCode))
+                        countryCode = BENE_CNTRYedit;
+
                     string destinationCurrencyCode = ProductManager.selectedProdCurrCode;
+                    if (string.IsNullOrEmpty(destinationCurrencyCode))
+                        destinationCurrencyCode = BENE_CURRedit;
+
                     string language = "EN";
                     string token = TokenManager.Token;
+                    string memberSection = "Beneficiary";
 
                     string url = $"{baseUrl}?ProductCode={productCode}&DisbursalModeCode={disbursalMode}&MemberSection={memberSection}&CountryCode={countryCode}&DestinationCurrencyCode={destinationCurrencyCode}&Language={language}";
 
@@ -485,87 +519,7 @@ namespace Exchange.Pages
 
 
 
-        //public async void loadbenefieldstoedit()
-        //{
-        //    try
-        //    {
-        //        using var client = new HttpClient();
 
-
-        //        var url = $"https://{Variable.apiipadd}/api/Beneficiary/get-beneficiary-by-id?eId={SelectedBeneficiaryManager.BENE_EID}";
-
-        //        var request = new HttpRequestMessage(HttpMethod.Get, url);
-        //        request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", TokenManager.Token);
-        //        request.Headers.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-
-        //        //MessageBox.Show(url); // Debug check
-
-        //        var response = await client.SendAsync(request);
-        //        response.EnsureSuccessStatusCode();
-
-        //        var responseBody = await response.Content.ReadAsStringAsync();
-        //        using var jsonDocument = JsonDocument.Parse(responseBody);
-
-        //        JsonElement root = jsonDocument.RootElement;
-        //        JsonElement dataElement = root.GetProperty("data").GetProperty("beneficiary_by_id");
-
-        //        BENE_PRODedit = dataElement.TryGetProperty("product_name", out var prodElement) ? prodElement.GetString() : "";
-        //        DISBTYPEedit = dataElement.TryGetProperty("disbursal_mode_name", out var disbElement) ? disbElement.GetString() : "";
-        //        BENE_CNTRYedit = dataElement.TryGetProperty("beneficiary_country_name", out var cntryElement) ? cntryElement.GetString() : "";
-        //        BENE_CURRedit = dataElement.TryGetProperty("beneficiary_country_code", out var currElement) ? currElement.GetString() : "";
-
-        //        // Load into edit fields
-        //        LoadBenefieldseditmode(
-        //            BENE_PRODedit,
-        //            DISBTYPEedit,
-        //            BENE_CNTRYedit,
-        //            DISBTYPEedit // You might want another property here instead of reusing
-        //        );
-
-        //        //runtheloadersource();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("Error: " + ex.Message);
-        //    }
-        //}
-
-        //public async Task loadbenefieldstoedit()
-        //{
-        //    try
-        //    {
-        //        var client = new HttpClient();
-        //        // Construct the GET URL with eId
-        //        var url = new HttpRequestMessage(HttpMethod.Post, "https://" + Variable.apiipadd + "/api/Beneficiary/get-beneficiary-by-id" + SelectedBeneficiaryManager.BENE_SLNO);
-        //        var request = new HttpRequestMessage(HttpMethod.Get, url.RequestUri);
-        //        request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
-        //        request.Headers.Add("Accept", "text/plain");
-        //        MessageBox.Show(url.RequestUri.ToString());
-        //        var response = await client.SendAsync(request);
-        //        response.EnsureSuccessStatusCode();
-        //        var responseBody = await response.Content.ReadAsStringAsync();
-        //        jsonDocument = JsonDocument.Parse(responseBody);
-        //        JsonElement root = jsonDocument.RootElement;
-        //        JsonElement dataElement = root.GetProperty("data").GetProperty("beneficiary_by_id");
-        //        BENE_PRODedit = dataElement.TryGetProperty("product_name", out JsonElement prodElement) ? prodElement.GetString() : "";
-        //        DISBTYPEedit = dataElement.TryGetProperty("disbursal_mode_name", out JsonElement disbElement) ? disbElement.GetString() : "";
-        //        BENE_CNTRYedit = dataElement.TryGetProperty("beneficiary_country_name", out JsonElement cntryElement) ? cntryElement.GetString() : "";
-        //        BENE_CURRedit = dataElement.TryGetProperty("beneficiary_country_code", out JsonElement currElement) ? currElement.GetString() : "";
-
-        //        LoadBenefieldseditmode(
-        //            BENE_PRODedit,
-        //            DISBTYPEedit,
-        //            BENE_CNTRYedit,
-        //            DISBTYPEedit // This replaces "COREDISB" which doesn't exist in new response
-        //        );
-
-        //        runtheloadersource();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("Error: " + ex.Message);
-        //    }
-        //}
 
         public async Task loadbenefieldstoedit()
         {
@@ -573,7 +527,7 @@ namespace Exchange.Pages
             {
                 using (var client = new HttpClient())
                 {
-                    // 1️⃣ Fetch the specific beneficiary data using eId
+                    //  Fetch the specific beneficiary data using eId
                     var url = $"https://{Variable.apiipadd}/api/Beneficiary/get-beneficiary-by-id?eId={SelectedBeneficiaryManager.BENE_EID}";
                     var request = new HttpRequestMessage(HttpMethod.Get, url);
                     request.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
@@ -592,59 +546,44 @@ namespace Exchange.Pages
                         return;
                     }
 
-                    // 2️⃣ Convert JSON data to dictionary: fieldName → value
+                    //  Save edit-mode variables
+                    BENE_PRODedit = data["product_code"]?.ToString();
+                    DISBTYPEedit = data["disbursal_mode"]?.ToString();
+                    BENE_CNTRYedit = data["beneficiary_country_code"]?.ToString();
+                    BENE_CURRedit = data["currency_code"]?.ToString();
+
+                    //  Load dynamic fields if product/disbursal mode are available
+                    if (!string.IsNullOrEmpty(BENE_PRODedit) && !string.IsNullOrEmpty(DISBTYPEedit))
+                    {
+                        await LoadDropdownData();
+
+                        await LoadBenefields();
+                    }
+
+                    //  Convert JSON data to dictionary: fieldName → value
+                    //await LoadBenefields();
                     var beneValues = new Dictionary<string, string>();
                     foreach (var prop in data.Children<JProperty>())
                     {
                         beneValues[prop.Name] = prop.Value?.ToString();
                     }
 
-                    // 3️⃣ Fetch all field definitions (same as LoadBenefields)
-                    string baseUrl = $"https://{Variable.apiipadd}/api/Beneficiary/get-all-product-field-settings";
-                    string fieldUrl = $"{baseUrl}?ProductCode={ProductManager.selectedproductcode}&DisbursalModeCode={BCManager.selectedoptionborc}&MemberSection=Beneficiary&CountryCode={SelectedAddBeneCountry.seladdbenecount}&DestinationCurrencyCode={ProductManager.selectedProdCurrCode}&Language=EN";
-
-                    var fieldRequest = new HttpRequestMessage(HttpMethod.Get, fieldUrl);
-                    fieldRequest.Headers.Add("Authorization", "Bearer " + TokenManager.Token);
-                    fieldRequest.Headers.Add("Accept", "application/json");
-
-                    var fieldResponse = await client.SendAsync(fieldRequest);
-                    fieldResponse.EnsureSuccessStatusCode();
-
-                    string fieldJsonString = await fieldResponse.Content.ReadAsStringAsync();
-                    var fieldJson = JObject.Parse(fieldJsonString);
-                    var fields = fieldJson["data"]?["all_product_field_setting_list"]?["beneficiary"];
-
-                    if (fields == null)
+                    //  Prefill values into the dynamic UI
+                    foreach (var kvp in beneValues)
                     {
-                        MessageBox.Show("No field definitions found.");
-                        return;
-                    }
-
-                    // 4️⃣ Clear previous UI
-                    myStackPanel.Children.Clear();
-
-                    // 5️⃣ Create dynamic fields and prefill values
-                    foreach (var field in fields)
-                    {
-                        string fieldName = field["field_name"]?.ToString();
-                        string label = field["display_field_name"]?.ToString();
-                        string type = field["type"]?.ToString();
-                        bool mandatory = field["mandatory"]?.ToObject<bool>() ?? false;
-                        bool visible = field["visible"]?.ToObject<bool>() ?? true;
-
-                        if (!visible) continue;
-                        if (mandatory) label += " *";
-
-                        AddDynamicField(fieldName, label, type, mandatory);
-
-                        // Prefill value if it exists in beneficiary data
-                        if (beneValues.TryGetValue(fieldName, out string value))
+                        // Try to map DB field name to dynamic field name
+                        if (fieldNameMap.TryGetValue(kvp.Key, out string mappedName))
                         {
-                            SetFieldValue(fieldName, value);
+                            SetFieldValue(mappedName, kvp.Value);
+                        }
+                        else
+                        {
+                            // If no mapping exists, try with original key
+                            SetFieldValue(kvp.Key, kvp.Value);
                         }
                     }
 
-                    // 6️⃣ Optional: run any additional loader logic
+                    //  Optional: run any additional loader logic
                     runtheloadersource();
                 }
             }
@@ -2107,8 +2046,16 @@ namespace Exchange.Pages
             try
             {
                 string baseUrl = "https://" + Variable.apiipadd + "/api/beneficiary/get-beneficiary-combo-list";
-                string productCode = ProductManager.selectedproductcode;
-                string destinationCountryCode = SelectedAddBeneCountry.seladdbenecount;
+
+                // ✅ Use add-mode values first, else fallback to edit-mode values
+                string productCode = !string.IsNullOrEmpty(ProductManager.selectedproductcode)
+                                        ? ProductManager.selectedproductcode
+                                        : BENE_PRODedit;
+
+                string destinationCountryCode = !string.IsNullOrEmpty(SelectedAddBeneCountry.seladdbenecount)
+                                        ? SelectedAddBeneCountry.seladdbenecount
+                                        : BENE_CNTRYedit;
+
                 string url = $"{baseUrl}?destination_country_code={destinationCountryCode}&product_code={productCode}";
 
                 using (var client = new HttpClient())
@@ -2132,8 +2079,8 @@ namespace Exchange.Pages
             {
                 MessageBox.Show("Dropdown load error: " + ex.Message);
             }
-
         }
+
 
         private void SetFieldValue(string fieldName, string value)
         {
@@ -2149,7 +2096,7 @@ namespace Exchange.Pages
                         }
                         else if (control is ComboBox cb)
                         {
-                            // Try to match DropdownItem by Code or ToString()
+                            // Match DropdownItem by code or name
                             foreach (var item in cb.Items)
                             {
                                 if (item is DropdownItem di &&
@@ -2165,10 +2112,21 @@ namespace Exchange.Pages
                                 }
                             }
                         }
+                        else if (control is DatePicker dp)
+                        {
+                            if (DateTime.TryParse(value, out var parsedDate))
+                                dp.SelectedDate = parsedDate;
+                        }
+                        else if (control is CheckBox chk)
+                        {
+                            chk.IsChecked = value == "true" || value == "1";
+                        }
+                       
                     }
                 }
             }
         }
+
         private void AddDynamicField(string fieldName, string label, string type, bool mandatory)
         {
             if (!coreFieldNames.Contains(fieldName))
@@ -2226,6 +2184,17 @@ namespace Exchange.Pages
 
                 inputControl = combo;
             }
+            else if (type.Equals("Date", StringComparison.OrdinalIgnoreCase))
+            {
+                var datePicker = new DatePicker
+                {
+                    Width = 400,
+                    Height = 30,
+                    Name = fieldName,
+                    Tag = fieldName
+                };
+                inputControl = datePicker;
+            }
             else
             {
                 var txt = new TextBox
@@ -2244,6 +2213,7 @@ namespace Exchange.Pages
             rowPanel.Children.Add(inputControl);
             myStackPanel.Children.Add(rowPanel);
         }
+
 
 
 
